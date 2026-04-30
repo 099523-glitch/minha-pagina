@@ -18,7 +18,6 @@
       line-height: 1.8;
     }
 
-    /* ── HEADER ── */
     header {
       background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 50%, #0d4d2e 100%);
       text-align: center;
@@ -66,16 +65,13 @@
       margin: 0 auto;
     }
 
-    /* ── SECTIONS ── */
     section {
       max-width: 720px;
       margin: 0 auto;
       padding: 50px 24px;
     }
 
-    section + section {
-      border-top: 1px solid #1e1e1e;
-    }
+    section + section { border-top: 1px solid #1e1e1e; }
 
     h2 {
       font-size: clamp(20px, 3.8vw, 30px);
@@ -84,15 +80,9 @@
       line-height: 1.35;
     }
 
-    p {
-      font-size: 17px;
-      color: #dde8e2;
-      margin-bottom: 18px;
-    }
-
+    p { font-size: 17px; color: #dde8e2; margin-bottom: 18px; }
     p strong { color: #ffffff; }
 
-    /* ── TRANSITION BLOCK ── */
     .transition-block {
       background: #0f1f17;
       border-left: 4px solid #4caf82;
@@ -108,7 +98,6 @@
       font-style: italic;
     }
 
-    /* ── PROBLEM BRIDGE ── */
     .gap-box {
       background: #111;
       border: 1px solid #2a2a2a;
@@ -117,16 +106,9 @@
       margin: 10px 0;
     }
 
-    .gap-box h3 {
-      font-size: 18px;
-      color: #e0d4b8;
-      margin-bottom: 14px;
-    }
+    .gap-box h3 { font-size: 18px; color: #e0d4b8; margin-bottom: 14px; }
 
-    .gap-list {
-      list-style: none;
-      padding: 0;
-    }
+    .gap-list { list-style: none; padding: 0; }
 
     .gap-list li {
       font-size: 16px;
@@ -137,20 +119,9 @@
     }
 
     .gap-list li:last-child { border-bottom: none; }
+    .gap-list li::before { content: "→"; color: #4caf82; position: absolute; left: 6px; }
 
-    .gap-list li::before {
-      content: "→";
-      color: #4caf82;
-      position: absolute;
-      left: 6px;
-    }
-
-    /* ── WHAT'S INSIDE ── */
-    .module-list {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0 20px;
-    }
+    .module-list { list-style: none; padding: 0; margin: 10px 0 20px; }
 
     .module-list li {
       display: flex;
@@ -178,19 +149,9 @@
       margin-top: 2px;
     }
 
-    .module-text strong {
-      display: block;
-      font-size: 16px;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
+    .module-text strong { display: block; font-size: 16px; color: #ffffff; margin-bottom: 4px; }
+    .module-text span { font-size: 14px; color: #9ab8a8; }
 
-    .module-text span {
-      font-size: 14px;
-      color: #9ab8a8;
-    }
-
-    /* ── OFFER BOX ── */
     .offer-box {
       background: linear-gradient(135deg, #0a1f14, #0d3d22);
       border: 2px solid #4caf82;
@@ -208,44 +169,18 @@
       margin-bottom: 12px;
     }
 
-    .offer-box h2 {
-      font-size: clamp(24px, 5vw, 36px);
-      color: #ffffff;
-      margin-bottom: 14px;
-    }
-
-    .offer-box .offer-desc {
-      font-size: 16px;
-      color: #9ab8a8;
-      max-width: 500px;
-      margin: 0 auto 28px;
-    }
+    .offer-box h2 { font-size: clamp(24px, 5vw, 36px); color: #ffffff; margin-bottom: 14px; }
+    .offer-box .offer-desc { font-size: 16px; color: #9ab8a8; max-width: 500px; margin: 0 auto 28px; }
 
     .price-block { margin-bottom: 32px; }
+    .price-block .original { font-size: 16px; color: #666; text-decoration: line-through; margin-bottom: 4px; }
+    .price-block .current { font-size: clamp(46px, 8vw, 68px); font-weight: bold; color: #4caf82; line-height: 1; }
+    .price-block .period { font-size: 13px; color: #7a9a88; margin-top: 6px; }
 
-    .price-block .original {
-      font-size: 16px;
-      color: #666;
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
-
-    .price-block .current {
-      font-size: clamp(46px, 8vw, 68px);
-      font-weight: bold;
-      color: #4caf82;
-      line-height: 1;
-    }
-
-    .price-block .period {
-      font-size: 13px;
-      color: #7a9a88;
-      margin-top: 6px;
-    }
-
-    /* ── BUTTONS ── */
     .btn-accept {
-      display: inline-block;
+      display: block;
+      max-width: 420px;
+      margin: 0 auto 14px;
       background: linear-gradient(135deg, #4caf82, #37c472);
       color: #0d0d0d;
       font-family: 'Arial', sans-serif;
@@ -260,9 +195,6 @@
       border: none;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 6px 24px rgba(76, 175, 130, 0.4);
-      display: block;
-      max-width: 420px;
-      margin: 0 auto 14px;
     }
 
     .btn-accept:hover {
@@ -286,14 +218,8 @@
 
     .btn-decline:hover { color: #999; }
 
-    .secure-note {
-      margin-top: 22px;
-      font-family: 'Arial', sans-serif;
-      font-size: 12px;
-      color: #666;
-    }
+    .secure-note { margin-top: 22px; font-family: 'Arial', sans-serif; font-size: 12px; color: #666; }
 
-    /* ── GUARANTEE ── */
     .guarantee-strip {
       display: flex;
       align-items: center;
@@ -306,17 +232,9 @@
     }
 
     .guarantee-strip .shield { font-size: 30px; flex-shrink: 0; }
-
-    .guarantee-strip p {
-      font-size: 13px;
-      color: #7a9a88;
-      margin: 0;
-      text-align: left;
-    }
-
+    .guarantee-strip p { font-size: 13px; color: #7a9a88; margin: 0; text-align: left; }
     .guarantee-strip p strong { color: #4caf82; }
 
-    /* ── FOOTER ── */
     footer {
       background: #080808;
       border-top: 1px solid #1a1a1a;
@@ -324,24 +242,8 @@
       text-align: center;
     }
 
-    footer p {
-      font-size: 12px;
-      color: #444;
-      margin-bottom: 8px;
-    }
+    footer p { font-size: 12px; color: #444; margin-bottom: 8px; }
 
-    footer a { color: #666; text-decoration: underline; }
-    footer a:hover { color: #4caf82; }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    /* ── LEGAL TABS ── */
     .legal-bar {
       background: #0a0a0a;
       border-top: 1px solid #1a1a1a;
@@ -358,12 +260,7 @@
       margin-bottom: 14px;
     }
 
-    .legal-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .legal-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 
     .legal-tabs a {
       font-family: 'Arial', sans-serif;
@@ -377,13 +274,8 @@
       transition: all 0.2s;
     }
 
-    .legal-tabs a:hover {
-      color: #4caf82;
-      border-color: #4caf82;
-      background: rgba(76,175,130,0.06);
-    }
+    .legal-tabs a:hover { color: #4caf82; border-color: #4caf82; background: rgba(76,175,130,0.06); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       header { padding: 36px 16px 32px; }
       section { padding: 36px 16px; }
@@ -394,9 +286,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════ -->
   <header>
     <p class="eyebrow">Wait — One More Thing Before You Go</p>
     <span class="congrats">✓ Your order is confirmed</span>
@@ -404,9 +293,6 @@
     <p class="subheadline">Abundance Boost gives you the foundation — Prosperity Path gives you the 30-day roadmap to actually build on it.</p>
   </header>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 1 — TRANSITION / BRIDGE
-  ═══════════════════════════════════════ -->
   <section>
     <div class="transition-block">
       <p>"Most people buy a program, get excited for three days, and then go back to exactly where they were. Not because the material was bad — but because they had no plan."</p>
@@ -434,9 +320,6 @@
     <p>That's exactly what <strong>Prosperity Path</strong> solves.</p>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 2 — WHAT IT IS
-  ═══════════════════════════════════════ -->
   <section>
     <h2>Prosperity Path: The 30-Day Action Plan</h2>
 
@@ -483,9 +366,6 @@
     </ul>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 3 — OFFER + BUTTONS
-  ═══════════════════════════════════════ -->
   <section>
     <div class="offer-box">
       <p class="product-tag">Exclusive Upgrade · One-Time Offer</p>
@@ -498,10 +378,9 @@
         <p class="period">One-time payment · No subscription · Instant access</p>
       </div>
 
-      <!-- ⚠ DIGISTORE: replace href with the accept URL generated by Digistore -->
-      <a href="#" class="btn-accept">Yes — Add Prosperity Path to My Order →</a>
+      <a href="https://www.digistore24.com/product/687271" class="btn-accept">Yes — Add Prosperity Path to My Order →</a>
 
-      <!-- ⚠ DIGISTORE: replace href with the decline URL generated by Digistore -->
+      <!-- ⚠ DIGISTORE: replace href with the decline URL after configuring the upsell funnel -->
       <a href="#" class="btn-decline">No thanks, I'll figure it out on my own.</a>
 
       <p class="secure-note">🔒 Secure checkout &nbsp;·&nbsp; Billed once &nbsp;·&nbsp; Delivered instantly</p>
@@ -513,7 +392,6 @@
     </div>
   </section>
 
-  <!-- LEGAL TABS -->
   <div class="legal-bar">
     <p>Legal &amp; Support</p>
     <div class="legal-tabs">
@@ -524,7 +402,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 Abundance Boost. All rights reserved.</p>
     <p>Prosperity Path is a digital product delivered via email. Results are not guaranteed and vary based on individual effort and application.</p>
