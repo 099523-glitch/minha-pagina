@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth Flow — Build Income That Moves Without You</title>
+
+  <!-- ⚠ DIGISTORE: paste the upsell script here -->
+  <!-- <script src="..."></script> -->
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #0d0d0d;
+      color: #f0e6c8;
+      line-height: 1.8;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #000d1a 0%, #001a2e 50%, #00243d 100%);
+      text-align: center;
+      padding: 52px 20px 46px;
+      border-bottom: 2px solid #38b6e8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 200px;
+      background: radial-gradient(ellipse, rgba(56,182,232,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    header .eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #38b6e8;
+      margin-bottom: 16px;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: rgba(56, 182, 232, 0.1);
+      border: 1px solid #38b6e8;
+      color: #38b6e8;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      padding: 5px 18px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+      letter-spacing: 1px;
+    }
+
+    header h1 {
+      font-size: clamp(30px, 5.5vw, 54px);
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 1.2;
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+
+    header h1 span { color: #38b6e8; }
+
+    header .subheadline {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: #a8cfe0;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 50px 24px;
+    }
+
+    section + section { border-top: 1px solid #1a1a1a; }
+
+    h2 {
+      font-size: clamp(20px, 3.6vw, 30px);
+      color: #38b6e8;
+      margin-bottom: 20px;
+      line-height: 1.35;
+    }
+
+    p {
+      font-size: 17px;
+      color: #d8e8f0;
+      margin-bottom: 18px;
+    }
+
+    p strong { color: #ffffff; }
+    p em { color: #38b6e8; font-style: normal; font-weight: bold; }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      background: #001422;
+      border-left: 4px solid #38b6e8;
+      padding: 24px 28px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .pull-quote p {
+      font-size: 18px;
+      color: #a8cfe0;
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* ── FLOW STAGES ── */
+    .flow-stages {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin: 16px 0 22px;
+    }
+
+    .flow-stage {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .stage-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 44px;
+      flex-shrink: 0;
+    }
+
+    .stage-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #38b6e8;
+      flex-shrink: 0;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stage-line {
+      width: 2px;
+      flex: 1;
+      background: #1a3a4a;
+      margin-top: 2px;
+    }
+
+    .flow-stage:last-child .stage-line { display: none; }
+
+    .stage-body {
+      background: #001422;
+      border: 1px solid #1a3a4a;
+      border-radius: 8px;
+      padding: 16px 18px;
+      flex: 1;
+      margin-bottom: 3px;
+    }
+
+    .stage-body strong {
+      display: block;
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .stage-body span {
+      font-size: 14px;
+      color: #7aa8bc;
+    }
+
+    /* ── CONTENT CARDS ── */
+    .content-list {
+      display: grid;
+      gap: 12px;
+      margin: 10px 0 20px;
+    }
+
+    .content-item {
+      background: #001422;
+      border: 1px solid #1a3a4a;
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .content-item .num {
+      font-family: 'Arial', sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      color: #38b6e8;
+      flex-shrink: 0;
+      width: 32px;
+      line-height: 1;
+      margin-top: 3px;
+    }
+
+    .content-item strong {
+      display: block;
+      font-size: 16px;
+      color: #e8f4fa;
+      margin-bottom: 5px;
+    }
+
+    .content-item span {
+      font-size: 14px;
+      color: #7aa8bc;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #001422, #002a3d);
+      border: 1px solid #38b6e8;
+      border-radius: 10px;
+      padding: 26px 28px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .highlight-box p {
+      font-size: 18px;
+      color: #e8f4fa;
+      margin: 0;
+    }
+
+    .highlight-box p span {
+      color: #38b6e8;
+      font-weight: bold;
+    }
+
+    /* ── OFFER BOX ── */
+    .offer-box {
+      background: linear-gradient(135deg, #000d1a, #001a2e);
+      border: 2px solid #38b6e8;
+      border-radius: 14px;
+      text-align: center;
+      padding: 48px 32px;
+    }
+
+    .offer-box .product-tag {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #38b6e8;
+      margin-bottom: 12px;
+    }
+
+    .offer-box h2 {
+      font-size: clamp(24px, 4.5vw, 36px);
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .offer-box .offer-desc {
+      font-size: 16px;
+      color: #7aa8bc;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+
+    .includes-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .includes-tag {
+      background: #001422;
+      border: 1px solid #1a3a4a;
+      color: #a8cfe0;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 50px;
+    }
+
+    .price-block { margin-bottom: 30px; }
+
+    .price-block .original {
+      font-size: 16px;
+      color: #444;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-block .current {
+      font-size: clamp(46px, 8vw, 68px);
+      font-weight: bold;
+      color: #38b6e8;
+      line-height: 1;
+    }
+
+    .price-block .period {
+      font-size: 13px;
+      color: #4a7a8a;
+      margin-top: 6px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-accept {
+      display: block;
+      max-width: 440px;
+      margin: 0 auto 14px;
+      background: linear-gradient(135deg, #38b6e8, #50c8f0);
+      color: #00111f;
+      font-family: 'Arial', sans-serif;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 20px 40px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 26px rgba(56, 182, 232, 0.35);
+    }
+
+    .btn-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(56, 182, 232, 0.5);
+    }
+
+    .btn-decline {
+      display: block;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #444;
+      text-decoration: underline;
+      text-align: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      margin: 0 auto;
+      padding: 4px;
+    }
+
+    .btn-decline:hover { color: #777; }
+
+    .secure-note {
+      margin-top: 20px;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: #444;
+    }
+
+    .guarantee-strip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #000d1a;
+      border: 1px solid #1a3a4a;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-top: 26px;
+    }
+
+    .guarantee-strip .shield { font-size: 30px; flex-shrink: 0; }
+
+    .guarantee-strip p {
+      font-size: 13px;
+      color: #4a7a8a;
+      margin: 0;
+      text-align: left;
+    }
+
+    .guarantee-strip p strong { color: #38b6e8; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 12px; color: #444; margin-bottom: 8px; }
+    footer a { color: #555; text-decoration: underline; }
+    footer a:hover { color: #38b6e8; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    /* ── LEGAL TABS ── */
+    .legal-bar {
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .legal-bar p {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    .legal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .legal-tabs a {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      padding: 9px 20px;
+      border: 1px solid #2a2a2a;
+      border-radius: 50px;
+      background: #111;
+      transition: all 0.2s;
+    }
+
+    .legal-tabs a:hover {
+      color: #38b6e8;
+      border-color: #38b6e8;
+      background: rgba(56,182,232,0.06);
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 36px 16px 32px; }
+      section { padding: 36px 16px; }
+      .offer-box { padding: 36px 18px; }
+      .btn-accept { padding: 18px 28px; font-size: 15px; }
+      .stage-left { width: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header>
+    <p class="eyebrow">Step 2 of Your Abundance Journey</p>
+    <span class="badge">💧 For Those Ready to Create Lasting Income</span>
+    <h1>Mindset Reset. Plan in Place.<br>Now Let the <span>Wealth Flow.</span></h1>
+    <p class="subheadline">You've done the inner work. Now it's time to build the outer structure — a steady, reliable stream of wealth that grows whether you're working or not.</p>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — BRIDGE
+  ═══════════════════════════════════════ -->
+  <section>
+    <div class="pull-quote">
+      <p>"The goal was never just to feel abundant. The goal is to have abundance moving through your life — freely, consistently, and without you having to chase it every single day."</p>
+    </div>
+
+    <h2>There's a Difference Between Earning Money and Creating Flow</h2>
+
+    <p>With <strong>Abundance Boost</strong> you broke through the mental blocks. With <strong>Prosperity Path</strong> you built a 30-day structure for momentum. Those two steps put you ahead of most people before they even begin.</p>
+
+    <p>But here's the next question: <strong>once the momentum is there, where does it go?</strong></p>
+
+    <p>Most people earn in spikes — a good month here, a slow stretch there. They're constantly starting over, never quite building on what came before. The reason isn't bad luck. It's that they never built a <em>flow.</em></p>
+
+    <p>Wealth Flow is about turning what you've built into something that moves on its own — steady, predictable, and compounding over time. It's the bridge between "working toward abundance" and <strong>actually living in it.</strong></p>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — HOW FLOW WORKS
+  ═══════════════════════════════════════ -->
+  <section>
+    <h2>The 4 Stages of Financial Flow</h2>
+
+    <p>Every person who builds lasting wealth goes through the same four stages — most just stumble through them by accident. Wealth Flow maps them clearly so you can move through each one with intention.</p>
+
+    <div class="flow-stages">
+      <div class="flow-stage">
+        <div class="stage-left">
+          <div class="stage-dot"></div>
+          <div class="stage-line"></div>
+        </div>
+        <div class="stage-body">
+          <strong>Stage 1 — Stabilize</strong>
+          <span>Stop the leaks. Identify where your time, energy, and money are draining without return — and close those gaps first.</span>
+        </div>
+      </div>
+      <div class="flow-stage">
+        <div class="stage-left">
+          <div class="stage-dot"></div>
+          <div class="stage-line"></div>
+        </div>
+        <div class="stage-body">
+          <strong>Stage 2 — Channel</strong>
+          <span>Direct your resources toward the activities and opportunities that generate the highest return on your effort and attention.</span>
+        </div>
+      </div>
+      <div class="flow-stage">
+        <div class="stage-left">
+          <div class="stage-dot"></div>
+          <div class="stage-line"></div>
+        </div>
+        <div class="stage-body">
+          <strong>Stage 3 — Multiply</strong>
+          <span>Layer income sources so that what you build starts to generate results beyond your direct effort — the beginning of true financial flow.</span>
+        </div>
+      </div>
+      <div class="flow-stage">
+        <div class="stage-left">
+          <div class="stage-dot"></div>
+        </div>
+        <div class="stage-body">
+          <strong>Stage 4 — Sustain</strong>
+          <span>Build the systems and habits that keep your wealth flowing without constant input from you. This is where freedom actually lives.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>Most people never reach Stage 3 — not because it's hard, but because <span>nobody showed them the map.</span> Wealth Flow is that map.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — WHAT'S INSIDE
+  ═══════════════════════════════════════ -->
+  <section>
+    <h2>What's Inside Wealth Flow</h2>
+
+    <div class="content-list">
+      <div class="content-item">
+        <span class="num">01</span>
+        <div>
+          <strong>The Flow Foundation Guide</strong>
+          <span>The step-by-step system for moving through all 4 stages — starting exactly where you are right now, regardless of your current income level.</span>
+        </div>
+      </div>
+      <div class="content-item">
+        <span class="num">02</span>
+        <div>
+          <strong>Income Stream Mapping Workbook</strong>
+          <span>A practical guide to identifying which income streams make sense for your life, your skills, and your available time — without overextending yourself.</span>
+        </div>
+      </div>
+      <div class="content-item">
+        <span class="num">03</span>
+        <div>
+          <strong>The Leak Audit Protocol</strong>
+          <span>A clear process to find exactly where your financial energy is going to waste — and how to redirect it toward growth instead of loss.</span>
+        </div>
+      </div>
+      <div class="content-item">
+        <span class="num">04</span>
+        <div>
+          <strong>The Multiplication Method</strong>
+          <span>Simple, proven strategies for layering income so that one source feeds the next — creating compounding momentum without complexity.</span>
+        </div>
+      </div>
+      <div class="content-item">
+        <span class="num">05</span>
+        <div>
+          <strong>The Sustainability Blueprint</strong>
+          <span>How to build the structures — routines, systems, and financial habits — that keep your wealth flowing long after the motivation fades.</span>
+        </div>
+      </div>
+      <div class="content-item">
+        <span class="num">★</span>
+        <div>
+          <strong>Bonus: The Wealth Flow Scorecard</strong>
+          <span>A quick-reference tool to assess your current stage, identify your next move, and track your progress through each level of financial flow.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — OFFER + BUTTONS
+  ═══════════════════════════════════════ -->
+  <section>
+    <div class="offer-box">
+      <p class="product-tag">Step 2 · Wealth Flow Upgrade</p>
+      <h2>Add Wealth Flow<br>to Your Order Now</h2>
+      <p class="offer-desc">This special offer is only available right now. Once you navigate away, it's gone.</p>
+
+      <div class="includes-row">
+        <span class="includes-tag">Flow Foundation Guide</span>
+        <span class="includes-tag">Income Stream Mapping</span>
+        <span class="includes-tag">Leak Audit Protocol</span>
+        <span class="includes-tag">Multiplication Method</span>
+        <span class="includes-tag">Sustainability Blueprint</span>
+        <span class="includes-tag">+ Bonus Scorecard</span>
+      </div>
+
+      <div class="price-block">
+        <p class="original">Regular price: $77</p>
+        <p class="current">$37</p>
+        <p class="period">One-time payment · No subscription · Instant access</p>
+      </div>
+
+      <!-- ⚠ DIGISTORE: replace href with the accept URL generated by Digistore -->
+      <a href="#" class="btn-accept">Yes — Add Wealth Flow to My Order →</a>
+
+      <!-- ⚠ DIGISTORE: replace href with the decline URL generated by Digistore -->
+      <a href="#" class="btn-decline">No thanks, I'll pass on this one.</a>
+
+      <p class="secure-note">🔒 Secure checkout &nbsp;·&nbsp; Billed once &nbsp;·&nbsp; Delivered instantly</p>
+
+      <div class="guarantee-strip">
+        <span class="shield">🛡️</span>
+        <p><strong>60-Day Money Back Guarantee.</strong> Try Wealth Flow for 60 days. If it doesn't move the needle, contact us for a full refund — no questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL TABS -->
+  <div class="legal-bar">
+    <p>Legal &amp; Support</p>
+    <div class="legal-tabs">
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Abundance Boost. All rights reserved.</p>
+    <p>Wealth Flow is a digital product delivered via email. Results are not guaranteed and depend on individual effort, application, and financial circumstances. This is not financial advice.</p>
+  </footer>
+
+</body>
+</html>
