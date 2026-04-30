@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prosperity Path — Your Next Step Starts Here</title>
+
+  <!-- ⚠ DIGISTORE: paste the upsell script here -->
+  <!-- <script src="..."></script> -->
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #0d0d0d;
+      color: #f0e6c8;
+      line-height: 1.8;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 50%, #0d4d2e 100%);
+      text-align: center;
+      padding: 50px 20px 44px;
+      border-bottom: 2px solid #4caf82;
+    }
+
+    header .eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #4caf82;
+      margin-bottom: 16px;
+    }
+
+    header .congrats {
+      display: inline-block;
+      background: rgba(76, 175, 130, 0.15);
+      border: 1px solid #4caf82;
+      color: #4caf82;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+      letter-spacing: 1px;
+    }
+
+    header h1 {
+      font-size: clamp(28px, 5.5vw, 52px);
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 1.25;
+      max-width: 780px;
+      margin: 0 auto 18px;
+    }
+
+    header h1 span { color: #4caf82; }
+
+    header .subheadline {
+      font-size: clamp(15px, 2.3vw, 19px);
+      color: #c2d9cc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 50px 24px;
+    }
+
+    section + section {
+      border-top: 1px solid #1e1e1e;
+    }
+
+    h2 {
+      font-size: clamp(20px, 3.8vw, 30px);
+      color: #4caf82;
+      margin-bottom: 20px;
+      line-height: 1.35;
+    }
+
+    p {
+      font-size: 17px;
+      color: #dde8e2;
+      margin-bottom: 18px;
+    }
+
+    p strong { color: #ffffff; }
+
+    /* ── TRANSITION BLOCK ── */
+    .transition-block {
+      background: #0f1f17;
+      border-left: 4px solid #4caf82;
+      padding: 24px 28px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .transition-block p {
+      font-size: 18px;
+      color: #c2d9cc;
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* ── PROBLEM BRIDGE ── */
+    .gap-box {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 28px 28px;
+      margin: 10px 0;
+    }
+
+    .gap-box h3 {
+      font-size: 18px;
+      color: #e0d4b8;
+      margin-bottom: 14px;
+    }
+
+    .gap-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .gap-list li {
+      font-size: 16px;
+      color: #bbb;
+      padding: 8px 0 8px 32px;
+      position: relative;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .gap-list li:last-child { border-bottom: none; }
+
+    .gap-list li::before {
+      content: "→";
+      color: #4caf82;
+      position: absolute;
+      left: 6px;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .module-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 20px;
+    }
+
+    .module-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .module-list li:last-child { border-bottom: none; }
+
+    .module-num {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      background: #4caf82;
+      color: #0d0d0d;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .module-text strong {
+      display: block;
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .module-text span {
+      font-size: 14px;
+      color: #9ab8a8;
+    }
+
+    /* ── OFFER BOX ── */
+    .offer-box {
+      background: linear-gradient(135deg, #0a1f14, #0d3d22);
+      border: 2px solid #4caf82;
+      border-radius: 14px;
+      text-align: center;
+      padding: 48px 32px;
+    }
+
+    .offer-box .product-tag {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #4caf82;
+      margin-bottom: 12px;
+    }
+
+    .offer-box h2 {
+      font-size: clamp(24px, 5vw, 36px);
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .offer-box .offer-desc {
+      font-size: 16px;
+      color: #9ab8a8;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+
+    .price-block { margin-bottom: 32px; }
+
+    .price-block .original {
+      font-size: 16px;
+      color: #666;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-block .current {
+      font-size: clamp(46px, 8vw, 68px);
+      font-weight: bold;
+      color: #4caf82;
+      line-height: 1;
+    }
+
+    .price-block .period {
+      font-size: 13px;
+      color: #7a9a88;
+      margin-top: 6px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-accept {
+      display: inline-block;
+      background: linear-gradient(135deg, #4caf82, #37c472);
+      color: #0d0d0d;
+      font-family: 'Arial', sans-serif;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 20px 52px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(76, 175, 130, 0.4);
+      display: block;
+      max-width: 420px;
+      margin: 0 auto 14px;
+    }
+
+    .btn-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(76, 175, 130, 0.55);
+    }
+
+    .btn-decline {
+      display: block;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #666;
+      text-decoration: underline;
+      text-align: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      margin: 0 auto;
+      padding: 4px;
+    }
+
+    .btn-decline:hover { color: #999; }
+
+    .secure-note {
+      margin-top: 22px;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee-strip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #0f1a14;
+      border: 1px solid #1e3328;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-top: 28px;
+    }
+
+    .guarantee-strip .shield { font-size: 30px; flex-shrink: 0; }
+
+    .guarantee-strip p {
+      font-size: 13px;
+      color: #7a9a88;
+      margin: 0;
+      text-align: left;
+    }
+
+    .guarantee-strip p strong { color: #4caf82; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    footer a { color: #666; text-decoration: underline; }
+    footer a:hover { color: #4caf82; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    /* ── LEGAL TABS ── */
+    .legal-bar {
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .legal-bar p {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    .legal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .legal-tabs a {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      padding: 9px 20px;
+      border: 1px solid #2a2a2a;
+      border-radius: 50px;
+      background: #111;
+      transition: all 0.2s;
+    }
+
+    .legal-tabs a:hover {
+      color: #4caf82;
+      border-color: #4caf82;
+      background: rgba(76,175,130,0.06);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      header { padding: 36px 16px 32px; }
+      section { padding: 36px 16px; }
+      .offer-box { padding: 36px 18px; }
+      .btn-accept { padding: 18px 28px; font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header>
+    <p class="eyebrow">Wait — One More Thing Before You Go</p>
+    <span class="congrats">✓ Your order is confirmed</span>
+    <h1>You Have the Tools.<br>Now Get <span>The Path.</span></h1>
+    <p class="subheadline">Abundance Boost gives you the foundation — Prosperity Path gives you the 30-day roadmap to actually build on it.</p>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — TRANSITION / BRIDGE
+  ═══════════════════════════════════════ -->
+  <section>
+    <div class="transition-block">
+      <p>"Most people buy a program, get excited for three days, and then go back to exactly where they were. Not because the material was bad — but because they had no plan."</p>
+    </div>
+
+    <h2>Having the Right Information Is Only Half the Battle</h2>
+
+    <p>Abundance Boost is packed with powerful guides on mindset, habits, and wealth alignment. And they work — <strong>when you use them consistently and in the right order.</strong></p>
+
+    <p>But here's what most people run into: you open the first guide, feel a spark of motivation, then life gets in the way. A week passes. Two weeks. The files sit in a folder you keep meaning to go back to.</p>
+
+    <p>It's not a willpower problem. It's a <strong>structure problem.</strong></p>
+
+    <div class="gap-box">
+      <h3>Without a clear plan, most people experience:</h3>
+      <ul class="gap-list">
+        <li>Reading a guide once without applying it consistently</li>
+        <li>Losing momentum after the first week of motivation</li>
+        <li>Not knowing which habit to focus on first for maximum impact</li>
+        <li>Feeling like they're doing the work but not seeing results move</li>
+        <li>Going back to old patterns without realizing it</li>
+      </ul>
+    </div>
+
+    <p>That's exactly what <strong>Prosperity Path</strong> solves.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — WHAT IT IS
+  ═══════════════════════════════════════ -->
+  <section>
+    <h2>Prosperity Path: The 30-Day Action Plan</h2>
+
+    <p><strong>Prosperity Path</strong> is a structured, day-by-day guide designed to work <em>alongside</em> your Abundance Boost materials. It tells you exactly what to focus on, when, and why — so you build real momentum instead of just good intentions.</p>
+
+    <p>Think of it as the GPS for the journey you just started. You already have the destination. This gives you the turn-by-turn directions.</p>
+
+    <ul class="module-list">
+      <li>
+        <div class="module-num">1</div>
+        <div class="module-text">
+          <strong>Week 1 — Clear the Ground</strong>
+          <span>Identify and release the specific beliefs and patterns that have been quietly blocking your progress. Simple daily exercises, 10 minutes each.</span>
+        </div>
+      </li>
+      <li>
+        <div class="module-num">2</div>
+        <div class="module-text">
+          <strong>Week 2 — Build the Foundation</strong>
+          <span>Install the daily habits that create consistency. Not 20 habits — just the 3 that move the needle most for financial and personal growth.</span>
+        </div>
+      </li>
+      <li>
+        <div class="module-num">3</div>
+        <div class="module-text">
+          <strong>Week 3 — Activate Momentum</strong>
+          <span>Use the Abundance Boost materials in their most effective sequence to compound the work from the first two weeks.</span>
+        </div>
+      </li>
+      <li>
+        <div class="module-num">4</div>
+        <div class="module-text">
+          <strong>Week 4 — Lock It In</strong>
+          <span>Turn what you've built into a lasting system. Daily review, course correction, and a clear plan for the month ahead.</span>
+        </div>
+      </li>
+      <li>
+        <div class="module-num">+</div>
+        <div class="module-text">
+          <strong>Bonus: The Prosperity Tracker</strong>
+          <span>A printable + digital tracking sheet to measure your progress, wins, and energy shifts throughout the 30 days.</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — OFFER + BUTTONS
+  ═══════════════════════════════════════ -->
+  <section>
+    <div class="offer-box">
+      <p class="product-tag">Exclusive Upgrade · One-Time Offer</p>
+      <h2>Add Prosperity Path<br>to Your Order</h2>
+      <p class="offer-desc">This offer is only available right now. It will not be shown again after you leave this page.</p>
+
+      <div class="price-block">
+        <p class="original">Regular price: $67</p>
+        <p class="current">$37</p>
+        <p class="period">One-time payment · No subscription · Instant access</p>
+      </div>
+
+      <!-- ⚠ DIGISTORE: replace href with the accept URL generated by Digistore -->
+      <a href="#" class="btn-accept">Yes — Add Prosperity Path to My Order →</a>
+
+      <!-- ⚠ DIGISTORE: replace href with the decline URL generated by Digistore -->
+      <a href="#" class="btn-decline">No thanks, I'll figure it out on my own.</a>
+
+      <p class="secure-note">🔒 Secure checkout &nbsp;·&nbsp; Billed once &nbsp;·&nbsp; Delivered instantly</p>
+
+      <div class="guarantee-strip">
+        <span class="shield">🛡️</span>
+        <p><strong>60-Day Money Back Guarantee.</strong> If Prosperity Path doesn't deliver for you within 60 days, contact us for a full refund. No hassle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL TABS -->
+  <div class="legal-bar">
+    <p>Legal &amp; Support</p>
+    <div class="legal-tabs">
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Abundance Boost. All rights reserved.</p>
+    <p>Prosperity Path is a digital product delivered via email. Results are not guaranteed and vary based on individual effort and application.</p>
+  </footer>
+
+</body>
+</html>
