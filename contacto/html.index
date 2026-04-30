@@ -96,17 +96,17 @@
 <body>
 
 <header>
-  <a href="index.html" class="back">← Back to Main Page</a>
+  <a href="/frontdg/" class="back">← Back to Main Page</a>
   <h1>Contact Us</h1>
   <p>We're here to help — usually reply within 24 hours.</p>
 </header>
 
 <main>
   <div class="tabs">
-    <a href="terms.html">Terms of Use</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="refund.html">Refund Policy</a>
-    <a href="contact.html" class="active">Contact</a>
+    <a href="/termos/">Terms of Use</a>
+    <a href="/politicas/">Privacy Policy</a>
+    <a href="/refund/">Refund Policy</a>
+    <a href="/contacto/" class="active">Contact</a>
   </div>
 
   <!-- MAIN CONTACT CARD -->
@@ -169,10 +169,10 @@
 <footer>
   <p>© 2025 Abundance Boost. All rights reserved.</p>
   <div class="footer-links">
-    <a href="terms.html">Terms of Use</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="refund.html">Refund Policy</a>
-    <a href="contact.html">Contact</a>
+    <a href="/termos/">Terms of Use</a>
+    <a href="/politicas/">Privacy Policy</a>
+    <a href="/refund/">Refund Policy</a>
+    <a href="/contacto/">Contact</a>
   </div>
 </footer>
 
