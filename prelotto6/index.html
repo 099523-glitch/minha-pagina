@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball Frequency Analyzer</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#030a05;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.logo{font-size:30px;font-weight:900;color:#dc143c;letter-spacing:3px;text-align:center;margin:16px 0 4px}
+.logo span{color:#fff}
+.tagline{font-size:11px;letter-spacing:4px;color:#555;text-align:center;margin-bottom:24px}
+.card{background:linear-gradient(145deg,#060f08,#030a05);border:1px solid #0f2a14;border-radius:16px;padding:24px;width:100%;max-width:460px}
+.phase{display:none}
+.phase.active{display:block}
+.phase-title{font-size:13px;letter-spacing:3px;color:#00cc44;text-transform:uppercase;text-align:center;margin-bottom:4px}
+.phase-q{font-size:18px;font-weight:700;color:#fff;text-align:center;margin-bottom:4px;line-height:1.4}
+.phase-sub{font-size:13px;color:#555;text-align:center;margin-bottom:20px}
+.pick-counter{text-align:center;margin-bottom:16px}
+.pick-counter .num{font-size:32px;font-weight:900;color:#00cc44}
+.pick-counter .lbl{font-size:12px;color:#555;text-transform:uppercase;letter-spacing:2px}
+.num-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin-bottom:16px}
+.num-cell{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #0f2a14;background:#060f08;color:#444;transition:all 0.15s;position:relative}
+.num-cell:hover{border-color:#00cc44;color:#00cc44}
+.num-cell.selected{background:rgba(0,204,68,0.15);border-color:#00cc44;color:#00cc44;transform:scale(1.05)}
+.num-cell.hot{border-color:#dc143c}
+.num-cell.hot::after{content:'🔥';position:absolute;top:-4px;right:-4px;font-size:8px}
+.num-cell .freq-bar{position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 5px 5px;background:#0f2a14;overflow:hidden}
+.num-cell .freq-fill{height:100%;background:#00cc44;transition:width 0.5s}
+.num-cell.selected .freq-fill{background:#ffd700}
+.pb-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:16px}
+.pb-cell{aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;cursor:pointer;border:2px solid #3a0010;background:#0f0007;color:#666;transition:all 0.15s}
+.pb-cell:hover{border-color:#dc143c;color:#dc143c}
+.pb-cell.selected{background:rgba(220,20,60,0.2);border-color:#dc143c;color:#dc143c}
+.next-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,#00cc44,#00aa33);color:#000;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.next-btn:hover{opacity:0.9}
+.next-btn:disabled{background:#0f2a14;color:#333;cursor:not-allowed}
+.freq-key{display:flex;gap:16px;justify-content:center;margin-bottom:14px;font-size:11px;color:#555}
+.freq-key span{display:flex;align-items:center;gap:4px}
+.freq-key .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.analysis-view{text-align:center;padding:20px 0}
+.analysis-ring{width:80px;height:80px;border:4px solid #0f2a14;border-top-color:#00cc44;border-right-color:#00cc44;border-radius:50%;margin:0 auto 16px;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.analysis-text{font-size:14px;color:#00cc44;font-weight:600;margin-bottom:4px;min-height:20px}
+.analysis-sub{font-size:12px;color:#555;margin-bottom:16px}
+.a-prog{background:#0f2a14;border-radius:8px;height:8px;overflow:hidden}
+.a-prog-fill{height:100%;background:linear-gradient(90deg,#00cc44,#ffd700);border-radius:8px;width:0%;transition:width 0.3s}
+.result-panel{margin-top:4px}
+.match-score{text-align:center;margin-bottom:16px}
+.score-circle{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#00cc44,#00aa33);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-circle .score-num{font-size:26px;font-weight:900;color:#000}
+.score-circle .score-lbl{font-size:10px;color:#005522;font-weight:700}
+.match-label{font-size:13px;color:#00cc44;font-weight:700}
+.result-section{margin-bottom:16px}
+.result-section .rs-title{font-size:11px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;text-align:center}
+.balls-row{display:flex;gap:6px;justify-content:center}
+.r-ball{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex-shrink:0}
+.r-ball.green{background:radial-gradient(circle at 40% 35%,#66ff88,#00cc44);color:#003311;animation:pop 0.5s ease-out}
+.r-ball.gold{background:radial-gradient(circle at 40% 35%,#ffd700,#c8860a);color:#3a2000;animation:pop 0.5s ease-out}
+.r-ball.locked{background:#060f08;border:2px dashed #0f2a14;color:#222;font-size:12px}
+.r-ball.pb-reveal{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff;animation:pop 0.5s ease-out}
+@keyframes pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.comparison-row{display:flex;gap:8px;margin-bottom:6px;align-items:center;font-size:12px}
+.comparison-row .cr-label{width:90px;color:#555;flex-shrink:0}
+.your-ball{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;background:#060f08;border:1px solid #0f2a14;color:#555}
+.your-ball.match{background:rgba(0,204,68,0.2);border-color:#00cc44;color:#00cc44}
+.unlock-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-top:16px}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#030a05;border:2px solid #00cc44;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3);background:rgba(220,20,60,0.1)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:8px 0}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="tagline">FREQUENCY ANALYZER · BETA ACCESS</div>
+
+<div class="card">
+  <!-- PHASE 1: Pick 5 numbers -->
+  <div class="phase active" id="ph0">
+    <div class="phase-title">Phase 1 · Your Intuition</div>
+    <div class="phase-q">Which numbers feel hot to you?</div>
+    <div class="phase-sub">Select exactly 5 numbers. The AI will compare your picks against its frequency model.</div>
+
+    <div class="pick-counter"><div class="num" id="pickNum">0</div><div class="lbl">of 5 selected</div></div>
+
+    <div class="freq-key">
+      <span><div class="dot" style="background:#dc143c"></div> Very hot (drawn 8+ times)</span>
+      <span><div class="dot" style="background:#00cc44"></div> Your pick</span>
+    </div>
+
+    <div class="num-grid" id="numGrid"></div>
+    <button class="next-btn" id="phase1Btn" onclick="goPhase(1)" disabled>Analyze My Picks →</button>
+  </div>
+
+  <!-- PHASE 2: Pick Powerball -->
+  <div class="phase" id="ph1">
+    <div class="phase-title">Phase 2 · Powerball Intuition</div>
+    <div class="phase-q">Now pick your Powerball number</div>
+    <div class="phase-sub">Choose 1 number from 1–26</div>
+    <div class="pb-grid" id="pbGrid"></div>
+    <button class="next-btn" id="phase2Btn" onclick="startAnalysis()" disabled>Run Full Analysis →</button>
+  </div>
+
+  <!-- PHASE 3: Analyzing -->
+  <div class="phase" id="ph2">
+    <div class="phase-title">Comparing Your Picks</div>
+    <div class="analysis-view">
+      <div class="analysis-ring"></div>
+      <div class="analysis-text" id="anaText">Cross-referencing your picks with 847 draws...</div>
+      <div class="analysis-sub" id="anaSub">Calculating frequency match score</div>
+    </div>
+    <div class="a-prog"><div class="a-prog-fill" id="anaFill"></div></div>
+  </div>
+
+  <!-- PHASE 4: Results -->
+  <div class="phase" id="ph3">
+    <div class="result-panel">
+      <div class="match-score">
+        <div class="score-circle">
+          <div class="score-num" id="scoreNum">72%</div>
+          <div class="score-lbl">MATCH</div>
+        </div>
+        <div class="match-label" id="matchLbl">Good intuition! 2 of your numbers align with AI frequency peaks</div>
+      </div>
+
+      <div class="result-section">
+        <div class="rs-title">Your picks vs AI prediction</div>
+        <div id="compRows"></div>
+      </div>
+
+      <div class="result-section">
+        <div class="rs-title">AI Confirmed Numbers (this week)</div>
+        <div class="balls-row">
+          <div class="r-ball green" id="ar0">33</div>
+          <div class="r-ball green" id="ar1">17</div>
+          <div class="r-ball gold" id="ar2">58</div>
+          <div class="r-ball locked">🔒</div>
+          <div class="r-ball locked">🔒</div>
+          <div class="r-ball locked">🔒</div>
+        </div>
+      </div>
+
+      <button class="unlock-btn" onclick="showPopup()">🔓 Unlock the Remaining 3 Numbers →</button>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>📊 FREQUENCY MATCH CONFIRMED!</h2>
+    <p>Your intuition <strong style="color:#ffd700">matched 2 out of 3</strong> AI-predicted numbers — that's a remarkable alignment score.</p>
+    <p>The remaining 3 numbers require unlocking the full frequency model. Watch the short video to activate premium access — free for the next draw only.</p>
+    <a href="SEU_LINK_AQUI" class="cta">📈 Unlock Full Frequency Analysis →</a>
+    <div class="warning">⚠️ Frequency data is draw-specific. This access window expires in:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:11px;color:#444">Analysis based on official draw database · Updated every draw</p>
+  </div>
+</div>
+
+<script>
+const hotNumbers=[7,17,33,52,61,4,28,45,58,3];
+const finalNums=[33,17,58];
+let selectedNums=[];
+let selectedPB=null;
+let timerInt=null;
+
+const freqData={};
+for(let i=1;i<=69;i++){freqData[i]=Math.floor(Math.random()*12)+1;}
+hotNumbers.forEach(n=>{freqData[n]=Math.floor(Math.random()*4)+9;});
+
+function buildNumGrid(){
+  const grid=document.getElementById('numGrid');
+  for(let n=1;n<=69;n++){
+    const cell=document.createElement('div');
+    cell.className='heat-cell num-cell'+(hotNumbers.includes(n)?' hot':'');
+    cell.id='nc'+n;
+    cell.innerHTML=`${n<10?'0'+n:n}<div class="freq-bar"><div class="freq-fill" style="width:${(freqData[n]/13)*100}%"></div></div>`;
+    cell.onclick=()=>toggleNum(n,cell);
+    grid.appendChild(cell);
+  }
+}
+
+function buildPBGrid(){
+  const grid=document.getElementById('pbGrid');
+  for(let n=1;n<=26;n++){
+    const cell=document.createElement('div');
+    cell.className='pb-cell';
+    cell.id='pb'+n;
+    cell.textContent=n<10?'0'+n:n;
+    cell.onclick=()=>togglePB(n,cell);
+    grid.appendChild(cell);
+  }
+}
+
+function toggleNum(n,cell){
+  const idx=selectedNums.indexOf(n);
+  if(idx>-1){
+    selectedNums.splice(idx,1);
+    cell.classList.remove('selected');
+  } else if(selectedNums.length<5){
+    selectedNums.push(n);
+    cell.classList.add('selected');
+  }
+  document.getElementById('pickNum').textContent=selectedNums.length;
+  document.getElementById('phase1Btn').disabled=selectedNums.length!==5;
+}
+
+function togglePB(n,cell){
+  if(selectedPB!==null){document.getElementById('pb'+selectedPB).classList.remove('selected')}
+  selectedPB=n;
+  cell.classList.add('selected');
+  document.getElementById('phase2Btn').disabled=false;
+}
+
+function goPhase(n){
+  document.getElementById('ph'+(n-1)).classList.remove('active');
+  document.getElementById('ph'+n).classList.add('active');
+}
+
+function startAnalysis(){
+  goPhase(2);
+  const msgs=[
+    ['Cross-referencing your picks with 847 draws...','Calculating frequency match score'],
+    ['Analyzing hot/cold number patterns...','Comparing intuition against AI model'],
+    ['Mapping your frequency signature...','Almost ready'],
+  ];
+  let prog=0;let msgIdx=0;
+  const fill=document.getElementById('anaFill');
+  const txt=document.getElementById('anaText');
+  const sub=document.getElementById('anaSub');
+  const iv=setInterval(()=>{
+    prog+=1.8;
+    fill.style.width=Math.min(prog,100)+'%';
+    if(prog>33&&msgIdx===0){msgIdx=1;txt.textContent=msgs[1][0];sub.textContent=msgs[1][1]}
+    if(prog>66&&msgIdx===1){msgIdx=2;txt.textContent=msgs[2][0];sub.textContent=msgs[2][1]}
+    if(prog>=100){clearInterval(iv);setTimeout(showResults,400)}
+  },40);
+}
+
+function showResults(){
+  const matches=selectedNums.filter(n=>finalNums.includes(n)).length;
+  const score=Math.round((matches/5)*100+Math.random()*20+40);
+  document.getElementById('scoreNum').textContent=Math.min(score,98)+'%';
+  document.getElementById('matchLbl').textContent=matches>0
+    ?`Great intuition! ${matches} of your picks align with AI frequency peaks`
+    :'The AI model suggests different numbers — see the comparison below';
+
+  const rows=document.getElementById('compRows');
+  rows.innerHTML='';
+  const labels=['Your picks','AI top picks','Frequency match'];
+  const yourRow=document.createElement('div');
+  yourRow.className='comparison-row';
+  yourRow.innerHTML='<div class="cr-label">Your picks</div>';
+  selectedNums.forEach(n=>{
+    const b=document.createElement('div');
+    b.className='your-ball'+(finalNums.includes(n)?' match':'');
+    b.textContent=n<10?'0'+n:n;
+    yourRow.appendChild(b);
+  });
+  rows.appendChild(yourRow);
+
+  goPhase(3);
+
+  setTimeout(()=>{
+    ['ar0','ar1','ar2'].forEach((id,i)=>{
+      setTimeout(()=>{
+        const el=document.getElementById(id);
+        el.style.animation='none';el.offsetHeight;el.style.animation='pop 0.5s ease-out';
+        const rect=el.getBoundingClientRect();
+        confetti({particleCount:25,spread:35,origin:{x:(rect.left+23)/window.innerWidth,y:(rect.top+23)/window.innerHeight},colors:['#00cc44','#ffd700']});
+      },i*350);
+    });
+  },300);
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{buildNumGrid();buildPBGrid();});
+</script>
+</body>
+</html>
