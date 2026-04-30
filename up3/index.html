@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Money Magnet — The Advanced Wealth Attraction System</title>
 
-  <!-- ⚠ DIGISTORE: paste the upsell script here -->
-  <!-- <script src="..."></script> -->
+  <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
+  <script>digistoreUpsell()</script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,7 +18,6 @@
       line-height: 1.8;
     }
 
-    /* ── HEADER ── */
     header {
       background: linear-gradient(135deg, #1a1200 0%, #2d1f00 50%, #1a0f00 100%);
       text-align: center;
@@ -78,7 +77,6 @@
       margin: 0 auto;
     }
 
-    /* ── SECTIONS ── */
     section {
       max-width: 720px;
       margin: 0 auto;
@@ -102,7 +100,6 @@
 
     p strong { color: #ffffff; }
 
-    /* ── PULL QUOTE ── */
     .pull-quote {
       background: #140e00;
       border-left: 4px solid #e8a020;
@@ -118,7 +115,6 @@
       font-style: italic;
     }
 
-    /* ── DIFFERENCE TABLE ── */
     .diff-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -128,17 +124,9 @@
       overflow: hidden;
     }
 
-    .diff-col {
-      padding: 20px 18px;
-    }
-
-    .diff-col.without {
-      background: #130d0d;
-    }
-
-    .diff-col.with {
-      background: #0e1400;
-    }
+    .diff-col { padding: 20px 18px; }
+    .diff-col.without { background: #130d0d; }
+    .diff-col.with { background: #0e1400; }
 
     .diff-col h4 {
       font-family: 'Arial', sans-serif;
@@ -151,10 +139,7 @@
     .diff-col.without h4 { color: #884444; }
     .diff-col.with h4 { color: #e8a020; }
 
-    .diff-col ul {
-      list-style: none;
-      padding: 0;
-    }
+    .diff-col ul { list-style: none; padding: 0; }
 
     .diff-col ul li {
       font-size: 14px;
@@ -166,16 +151,10 @@
     }
 
     .diff-col ul li:last-child { border-bottom: none; }
-
     .diff-col.without ul li::before { content: "✗"; color: #884444; position: absolute; left: 2px; }
     .diff-col.with ul li::before { content: "✓"; color: #e8a020; position: absolute; left: 2px; }
 
-    /* ── CONTENT LIST ── */
-    .content-grid {
-      display: grid;
-      gap: 14px;
-      margin: 10px 0 20px;
-    }
+    .content-grid { display: grid; gap: 14px; margin: 10px 0 20px; }
 
     .content-card {
       background: #100d00;
@@ -187,11 +166,7 @@
       align-items: flex-start;
     }
 
-    .content-card .icon {
-      font-size: 26px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
+    .content-card .icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
 
     .content-card strong {
       display: block;
@@ -200,18 +175,9 @@
       margin-bottom: 5px;
     }
 
-    .content-card span {
-      font-size: 14px;
-      color: #9a8860;
-    }
+    .content-card span { font-size: 14px; color: #9a8860; }
 
-    /* ── SOCIAL PROOF ── */
-    .proof-strip {
-      display: flex;
-      gap: 16px;
-      margin: 10px 0;
-      flex-wrap: wrap;
-    }
+    .proof-strip { display: flex; gap: 16px; margin: 10px 0; flex-wrap: wrap; }
 
     .proof-item {
       flex: 1;
@@ -237,7 +203,6 @@
       letter-spacing: 1px;
     }
 
-    /* ── OFFER BOX ── */
     .offer-box {
       background: linear-gradient(135deg, #130e00, #2a1c00);
       border: 2px solid #e8a020;
@@ -286,11 +251,7 @@
       margin-bottom: 10px;
     }
 
-    .what-you-get ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    .what-you-get ul { list-style: none; padding: 0; margin: 0; }
 
     .what-you-get ul li {
       font-size: 14px;
@@ -324,13 +285,8 @@
       line-height: 1;
     }
 
-    .price-block .period {
-      font-size: 13px;
-      color: #7a6840;
-      margin-top: 6px;
-    }
+    .price-block .period { font-size: 13px; color: #7a6840; margin-top: 6px; }
 
-    /* ── BUTTONS ── */
     .btn-accept {
       display: block;
       max-width: 440px;
@@ -392,16 +348,9 @@
 
     .guarantee-strip .shield { font-size: 30px; flex-shrink: 0; }
 
-    .guarantee-strip p {
-      font-size: 13px;
-      color: #8a7040;
-      margin: 0;
-      text-align: left;
-    }
-
+    .guarantee-strip p { font-size: 13px; color: #8a7040; margin: 0; text-align: left; }
     .guarantee-strip p strong { color: #e8a020; }
 
-    /* ── FOOTER ── */
     footer {
       background: #080808;
       border-top: 1px solid #1a1a1a;
@@ -413,15 +362,6 @@
     footer a { color: #666; text-decoration: underline; }
     footer a:hover { color: #e8a020; }
 
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    /* ── LEGAL TABS ── */
     .legal-bar {
       background: #0a0a0a;
       border-top: 1px solid #1a1a1a;
@@ -438,12 +378,7 @@
       margin-bottom: 14px;
     }
 
-    .legal-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .legal-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 
     .legal-tabs a {
       font-family: 'Arial', sans-serif;
@@ -474,9 +409,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════ -->
   <header>
     <p class="eyebrow">Final Upgrade · Most Powerful Step</p>
     <span class="badge">⚡ Advanced Level — For Serious Results</span>
@@ -484,9 +416,6 @@
     <p class="subheadline">The missing piece isn't more motivation — it's knowing exactly how to position yourself so financial opportunities are drawn to you.</p>
   </header>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 1 — BRIDGE
-  ═══════════════════════════════════════ -->
   <section>
     <div class="pull-quote">
       <p>"Mindset opens the door. Structure keeps you moving. But it's your ability to attract the right opportunities — at the right time — that actually changes your financial reality."</p>
@@ -528,9 +457,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 2 — WHAT'S INSIDE
-  ═══════════════════════════════════════ -->
   <section>
     <h2>What's Inside Money Magnet</h2>
 
@@ -597,9 +523,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 3 — OFFER + BUTTONS
-  ═══════════════════════════════════════ -->
   <section>
     <div class="offer-box">
       <p class="product-tag">Complete Your Collection · Final Upgrade</p>
@@ -624,11 +547,9 @@
         <p class="period">One-time payment · No subscription · Instant download</p>
       </div>
 
-      <!-- ⚠ DIGISTORE: replace href with the accept URL generated by Digistore -->
-      <a href="#" class="btn-accept">Yes — Complete My Collection →</a>
+      <a href="https://www.digistore24.com/answer/yes?template=light" class="btn-accept">Yes — Complete My Collection →</a>
 
-      <!-- ⚠ DIGISTORE: replace href with the decline URL generated by Digistore -->
-      <a href="#" class="btn-decline">No thanks, I'll skip this one.</a>
+      <a href="https://www.digistore24.com/answer/no" class="btn-decline">No thanks, I'll skip this one.</a>
 
       <p class="secure-note">🔒 Secure checkout &nbsp;·&nbsp; Billed once &nbsp;·&nbsp; Delivered instantly</p>
 
