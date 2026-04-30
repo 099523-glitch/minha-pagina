@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball Lucky Ticket</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#1a0a00;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px}
+.logo{font-size:32px;font-weight:900;color:#dc143c;letter-spacing:2px;text-align:center;margin:20px 0 4px}
+.logo span{color:#fff}
+.subtitle{font-size:12px;letter-spacing:4px;color:#888;text-align:center;margin-bottom:30px}
+.ticket{background:linear-gradient(145deg,#2a1500,#1a0a00);border:2px solid #c8860a;border-radius:16px;padding:28px 24px;width:100%;max-width:420px;position:relative;overflow:hidden}
+.ticket::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#dc143c,#ff6b00,#ffd700,#ff6b00,#dc143c)}
+.ticket-header{text-align:center;margin-bottom:20px}
+.ticket-header h2{font-size:14px;letter-spacing:3px;color:#c8860a;text-transform:uppercase;margin-bottom:4px}
+.ticket-header p{font-size:12px;color:#666}
+.jackpot-display{text-align:center;margin-bottom:24px;padding:12px;background:rgba(220,20,60,0.1);border:1px solid rgba(220,20,60,0.3);border-radius:8px}
+.jackpot-display .label{font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase}
+.jackpot-display .amount{font-size:28px;font-weight:900;color:#ffd700}
+.scratch-label{text-align:center;font-size:13px;color:#c8860a;margin-bottom:14px;letter-spacing:1px}
+.scratch-area{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:nowrap}
+.scratch-wrap{position:relative;width:56px;height:56px;flex-shrink:0}
+.scratch-canvas{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;cursor:crosshair;z-index:2;touch-action:none}
+.scratch-num{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;background:radial-gradient(circle at 40% 35%,#fff,#bbb);color:#111;z-index:1;opacity:0;transition:opacity 0.3s}
+.scratch-num.powerball{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+.scratch-num.visible{opacity:1}
+.scratch-status{text-align:center;font-size:13px;color:#888;margin-bottom:16px;min-height:20px}
+.scratch-all-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#c8860a,#ffd700);color:#000;font-size:15px;font-weight:800;border:none;border-radius:8px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.scratch-all-btn:hover{opacity:0.9}
+.secure{text-align:center;font-size:11px;color:#555}
+.progress-wrap{margin-bottom:16px}
+.progress-label{font-size:12px;color:#888;margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-bar{background:#2a2a2a;border-radius:10px;height:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#dc143c,#ffd700);border-radius:10px;transition:width 0.3s;width:0%}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#1a0a00;border:2px solid #c8860a;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;text-transform:uppercase;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;background:rgba(220,20,60,0.1);padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:10px 0}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="subtitle">OFFICIAL AI LUCKY TICKET</div>
+
+<div class="ticket">
+  <div class="ticket-header">
+    <h2>🎟 Your Lucky Ticket</h2>
+    <p>Scratch each ball to reveal your AI-predicted numbers</p>
+  </div>
+
+  <div class="jackpot-display">
+    <div class="label">Next Jackpot</div>
+    <div class="amount" id="jackpotAmt">$820 Million</div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Numbers revealed</span>
+      <span id="revCount">0 / 6</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+
+  <div class="scratch-label">✦ SCRATCH TO REVEAL ✦</div>
+
+  <div class="scratch-area" id="scratchArea">
+    <div class="scratch-wrap" id="wrap0"><div class="scratch-num" id="num0">33</div><canvas class="scratch-canvas" id="c0"></canvas></div>
+    <div class="scratch-wrap" id="wrap1"><div class="scratch-num" id="num1">17</div><canvas class="scratch-canvas" id="c1"></canvas></div>
+    <div class="scratch-wrap" id="wrap2"><div class="scratch-num" id="num2">58</div><canvas class="scratch-canvas" id="c2"></canvas></div>
+    <div class="scratch-wrap" id="wrap3"><div class="scratch-num locked" id="num3">?</div><canvas class="scratch-canvas locked-canvas" id="c3"></canvas></div>
+    <div class="scratch-wrap" id="wrap4"><div class="scratch-num locked" id="num4">?</div><canvas class="scratch-canvas locked-canvas" id="c4"></canvas></div>
+    <div class="scratch-wrap" id="wrap5"><div class="scratch-num powerball locked" id="num5">?</div><canvas class="scratch-canvas locked-canvas" id="c5"></canvas></div>
+  </div>
+
+  <div class="scratch-status" id="scratchStatus">Scratch the balls above to reveal your numbers!</div>
+
+  <button class="scratch-all-btn" id="mainBtn" onclick="handleBtn()">Scratch All Numbers</button>
+  <div class="secure">🔒 AI-powered prediction · Free · No registration required</div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>🎉 YOU MATCHED 3 NUMBERS!</h2>
+    <p>Your first 3 numbers are confirmed. To unlock the final 3 numbers and maximize your jackpot odds...</p>
+    <p>You need to watch a short video that reveals how to activate full AI prediction access.</p>
+    <p><strong style="color:#ffd700">Do you want to see the last 3 numbers?</strong></p>
+    <a href="SEU_LINK_AQUI" class="cta">🔓 Unlock My Remaining Numbers</a>
+    <div class="warning">⚠️ WARNING: This AI prediction service is being actively censored. Access will be revoked in:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:12px;color:#555">Don't miss your chance this week.</p>
+  </div>
+</div>
+
+<script>
+const numbers=[33,17,58,45,62,13];
+const revealed=[false,false,false,false,false,false];
+const locked=[false,false,false,true,true,true];
+let scratchedCount=0;
+let timerInt=null;
+
+function initCanvas(idx){
+  const canvas=document.getElementById('c'+idx);
+  const wrap=document.getElementById('wrap'+idx);
+  const w=wrap.offsetWidth||56;
+  const h=wrap.offsetHeight||56;
+  canvas.width=w;canvas.height=h;
+  const ctx=canvas.getContext('2d');
+  if(locked[idx]){
+    ctx.fillStyle='#333';
+    ctx.beginPath();ctx.arc(w/2,h/2,w/2,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#555';
+    ctx.font='bold 20px sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('?',w/2,h/2);
+    return;
+  }
+  const gradient=ctx.createRadialGradient(w*0.4,h*0.35,2,w/2,h/2,w/2);
+  gradient.addColorStop(0,'#ffd700');
+  gradient.addColorStop(1,'#c8860a');
+  ctx.beginPath();ctx.arc(w/2,h/2,w/2,0,Math.PI*2);
+  ctx.fillStyle=gradient;ctx.fill();
+  ctx.fillStyle='#7a5000';
+  ctx.font='bold 11px sans-serif';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('SCRATCH',w/2,h/2-4);
+  ctx.fillText('HERE',w/2,h/2+8);
+}
+
+function setupScratch(idx){
+  if(locked[idx])return;
+  const canvas=document.getElementById('c'+idx);
+  const ctx=canvas.getContext('2d');
+  let painting=false;
+  let coveredPx=0;
+  const totalPx=Math.PI*28*28;
+
+  function getPos(e,canvas){
+    const rect=canvas.getBoundingClientRect();
+    const scaleX=canvas.width/rect.width;
+    const scaleY=canvas.height/rect.height;
+    if(e.touches){return{x:(e.touches[0].clientX-rect.left)*scaleX,y:(e.touches[0].clientY-rect.top)*scaleY}}
+    return{x:(e.clientX-rect.left)*scaleX,y:(e.clientY-rect.top)*scaleY}
+  }
+
+  function scratch(e){
+    if(!painting)return;
+    e.preventDefault();
+    const pos=getPos(e,canvas);
+    ctx.globalCompositeOperation='destination-out';
+    ctx.beginPath();ctx.arc(pos.x,pos.y,18,0,Math.PI*2);ctx.fill();
+    checkReveal(idx,ctx,canvas);
+  }
+
+  canvas.addEventListener('mousedown',e=>{painting=true;scratch(e)});
+  canvas.addEventListener('mousemove',scratch);
+  canvas.addEventListener('mouseup',()=>painting=false);
+  canvas.addEventListener('touchstart',e=>{painting=true;scratch(e)},{passive:false});
+  canvas.addEventListener('touchmove',scratch,{passive:false});
+  canvas.addEventListener('touchend',()=>painting=false);
+}
+
+function checkReveal(idx,ctx,canvas){
+  const imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
+  let transparent=0;
+  for(let i=3;i<imageData.data.length;i+=4){if(imageData.data[i]<128)transparent++}
+  const pct=transparent/(canvas.width*canvas.height)*100;
+  if(pct>50&&!revealed[idx]){revealBall(idx)}
+}
+
+function revealBall(idx){
+  if(revealed[idx])return;
+  revealed[idx]=true;
+  scratchedCount++;
+  const numEl=document.getElementById('num'+idx);
+  numEl.textContent=numbers[idx];
+  numEl.classList.add('visible');
+  const canvas=document.getElementById('c'+idx);
+  canvas.style.display='none';
+  const rect=canvas.getBoundingClientRect();
+  confetti({particleCount:40,spread:50,origin:{x:(rect.left+28)/window.innerWidth,y:(rect.top+28)/window.innerHeight},colors:['#ffd700','#dc143c','#fff']});
+  updateProgress();
+  if(scratchedCount>=3){
+    document.getElementById('scratchStatus').textContent='✅ 3 numbers revealed! Unlock the remaining 3 →';
+    document.getElementById('mainBtn').textContent='🔓 Unlock Final 3 Numbers';
+    document.getElementById('mainBtn').style.background='linear-gradient(135deg,#dc143c,#ff4444)';
+    document.getElementById('mainBtn').style.color='#fff';
+  }
+}
+
+function updateProgress(){
+  const pct=(scratchedCount/6)*100;
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('revCount').textContent=scratchedCount+' / 6';
+}
+
+function handleBtn(){
+  if(scratchedCount<3){
+    for(let i=0;i<3;i++){
+      setTimeout(()=>{
+        const canvas=document.getElementById('c'+i);
+        const ctx=canvas.getContext('2d');
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        revealBall(i);
+      },i*400);
+    }
+  } else {
+    showPopup();
+  }
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;
+  const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  for(let i=0;i<6;i++){initCanvas(i);setupScratch(i)}
+  const now=new Date();
+  const draws=[1,3,6];
+  let d=new Date(now);
+  for(let i=0;i<7;i++){if(draws.includes(d.getDay())&&i>0){break}d.setDate(d.getDate()+1)}
+  document.getElementById('jackpotAmt').textContent='$820 Million';
+});
+</script>
+</body>
+</html>
