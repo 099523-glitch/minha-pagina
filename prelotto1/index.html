@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerball AI Predictor</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#fff;color:#333;line-height:1.4}
+.container{max-width:600px;margin:0 auto;padding:40px 20px}
+.loader-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.95);display:flex;justify-content:center;align-items:center;z-index:9999}
+.loader{width:40px;height:40px;border:3px solid #f3f3f3;border-top:3px solid #dc143c;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.powerball-logo{text-align:center;margin-bottom:40px}
+.powerball-logo img{max-width:300px;height:auto}
+.logo-fallback{font-size:32px;font-weight:bold;color:#dc143c;text-align:center;padding:20px;border:3px solid #dc143c;border-radius:10px;background:#f8f8f8;display:inline-block}
+.next-drawing{background:#f8f8f8;padding:20px;margin-bottom:30px;text-align:center;border-radius:8px}
+.next-drawing h3{font-size:18px;color:#666;margin-bottom:10px;font-weight:400}
+.draw-date{font-size:20px;font-weight:bold;color:#333;margin-bottom:20px}
+.estimated-jackpot{font-size:14px;color:#666;margin-bottom:5px;text-transform:uppercase}
+.jackpot-amount{font-size:28px;font-weight:bold;color:#dc143c}
+.ai-status{text-align:center;font-size:24px;font-weight:bold;color:#333;margin:40px 0 20px}
+.instruction{text-align:center;font-size:16px;color:#666;margin:20px 0 30px}
+.predict-button{background:#dc143c;color:#fff;border:none;padding:15px 30px;font-size:16px;font-weight:bold;cursor:pointer;display:block;margin:0 auto;border-radius:5px;text-transform:uppercase;transition:background .3s}
+.predict-button:hover{background:#b91c3c}
+.predict-button:disabled{background:#ccc;cursor:not-allowed}
+.loading-section{display:none;text-align:center;margin:40px 0}
+.loading-text{font-size:18px;color:#333;font-weight:bold;margin-bottom:20px;min-height:50px}
+.progress-container{background:#e9ecef;border-radius:15px;height:20px;margin:0 auto;max-width:400px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+.progress-bar{height:100%;background:linear-gradient(90deg,#dc143c,#ff4444);transition:width .1s ease;border-radius:15px;width:0}
+.balls-container{display:flex;justify-content:center;gap:8px;margin:40px 0;flex-wrap:nowrap}
+.ball{display:flex;flex:1 0 3rem;align-items:center;justify-content:center;position:relative;max-width:3rem;height:3rem;aspect-ratio:1;border-radius:100%;border:solid 1px #666;padding:0;font-weight:700;text-align:center;color:#101820;font-size:1.25rem;transition:all .5s ease}
+.ball.hidden{background:#333;color:#999;border-color:#555}
+.ball.revealed{background:radial-gradient(circle at 50% 25%,#fff,#bbb);border:solid 1px #d2d2d2;color:#101820;animation:ballReveal .6s ease-out}
+.ball.powerball{background:#dc143c;color:#fff;border-color:#dc143c}
+.ball.powerball.hidden{background:#dc143c;color:#fff;border-color:#dc143c}
+@keyframes ballReveal{0%{transform:scale(0);opacity:0}50%{transform:scale(1.2);opacity:.8}100%{transform:scale(1);opacity:1}}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;z-index:1000}
+.popup{background:#fff;padding:40px;max-width:500px;margin:20px;text-align:center;border-radius:8px;overflow:scroll;max-height:90vh}
+.popup h2{color:#333;font-size:22px;font-weight:bold;margin-bottom:20px}
+.popup p{font-size:16px;color:#666;margin:15px 0;line-height:1.5}
+.popup .cta-button{background:#dc143c;color:#fff;text-decoration:none;display:inline-block;padding:15px 30px;font-size:16px;font-weight:bold;margin:25px 0;border-radius:5px;text-transform:uppercase;transition:background .3s}
+.popup .cta-button:hover{background:#b91c3c}
+.popup .warning{color:#000;font-weight:bold;font-size:14px;margin:20px 0}
+.warning b{color:#dc143c}
+.popup .timer-section{margin:20px 0}
+.popup .timer{font-size:24px;font-weight:bold;color:#dc143c;margin:10px 0}
+@media(max-width:768px){.container{padding:20px 15px}.logo-fallback{font-size:24px;padding:15px}.ball{flex:1 0 2.5rem;max-width:2.5rem;height:2.5rem;font-size:1rem}.popup{padding:25px;margin:15px}.jackpot-amount{font-size:24px}}
+@media(max-width:480px){.ball{flex:1 0 2rem;max-width:2rem;height:2rem;font-size:.9rem}.logo-fallback{font-size:20px}}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- =============================================
+         BACK REDIRECT — troque o link abaixo
+    ============================================== -->
+    <script>
+        const link = 'SEU_LINK_AQUI';
+
+        function setBackRedirect(url) {
+            let urlBackRedirect = url;
+            urlBackRedirect = urlBackRedirect.trim() +
+                (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+                document.location.search.replace('?', '').toString();
+
+            history.pushState({}, '', location.href);
+            history.pushState({}, '', location.href);
+            history.pushState({}, '', location.href);
+
+            window.addEventListener('popstate', () => {
+                setTimeout(() => { location.href = urlBackRedirect; }, 1);
+            });
+        }
+
+        setBackRedirect(link);
+    </script>
+
+    <div class="container">
+
+        <!-- LOGO -->
+        <div class="powerball-logo">
+            <img src="img/logo.webp" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='inline-block'">
+            <div class="logo-fallback" id="logoFallback" style="display:none">POWERBALL</div>
+        </div>
+
+        <!-- PRÓXIMO SORTEIO -->
+        <div class="next-drawing">
+            <h3>Next Drawing</h3>
+            <div class="draw-date" id="nextDrawDate">Loading...</div>
+            <div class="estimated-jackpot">Estimated Jackpot</div>
+            <div class="jackpot-amount" id="estimatedJackpot">$820 Million</div>
+        </div>
+
+        <div class="ai-status">AI Unlocked!! 🔓</div>
+        <div class="instruction">Click the button below to predict the numbers for the next Powerball draw!</div>
+
+        <button class="predict-button" id="predictBtn" onclick="predictNumber()">Predict Numbers with AI</button>
+
+        <div class="loading-section" id="loadingSection">
+            <div class="loading-text" id="loadingText">🤖 AI is analyzing historical patterns...</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="balls-container">
+            <div class="ball hidden" id="ball1">?</div>
+            <div class="ball hidden" id="ball2">?</div>
+            <div class="ball hidden" id="ball3">?</div>
+            <div class="ball hidden" id="ball4">?</div>
+            <div class="ball hidden" id="ball5">?</div>
+            <div class="ball hidden powerball" id="ballPower">?</div>
+        </div>
+
+    </div>
+
+    <!-- =============================================
+         POPUP — troque o link do botão CTA abaixo
+    ============================================== -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>CONGRATULATIONS!! YOU'VE ALREADY HIT 3 NUMBERS!!</h2>
+            <p>But to predict the last 3 numbers and win the jackpot this week...</p>
+            <p>First, you must unlock full access to the AI by following the step-by-step instructions in the short video below.</p>
+            <p><strong>Do you agree to watch it until the end?</strong></p>
+
+            <!-- TROQUE O HREF PELO SEU LINK -->
+            <a href="SEU_LINK_AQUI" class="cta-button">Click Here to Watch Until the End and Hit the Next Jackpot</a>
+
+            <p class="warning"><b>WARNING:</b> Powerball is desperate to censor this AI and stop more Americans from winning every week. This video will be taken down within the next few minutes.</p>
+
+            <div class="timer-section">
+                <p><strong>Time Remaining:</strong></p>
+                <div class="timer" id="timer">05:00</div>
+                <p>Don't waste your last chance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStage = 1;
+        let numbers = [33, 35, 58];
+        let timerInterval = null;
+        const PREDICTION_ANIMATION_TIME = 3000;
+
+        // ── Data do próximo sorteio ──
+        function getNextPowerballDate(currentDate) {
+            const drawDays = [1, 3, 6]; // Seg, Qua, Sáb
+            let nextDraw = new Date(currentDate);
+
+            for (let i = 0; i < 7; i++) {
+                const dayOfWeek = nextDraw.getDay();
+                const currentHour = nextDraw.getHours();
+                const currentMinute = nextDraw.getMinutes();
+
+                if (drawDays.includes(dayOfWeek)) {
+                    if (i === 0) {
+                        if (currentHour < 22 || (currentHour === 22 && currentMinute < 59)) {
+                            return nextDraw;
+                        }
+                    } else {
+                        return nextDraw;
+                    }
+                }
+                nextDraw.setDate(nextDraw.getDate() + 1);
+            }
+            return nextDraw;
+        }
+
+        function loadDrawData() {
+            const now = new Date();
+            const nextDraw = getNextPowerballDate(now);
+            const nextDrawText = nextDraw.toLocaleDateString('en-US', {
+                weekday: 'long', month: 'short', day: 'numeric', year: 'numeric'
+            });
+            document.getElementById('nextDrawDate').textContent = nextDrawText;
+        }
+
+        // ── Confetti ──
+        function launchConfetti(ballElement) {
+            const rect = ballElement.getBoundingClientRect();
+            const x = (rect.left + rect.width / 2) / window.innerWidth;
+            const y = (rect.top + rect.height / 2) / window.innerHeight;
+            const colors = ['#FFD700','#FF1493','#00CED1','#FF6347','#98FB98','#DDA0DD'];
+
+            confetti({ particleCount: 100, spread: 70, origin: { x, y }, colors, startVelocity: 45, gravity: 0.8 });
+            setTimeout(() => confetti({ particleCount: 50, spread: 100, origin: { x, y }, colors, startVelocity: 30, gravity: 0.6 }), 100);
+            setTimeout(() => confetti({ particleCount: 40, spread: 360, origin: { x, y }, colors, shapes: ['star'], startVelocity: 25, gravity: 0.5 }), 200);
+        }
+
+        // ── Lógica principal ──
+        function predictNumber() {
+            const btn = document.getElementById('predictBtn');
+            const loadingSection = document.getElementById('loadingSection');
+            const ballsContainer = document.querySelector('.balls-container');
+            const loadingText = document.getElementById('loadingText');
+            const progressBar = document.getElementById('progressBar');
+
+            if (currentStage === 1) {
+                btn.style.display = 'none';
+                ballsContainer.style.display = 'none';
+                loadingSection.style.display = 'block';
+
+                const messages = [
+                    '🤖 AI is analyzing historical patterns...',
+                    '📊 Processing draw frequency data...',
+                    '🔍 Identifying number correlations...',
+                    '⚡ Calculating optimal predictions...'
+                ];
+
+                let messageIndex = 0;
+                let progress = 0;
+                progressBar.style.width = '0%';
+                loadingText.textContent = messages[0];
+
+                const totalSteps = 100;
+                const stepTime = PREDICTION_ANIMATION_TIME / totalSteps;
+
+                const interval = setInterval(() => {
+                    progress += 1;
+                    progressBar.style.width = progress + '%';
+
+                    if (progress === 25 || progress === 50 || progress === 75) {
+                        messageIndex++;
+                        if (messageIndex < messages.length) {
+                            loadingText.textContent = messages[messageIndex];
+                        }
+                    }
+
+                    if (progress >= 100) {
+                        clearInterval(interval);
+
+                        setTimeout(() => {
+                            for (let i = 0; i < 3; i++) {
+                                const ball = document.getElementById(`ball${i + 1}`);
+                                setTimeout(() => {
+                                    ball.classList.remove('hidden');
+                                    ball.classList.add('revealed');
+                                    ball.textContent = numbers[i];
+                                    launchConfetti(ball);
+                                }, i * 300);
+                            }
+
+                            loadingSection.style.display = 'none';
+                            ballsContainer.style.display = 'flex';
+
+                            setTimeout(() => {
+                                btn.style.display = 'block';
+                                btn.textContent = 'Predict Remaining Numbers';
+                                currentStage = 2;
+                            }, 1200);
+                        }, 200);
+                    }
+                }, stepTime);
+
+            } else if (currentStage === 2) {
+                showPopup();
+            }
+        }
+
+        function showPopup() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let timeLeft = 300;
+            const timerElement = document.getElementById('timer');
+
+            function updateTimer() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                if (timeLeft > 0) { timeLeft--; } else { clearInterval(timerInterval); }
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        window.addEventListener('DOMContentLoaded', loadDrawData);
+    </script>
+
+</body>
+</html>
