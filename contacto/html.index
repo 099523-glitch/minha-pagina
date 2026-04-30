@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Abundance Boost</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; background: #0d0d0d; color: #d8d0bc; line-height: 1.8; }
+    header { background: #111; border-bottom: 2px solid #c9a84c; padding: 36px 24px; text-align: center; }
+    header .back { display: inline-block; font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; text-decoration: none; margin-bottom: 14px; }
+    header .back:hover { color: #e8c96a; }
+    header h1 { font-size: clamp(22px, 4vw, 32px); color: #ffffff; }
+    header p { font-size: 13px; color: #666; margin-top: 8px; }
+    main { max-width: 720px; margin: 0 auto; padding: 50px 24px 60px; }
+    .tabs { display: flex; gap: 4px; margin-bottom: 36px; flex-wrap: wrap; }
+    .tabs a { font-family: 'Arial', sans-serif; font-size: 13px; padding: 8px 18px; border-radius: 50px; text-decoration: none; color: #888; border: 1px solid #2a2a2a; transition: all 0.2s; }
+    .tabs a:hover { color: #c9a84c; border-color: #c9a84c; }
+    .tabs a.active { background: #c9a84c; color: #0d0d0d; border-color: #c9a84c; font-weight: bold; }
+    h2 { font-size: 20px; color: #c9a84c; margin: 0 0 12px; }
+    p { font-size: 15px; color: #b0a890; margin-bottom: 14px; }
+    a { color: #c9a84c; }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: linear-gradient(135deg, #1a1400, #2a1e00);
+      border: 2px solid #c9a84c;
+      border-radius: 14px;
+      padding: 40px 36px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .contact-card .icon { font-size: 46px; margin-bottom: 16px; }
+    .contact-card h2 { font-size: 24px; color: #ffffff; margin-bottom: 10px; }
+    .contact-card p { font-size: 16px; color: #c8a870; max-width: 440px; margin: 0 auto 24px; }
+    .email-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      color: #0d0800;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+    }
+    .email-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,168,76,0.5); }
+    .email-raw {
+      display: block;
+      margin-top: 14px;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #7a6840;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .info-item {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 22px 20px;
+      text-align: center;
+    }
+    .info-item .icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .info-item h3 { font-family: 'Arial', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; margin-bottom: 6px; }
+    .info-item p { font-size: 14px; color: #888; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 18px 20px; }
+    .faq-item h4 { font-size: 15px; color: #e0d4b8; margin-bottom: 6px; }
+    .faq-item p { font-size: 14px; color: #888; margin: 0; }
+
+    footer { background: #080808; border-top: 1px solid #1a1a1a; padding: 30px 24px; text-align: center; }
+    footer p { font-size: 12px; color: #444; margin-bottom: 8px; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+    .footer-links a { font-size: 12px; color: #666; text-decoration: underline; }
+    .footer-links a:hover { color: #c9a84c; }
+
+    @media (max-width: 480px) {
+      main { padding: 36px 16px 48px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back">← Back to Main Page</a>
+  <h1>Contact Us</h1>
+  <p>We're here to help — usually reply within 24 hours.</p>
+</header>
+
+<main>
+  <div class="tabs">
+    <a href="terms.html">Terms of Use</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund.html">Refund Policy</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <!-- MAIN CONTACT CARD -->
+  <div class="contact-card">
+    <div class="icon">✉️</div>
+    <h2>Get in Touch</h2>
+    <p>Have a question about your order, need your refund processed, or just want to say hello? Send us an email and we'll get back to you as soon as possible.</p>
+    <a href="mailto:alivenerf.customers@gmail.com" class="email-btn">Send Us an Email</a>
+    <span class="email-raw">alivenerf.customers@gmail.com</span>
+  </div>
+
+  <!-- INFO GRID -->
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="icon">⏱️</span>
+      <h3>Response Time</h3>
+      <p>We typically respond within 24 business hours.</p>
+    </div>
+    <div class="info-item">
+      <span class="icon">🛡️</span>
+      <h3>Refund Window</h3>
+      <p>60-day money back guarantee on all products.</p>
+    </div>
+    <div class="info-item">
+      <span class="icon">📦</span>
+      <h3>Order Issues</h3>
+      <p>Didn't receive your download? Email us with your order details.</p>
+    </div>
+    <div class="info-item">
+      <span class="icon">🔒</span>
+      <h3>Secure & Private</h3>
+      <p>Your data is handled securely and never shared.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Common Questions</h2>
+  <br>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>I didn't receive my download after purchase.</h4>
+      <p>Please check your spam or junk folder first. If you still can't find it, email us at alivenerf.customers@gmail.com with the email you used at checkout and we'll resend it right away.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How do I request a refund?</h4>
+      <p>Simply email us within 60 days of your purchase. Include your name and the email address used at checkout. No forms, no hassle — we'll process it within 3–5 business days.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I access my downloads on multiple devices?</h4>
+      <p>Yes. Your download links are yours to use on any device you own. Links remain active for 365 days from the date of purchase with unlimited downloads.</p>
+    </div>
+    <div class="faq-item">
+      <h4>I was charged but didn't complete my order.</h4>
+      <p>Contact us immediately with your name and email. We'll investigate and resolve it within one business day.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Abundance Boost. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="terms.html">Terms of Use</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund.html">Refund Policy</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
