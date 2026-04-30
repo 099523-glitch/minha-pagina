@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Powerball AI — Your Lucky Profile</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#050d1a;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.logo{font-size:30px;font-weight:900;color:#dc143c;letter-spacing:3px;text-align:center;margin:16px 0 4px}
+.logo span{color:#fff}
+.tagline{font-size:11px;letter-spacing:4px;color:#555;text-align:center;margin-bottom:24px}
+.card{background:linear-gradient(145deg,#0a1628,#050d1a);border:1px solid #1a3a5a;border-radius:16px;padding:28px 24px;width:100%;max-width:440px}
+.step{display:none}
+.step.active{display:block}
+.step-indicator{display:flex;gap:6px;justify-content:center;margin-bottom:24px}
+.step-dot{width:8px;height:8px;border-radius:50%;background:#1a3a5a;transition:all 0.3s}
+.step-dot.active{background:#38b6e8;transform:scale(1.3)}
+.step-dot.done{background:#38b6e8;opacity:0.5}
+.step-title{font-size:14px;letter-spacing:3px;color:#38b6e8;text-transform:uppercase;text-align:center;margin-bottom:6px}
+.step-q{font-size:18px;font-weight:700;color:#fff;text-align:center;margin-bottom:6px;line-height:1.4}
+.step-sub{font-size:13px;color:#555;text-align:center;margin-bottom:20px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.option-btn{background:#0a1628;border:1px solid #1a3a5a;border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;transition:all 0.2s;color:#aaa;font-size:13px}
+.option-btn:hover{border-color:#38b6e8;color:#38b6e8;background:rgba(56,182,232,0.05)}
+.option-btn.selected{border-color:#38b6e8;background:rgba(56,182,232,0.1);color:#38b6e8}
+.option-btn .icon{font-size:22px;display:block;margin-bottom:6px}
+.dob-input{width:100%;background:#0a1628;border:1px solid #1a3a5a;border-radius:10px;padding:14px;color:#fff;font-size:16px;text-align:center;margin-bottom:20px;outline:none}
+.dob-input:focus{border-color:#38b6e8}
+.next-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,#38b6e8,#50c8f0);color:#000;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.next-btn:hover{opacity:0.9}
+.analyzing{text-align:center;padding:20px 0}
+.dna-visual{margin:20px auto;width:80px;height:80px;position:relative}
+.dna-ring{width:80px;height:80px;border:3px solid transparent;border-top-color:#38b6e8;border-right-color:#38b6e8;border-radius:50%;animation:spin 1s linear infinite;position:absolute}
+.dna-ring2{width:60px;height:60px;border:3px solid transparent;border-bottom-color:#dc143c;border-left-color:#dc143c;border-radius:50%;animation:spin 0.7s linear infinite reverse;position:absolute;top:10px;left:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.analyze-text{font-size:14px;color:#38b6e8;margin-top:100px;font-weight:600;min-height:20px}
+.analyze-sub{font-size:12px;color:#555;margin-top:4px}
+.progress-bar{background:#0a1628;border-radius:10px;height:8px;overflow:hidden;margin:16px 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,#38b6e8,#dc143c);border-radius:10px;transition:width 0.3s;width:0%}
+.profile-result{text-align:center}
+.profile-badge{display:inline-block;background:rgba(56,182,232,0.1);border:1px solid #38b6e8;border-radius:50px;padding:8px 20px;font-size:12px;color:#38b6e8;letter-spacing:2px;margin-bottom:16px;text-transform:uppercase}
+.profile-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:4px}
+.profile-sub{font-size:13px;color:#555;margin-bottom:20px}
+.num-label{font-size:11px;color:#38b6e8;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;text-align:center}
+.balls-row{display:flex;gap:8px;justify-content:center;margin-bottom:8px}
+.ball{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0}
+.ball.revealed{background:radial-gradient(circle at 40% 35%,#fff,#bbb);color:#111;animation:pop 0.5s ease-out}
+.ball.locked{background:#0a1628;border:2px dashed #1a3a5a;color:#333;font-size:14px}
+.ball.powerball{background:radial-gradient(circle at 40% 35%,#ff6666,#dc143c);color:#fff}
+@keyframes pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.match-label{font-size:12px;color:#38b6e8;text-align:center;margin-bottom:16px}
+.unlock-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;font-size:15px;font-weight:800;border:none;border-radius:10px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.skip-link{display:block;text-align:center;font-size:12px;color:#333;text-decoration:underline;cursor:pointer}
+.profile-stats{display:flex;gap:8px;margin-bottom:20px}
+.stat-box{flex:1;background:#0a1628;border:1px solid #1a3a5a;border-radius:8px;padding:10px;text-align:center}
+.stat-box .sv{font-size:16px;font-weight:900;color:#38b6e8}
+.stat-box .sl{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:1000;padding:20px}
+.popup{background:#050d1a;border:2px solid #38b6e8;border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.popup h2{font-size:20px;font-weight:900;color:#ffd700;margin-bottom:12px}
+.popup p{font-size:14px;color:#aaa;line-height:1.6;margin-bottom:12px}
+.popup .cta{display:block;background:linear-gradient(135deg,#dc143c,#ff4444);color:#fff;padding:16px 24px;border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;margin:20px 0;letter-spacing:1px}
+.popup .warning{font-size:12px;color:#dc143c;font-weight:700;padding:10px;border-radius:6px;border:1px solid rgba(220,20,60,0.3);background:rgba(220,20,60,0.1)}
+.popup .timer{font-size:28px;font-weight:900;color:#dc143c;margin:8px 0}
+</style>
+</head>
+<body>
+
+<script>
+const link='SEU_LINK_AQUI';
+function setBackRedirect(url){let u=url.trim()+(url.indexOf('?')>0?'&':'?')+document.location.search.replace('?','').toString();history.pushState({}, '',location.href);history.pushState({}, '',location.href);history.pushState({}, '',location.href);window.addEventListener('popstate',()=>{setTimeout(()=>{location.href=u},1)})}
+setBackRedirect(link);
+</script>
+
+<div class="logo">POWER<span>BALL</span></div>
+<div class="tagline">AI LUCKY PROFILE ANALYZER</div>
+
+<div class="card">
+  <div class="step-indicator">
+    <div class="step-dot active" id="dot0"></div>
+    <div class="step-dot" id="dot1"></div>
+    <div class="step-dot" id="dot2"></div>
+    <div class="step-dot" id="dot3"></div>
+    <div class="step-dot" id="dot4"></div>
+  </div>
+
+  <!-- STEP 1: DOB -->
+  <div class="step active" id="step0">
+    <div class="step-title">Step 1 of 3 · Personal Profile</div>
+    <div class="step-q">When were you born?</div>
+    <div class="step-sub">The AI uses your birth numerology to calculate your lucky frequency</div>
+    <input type="date" class="dob-input" id="dobInput" max="2005-01-01"/>
+    <button class="next-btn" onclick="goStep(1)">Continue →</button>
+  </div>
+
+  <!-- STEP 2: Lucky Number -->
+  <div class="step" id="step1">
+    <div class="step-title">Step 2 of 3 · Intuition Signal</div>
+    <div class="step-q">Which number feels lucky to you right now?</div>
+    <div class="step-sub">Your subconscious mind already knows — trust it</div>
+    <div class="options">
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">7️⃣</span>Seven</div>
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">3️⃣</span>Three</div>
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">1️⃣</span>One</div>
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">8️⃣</span>Eight</div>
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">2️⃣</span>Two</div>
+      <div class="option-btn" onclick="selectOpt(this,'lucky')"><span class="icon">9️⃣</span>Nine</div>
+    </div>
+    <button class="next-btn" id="btn1" onclick="goStep(2)" style="opacity:0.4;pointer-events:none">Continue →</button>
+  </div>
+
+  <!-- STEP 3: Playing Style -->
+  <div class="step" id="step2">
+    <div class="step-title">Step 3 of 3 · Energy Type</div>
+    <div class="step-q">How do you usually play?</div>
+    <div class="step-sub">Your playing energy influences your lucky frequency alignment</div>
+    <div class="options">
+      <div class="option-btn" onclick="selectOpt(this,'style')"><span class="icon">⚡</span>Quick Pick</div>
+      <div class="option-btn" onclick="selectOpt(this,'style')"><span class="icon">🧠</span>My Numbers</div>
+      <div class="option-btn" onclick="selectOpt(this,'style')"><span class="icon">🔮</span>Patterns</div>
+      <div class="option-btn" onclick="selectOpt(this,'style')"><span class="icon">🎯</span>Gut Feeling</div>
+    </div>
+    <button class="next-btn" id="btn2" onclick="startAnalysis()" style="opacity:0.4;pointer-events:none">Analyze My Profile →</button>
+  </div>
+
+  <!-- STEP 4: Analyzing -->
+  <div class="step" id="step3">
+    <div class="step-title">Calculating Your Lucky Frequency</div>
+    <div class="analyzing">
+      <div class="dna-visual">
+        <div class="dna-ring"></div>
+        <div class="dna-ring2"></div>
+      </div>
+      <div class="analyze-text" id="analyzeText">Scanning birth numerology...</div>
+      <div class="analyze-sub" id="analyzeSub">Processing profile data</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="analyzeProgress"></div></div>
+  </div>
+
+  <!-- STEP 5: Results -->
+  <div class="step" id="step4">
+    <div class="profile-result">
+      <div class="profile-badge">🧬 Lucky Profile Complete</div>
+      <div class="profile-name" id="profileName">The Jupiter Mind</div>
+      <div class="profile-sub" id="profileSub">High frequency · Expansion energy · Strong draw alignment</div>
+
+      <div class="profile-stats">
+        <div class="stat-box"><div class="sv" id="statFreq">94%</div><div class="sl">Match Rate</div></div>
+        <div class="stat-box"><div class="sv" id="statLevel">HIGH</div><div class="sl">Luck Level</div></div>
+        <div class="stat-box"><div class="sv" id="statDraw">Wed</div><div class="sl">Best Draw</div></div>
+      </div>
+
+      <div class="num-label">Your AI-Predicted Numbers</div>
+      <div class="balls-row">
+        <div class="ball revealed" id="pr0">33</div>
+        <div class="ball revealed" id="pr1">17</div>
+        <div class="ball revealed" id="pr2">58</div>
+        <div class="ball locked" id="pr3">🔒</div>
+        <div class="ball locked" id="pr4">🔒</div>
+        <div class="ball locked powerball" id="pr5">🔒</div>
+      </div>
+      <div class="match-label">3 numbers revealed · 3 locked behind full AI access</div>
+
+      <button class="unlock-btn" onclick="showPopup()">🔓 Unlock My Complete Numbers →</button>
+      <span class="skip-link" onclick="showPopup()">No thanks, I'll play without my full profile</span>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h2>🧬 YOUR PROFILE IS READY!</h2>
+    <p>Based on your personal lucky frequency analysis, our AI has identified a <strong style="color:#ffd700">high-probability sequence</strong> specifically calibrated for your profile.</p>
+    <p>Watch the short video to activate full access and see your complete 6-number prediction.</p>
+    <a href="SEU_LINK_AQUI" class="cta">🎯 See My Complete Numbers →</a>
+    <div class="warning">⚠️ Your lucky profile expires in:</div>
+    <div class="timer" id="popTimer">05:00</div>
+    <p style="font-size:11px;color:#444">Profile data is draw-specific and resets after each lottery</p>
+  </div>
+</div>
+
+<script>
+let currentStep=0;
+let selectedLucky=null;
+let selectedStyle=null;
+let timerInt=null;
+
+const profiles=[
+  {name:'The Jupiter Mind',sub:'High frequency · Expansion energy · Strong draw alignment',freq:'94%',level:'HIGH',day:'Wed'},
+  {name:'The Solar Force',sub:'Peak energy · Direct alignment · Exceptional draw sync',freq:'97%',level:'PEAK',day:'Sat'},
+  {name:'The Mercury Code',sub:'Sharp intuition · Fast frequency · Active draw window',freq:'91%',level:'HIGH',day:'Mon'},
+  {name:'The Neptune Wave',sub:'Deep numerology · Flow state · Powerful alignment detected',freq:'89%',level:'HIGH',day:'Wed'},
+];
+
+function goStep(n){
+  document.getElementById('step'+currentStep).classList.remove('active');
+  document.getElementById('dot'+currentStep).classList.remove('active');
+  document.getElementById('dot'+currentStep).classList.add('done');
+  currentStep=n;
+  document.getElementById('step'+n).classList.add('active');
+  document.getElementById('dot'+n).classList.add('active');
+}
+
+function selectOpt(el,type){
+  const parent=el.parentElement;
+  parent.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  if(type==='lucky'){selectedLucky=el.textContent.trim();document.getElementById('btn1').style.opacity='1';document.getElementById('btn1').style.pointerEvents='auto'}
+  if(type==='style'){selectedStyle=el.textContent.trim();document.getElementById('btn2').style.opacity='1';document.getElementById('btn2').style.pointerEvents='auto'}
+}
+
+function startAnalysis(){
+  goStep(3);
+  const msgs=[
+    ['Scanning birth numerology...','Processing date frequency'],
+    ['Mapping intuition signal...','Aligning lucky number patterns'],
+    ['Calculating energy profile...','Matching draw frequency windows'],
+    ['Finalizing lucky sequence...','Locking in your numbers'],
+  ];
+  let prog=0;
+  let msgIdx=0;
+  const fill=document.getElementById('analyzeProgress');
+  const txt=document.getElementById('analyzeText');
+  const sub=document.getElementById('analyzeSub');
+
+  const iv=setInterval(()=>{
+    prog+=1.5;
+    fill.style.width=Math.min(prog,100)+'%';
+    if(prog>25&&msgIdx===0){msgIdx=1;txt.textContent=msgs[1][0];sub.textContent=msgs[1][1]}
+    if(prog>50&&msgIdx===1){msgIdx=2;txt.textContent=msgs[2][0];sub.textContent=msgs[2][1]}
+    if(prog>75&&msgIdx===2){msgIdx=3;txt.textContent=msgs[3][0];sub.textContent=msgs[3][1]}
+    if(prog>=100){
+      clearInterval(iv);
+      showResults();
+    }
+  },40);
+}
+
+function showResults(){
+  const dob=document.getElementById('dobInput').value;
+  const dobDate=dob?new Date(dob):new Date(1990,0,1);
+  const seed=(dobDate.getDate()+dobDate.getMonth()+dobDate.getFullYear())%4;
+  const profile=profiles[seed];
+
+  document.getElementById('profileName').textContent=profile.name;
+  document.getElementById('profileSub').textContent=profile.sub;
+  document.getElementById('statFreq').textContent=profile.freq;
+  document.getElementById('statLevel').textContent=profile.level;
+  document.getElementById('statDraw').textContent=profile.day;
+
+  goStep(4);
+
+  setTimeout(()=>{
+    ['pr0','pr1','pr2'].forEach((id,i)=>{
+      setTimeout(()=>{
+        const el=document.getElementById(id);
+        el.style.animation='none';el.offsetHeight;el.style.animation='pop 0.5s ease-out';
+        const rect=el.getBoundingClientRect();
+        confetti({particleCount:30,spread:40,origin:{x:(rect.left+25)/window.innerWidth,y:(rect.top+25)/window.innerHeight},colors:['#38b6e8','#ffd700','#fff']});
+      },i*400);
+    });
+  },300);
+}
+
+function showPopup(){
+  document.getElementById('popupOverlay').style.display='flex';
+  let t=300;
+  const el=document.getElementById('popTimer');
+  timerInt=setInterval(()=>{
+    const m=Math.floor(t/60);const s=t%60;
+    el.textContent=m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+    if(t>0)t--;else clearInterval(timerInt);
+  },1000);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const today=new Date();
+  const maxDate=new Date(today.getFullYear()-18,today.getMonth(),today.getDate());
+  document.getElementById('dobInput').max=maxDate.toISOString().split('T')[0];
+  document.getElementById('dobInput').value='1988-07-15';
+});
+</script>
+</body>
+</html>
