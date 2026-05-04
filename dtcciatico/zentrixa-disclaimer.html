@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disclaimer – Zentrixa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      line-height: 1.8;
+    }
+
+    /* HEADER */
+    header {
+      background: #1a1a2e;
+      padding: 32px 24px;
+      text-align: center;
+      border-bottom: 3px solid #5c6bc0;
+    }
+
+    header .brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    header .brand span { color: #7986cb; }
+
+    header h1 {
+      font-size: clamp(18px, 3vw, 26px);
+      color: #c5cae9;
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    header .effective {
+      font-size: 13px;
+      color: #7986cb;
+      margin-top: 8px;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* INTRO BOX */
+    .intro-box {
+      background: #ffffff;
+      border-left: 4px solid #5c6bc0;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .intro-box p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .intro-box p:last-child { margin-bottom: 0; }
+
+    .intro-box strong { color: #1a1a2e; }
+
+    /* SECTIONS */
+    .section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8eaf6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 .num {
+      background: #5c6bc0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      font-size: 15px;
+      color: #444;
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .section ul li:last-child { border-bottom: none; }
+
+    .section ul li::before {
+      content: "›";
+      color: #5c6bc0;
+      font-weight: 700;
+      font-size: 18px;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+
+    /* HEALTH DISCLAIMER BOX */
+    .health-box {
+      background: #fff8e1;
+      border-left: 4px solid #f9a825;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-top: 6px;
+    }
+
+    .health-box p {
+      font-size: 15px;
+      color: #5d4037;
+      margin-bottom: 10px;
+    }
+
+    .health-box p:last-child { margin-bottom: 0; }
+
+    /* CONTACT BOX */
+    .contact-box {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 28px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-box p {
+      color: #c5cae9;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: #5c6bc0;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .contact-box a:hover { background: #7986cb; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      border-top: 1px solid #2a2a4e;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: #5c6bc0;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #7986cb;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: #c5cae9; }
+
+    @media (max-width: 520px) {
+      main { padding: 28px 14px 48px; }
+      .section { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Zentri<span>xa</span></div>
+  <h1>Disclaimer – Europe</h1>
+</header>
+
+<main>
+
+  <div class="intro-box">
+    <p>The <strong>Zentrixa</strong> website (the "Site") is an online information service, subject to your acceptance of the terms and conditions set forth below. <strong>PLEASE READ THIS DOCUMENT CAREFULLY BEFORE ACCESSING OR USING THE SITE.</strong> By accessing or using the Site, you agree to be bound by these terms. If you do not agree, you must not access or use the Site.</p>
+    <p>Zentrixa may modify this Disclaimer at any time, with such modifications becoming effective immediately upon posting. We recommend reviewing this document periodically to remain informed about updates.</p>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <h2><span class="num">1</span> Copyright and Licenses</h2>
+    <p>All content on the Site is protected by international copyright and trademark laws. The copyright holder is Zentrixa, its affiliates, or licensors.</p>
+    <ul>
+      <li>You may not modify, copy, reproduce, republish, upload, transmit, or distribute any material from the Site.</li>
+      <li>You may print or download portions of the material solely for personal, non-commercial use, provided copyright and proprietary notices remain intact.</li>
+      <li>By submitting content or ideas to public areas of the Site (forums, comments, email, etc.), you grant Zentrixa a worldwide, non-exclusive, royalty-free, perpetual license to use, reproduce, distribute, and display such content, including in promotional materials.</li>
+    </ul>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <h2><span class="num">2</span> Use of the Site</h2>
+    <p>Except for content and products clearly identified as provided by Zentrixa, all other information and services offered through the Site may be provided by third parties. Zentrixa does not guarantee that files available for download are free from viruses or harmful code.</p>
+    <p>Your use of the Site is at your own risk. Content is provided <strong>"as is,"</strong> without warranties of any kind, express or implied.</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <h2><span class="num">3</span> Limitation of Liability</h2>
+    <p>In no event shall Zentrixa be liable for indirect, incidental, or consequential damages, including loss of profits, business interruption, or data loss, resulting from the use or inability to use the Site.</p>
+    <p>In EU countries where certain exclusions are not permitted, this limitation shall apply to the fullest extent allowed by law.</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <h2><span class="num">4</span> Indemnification</h2>
+    <p>You agree to indemnify and hold harmless Zentrixa, its officers, employees, and partners from any losses, damages, or expenses resulting from misuse of the Site or violation of these terms.</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
+    <h2><span class="num">5</span> Third Parties and External Links</h2>
+    <p>The Site may contain links to third-party websites. These links are provided for convenience only and do not imply endorsement. Zentrixa has no control over such sites and accepts no responsibility for their content.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section">
+    <h2><span class="num">6</span> Termination</h2>
+    <p>Zentrixa may suspend or terminate your access to the Site at any time without notice in the event of a breach of these terms.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section">
+    <h2><span class="num">7</span> Governing Law</h2>
+    <p>This Disclaimer is governed by the laws of the European Union and/or the consumer's country of residence. Any disputes shall be submitted to the competent courts of the consumer's country.</p>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section">
+    <h2><span class="num">8</span> Health Disclaimer</h2>
+    <div class="health-box">
+      <p>The information on this Site is for educational and informational purposes only.</p>
+      <p>Zentrixa products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+      <p>Supplements are not a substitute for a balanced diet or medical advice. Always consult a healthcare professional before starting any supplement.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-box">
+    <p>© 2025 Zentrixa – All Rights Reserved.<br>For any questions or concerns, please contact us:</p>
+    <a href="mailto:alivenerf.customers@gmail.com">📧 alivenerf.customers@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Zentrixa. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
