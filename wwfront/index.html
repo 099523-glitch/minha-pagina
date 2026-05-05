@@ -1,1 +1,655 @@
-adsad
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SlimLife Method — Lose Weight Naturally & Keep It Off</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9fdf9;
+      color: #1a2e1a;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #1e6b2e;
+      color: #fff;
+      text-align: center;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      letter-spacing: 0.4px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1e6b2e 0%, #2e9e45 100%);
+      color: #fff;
+      text-align: center;
+      padding: 64px 20px 52px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #ffdd57;
+      color: #1a2e1a;
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 18px;
+    }
+    .hero h1 span { color: #ffdd57; }
+    .hero p.sub {
+      font-size: clamp(1rem, 2.4vw, 1.18rem);
+      max-width: 620px;
+      margin: 0 auto 10px;
+      opacity: 0.92;
+    }
+    .hero .scroll-hint {
+      margin-top: 28px;
+      font-size: 0.84rem;
+      opacity: 0.7;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      background: #fff;
+      text-align: center;
+      padding: 24px 20px;
+      border-bottom: 1px solid #dff0df;
+    }
+    .social-proof p { font-size: 0.88rem; color: #4a6e4a; font-weight: 600; }
+    .stars { color: #f5a623; font-size: 1.2rem; letter-spacing: 2px; }
+
+    /* ── LAYOUT ── */
+    section { padding: 64px 20px; }
+    .container { max-width: 760px; margin: 0 auto; }
+    .container-wide { max-width: 860px; margin: 0 auto; }
+
+    h2 {
+      font-size: clamp(1.4rem, 3.8vw, 2rem);
+      font-weight: 800;
+      color: #1e6b2e;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #4a6e4a;
+      margin-bottom: 40px;
+      font-size: 0.97rem;
+    }
+
+    /* ══════════════════════════════════
+       MINI TSL — TEXT SALES LETTER
+    ══════════════════════════════════ */
+    .tsl-section {
+      background: #fff;
+      padding: 70px 20px;
+      border-bottom: 1px solid #dff0df;
+    }
+    .tsl-body {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: #1a2e1a;
+      line-height: 1.85;
+    }
+    .tsl-body .tsl-intro {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #1e6b2e;
+      text-align: center;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .tsl-body p {
+      margin-bottom: 22px;
+    }
+    .tsl-body .highlight {
+      background: #f0faf0;
+      border-left: 4px solid #2e9e45;
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 28px 0;
+      font-style: italic;
+      color: #2a4a2a;
+    }
+    .tsl-body .highlight strong { font-style: normal; color: #1e6b2e; }
+    .tsl-body h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin: 32px 0 14px;
+      line-height: 1.3;
+    }
+    .tsl-body .divider {
+      text-align: center;
+      color: #a0c0a0;
+      font-size: 1.4rem;
+      letter-spacing: 8px;
+      margin: 36px 0;
+    }
+    .tsl-body .product-intro-box {
+      background: linear-gradient(135deg, #f0faf0, #e8f5e8);
+      border: 2px solid #2e9e45;
+      border-radius: 14px;
+      padding: 28px 26px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .tsl-body .product-intro-box .book-icon { font-size: 2.8rem; margin-bottom: 10px; }
+    .tsl-body .product-intro-box h4 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 10px;
+    }
+    .tsl-body .product-intro-box p {
+      font-size: 0.95rem;
+      color: #4a6e4a;
+      margin-bottom: 0;
+    }
+    .tsl-body .checklist {
+      list-style: none;
+      margin: 20px 0 0;
+      text-align: left;
+      display: inline-block;
+    }
+    .tsl-body .checklist li {
+      padding: 5px 0;
+      font-size: 0.93rem;
+      color: #2a4a2a;
+    }
+    .tsl-body .checklist li::before {
+      content: "✓ ";
+      color: #2e9e45;
+      font-weight: 800;
+    }
+    .tsl-cta-bridge {
+      text-align: center;
+      margin-top: 36px;
+      padding: 24px;
+      background: #f0faf0;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #2a4a2a;
+      font-weight: 600;
+    }
+
+    /* ── BUNDLE GRID ── */
+    .what-you-get { background: #f0faf0; }
+    .bundle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+    .bundle-card {
+      background: #fff;
+      border: 2px solid #c8e6c8;
+      border-radius: 14px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(30,107,46,0.07);
+    }
+    .bundle-card .icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .bundle-card h3 { font-size: 1rem; font-weight: 700; color: #1e6b2e; margin-bottom: 8px; }
+    .bundle-card p { font-size: 0.87rem; color: #4a6e4a; }
+    .bundle-card .value { font-size: 0.8rem; font-weight: 700; color: #2e9e45; margin-top: 10px; }
+
+    /* ── BENEFITS ── */
+    .benefits-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f0faf0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.94rem;
+    }
+    .benefits-list li::before {
+      content: "✓";
+      background: #2e9e45;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.76rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: #f0faf0; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px 22px;
+      border-left: 4px solid #2e9e45;
+      box-shadow: 0 2px 10px rgba(30,107,46,0.07);
+    }
+    .testimonial-card .stars { font-size: 1rem; margin-bottom: 10px; }
+    .testimonial-card blockquote { font-size: 0.92rem; font-style: italic; color: #2a4a2a; margin-bottom: 14px; }
+    .testimonial-card .author { font-size: 0.82rem; font-weight: 700; color: #1e6b2e; }
+
+    /* ══════════════════════════════
+       FINAL CTA — PRICE + GUARANTEE
+    ══════════════════════════════ */
+    .final-cta {
+      background: linear-gradient(160deg, #13471e 0%, #1e6b2e 50%, #2e9e45 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .final-cta h2 {
+      color: #fff;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin-bottom: 8px;
+    }
+    .final-cta .sub-cta {
+      opacity: 0.88;
+      font-size: 1rem;
+      margin-bottom: 44px;
+    }
+
+    /* Price display */
+    .price-block {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 18px;
+      display: inline-block;
+      padding: 28px 48px;
+      margin-bottom: 32px;
+    }
+    .price-block .label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 6px;
+    }
+    .price-block .original-price {
+      font-size: 1.1rem;
+      text-decoration: line-through;
+      opacity: 0.55;
+      margin-bottom: 4px;
+    }
+    .price-block .current-price {
+      font-size: 3.4rem;
+      font-weight: 900;
+      color: #ffdd57;
+      line-height: 1;
+    }
+    .price-block .current-price sup {
+      font-size: 1.6rem;
+      vertical-align: super;
+      line-height: 0;
+    }
+    .price-block .once-note {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    /* Buy button */
+    .btn-buy {
+      display: block;
+      max-width: 500px;
+      margin: 0 auto 14px;
+      background: #ffdd57;
+      color: #1a2e1a;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 22px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      transition: transform 0.15s, box-shadow 0.15s;
+      letter-spacing: 0.2px;
+    }
+    .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.28); }
+    .btn-buy small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      margin-top: 5px;
+      opacity: 0.7;
+    }
+
+    .secure-badges {
+      margin: 16px 0 40px;
+      font-size: 0.82rem;
+      opacity: 0.72;
+      letter-spacing: 0.2px;
+    }
+
+    /* 60-day guarantee block */
+    .guarantee-block {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,221,87,0.5);
+      border-radius: 18px;
+      padding: 30px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-align: left;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .guarantee-block .shield-icon {
+      font-size: 3.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .guarantee-block .g-text { max-width: 440px; }
+    .guarantee-block h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffdd57;
+      margin-bottom: 8px;
+    }
+    .guarantee-block p {
+      font-size: 0.92rem;
+      opacity: 0.88;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111e11;
+      color: #c0d8c0;
+      text-align: center;
+      padding: 40px 20px 30px;
+      font-size: 0.82rem;
+    }
+    footer .footer-links { margin-bottom: 16px; }
+    footer .footer-links a {
+      color: #a0c8a0;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer .footer-links a:hover { text-decoration: underline; }
+    footer .trust-seal { margin: 20px auto 16px; max-width: 200px; }
+    footer p { max-width: 640px; margin: 0 auto 8px; line-height: 1.55; }
+    footer .disclaimer {
+      margin-top: 16px;
+      font-size: 0.76rem;
+      opacity: 0.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 540px) {
+      .price-block { padding: 22px 28px; }
+      .price-block .current-price { font-size: 2.6rem; }
+      .btn-buy { font-size: 1.05rem; padding: 18px 28px; }
+      .guarantee-block { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<header>
+  ⚡ Limited Time: Full SlimLife Bundle for Just <strong>$27</strong> — Instant Digital Access
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">New Ebook Bundle — Instant Download</span>
+    <h1>The <span>SlimLife Method</span>:<br>A Simple, Natural Way to Lose Weight — Without Starving Yourself</h1>
+    <p class="sub">A practical, honest guide to shedding stubborn fat, feeling lighter, and building habits that actually last — starting today.</p>
+    <p class="scroll-hint">↓ Read the full story below to see if this is right for you</p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="social-proof">
+  <div class="stars">★★★★★</div>
+  <p>Trusted by 12,000+ readers worldwide &nbsp;·&nbsp; Average rating: 4.9/5</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MINI TSL — TEXT SALES LETTER
+══════════════════════════════════════════ -->
+<div class="tsl-section">
+  <div class="tsl-body">
+
+    <p class="tsl-intro">
+      If you've ever tried to lose weight, stuck to a plan for a few weeks, and then watched it all fall apart — this is for you.
+    </p>
+
+    <p>A few years ago, a woman named Lisa was in a place most of us know too well.</p>
+
+    <p>She wasn't looking for a miracle. She didn't need to lose 100 pounds. She just wanted to feel good again — to stop feeling tired by noon, to button her jeans without thinking twice, to look in the mirror and recognize herself.</p>
+
+    <p>She had tried diets. Low-carb. Calorie counting. Juice cleanses. She'd buy a new meal plan, commit hard for the first two weeks, and then — life would happen. A stressful week. A birthday dinner. A Tuesday where she just couldn't.</p>
+
+    <div class="highlight">
+      <strong>"I wasn't failing because I was weak,"</strong> Lisa says. "I was failing because every program I tried treated my body like a math equation — calories in, calories out. But nobody told me about the other stuff. The stress. The sleep. The habits. The <em>why</em> behind what I was eating."
+    </div>
+
+    <p>She wasn't alone in that feeling. Most weight loss programs promise fast results but skip the part that actually matters — teaching you how to live differently, not just eat differently for 30 days.</p>
+
+    <div class="divider">· · ·</div>
+
+    <h3>What If Losing Weight Wasn't About Willpower?</h3>
+
+    <p>Here's something most programs won't tell you: your body isn't broken. It's responding exactly the way it was designed to respond — to stress, to poor sleep, to processed foods engineered to make you overeat, to years of yo-yo dieting that slowed your metabolism.</p>
+
+    <p>When you understand <em>why</em> your body holds onto weight — and give it what it actually needs — the weight starts to come off. Not because you're suffering through another miserable diet, but because your body finally has the conditions it needs to let go of it.</p>
+
+    <p>That's the core idea behind the SlimLife Method. It's not a crash diet. It's not a supplement plan. It's not a punishing workout schedule. It's a straightforward, practical approach to nutrition, movement, and daily habits — built for real people with real lives.</p>
+
+    <div class="highlight">
+      The goal isn't to be perfect. The goal is to make better choices, more often, in a way you can <strong>actually sustain</strong>.
+    </div>
+
+    <h3>So, What Exactly Is the SlimLife Method?</h3>
+
+    <p>The SlimLife Method is a <strong>digital ebook bundle</strong> — three guides that work together to give you a complete, practical roadmap for natural weight loss. No gym membership required. No special foods. No complicated rules.</p>
+
+    <div class="product-intro-box">
+      <div class="book-icon">📦</div>
+      <h4>The SlimLife Bundle — 3 Guides, One Simple System</h4>
+      <p>Everything you need to start losing weight in a way that's healthy, sustainable, and completely manageable alongside your everyday life.</p>
+      <ul class="checklist">
+        <li><strong>The SlimLife Method — Core Guide:</strong> The complete blueprint. Understand your body, build your nutrition foundation, and create a realistic plan.</li>
+        <li><strong>The 21-Day SlimLife Meal Planner:</strong> Done-for-you weekly meal plans with simple, satisfying recipes. No more "what should I eat today?"</li>
+        <li><strong>The SlimLife Movement Guide:</strong> 15-minute daily routines that fit any fitness level — no equipment, no gym, no excuses needed.</li>
+      </ul>
+    </div>
+
+    <p>You'll read about the foods that support fat loss (and the ones quietly sabotaging you). You'll learn how stress and sleep affect your weight more than most people realize. You'll get a meal plan that doesn't feel like punishment. And you'll follow a movement guide that fits into your actual schedule — not the schedule of someone with three free hours a day.</p>
+
+    <p>Everything is written in plain English. There's no jargon. No extreme restrictions. No unrealistic promises. Just clear, actionable information — and a plan you can start today.</p>
+
+    <div class="divider">· · ·</div>
+
+    <h3>Is This Right for You?</h3>
+
+    <p>The SlimLife Method was designed for people who:</p>
+
+    <ul class="checklist" style="margin: 0 0 22px;">
+      <li>Have tried diets before but couldn't stick with them long-term</li>
+      <li>Want to lose weight without extreme restriction or starvation</li>
+      <li>Are busy and need a simple system that fits real life</li>
+      <li>Feel like their metabolism has slowed down and don't know why</li>
+      <li>Want to understand what they're eating — not just follow blind rules</li>
+      <li>Are looking for lasting results, not a quick fix that fades in two months</li>
+    </ul>
+
+    <p>If any of that sounds familiar, the SlimLife Method was written for you.</p>
+
+    <div class="tsl-cta-bridge">
+      Ready to get started? Scroll down to see everything included — and get instant access for just $27.
+    </div>
+
+  </div>
+</div>
+
+<!-- WHAT'S INCLUDED -->
+<section class="what-you-get">
+  <div class="container-wide">
+    <h2>Everything Included in Your SlimLife Bundle</h2>
+    <p class="section-sub">Three complete guides — one simple, affordable package.</p>
+
+    <div class="bundle-grid">
+      <div class="bundle-card">
+        <div class="icon">📗</div>
+        <h3>The SlimLife Method — Core Guide</h3>
+        <p>The complete step-by-step blueprint for natural weight loss without extreme diets or hours at the gym.</p>
+        <p class="value">Value: $47</p>
+      </div>
+      <div class="bundle-card">
+        <div class="icon">🥗</div>
+        <h3>The 21-Day SlimLife Meal Planner</h3>
+        <p>Done-for-you weekly meal plans with easy, satisfying recipes designed to keep you full and on track.</p>
+        <p class="value">Value: $27</p>
+      </div>
+      <div class="bundle-card">
+        <div class="icon">🧘</div>
+        <h3>The SlimLife Movement Guide</h3>
+        <p>Simple 15-minute daily routines that boost fat burning — no gym membership required.</p>
+        <p class="value">Value: $23</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section>
+  <div class="container">
+    <h2>What You'll Achieve With the SlimLife Method</h2>
+    <p class="section-sub">Real, measurable changes — built around how your life actually works.</p>
+
+    <ul class="benefits-list">
+      <li>Lose weight steadily without crash dieting or obsessing over calories</li>
+      <li>Feel energized throughout the day — no more afternoon crashes</li>
+      <li>Understand which foods support fat loss and which ones slow you down</li>
+      <li>Build sustainable habits that stay with you long after you finish the guides</li>
+      <li>Reduce bloating and improve your digestion naturally</li>
+      <li>Enjoy food without guilt — flexibility is built into the system</li>
+      <li>Boost your confidence and feel comfortable in your own body again</li>
+      <li>Stay motivated with a simple structure that fits any lifestyle</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container-wide">
+    <h2>Real People. Real Results.</h2>
+    <p class="section-sub">Here's what readers are saying about the SlimLife Method.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I lost 14 lbs in 6 weeks following the meal planner. The recipes are delicious and I never felt deprived. This is the first program that actually made sense to me."</blockquote>
+        <span class="author">— Sarah M., 38 · Texas, USA</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"No crazy supplements, no starvation, no complicated rules. Just practical, honest advice that I could actually follow. Down 11 lbs and my energy is completely different."</blockquote>
+        <span class="author">— James T., 52 · Ontario, Canada</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I was skeptical at first, but after week two I noticed my jeans fitting differently. Down 9 lbs and still going strong — and I haven't felt hungry once."</blockquote>
+        <span class="author">— Monica R., 44 · Florida, USA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA — PRICE + BUTTON + GUARANTEE -->
+<section class="final-cta">
+  <div class="container">
+
+    <h2>Start Your SlimLife Journey Today</h2>
+    <p class="sub-cta">Get instant digital access to all 3 guides — and start today.</p>
+
+    <!-- PRICE DISPLAY -->
+    <div class="price-block">
+      <p class="label">Your Price Today</p>
+      <p class="current-price"><sup>$</sup>27</p>
+      <p class="once-note">One-time payment · No subscriptions · No hidden fees</p>
+    </div>
+
+    <!-- BUY BUTTON -->
+    <a href="[DIGISTORE_CHECKOUT_URL]" class="btn-buy">
+      YES! Give Me Instant Access to SlimLife →
+      <small>Secure checkout · Instant digital delivery · All 3 guides included</small>
+    </a>
+
+    <p class="secure-badges">🔒 256-bit SSL Encryption &nbsp;·&nbsp; Processed Securely via Digistore24</p>
+
+    <!-- 60-DAY GUARANTEE -->
+    <div class="guarantee-block">
+      <span class="shield-icon">🛡️</span>
+      <div class="g-text">
+        <h3>60-Day Money-Back Guarantee</h3>
+        <p>Try the full SlimLife bundle for 60 days — completely risk-free. If you're not satisfied for any reason whatsoever, simply contact us and we'll refund every single penny. No questions asked. No hoops to jump through. You have absolutely nothing to lose.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="slimlife-terms.html">Terms of Use</a>
+    <a href="slimlife-privacy.html">Privacy Policy</a>
+    <a href="slimlife-refund.html">Refund Policy</a>
+  </div>
+
+  <!-- DIGISTORE24 TRUST SEAL — PASTE THE SEAL SCRIPT PROVIDED BY DIGISTORE24 BELOW -->
+  <div class="trust-seal">
+    <!-- PASTE DIGISTORE24 TRUST SEAL SCRIPT HERE -->
+  </div>
+
+  <p>SlimLife Method is a digital ebook product sold via Digistore24. All purchases are processed securely through Digistore24's payment platform.</p>
+
+  <p class="disclaimer">
+    DISCLAIMER: Results may vary from person to person. The experiences shared on this page reflect individual results and are not typical or guaranteed. This product is not intended to diagnose, treat, cure, or prevent any medical condition. Always consult a qualified healthcare professional before starting any diet or exercise program. This website is not affiliated with or endorsed by any government agency or medical institution.
+  </p>
+
+  <p style="margin-top:14px; opacity:0.45;">© 2026 SlimLife Method. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
