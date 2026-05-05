@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — Your SlimLife Bundle Is Ready!</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0faf0;
+      color: #1a2e1a;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    .top-bar {
+      background: #1e6b2e;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1e6b2e 0%, #2e9e45 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 52px;
+    }
+    .hero .checkmark {
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 2.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .hero h1 span { color: #ffdd57; }
+    .hero p.sub {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.92;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── CONFIRMATION BOX ── */
+    .confirmation {
+      background: #fff;
+      border-radius: 18px;
+      padding: 36px 36px;
+      margin: -28px auto 0;
+      max-width: 680px;
+      box-shadow: 0 8px 40px rgba(30,107,46,0.12);
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .confirmation .order-badge {
+      display: inline-block;
+      background: #f0faf0;
+      border: 2px solid #2e9e45;
+      border-radius: 30px;
+      padding: 6px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e6b2e;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .confirmation h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 10px;
+    }
+    .confirmation p {
+      font-size: 0.97rem;
+      color: #4a6e4a;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── STEPS SECTION ── */
+    .steps-section {
+      padding: 56px 20px;
+    }
+    .steps-section h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: #1e6b2e;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px 22px;
+      text-align: center;
+      box-shadow: 0 2px 14px rgba(30,107,46,0.08);
+      border-top: 4px solid #2e9e45;
+    }
+    .step-card .step-num {
+      width: 36px;
+      height: 36px;
+      background: #2e9e45;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 0 auto 14px;
+    }
+    .step-card h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: #1e6b2e;
+      margin-bottom: 8px;
+    }
+    .step-card p {
+      font-size: 0.86rem;
+      color: #4a6e4a;
+      line-height: 1.55;
+    }
+
+    /* ── WHAT'S IN YOUR BUNDLE ── */
+    .bundle-section {
+      background: #fff;
+      padding: 56px 20px;
+    }
+    .bundle-section h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: #1e6b2e;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .bundle-section .section-sub {
+      text-align: center;
+      color: #4a6e4a;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+    .bundle-list {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .bundle-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #f0faf0;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .bundle-item .bicon { font-size: 1.8rem; flex-shrink: 0; }
+    .bundle-item .btext h4 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: #1e6b2e;
+      margin-bottom: 3px;
+    }
+    .bundle-item .btext p {
+      font-size: 0.84rem;
+      color: #4a6e4a;
+    }
+    .bundle-item .btag {
+      margin-left: auto;
+      flex-shrink: 0;
+      background: #2e9e45;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── DOWNLOAD BUTTON ── */
+    .download-section {
+      text-align: center;
+      padding: 56px 20px;
+      background: #f0faf0;
+    }
+    .download-section h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 10px;
+    }
+    .download-section p {
+      color: #4a6e4a;
+      margin-bottom: 30px;
+      font-size: 0.97rem;
+    }
+    .btn-download {
+      display: inline-block;
+      background: #1e6b2e;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 20px 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(30,107,46,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(30,107,46,0.3); }
+    .btn-download small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      margin-top: 5px;
+      opacity: 0.75;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee-strip {
+      background: #fff;
+      padding: 36px 20px;
+      text-align: center;
+      border-top: 1px solid #dff0df;
+      border-bottom: 1px solid #dff0df;
+    }
+    .guarantee-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      max-width: 600px;
+      text-align: left;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .guarantee-inner .gicon { font-size: 3rem; flex-shrink: 0; }
+    .guarantee-inner h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 4px;
+    }
+    .guarantee-inner p { font-size: 0.88rem; color: #4a6e4a; max-width: 420px; }
+
+    /* ── SUPPORT ── */
+    .support-section {
+      text-align: center;
+      padding: 48px 20px;
+      background: #f0faf0;
+    }
+    .support-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 10px;
+    }
+    .support-section p {
+      font-size: 0.95rem;
+      color: #4a6e4a;
+      max-width: 480px;
+      margin: 0 auto 6px;
+    }
+    .support-section a {
+      color: #1e6b2e;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ── MOTIVATIONAL CLOSING ── */
+    .motivation {
+      background: linear-gradient(135deg, #1e6b2e 0%, #2e9e45 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .motivation h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .motivation h2 span { color: #ffdd57; }
+    .motivation p {
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111e11;
+      color: #c0d8c0;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.8rem;
+    }
+    footer a { color: #a0c8a0; margin: 0 8px; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer .trust-seal { margin: 16px auto 14px; max-width: 200px; }
+    footer .disclaimer {
+      margin-top: 14px;
+      font-size: 0.74rem;
+      opacity: 0.55;
+      max-width: 660px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 540px) {
+      .confirmation { padding: 28px 18px; }
+      .btn-download { padding: 18px 28px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  ✅ Your order is confirmed — welcome to the SlimLife family!
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="checkmark">✅</div>
+    <h1>Thank You! Your<br><span>SlimLife Bundle</span> Is Ready.</h1>
+    <p class="sub">Your purchase was successful. Your complete bundle is ready for instant download — let's get you started.</p>
+  </div>
+</section>
+
+<!-- CONFIRMATION BOX -->
+<div class="container" style="position:relative; z-index:2; margin-top:-28px;">
+  <div class="confirmation">
+    <span class="order-badge">✓ Order Confirmed</span>
+    <h2>Check your email for your download link</h2>
+    <p>A confirmation email with your download access has been sent to the email address you used at checkout. If you don't see it within a few minutes, check your spam or promotions folder.</p>
+  </div>
+</div>
+
+<!-- HOW TO ACCESS -->
+<section class="steps-section">
+  <div class="container">
+    <h2>How to Access Your Bundle</h2>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Check Your Email</h3>
+        <p>Look for a confirmation email from Digistore24 with the subject "Your SlimLife Order."</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Click the Download Link</h3>
+        <p>Inside the email, click your personal download link to access all your files.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Save Your Files</h3>
+        <p>Download and save the PDF guides to your device so you can access them anytime, even offline.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Start Today</h3>
+        <p>Begin with the Core Guide and use the Meal Planner to set up your first week. Small steps, big results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S IN YOUR BUNDLE -->
+<section class="bundle-section">
+  <div class="container">
+    <h2>What's Inside Your Bundle</h2>
+    <p class="section-sub">Five complete guides — everything you need to start your SlimLife journey today.</p>
+
+    <div class="bundle-list">
+      <div class="bundle-item">
+        <span class="bicon">📗</span>
+        <div class="btext">
+          <h4>The SlimLife Method — Core Guide</h4>
+          <p>Your complete blueprint for natural, sustainable weight loss.</p>
+        </div>
+        <span class="btag">Included</span>
+      </div>
+      <div class="bundle-item">
+        <span class="bicon">🥗</span>
+        <div class="btext">
+          <h4>The 21-Day SlimLife Meal Planner</h4>
+          <p>Three weeks of done-for-you meal plans and simple recipes.</p>
+        </div>
+        <span class="btag">Included</span>
+      </div>
+      <div class="bundle-item">
+        <span class="bicon">🧘</span>
+        <div class="btext">
+          <h4>The SlimLife Movement Guide</h4>
+          <p>Simple 15-minute daily routines — no gym required.</p>
+        </div>
+        <span class="btag">Included</span>
+      </div>
+      <div class="bundle-item">
+        <span class="bicon">🛒</span>
+        <div class="btext">
+          <h4>The Grocery & Shopping Blueprint</h4>
+          <p>Know exactly what to buy to make healthy eating effortless.</p>
+        </div>
+        <span class="btag">Included</span>
+      </div>
+      <div class="bundle-item">
+        <span class="bicon">🧠</span>
+        <div class="btext">
+          <h4>The Mindset & Motivation Handbook</h4>
+          <p>The mental strategies that separate lasting change from short-term fixes.</p>
+        </div>
+        <span class="btag">Included</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD BUTTON -->
+<section class="download-section">
+  <div class="container">
+    <h2>Access Your Downloads Now</h2>
+    <p>Can't find the email? Click below to go directly to your download page.</p>
+
+    <!-- REPLACE WITH YOUR DIGISTORE24 DOWNLOAD PAGE URL -->
+    <a href="[DIGISTORE_DOWNLOAD_URL]" class="btn-download">
+      Download My SlimLife Bundle →
+      <small>All 5 guides · Instant PDF access</small>
+    </a>
+  </div>
+</section>
+
+<!-- GUARANTEE REMINDER -->
+<div class="guarantee-strip">
+  <div class="guarantee-inner">
+    <span class="gicon">🛡️</span>
+    <div>
+      <h3>Your 60-Day Guarantee Is Active</h3>
+      <p>You're fully protected. If you're not satisfied for any reason within 60 days of your purchase, contact us at <strong>support@slimlifemethod.com</strong> and we'll refund every penny — no questions asked.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHERE TO START -->
+<section style="background:#fff; padding:52px 20px; text-align:center;">
+  <div class="container">
+    <h2 style="font-size:clamp(1.3rem,3.5vw,1.8rem); font-weight:800; color:#1e6b2e; margin-bottom:20px;">Not Sure Where to Start?</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; max-width:700px; margin:0 auto;">
+      <div style="background:#f0faf0; border-radius:12px; padding:22px 18px; text-align:left;">
+        <p style="font-size:0.82rem; font-weight:700; color:#2e9e45; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Day 1</p>
+        <p style="font-size:0.95rem; font-weight:700; color:#1a2e1a; margin-bottom:6px;">Read the Core Guide</p>
+        <p style="font-size:0.85rem; color:#4a6e4a;">Understand the framework before diving into the meal plan.</p>
+      </div>
+      <div style="background:#f0faf0; border-radius:12px; padding:22px 18px; text-align:left;">
+        <p style="font-size:0.82rem; font-weight:700; color:#2e9e45; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Day 2</p>
+        <p style="font-size:0.95rem; font-weight:700; color:#1a2e1a; margin-bottom:6px;">Plan Week 1 Meals</p>
+        <p style="font-size:0.85rem; color:#4a6e4a;">Use the Meal Planner and Shopping Blueprint to stock your kitchen.</p>
+      </div>
+      <div style="background:#f0faf0; border-radius:12px; padding:22px 18px; text-align:left;">
+        <p style="font-size:0.82rem; font-weight:700; color:#2e9e45; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Day 3</p>
+        <p style="font-size:0.95rem; font-weight:700; color:#1a2e1a; margin-bottom:6px;">Start Moving</p>
+        <p style="font-size:0.85rem; color:#4a6e4a;">Do Routine A from the Movement Guide — just 15 minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support-section">
+  <div class="container">
+    <h2>Need Help?</h2>
+    <p>Our support team is here for you. For any questions about your order or your guides, reach us at:</p>
+    <p><a href="mailto:support@slimlifemethod.com">support@slimlifemethod.com</a></p>
+    <p style="margin-top:8px; font-size:0.85rem;">We respond within 1 business day.</p>
+  </div>
+</section>
+
+<!-- MOTIVATIONAL CLOSING -->
+<section class="motivation">
+  <div class="container">
+    <h2>Your Journey Starts <span>Right Now.</span></h2>
+    <p>You've taken the most important step — the decision to invest in your health. Everything you need is in your hands. Open the Core Guide, make a plan, and start today. One meal, one walk, one good night's sleep at a time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="slimlife-terms.html">Terms of Use</a>
+  <a href="slimlife-privacy.html">Privacy Policy</a>
+  <a href="slimlife-refund.html">Refund Policy</a>
+
+  <!-- DIGISTORE24 TRUST SEAL — PASTE THE SEAL SCRIPT PROVIDED BY DIGISTORE24 BELOW -->
+  <div class="trust-seal">
+    <!-- PASTE DIGISTORE24 TRUST SEAL SCRIPT HERE -->
+  </div>
+
+  <p>SlimLife Method is a digital product sold via Digistore24. All purchases are processed securely through Digistore24.</p>
+
+  <p class="disclaimer">
+    DISCLAIMER: Results may vary from person to person. The information provided in our products is for educational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting any diet or exercise program.
+  </p>
+
+  <p style="margin-top:12px; opacity:0.45;">© 2026 SlimLife Method. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
