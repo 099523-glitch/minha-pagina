@@ -1,1 +1,344 @@
-dasda
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special One-Time Offer — SlimLife Accelerator</title>
+
+  <!-- PASTE DIGISTORE UPSELL SCRIPT HERE -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9fdf9;
+      color: #1a2e1a;
+      line-height: 1.6;
+    }
+
+    /* ── OTO BANNER ── */
+    .oto-bar {
+      background: #1e6b2e;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .oto-bar span { color: #ffdd57; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1e6b2e 0%, #2e9e45 100%);
+      color: #fff;
+      text-align: center;
+      padding: 52px 20px 46px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #ffdd57;
+      color: #1a2e1a;
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 760px;
+      margin: 0 auto 16px;
+    }
+    .hero h1 span { color: #ffdd57; }
+    .hero p.sub {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.92;
+    }
+
+    /* ── WAIT BOX ── */
+    .wait-box {
+      background: #fff8dc;
+      border: 2px solid #f0c040;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 30px auto 0;
+      padding: 20px 24px;
+      text-align: left;
+    }
+    .wait-box p {
+      font-size: 0.95rem;
+      color: #5a3e00;
+    }
+    .wait-box strong { color: #c87800; }
+
+    /* ── SECTIONS ── */
+    section { padding: 54px 20px; }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+      font-weight: 800;
+      color: #1e6b2e;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #4a6e4a;
+      margin-bottom: 36px;
+      font-size: 0.97rem;
+    }
+
+    /* ── PRODUCT HIGHLIGHT ── */
+    .product-highlight { background: #f0faf0; }
+    .product-card {
+      background: #fff;
+      border: 2px solid #2e9e45;
+      border-radius: 16px;
+      padding: 34px 32px;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(30,107,46,0.1);
+    }
+    .product-card .icon { font-size: 3rem; margin-bottom: 14px; }
+    .product-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1e6b2e;
+      margin-bottom: 10px;
+    }
+    .product-card p { color: #4a6e4a; font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+    .product-card .price-row { margin-top: 20px; }
+    .product-card .original { text-decoration: line-through; color: #999; font-size: 0.95rem; }
+    .product-card .now {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #1e6b2e;
+      margin-left: 8px;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+    }
+    .inside-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f0faf0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.93rem;
+      color: #2a4a2a;
+    }
+    .inside-list li .check {
+      background: #2e9e45;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.76rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CTA BUTTONS ── */
+    .cta-area {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1e6b2e 0%, #2e9e45 100%);
+      color: #fff;
+    }
+    .cta-area h2 { color: #fff; margin-bottom: 6px; }
+    .cta-area .price-note {
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      opacity: 0.9;
+    }
+    .cta-area .price-note strong { color: #ffdd57; font-size: 1.3rem; }
+
+    .btn-accept {
+      display: inline-block;
+      background: #ffdd57;
+      color: #1a2e1a;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 18px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: block;
+      max-width: 460px;
+      margin: 0 auto 14px;
+    }
+    .btn-accept:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.22); }
+    .btn-accept small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      margin-top: 4px;
+      opacity: 0.7;
+    }
+
+    .btn-decline {
+      display: block;
+      max-width: 460px;
+      margin: 0 auto;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 8px;
+      text-align: center;
+      text-decoration-color: rgba(255,255,255,0.4);
+    }
+    .btn-decline:hover { color: rgba(255,255,255,0.85); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a2e1a;
+      color: #c0d8c0;
+      text-align: center;
+      padding: 36px 20px 28px;
+      font-size: 0.82rem;
+    }
+    footer .footer-links { margin-bottom: 14px; }
+    footer .footer-links a {
+      color: #a0c8a0;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer .footer-links a:hover { text-decoration: underline; }
+    footer .trust-seal { margin: 18px auto 14px; max-width: 200px; }
+    footer p { max-width: 620px; margin: 0 auto 8px; line-height: 1.5; }
+    footer .disclaimer {
+      margin-top: 14px;
+      font-size: 0.76rem;
+      opacity: 0.6;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 500px) {
+      .btn-accept { padding: 16px 24px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- OTO ANNOUNCEMENT -->
+<div class="oto-bar">
+  <span>⚡ WAIT — This Is a One-Time Offer!</span> &nbsp;This page will not appear again after you leave.
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">Special Upgrade — One-Time Offer</span>
+    <h1>Accelerate Your Results With the<br><span>SlimLife Accelerator</span></h1>
+    <p class="sub">You've taken the first step. Now supercharge your progress with this complementary guide — available exclusively to new SlimLife customers.</p>
+
+    <div class="wait-box">
+      <p>⚠️ <strong>This offer expires when you leave this page.</strong> The SlimLife Accelerator is not available anywhere else at this price. This is your only chance to add it to your order.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT HIGHLIGHT -->
+<section class="product-highlight">
+  <div class="container">
+    <h2>Introducing the SlimLife Accelerator</h2>
+    <p class="section-sub">A complementary guide designed to double your results from the core SlimLife Method.</p>
+
+    <div class="product-card">
+      <div class="icon">🚀</div>
+      <h3>SlimLife Accelerator Guide</h3>
+      <p>An in-depth companion guide packed with advanced fat-burning strategies, metabolism-boosting techniques, and a 30-day progress tracker — designed to work hand-in-hand with your SlimLife bundle.</p>
+      <div class="price-row">
+        <span class="original">$47</span>
+        <span class="now">$27</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="container">
+    <h2>What's Inside the Accelerator</h2>
+    <p class="section-sub">Everything you need to take your results to the next level.</p>
+
+    <ul class="inside-list">
+      <li><span class="check">✓</span>Advanced metabolism-reset techniques to break through stubborn plateaus</li>
+      <li><span class="check">✓</span>Strategic intermittent fasting guide tailored for beginners and intermediates</li>
+      <li><span class="check">✓</span>Grocery shopping list with the top 30 fat-burning foods</li>
+      <li><span class="check">✓</span>30-day printable progress tracker to stay accountable</li>
+      <li><span class="check">✓</span>Stress & sleep optimization chapter — the missing link in most weight loss plans</li>
+      <li><span class="check">✓</span>Weekend reset protocol: how to enjoy your weekends without undoing your progress</li>
+      <li><span class="check">✓</span>Hormone-friendly eating patterns for sustainable fat loss</li>
+      <li><span class="check">✓</span>Motivational mindset framework to crush cravings and stay on track</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-area">
+  <div class="container">
+    <h2>Add the Accelerator to Your Order Now</h2>
+    <p class="price-note">One-time addition — just <strong>$27</strong> added to your order today.</p>
+
+    <a href="[DIGISTORE_UPSELL1_ACCEPT_URL]" class="btn-accept">
+      ✅ Yes, I Want This! Add the Accelerator to My Order →
+      <small>Instant digital access · 60-Day money-back guarantee</small>
+    </a>
+
+    <a href="[DIGISTORE_UPSELL1_DECLINE_URL]" class="btn-decline">
+      No, thanks — I'll skip this and continue without the Accelerator.
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="slimlife-terms.html">Terms of Use</a>
+    <a href="slimlife-privacy.html">Privacy Policy</a>
+    <a href="slimlife-refund.html">Refund Policy</a>
+  </div>
+
+  <!-- DIGISTORE24 TRUST SEAL — PASTE THE SEAL SCRIPT PROVIDED BY DIGISTORE24 BELOW -->
+  <div class="trust-seal">
+    <!-- PASTE DIGISTORE24 TRUST SEAL SCRIPT HERE -->
+  </div>
+
+  <p>SlimLife Accelerator is a digital product sold via Digistore24. All purchases are processed securely through Digistore24's payment platform.</p>
+
+  <p class="disclaimer">
+    DISCLAIMER: Results may vary from person to person. The testimonials and results referenced are not typical. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before beginning any diet or wellness program.
+  </p>
+
+  <p style="margin-top:12px; opacity:0.5;">© 2026 SlimLife Method. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
