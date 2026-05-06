@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zentrixa – Etikett</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10 px-4">
+
+        <div class="max-w-5xl w-full bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6 border-b text-center">
+                <h1 class="text-2xl font-bold text-gray-800">ZENTRIXA – Produktetikett</h1>
+                <p class="text-sm text-gray-500 mt-1">Nahrungsergänzungsmittel mit Magnesium, L-Carnitin und pflanzlichen Stoffen</p>
+            </div>
+
+            <!-- PDF embed -->
+            <div class="w-full" style="height: 80vh;">
+                <embed
+                    src="label.pdf"
+                    type="application/pdf"
+                    width="100%"
+                    height="100%"
+                />
+            </div>
+
+            <!-- Fallback para dispositivos que não suportam embed de PDF -->
+            <div class="p-6 text-center border-t">
+                <p class="text-sm text-gray-500">
+                    Caso o PDF não apareça,
+                    <a href="label.pdf" class="text-blue-600 underline font-medium" download>clique aqui para baixar o etikett</a>.
+                </p>
+            </div>
+        </div>
+
+        <footer class="mt-8 text-xs text-gray-400 text-center">
+            <a href="zentrixa-privacy.html" class="mx-2 hover:underline">Privacy</a>
+            <a href="zentrixa-disclaimer.html" class="mx-2 hover:underline">Disclaimer</a>
+            <a href="zentrixa-contact.html" class="mx-2 hover:underline">Contact</a>
+            <a href="zentrixa-terms.html" class="mx-2 hover:underline">Terms</a>
+        </footer>
+    </body>
+</html>
