@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Zentrixa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      line-height: 1.8;
+    }
+
+    /* HEADER */
+    header {
+      background: #1a1a2e;
+      padding: 32px 24px;
+      text-align: center;
+      border-bottom: 3px solid #5c6bc0;
+    }
+
+    header .brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    header .brand span {
+      color: #7986cb;
+    }
+
+    header h1 {
+      font-size: clamp(18px, 3vw, 26px);
+      color: #c5cae9;
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    header .effective {
+      font-size: 13px;
+      color: #7986cb;
+      margin-top: 8px;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* INTRO BOX */
+    .intro-box {
+      background: #ffffff;
+      border-left: 4px solid #5c6bc0;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .intro-box p {
+      font-size: 15px;
+      color: #444;
+      margin: 0;
+    }
+
+    /* SECTIONS */
+    .section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8eaf6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 .num {
+      background: #5c6bc0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      font-size: 15px;
+      color: #444;
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .section ul li:last-child { border-bottom: none; }
+
+    .section ul li::before {
+      content: "›";
+      color: #5c6bc0;
+      font-weight: 700;
+      font-size: 18px;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+
+    /* RIGHTS GRID */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .right-card {
+      background: #e8eaf6;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #1a1a2e;
+      font-weight: 500;
+    }
+
+    .right-card::before {
+      content: "✓";
+      color: #5c6bc0;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* CONTACT BOX */
+    .contact-box {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 28px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-box p {
+      color: #c5cae9;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: #5c6bc0;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .contact-box a:hover { background: #7986cb; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      border-top: 1px solid #2a2a4e;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: #5c6bc0;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #7986cb;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: #c5cae9; }
+
+    @media (max-width: 520px) {
+      main { padding: 28px 14px 48px; }
+      .section { padding: 20px 18px; }
+      .rights-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Zentri<span>xa</span></div>
+  <h1>Privacy Policy – Europe</h1>
+  <p class="effective">Effective Date: September 2025</p>
+</header>
+
+<main>
+
+  <div class="intro-box">
+    <p>This Privacy Policy governs the information collection and processing practices of the <strong>Zentrixa</strong> website ("we"). It describes the types of information collected when you use our website (the "Site") and how this information is used. This Privacy Policy does not apply to information collected offline, at live events, over the phone, or via postal mail.</p>
+    <br>
+    <p>By visiting and using the Site, you agree that your use of the Site, and any dispute over privacy, is governed by this Privacy Policy. We may update this Policy in the future; changes will be published on this page with an updated Effective Date. Continued use of the Site after such changes implies acceptance of the revised policy.</p>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <h2><span class="num">1</span> Information Collection and Use</h2>
+    <p>We may collect and store personal information that you voluntarily provide while using the Site, such as:</p>
+    <ul>
+      <li>Name and email address for registration or newsletter subscriptions</li>
+      <li>Name, postal address, and payment details during purchases</li>
+      <li>Other information you provide when participating in events or interacting with the Site</li>
+    </ul>
+    <p>We may also automatically collect information generated as you navigate the Site, including:</p>
+    <ul>
+      <li>IP address and internet connection data</li>
+      <li>Cookies and similar technologies to enhance navigation, customize content, and measure traffic</li>
+      <li>Web beacons (transparent GIFs) to track visits and email opens</li>
+    </ul>
+    <p>This information may be used to customize Site features, display advertising or send communications, and to share with service providers, contractors, or partners strictly for legitimate business purposes.</p>
+    <p>You have the right to request deletion, correction, or limitation of the use of your personal data, as described below.</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <h2><span class="num">2</span> Google Analytics and Cookies</h2>
+    <p>We use Google Analytics and similar technologies to analyze Site traffic. This may include:</p>
+    <ul>
+      <li>Remarketing with Google Analytics</li>
+      <li>Display Network Impression Reporting</li>
+      <li>Demographics and Interest Reports</li>
+    </ul>
+    <p>You may disable cookies in your browser settings or through Google Ads preferences.</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <h2><span class="num">3</span> Facebook</h2>
+    <p>As advertisers on Facebook, we may collect information from interactions with our page and ads. Such information is used in accordance with this Privacy Policy.</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <h2><span class="num">4</span> General Data Protection Regulation (GDPR)</h2>
+    <p>In accordance with the General Data Protection Regulation (GDPR) of the European Union, you have the following rights:</p>
+    <div class="rights-grid">
+      <div class="right-card">Right of access to your data</div>
+      <div class="right-card">Right to rectify incorrect or incomplete data</div>
+      <div class="right-card">Right to erasure ("right to be forgotten")</div>
+      <div class="right-card">Right to data portability</div>
+      <div class="right-card">Right to restrict or object to processing</div>
+    </div>
+    <br>
+    <p>To exercise these rights, please contact us as described in section 9.</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
+    <h2><span class="num">5</span> Children's Privacy</h2>
+    <p>This Site is not directed to individuals under the age of 16 (in compliance with the GDPR). We do not knowingly collect personal data from minors. If we become aware that such information has been provided inadvertently, it will be deleted from our records.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section">
+    <h2><span class="num">6</span> Data Storage and Security</h2>
+    <p>Your data is stored on secure servers and accessed only by authorized personnel assisting with the operation of the Site and the delivery of communications.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section">
+    <h2><span class="num">7</span> Unsubscribing from Emails and Newsletters</h2>
+    <p>Even if we do not plan to send promotional emails or newsletters regularly, we offer users the option to unsubscribe at any time.</p>
+    <p>If you receive an email from us and wish to stop receiving future communications, simply click the <strong>"unsubscribe"</strong> link located at the bottom of any email we send.</p>
+    <p>Alternatively, you may request to be unsubscribed by sending an email directly to <a href="mailto:alivenerf.customers@gmail.com" style="color:#5c6bc0;">alivenerf.customers@gmail.com</a> with the subject line <strong>"Unsubscribe"</strong>.</p>
+    <p>All unsubscribe requests will be processed as quickly as possible, in accordance with applicable data protection laws.</p>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section">
+    <h2><span class="num">8</span> Changes to the Policy</h2>
+    <p>This Policy may be updated at any time. Any changes will be posted on this page, with the Effective Date updated accordingly.</p>
+  </div>
+
+  <!-- Section 9 / Contact -->
+  <div class="contact-box">
+    <p>If you have any questions, concerns, or wish to exercise your rights regarding data privacy and protection, please contact us:</p>
+    <a href="mailto:alivenerf.customers@gmail.com">📧 alivenerf.customers@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Zentrixa. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

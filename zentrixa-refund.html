@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Return Policy – Zentrixa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      line-height: 1.8;
+    }
+
+    header {
+      background: #1a1a2e;
+      padding: 32px 24px;
+      text-align: center;
+      border-bottom: 3px solid #5c6bc0;
+    }
+
+    header .brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    header .brand span { color: #7986cb; }
+
+    header h1 {
+      font-size: clamp(18px, 3vw, 26px);
+      color: #c5cae9;
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    header .effective {
+      font-size: 13px;
+      color: #7986cb;
+      margin-top: 8px;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    .intro-box {
+      background: #ffffff;
+      border-left: 4px solid #5c6bc0;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .intro-box p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .intro-box p:last-child { margin-bottom: 0; }
+
+    .section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8eaf6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 .num {
+      background: #5c6bc0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      font-size: 15px;
+      color: #444;
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .section ul li:last-child { border-bottom: none; }
+
+    .section ul li::before {
+      content: "›";
+      color: #5c6bc0;
+      font-weight: 700;
+      font-size: 18px;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+
+    .highlight-box {
+      background: #e8eaf6;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-top: 10px;
+    }
+
+    .highlight-box p {
+      font-size: 15px;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    .highlight-box strong { color: #5c6bc0; }
+
+    .contact-box {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 28px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-box p {
+      color: #c5cae9;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: #5c6bc0;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .contact-box a:hover { background: #7986cb; }
+
+    footer {
+      background: #1a1a2e;
+      border-top: 1px solid #2a2a4e;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: #5c6bc0;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #7986cb;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: #c5cae9; }
+
+    @media (max-width: 520px) {
+      main { padding: 28px 14px 48px; }
+      .section { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Zentri<span>xa</span></div>
+  <h1>Return Policy</h1>
+  <p class="effective">Effective Date: September 2025</p>
+</header>
+
+<main>
+
+  <div class="intro-box">
+    <p>At <strong>Zentrixa</strong>, your satisfaction is our priority. We stand behind the quality of our products and want you to feel confident in every purchase. Please read our return policy carefully before submitting a request.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">1</span> 60-Day Money-Back Guarantee</h2>
+    <div class="highlight-box">
+      <p>We offer a <strong>60-day money-back guarantee</strong> from the date of purchase. If you are not satisfied with your results for any reason, you may return the product and receive a full refund — no questions asked.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> EU Statutory Right of Withdrawal</h2>
+    <p>In accordance with the <strong>EU Consumer Rights Directive</strong>, you have the right to withdraw from your purchase within <strong>14 days</strong> of receiving your order, without providing any reason.</p>
+    <p>To exercise this right within the statutory period, please contact us at the email address below before the 14-day period expires.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> How to Request a Return</h2>
+    <p>To initiate a return or refund request, please follow these steps:</p>
+    <ul>
+      <li>Send an email to <a href="mailto:alivenerf.customers@gmail.com" style="color:#5c6bc0;">alivenerf.customers@gmail.com</a></li>
+      <li>Include your order number and the reason for the return</li>
+      <li>Our support team will respond within 2 business days with instructions</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> Return Conditions</h2>
+    <ul>
+      <li>Returns must be requested within 60 days of the purchase date</li>
+      <li>Products do not need to be unopened to qualify for a refund under our guarantee</li>
+      <li>Return shipping costs are the responsibility of the customer unless the product was defective or incorrectly sent</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> Refund Processing</h2>
+    <p>Once your return is approved, your refund will be processed to the original payment method within <strong>5–10 business days</strong>, depending on your bank or payment provider.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> Non-Returnable Items</h2>
+    <p>Returns requested after the 60-day guarantee period has expired will not be accepted, except where required by applicable consumer protection law.</p>
+  </div>
+
+  <div class="contact-box">
+    <p>Questions about your return or refund? Contact our support team:</p>
+    <a href="mailto:alivenerf.customers@gmail.com">📧 alivenerf.customers@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Zentrixa. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="zentrixa-terms.html">Terms of Service</a>
+    <a href="zentrixa-privacy.html">Privacy Policy</a>
+    <a href="zentrixa-disclaimer.html">Disclaimer</a>
+    <a href="zentrixa-refund.html">Return Policy</a>
+    <a href="zentrixa-contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
