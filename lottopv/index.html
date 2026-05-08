@@ -19,7 +19,38 @@
 
     <!-- Script track Abaixo -->
 
-    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; color: #1a1a1a; }
+
+        /* HEADER */
+        .header { background: #cc0001; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; position: sticky; top: 0; z-index: 100; }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { width: 24px; height: 24px; fill: #fff; cursor: pointer; }
+        .search-icon { width: 24px; height: 24px; fill: #fff; cursor: pointer; }
+        .logo { height: 32px; width: auto; }
+
+        /* NEWS TICKER */
+        .news-ticker { background: #000; color: #fff; padding: 8px 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; overflow: hidden; white-space: nowrap; }
+        .news-ticker p { animation: ticker 30s linear infinite; display: inline-block; }
+        @keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+        /* MAIN */
+        .main-content { max-width: 780px; margin: 24px auto; padding: 0 16px; }
+        .main-content > p { font-size: 15px; color: #555; text-align: center; margin: 12px 0; }
+        .content-image { width: 100%; max-width: 600px; display: block; margin: 16px auto; border-radius: 8px; }
+
+        /* FOOTER */
+        .footer { background: #1a1a1a; color: #999; text-align: center; padding: 28px 20px; font-size: 13px; margin-top: 40px; }
+        .footer p { margin-bottom: 8px; }
+        .footer a { color: #999; text-decoration: none; }
+        .footer a:hover { color: #fff; }
+
+        @media (max-width: 600px) {
+            .main-content { padding: 0 10px; }
+        }
+    </style>
 
     <script type="text/javascript" src="https://rtk.statisticalschool.online/track.js"></script>
 
