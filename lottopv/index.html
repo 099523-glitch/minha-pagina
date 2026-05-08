@@ -85,7 +85,41 @@
 
      <vturb-smartplayer id="vid-69e617c8fca62391bc47ef49" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/0c720c90-e7e2-43bb-bf68-a9f95307d607/players/69e617c8fca62391bc47ef49/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
 
+
        <!-- Vídeo VTurb Acima -->
+
+        <!-- =============================================
+             CTA BUTTON — altere CTA_DELAY_SECONDS para
+             definir em qual segundo do vídeo o botão aparece.
+             0 = aparece imediatamente.
+        ============================================== -->
+        <div class="cta-wrapper">
+            <a id="cta-btn" href="https://www.dtc.news-health81.online/lottopv/" class="cta-btn" target="_blank" rel="noopener noreferrer">
+                Click Here to Get Lottocash
+            </a>
+        </div>
+
+        <script>
+            const CTA_DELAY_SECONDS = 0; // ← mude aqui para definir o minuto/segundo do vídeo
+
+            (function() {
+                var btn = document.getElementById('cta-btn');
+
+                if (CTA_DELAY_SECONDS === 0) {
+                    btn.style.display = 'inline-block';
+                } else {
+                    btn.style.display = 'none';
+                    var player = document.getElementById('vid-69e617c8fca62391bc47ef49');
+                    var shown = false;
+                    player.addEventListener('timeupdate', function(e) {
+                        if (!shown && e.detail && e.detail.currentTime >= CTA_DELAY_SECONDS) {
+                            shown = true;
+                            btn.style.display = 'inline-block';
+                        }
+                    });
+                }
+            })();
+        </script>
 
         <p>Watch the video until the end to unlock this new AI</p>
 
