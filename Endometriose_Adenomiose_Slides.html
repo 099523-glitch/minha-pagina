@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endometriose e Adenomiose — Slides</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:      #c0392b;
+      --red-soft: #e07070;
+      --red-bg:   rgba(192,57,43,0.15);
+      --dark:     #0f0f1a;
+      --card:     #1a1a2e;
+      --card2:    #12122a;
+      --border:   #2a2a4a;
+      --text:     #ddd;
+      --muted:    #888;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--dark);
+      color: #f0f0f0;
+    }
+
+    /* ══════════════════════════════════════
+       TOPBAR
+    ══════════════════════════════════════ */
+    #topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 24px;
+      background: rgba(10,10,20,0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    #topbar .brand { font-size: 0.85rem; color: var(--muted); }
+    #topbar .brand strong { color: var(--red-soft); }
+    #btn-present {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--red); color: #fff;
+      border: none; border-radius: 8px;
+      padding: 9px 20px; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; transition: background .2s;
+    }
+    #btn-present:hover { background: #a93226; }
+
+    /* ══════════════════════════════════════
+       SCROLL VIEW
+    ══════════════════════════════════════ */
+    #scroll-view {
+      padding: 80px 16px 60px;
+      display: flex; flex-direction: column; align-items: center; gap: 28px;
+    }
+
+    .slide {
+      width: 100%; max-width: 860px;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 40px 50px;
+      box-shadow: 0 6px 28px rgba(0,0,0,.5);
+      border-left: 6px solid var(--red);
+      position: relative;
+    }
+    .slide-num {
+      position: absolute; top: 14px; right: 20px;
+      font-size: 11px; color: #444; letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    /* capa */
+    .slide.cover {
+      background: linear-gradient(135deg, #0d0d22, #1a0a0a);
+      border-left: none; border-top: 6px solid var(--red);
+      text-align: center; padding: 60px 50px;
+    }
+    .cover .tag {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 26px; text-transform: uppercase;
+    }
+    .cover h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #fff; }
+    .cover .author { font-size: .95rem; color: #aaa; margin-top: 16px; line-height: 1.7; }
+
+    /* separador de seção */
+    .slide.section-divider {
+      background: linear-gradient(135deg, #1a0a0a, #0d0d22);
+      border-left: none; border-top: 6px solid var(--red);
+      text-align: center; padding: 50px 50px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .section-divider .sec-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--red-soft); margin-bottom: 14px;
+    }
+    .section-divider h2 {
+      font-size: 2.4rem !important; color: #fff !important; margin-bottom: 0 !important;
+      border-bottom: none !important;
+    }
+
+    /* tipografia scroll */
+    h2 { font-size: 1.45rem; color: var(--red); margin-bottom: 20px; font-weight: 700; }
+    h3 { font-size: .95rem; color: var(--red-soft); font-weight: 700;
+         margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+    p  { font-size: .95rem; line-height: 1.7; color: var(--text); margin-bottom: 10px; }
+    ul { list-style: none; }
+    ul li {
+      position: relative; padding-left: 20px;
+      margin-bottom: 8px; font-size: .95rem; line-height: 1.6; color: var(--text);
+    }
+    ul li::before {
+      content: '▸'; position: absolute; left: 0; top: 2px;
+      color: var(--red); font-size: .8rem;
+    }
+    .hl {
+      background: var(--red-bg); border-left: 4px solid var(--red);
+      padding: 12px 18px; border-radius: 6px; margin: 14px 0;
+      font-size: .92rem; color: #f0c0ba; line-height: 1.55;
+    }
+    .badge {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: .7rem; font-weight: 700; padding: 3px 11px;
+      border-radius: 12px; margin-bottom: 14px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: .9rem; }
+    th { background: var(--red); color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border);
+         color: var(--text); vertical-align: top; line-height: 1.55; }
+    tr:nth-child(even) td { background: #1e1e34; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+    .four-col { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .box { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+    .box h3 { margin-top: 0; }
+    .schema {
+      background: #0d0d1e; border: 1px solid var(--border); border-radius: 10px;
+      padding: 20px 24px; font-family: 'Courier New', monospace;
+      font-size: .8rem; color: #b0c4de; line-height: 1.9;
+      white-space: pre; overflow-x: auto;
+    }
+    .schema .r { color: var(--red-soft); }
+    footer { color: #444; font-size: .78rem; text-align: center; padding-bottom: 20px; }
+
+    /* ══════════════════════════════════════
+       MODO APRESENTAÇÃO
+    ══════════════════════════════════════ */
+    #present-view {
+      display: none;
+      position: fixed; inset: 0; z-index: 9999;
+      background: #000;
+      flex-direction: column;
+    }
+    #present-view.active { display: flex; }
+
+    #pres-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 22px; flex-shrink: 0;
+      background: rgba(5,5,15,.95);
+      border-bottom: 1px solid var(--border);
+    }
+    #pres-info { font-size: .78rem; color: var(--muted); }
+    #pres-info b { color: #fff; }
+    #pres-controls { display: flex; gap: 8px; }
+    .pres-btn {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 5px 13px; font-size: .75rem; cursor: pointer;
+      transition: all .15s;
+    }
+    .pres-btn:hover { color: #fff; border-color: #fff; }
+
+    #pres-prog { height: 3px; background: var(--border); flex-shrink: 0; }
+    #pres-prog-fill { height: 100%; background: var(--red); transition: width .3s ease; }
+
+    #pres-stage {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      background: #05050e;
+      position: relative;
+      overflow: hidden;
+      padding: 16px 80px;
+    }
+
+    #pres-canvas {
+      width: 960px; height: 540px;
+      transform-origin: center center;
+      position: relative; overflow: hidden;
+    }
+
+    #pres-canvas .slide {
+      width: 100% !important; max-width: 100% !important; height: 100% !important;
+      border-radius: 0 !important; border-left: none !important;
+      border-top: 6px solid var(--red) !important;
+      padding: 36px 72px 32px !important;
+      overflow: hidden;
+      display: flex !important; flex-direction: column !important;
+      justify-content: flex-start !important; gap: 0 !important;
+    }
+    #pres-canvas .slide.cover,
+    #pres-canvas .slide.section-divider {
+      border-top: none !important; border-left: none !important;
+      padding: 48px 96px !important;
+      align-items: center !important; justify-content: center !important;
+      text-align: center;
+    }
+    #pres-canvas .slide.section-divider {
+      border-top: 6px solid var(--red) !important;
+    }
+    #pres-canvas .slide > h2 {
+      flex-shrink: 0 !important;
+      padding-bottom: 14px !important; margin-bottom: 20px !important;
+      border-bottom: 2px solid rgba(192,57,43,0.4) !important;
+    }
+    #pres-canvas .slide.section-divider > h2 {
+      border-bottom: none !important; padding-bottom: 0 !important; margin-bottom: 0 !important;
+    }
+    #pres-canvas .slide .s-body {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; gap: 8px; overflow: hidden;
+    }
+
+    #pres-canvas h1  { font-size: 3.2rem !important; line-height: 1.15 !important; font-weight: 800 !important; }
+    #pres-canvas h2  { font-size: 2rem !important; font-weight: 800 !important; letter-spacing: .3px !important; }
+    #pres-canvas .section-divider h2 { font-size: 2.8rem !important; color: #fff !important; }
+    #pres-canvas h3  { font-size: 1.15rem !important; margin: 14px 0 6px !important; letter-spacing: .5px !important; }
+    #pres-canvas h3:first-child { margin-top: 0 !important; }
+    #pres-canvas p   { font-size: 1.15rem !important; line-height: 1.65 !important; margin-bottom: 8px !important; }
+    #pres-canvas li  { font-size: 1.15rem !important; line-height: 1.6 !important; margin-bottom: 10px !important; }
+    #pres-canvas td, #pres-canvas th { font-size: 1.05rem !important; padding: 10px 14px !important; line-height: 1.5 !important; }
+    #pres-canvas .hl { font-size: 1.1rem !important; padding: 14px 20px !important; margin: 10px 0 !important; line-height: 1.6 !important; }
+    #pres-canvas .badge { font-size: .8rem !important; padding: 5px 16px !important; margin-bottom: 14px !important; }
+    #pres-canvas .schema { font-size: .88rem !important; line-height: 1.85 !important; padding: 16px 20px !important; }
+    #pres-canvas .cover .tag { font-size: .75rem !important; margin-bottom: 24px !important; }
+    #pres-canvas .cover .author { font-size: 1.25rem !important; margin-top: 20px !important; line-height: 1.8 !important; }
+    #pres-canvas .section-divider .sec-label { font-size: .85rem !important; margin-bottom: 18px !important; }
+    #pres-canvas .two-col { gap: 16px !important; }
+    #pres-canvas .four-col { gap: 10px !important; }
+    #pres-canvas .box { padding: 14px 18px !important; }
+    #pres-canvas .box h3 { margin-top: 0 !important; font-size: 1rem !important; }
+
+    @keyframes fadeRight { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes fadeLeft  { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:translateX(0); } }
+    #pres-canvas.anim-fwd { animation: fadeRight .22s ease; }
+    #pres-canvas.anim-bck { animation: fadeLeft  .22s ease; }
+
+    .nav-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(20,20,40,.75); border: 1px solid var(--border);
+      color: #fff; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .15s, border-color .15s;
+      backdrop-filter: blur(4px); z-index: 10;
+    }
+    .nav-arrow:hover { background: var(--red); border-color: var(--red); }
+    .nav-arrow:disabled { opacity: .15; pointer-events: none; }
+    #nav-prev { left: 16px; }
+    #nav-next { right: 16px; }
+
+    #key-hint {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      background: rgba(5,5,15,.8); color: var(--muted);
+      font-size: .68rem; padding: 4px 14px; border-radius: 20px;
+      pointer-events: none; transition: opacity 1.2s; white-space: nowrap;
+    }
+
+    #pres-bottom {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px; background: rgba(5,5,15,.95);
+      border-top: 1px solid var(--border); flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--border); border: none; cursor: pointer;
+      transition: background .2s, transform .2s; padding: 0;
+    }
+    .dot.on { background: var(--red); transform: scale(1.5); }
+    .dot:hover:not(.on) { background: var(--muted); }
+    .dot-sep {
+      width: 1px; height: 14px; background: var(--border);
+      margin: 0 6px; flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .slide { padding: 28px 20px; }
+      .cover h1 { font-size: 1.6rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .four-col { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ TOPBAR ══════════ -->
+<div id="topbar">
+  <div class="brand"><strong>Endometriose e Adenomiose</strong> &nbsp;·&nbsp; Gustavo Liebgott &amp; Tadeu Sieslevski</div>
+  <button id="btn-present" onclick="startPresentation()">▶&nbsp; Apresentar</button>
+</div>
+
+<!-- ══════════ MODO APRESENTAÇÃO ══════════ -->
+<div id="present-view">
+  <div id="pres-bar">
+    <div id="pres-info">Slide <b id="cur">1</b> de <b id="tot">1</b></div>
+    <div id="pres-controls">
+      <button class="pres-btn" onclick="changeSlide(-1)">&#8592; Anterior</button>
+      <button class="pres-btn" onclick="changeSlide(1)">Próximo &#8594;</button>
+      <button class="pres-btn" id="btn-fs" onclick="toggleFullscreen()">&#x26F6; Tela cheia</button>
+      <button class="pres-btn" onclick="exitPresentation()">✕ Sair</button>
+    </div>
+  </div>
+  <div id="pres-prog"><div id="pres-prog-fill"></div></div>
+  <div id="pres-stage">
+    <button class="nav-arrow" id="nav-prev" onclick="changeSlide(-1)">&#8592;</button>
+    <div id="pres-canvas"></div>
+    <button class="nav-arrow" id="nav-next" onclick="changeSlide(1)">&#8594;</button>
+    <div id="key-hint">← → navegar &nbsp;|&nbsp; Espaço avançar &nbsp;|&nbsp; F tela cheia &nbsp;|&nbsp; Esc sair</div>
+  </div>
+  <div id="pres-bottom"></div>
+</div>
+
+<!-- ══════════ SCROLL VIEW ══════════ -->
+<div id="scroll-view">
+
+  <!-- ═══════════════════════════════
+       CAPA GERAL
+  ═══════════════════════════════ -->
+  <div class="slide cover">
+    <div class="tag">Ginecologia Geral</div>
+    <h1>Endometriose e Adenomiose</h1>
+    <p class="author">Gustavo Liebgott &amp; Tadeu Sieslevski<br>Prof. Dr. Sergio Bigolin</p>
+  </div>
+
+  <!-- SUMÁRIO GERAL -->
+  <div class="slide">
+    <span class="slide-num">Slide 1</span>
+    <h2>Nesta aula veremos</h2>
+    <div class="s-body">
+      <div class="two-col">
+        <div>
+          <h3>Endometriose</h3>
+          <ul>
+            <li>Considerações gerais e definição</li>
+            <li>Etiologia — teorias</li>
+            <li>Fatores de risco</li>
+            <li>Quadro clínico</li>
+            <li>Diagnóstico</li>
+            <li>Tratamento clínico e cirúrgico</li>
+            <li>Infertilidade — FIV vs. Cirurgia</li>
+            <li>Classificação ASRM e EFI</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Adenomiose</h3>
+          <ul>
+            <li>Definição e histologia</li>
+            <li>Teorias da patogênese</li>
+            <li>Fatores de risco</li>
+            <li>Quadro clínico</li>
+            <li>Diagnóstico — USG, RM e Histeroscopia</li>
+            <li>Tratamento clínico e cirúrgico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SEÇÃO: ENDOMETRIOSE
+  ═══════════════════════════════ -->
+  <div class="slide section-divider" data-section="endo">
+    <div class="sec-label">Parte 1</div>
+    <h2>Endometriose</h2>
+  </div>
+
+  <!-- CONSIDERAÇÕES GERAIS -->
+  <div class="slide">
+    <span class="slide-num">Slide 2</span>
+    <h2>Considerações Gerais</h2>
+    <div class="s-body">
+      <p>Doença ginecológica <strong>crônica, benigna, estrogênio dependente e multifatorial</strong>, mais prevalente em mulheres em idade reprodutiva. Os sintomas tendem a melhorar após a menopausa.</p>
+      <div class="hl">Definição: presença de <strong>tecido endometrial fora do útero</strong> — mais comum na pelve, mas pode estar presente em qualquer ponto da superfície peritoneal.</div>
+      <h3>Classificação</h3>
+      <ul>
+        <li><strong>Peritoneal</strong> — implantes superficiais no peritônio</li>
+        <li><strong>Ovariana</strong> — endometriomas ("cisto de chocolate")</li>
+        <li><strong>Profunda</strong> — penetra o espaço retroperitoneal ou parede de órgãos pélvicos com profundidade <strong>≥ 5 mm</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ETIOLOGIA -->
+  <div class="slide">
+    <span class="slide-num">Slide 3</span>
+    <h2>Etiologia — Teorias</h2>
+    <div class="s-body">
+      <h3>Sampson (Menstruação Retrógrada) — mais aceita</h3>
+      <ul>
+        <li>Refluxo tubário do conteúdo menstrual com <strong>implantação de células endometriais</strong> no peritônio e demais órgãos, se o ambiente hormonal e imunológico for adequado</li>
+      </ul>
+      <h3>Metaplasia Celômica</h3>
+      <ul>
+        <li>As lesões se originam de tecidos normais através do processo de <strong>transformação metaplásica</strong></li>
+      </ul>
+      <h3>Genética</h3>
+      <ul>
+        <li><strong>Predisposição genética</strong> ou alterações epigenéticas associadas a modificações no ambiente peritoneal poderiam iniciar a doença partindo de qualquer tipo celular</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FATORES DE RISCO — ENDOMETRIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 4</span>
+    <h2>Fatores de Risco — Endometriose</h2>
+    <div class="s-body">
+      <div class="two-col">
+        <ul>
+          <li><strong>Histórico familiar</strong> — parentes de 1º grau</li>
+          <li>Primiparidade tardia / <strong>nuliparidade</strong></li>
+          <li>Ciclos menstruais curtos / fluxo excessivo</li>
+          <li><strong>IMC baixo</strong></li>
+        </ul>
+        <ul>
+          <li>Consumo de álcool e cafeína</li>
+          <li><strong>Malformações müllerianas</strong> — refluxo menstrual</li>
+          <li>Menarca precoce</li>
+          <li>Associação com <strong>adenomiose</strong></li>
+        </ul>
+      </div>
+      <div class="hl">Atenção: a relação com infertilidade é bidirecional — mulheres que não engravidam têm maior exposição hormonal, potencializando a doença.</div>
+    </div>
+  </div>
+
+  <!-- QUADRO CLÍNICO — SINTOMAS -->
+  <div class="slide">
+    <span class="slide-num">Slide 5</span>
+    <h2>Quadro Clínico — Sintomas</h2>
+    <div class="s-body">
+      <div class="badge">Lembrar dos 3 Ds</div>
+      <ul>
+        <li><strong>Dismenorreia</strong> — progressiva, associada ao ciclo</li>
+        <li><strong>Dispareunia de profundidade</strong></li>
+        <li><strong>Dificuldade de engravidar</strong> (infertilidade)</li>
+      </ul>
+      <h3>Sintomas por localização dos focos</h3>
+      <ul>
+        <li>Alterações intestinais <strong>cíclicas</strong>: distensão abdominal, disquezia, constipação, sangramento nas fezes, dor anal</li>
+        <li>Alterações urinárias <strong>cíclicas</strong>: disúria, hematúria, polaciúria, urgência miccional</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EXAME FÍSICO -->
+  <div class="slide">
+    <span class="slide-num">Slide 6</span>
+    <h2>Quadro Clínico — Exame Físico</h2>
+    <div class="s-body">
+      <ul>
+        <li>Implantes endometrióticos, principalmente em <strong>fundo de saco vaginal</strong></li>
+        <li><strong>Nodulações dolorosas</strong> em fundo de saco vaginal</li>
+        <li>Espessamento de <strong>ligamentos uterossacros</strong></li>
+        <li>Útero <strong>pouco móvel e doloroso</strong></li>
+        <li>Anexos fixos e dolorosos</li>
+        <li>Massas anexiais (endometriomas)</li>
+      </ul>
+      <div class="hl">A intensidade dos sintomas <strong>não se correlaciona</strong> necessariamente com a extensão da doença. Lesões profundas podem ser mais dolorosas que extensas lesões superficiais.</div>
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO ENDOMETRIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 7</span>
+    <h2>Diagnóstico — Exames Complementares</h2>
+    <div class="s-body">
+      <div class="badge">Padrão-ouro: Laparoscopia com biópsia</div>
+      <ul>
+        <li><strong>Suspeita clínica:</strong> anamnese + exame físico</li>
+        <li><strong>USGTV:</strong> útil principalmente para endometriomas (imagem "vidro fosco")</li>
+        <li><strong>USG pélvico e transvaginal com preparo intestinal</strong> — indicado nos quadros suspeitos</li>
+        <li><strong>RNM pélvica com protocolo específico</strong> — maior acurácia para lesões profundas</li>
+      </ul>
+      <div class="hl"><strong>Atenção:</strong> boa sensibilidade para lesões profundas e endometriomas, mas <strong>não para lesões superficiais e aderências finas</strong>. Se suspeita clínica com exames normais → videolaparoscopia (VLP).</div>
+      <p><strong>CA 125</strong> pode estar aumentado, mas <strong>NÃO tem valor diagnóstico</strong>.</p>
+    </div>
+  </div>
+
+  <!-- TRATAMENTO CLÍNICO ENDOMETRIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 8</span>
+    <h2>Tratamento Clínico — Endometriose</h2>
+    <div class="s-body">
+      <p><strong>Objetivo:</strong> controle de dor pélvica (visa amenorreia). Sempre primeira escolha, exceto se indicações absolutas de cirurgia.</p>
+      <table>
+        <thead><tr><th>Opção</th><th>Detalhes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Progestagênio contínuo</strong></td><td>Oral, injetável, SIU-LNG ou implante subdérmico — primeira escolha</td></tr>
+          <tr><td><strong>ACO combinado</strong></td><td>Sem consenso sobre contínuo ou cíclico; diversas vias</td></tr>
+          <tr><td><strong>AINEs</strong></td><td>Controle sintomático da dor</td></tr>
+          <tr><td><strong>Análogo de GnRH</strong></td><td>Muitos efeitos colaterais (hipoestrogenismo); não usar a longo prazo</td></tr>
+          <tr><td><strong>Danazol</strong></td><td>Inibe LH e esteroidogênese; em desuso pelos efeitos androgênicos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TRATAMENTO CIRÚRGICO ENDOMETRIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 9</span>
+    <h2>Tratamento Cirúrgico — Endometriose</h2>
+    <div class="s-body">
+      <div class="badge">Via ideal: videolaparoscopia</div>
+      <p><strong>Objetivo:</strong> remoção completa de todos os focos, preservando a função reprodutiva.</p>
+      <h3>Indicações absolutas</h3>
+      <ul>
+        <li><strong>Endometrioma ovariano &gt; 6 cm</strong></li>
+        <li>Lesão em ureter, íleo, apêndice e retossigmoide <strong>(se sinais de suboclusão)</strong></li>
+        <li>Falha do tratamento clínico</li>
+      </ul>
+      <h3>Técnicas para endometriose intestinal</h3>
+      <ul>
+        <li><strong>Shaving:</strong> lesões pequenas e superficiais</li>
+        <li><strong>Ressecção em disco:</strong> nódulos até 3 cm</li>
+        <li><strong>Ressecção segmentar:</strong> lesões &gt; 3 cm ou múltiplas lesões intestinais</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- IMPACTO NA FERTILIDADE -->
+  <div class="slide">
+    <span class="slide-num">Slide 10</span>
+    <h2>Impacto da Endometriose na Fertilidade</h2>
+    <div class="s-body">
+      <div class="hl">30–50% das mulheres com endometriose têm infertilidade &nbsp;|&nbsp; 30% das mulheres inférteis são portadoras de endometriose.</div>
+      <div class="four-col">
+        <div class="box">
+          <h3>Fatores mecânicos</h3>
+          <ul>
+            <li>Aderências</li>
+            <li>Obstruções tubárias</li>
+            <li>Distúrbios de contratilidade</li>
+            <li>Dispareunia</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Inflamação peritoneal</h3>
+          <ul>
+            <li>Qualidade oocitária</li>
+            <li>Motilidade espermática</li>
+            <li>Fertilização</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Ambiente ovariano</h3>
+          <ul>
+            <li>Quantidade</li>
+            <li>Qualidade</li>
+            <li>Desfechos em TRA</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Receptividade endometrial</h3>
+          <ul>
+            <li>Imunologia</li>
+            <li>Receptores</li>
+            <li>Janela de implantação</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:10px"><strong>Importante:</strong> o tratamento medicamentoso hormonal <strong>não melhora fertilidade</strong>.</p>
+    </div>
+  </div>
+
+  <!-- CLASSIFICAÇÃO ASRM + EFI -->
+  <div class="slide">
+    <span class="slide-num">Slide 11</span>
+    <h2>Classificação ASRM e EFI</h2>
+    <div class="s-body">
+      <div class="two-col">
+        <ul>
+          <li><strong>Estágio I — Mínima</strong> (escore 1–5): implantes isolados, sem aderências</li>
+          <li><strong>Estágio II — Leve</strong> (escore 6–15): implantes superficiais &lt; 5 cm, sem aderências</li>
+          <li><strong>Estágio III — Moderada</strong> (escore 16–40): múltiplos implantes, aderências peritubárias e periovarianas</li>
+          <li><strong>Estágio IV — Grave</strong> (escore &gt; 40): endometriomas, aderências densas e firmes</li>
+        </ul>
+        <div class="box">
+          <h3>EFI — Endometriosis Fertility Index</h3>
+          <ul>
+            <li>Pontua de <strong>0 a 10</strong></li>
+            <li>Parâmetros: idade, tempo de infertilidade, gestação prévia, extensão de doença</li>
+            <li>Score 9–10 → <strong>~75% de gestação espontânea</strong> em 3 anos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGNÓSTICO E CONDUTA NA INFERTILIDADE -->
+  <div class="slide">
+    <span class="slide-num">Slide 12</span>
+    <h2>Prognóstico e Conduta na Infertilidade</h2>
+    <div class="s-body">
+      <div class="two-col">
+        <div class="box">
+          <h3>Bom prognóstico (TODOS)</h3>
+          <ul>
+            <li>Idade <strong>&lt; 35 anos</strong></li>
+            <li>Boa reserva ovariana</li>
+            <li>Ausência de fator masculino</li>
+            <li>Tubas funcionais</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Mau prognóstico (QUALQUER)</h3>
+          <ul>
+            <li>Idade <strong>&gt; 35 anos</strong></li>
+            <li>Baixa reserva ovariana</li>
+            <li>Fator masculino</li>
+            <li>Fator tubário</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hl">
+        <strong>Mau prognóstico → FIV direta.</strong><br>
+        <strong>Bom prognóstico + dor →</strong> laparoscopia; pós-op: gestação natural ou indução + IIU (3–6 meses).<br>
+        <strong>Bom prognóstico + sem dor + Endo III/IV →</strong> FIV.
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMO ENDOMETRIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 13</span>
+    <h2>Resumo — Endometriose</h2>
+    <div class="s-body">
+      <div class="schema"><span class="r">ENDOMETRIOSE</span>
+│
+├── <span class="r">DEFINIÇÃO</span>
+│   Tecido endometrial fora do útero | Estrogênio dependente | Menacme
+│   Tipos: peritoneal, ovariana e profunda (≥ 5 mm)
+│
+├── <span class="r">QUADRO CLÍNICO — 3 Ds</span>
+│   Dismenorreia | Dispareunia de profundidade | Dificuldade de engravidar
+│   + Sintomas urinários e intestinais cíclicos (conforme localização)
+│
+├── <span class="r">DIAGNÓSTICO</span>
+│   Padrão-ouro: laparoscopia com biópsia
+│   Imagem: USG TV c/ preparo intestinal | RNM com protocolo específico
+│   CA 125: sem valor diagnóstico
+│
+└── <span class="r">TRATAMENTO</span>
+    ├── Dor    → Progestagênio contínuo | ACO | AINE | GnRH
+    ├── Cirurg → VLP | Indicação absoluta: endo ov > 6 cm,
+    │            lesão ureter/íleo/apêndice/retossigmoide, falha clínica
+    └── Infert → Avaliar prognóstico → FIV x Cirurgia x Indução</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SEÇÃO: ADENOMIOSE
+  ═══════════════════════════════ -->
+  <div class="slide section-divider" data-section="adeno">
+    <div class="sec-label">Parte 2</div>
+    <h2>Adenomiose</h2>
+  </div>
+
+  <!-- ADENOMIOSE — DEFINIÇÃO -->
+  <div class="slide">
+    <span class="slide-num">Slide 15</span>
+    <h2>Adenomiose — Definição</h2>
+    <div class="s-body">
+      <p>Alteração <strong>benigna</strong> do útero caracterizada pela invasão benigna do endométrio no miométrio, <strong>além de 2,5 mm de profundidade</strong> ou, no mínimo, um campo microscópico de grande aumento distante da camada basal do endométrio.</p>
+      <ul>
+        <li>Presença de <strong>glândulas e estroma endometriais</strong> dentro do miométrio</li>
+        <li>Circundados por <strong>hiperplasia e hipertrofia</strong> das células miometriais</li>
+      </ul>
+      <div class="hl">Resumo: tecido endometrial (glândulas + estroma) invade e vive dentro do músculo uterino.</div>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — PATOGÊNESE -->
+  <div class="slide">
+    <span class="slide-num">Slide 16</span>
+    <h2>Teorias da Patogênese</h2>
+    <div class="s-body">
+      <h3>Teoria mais aceita</h3>
+      <ul>
+        <li><strong>Invaginação do endométrio basal</strong> para dentro do miométrio</li>
+        <li>Resulta de processo de <strong>lesão e reparo tecidual</strong></li>
+      </ul>
+      <h3>Teoria alternativa</h3>
+      <ul>
+        <li>Metaplasia de remanescentes embrionários de <strong>células müllerianas</strong></li>
+        <li>Diferenciação de <strong>células-tronco adultas</strong></li>
+      </ul>
+      <h3>Descoberta recente</h3>
+      <ul>
+        <li>Mutações somáticas no gene <strong>KRAS</strong> nas células afetadas</li>
+        <li>Conferem capacidade de <strong>sobrevivência e crescimento</strong> celular</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — FATORES DE RISCO -->
+  <div class="slide">
+    <span class="slide-num">Slide 17</span>
+    <h2>Fatores de Risco — Adenomiose</h2>
+    <div class="s-body">
+      <div class="hl">A <strong>exposição estrogênica</strong> contribui para o desenvolvimento da adenomiose.</div>
+      <div class="two-col">
+        <ul>
+          <li>Idade entre <strong>40 e 50 anos</strong></li>
+          <li>Menarca precoce (menos de 10 anos)</li>
+          <li>Ciclos menstruais curtos (menos de 24 dias)</li>
+          <li>Uso prévio de contraceptivos hormonais e <strong>tamoxifeno</strong></li>
+        </ul>
+        <ul>
+          <li>IMC elevado</li>
+          <li>Multiparidade (mais de duas gestações)</li>
+          <li>História de abortamento</li>
+          <li><strong>Manipulações uterinas prévias</strong> (curetagens, miomectomia, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — QUADRO CLÍNICO -->
+  <div class="slide">
+    <span class="slide-num">Slide 18</span>
+    <h2>Quadro Clínico — Adenomiose</h2>
+    <div class="s-body">
+      <div class="badge">Clássico: Dismenorreia + Sangramento</div>
+      <ul>
+        <li><strong>~35% dos casos:</strong> assintomática</li>
+        <li>Sangramento menstrual <strong>abundante e prolongado</strong></li>
+        <li><strong>Dismenorreia secundária</strong> que antecede até uma semana o fluxo e persiste após — sinal frequente de suspeita</li>
+        <li>Frequência e gravidade dos sintomas <strong>relacionadas com a extensão</strong> da doença</li>
+      </ul>
+      <div class="hl">Pensar em adenomiose: mulher com dismenorreia progressiva + sangramento abundante, principalmente multípara após manipulação uterina.</div>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — USG -->
+  <div class="slide">
+    <span class="slide-num">Slide 19</span>
+    <h2>Diagnóstico — USG Transvaginal (USGTV)</h2>
+    <div class="s-body">
+      <div class="badge">CAI NA PROVA — Exame de 1ª linha</div>
+      <ul>
+        <li>Aumento <strong>heterogêneo</strong> do volume uterino <em>sem</em> nódulos miomatosos</li>
+        <li><strong>Assimetria</strong> entre paredes uterinas</li>
+        <li>Heterogeneidade difusa ou focal do miométrio</li>
+        <li><strong>Cistos anecoicos</strong> no miométrio</li>
+        <li><strong>Estrias radiadas</strong> partindo do endométrio (artefato "cortina veneziana")</li>
+        <li>Focos hiperecogênicos na zona juncional</li>
+        <li>Interface endométrio-miométrio <strong>indistinta / irregular</strong> — perda da zona juncional</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — RM -->
+  <div class="slide">
+    <span class="slide-num">Slide 20</span>
+    <h2>Diagnóstico — Ressonância Magnética de Pelve</h2>
+    <div class="s-body">
+      <div class="badge">CAI NA PROVA — Método mais sensível</div>
+      <ul>
+        <li>Espessamento focal ou difuso da zona juncional</li>
+        <li><strong>Zona juncional &gt; 12 mm</strong> = diagnóstico de adenomiose</li>
+        <li>Focos de <strong>alta intensidade</strong> na zona juncional (cistos com sangue) = alta especificidade</li>
+        <li>Assimetria de paredes uterinas com múltiplas formações císticas</li>
+      </ul>
+      <div class="hl">RM &gt; USG em sensibilidade, mas USG é o exame de <strong>primeira linha</strong> por ser mais acessível.</div>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — HISTEROSCOPIA -->
+  <div class="slide">
+    <span class="slide-num">Slide 21</span>
+    <h2>Diagnóstico — Histeroscopia</h2>
+    <div class="s-body">
+      <ul>
+        <li><strong>Não</strong> é o método de primeira linha</li>
+        <li>Opção viável em formas <strong>focais ou difusas superficiais</strong> selecionadas</li>
+        <li>Permite <strong>ablação endomiometrial</strong> — tratar adenomiomas superficiais</li>
+        <li>Não há técnica padronizada nem consenso definido</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — TRATAMENTO CLÍNICO -->
+  <div class="slide">
+    <span class="slide-num">Slide 22</span>
+    <h2>Tratamento Clínico — Adenomiose</h2>
+    <div class="s-body">
+      <p><strong>Objetivo:</strong> controle dos sintomas — dor pélvica e sangramento.</p>
+      <table>
+        <thead><tr><th>Opção</th><th>Detalhes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ACO combinado contínuo</strong></td><td>Estabiliza endométrio; reduz fluxo e cólicas. Excelente para sangramentos volumosos.</td></tr>
+          <tr><td><strong>Progestagênios</strong></td><td>Progesterona de 2ª fase (cíclico) ou como anticoncepcional contínuo.</td></tr>
+          <tr><td><strong>SIU-LNG (DIU hormonal)</strong></td><td>Eficaz; preserva fertilidade. <em>Contraindicado se deformidade da cavidade uterina.</em></td></tr>
+          <tr><td><strong>Análogos do GnRH</strong></td><td>Eficaz, porém uso por <strong>período curto</strong> — efeitos adversos (hipoestrogenismo).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ADENOMIOSE — TRATAMENTO CIRÚRGICO -->
+  <div class="slide">
+    <span class="slide-num">Slide 23</span>
+    <h2>Tratamento Cirúrgico — Adenomiose</h2>
+    <div class="s-body">
+      <div class="badge">Tratamento Definitivo</div>
+      <div class="two-col">
+        <div class="box">
+          <h3>Histerectomia</h3>
+          <ul>
+            <li>Tratamento <strong>definitivo</strong> da adenomiose</li>
+            <li>Indicada para mulheres com <strong>prole concluída</strong> (geralmente após 40 anos)</li>
+            <li>Sintomas intensos de SUA e dismenorreia</li>
+            <li>Falha do tratamento medicamentoso</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Embolização das artérias uterinas</h3>
+          <ul>
+            <li>Alternativa para casos selecionados</li>
+            <li>Evidências ainda <strong>escassas</strong></li>
+            <li>Possível melhora dos sintomas</li>
+            <li>Possível <strong>dano à fertilidade</strong></li>
+            <li>Recomenda-se individualização</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Histeroscopia cirúrgica</h3>
+      <ul>
+        <li>Auxilia quando a doença for <strong>focal e superficial</strong> — permite ablação endomiometrial</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RESUMO ADENOMIOSE -->
+  <div class="slide">
+    <span class="slide-num">Slide 24</span>
+    <h2>Resumo — Adenomiose</h2>
+    <div class="s-body">
+      <div class="schema"><span class="r">ADENOMIOSE</span>
+│
+├── <span class="r">DEFINIÇÃO</span>
+│   Endométrio (glândulas + estroma) invade o miométrio (&gt; 2,5 mm)
+│
+├── <span class="r">FATORES DE RISCO</span> — exposição estrogênica
+│   Idade 40-50a | Multiparidade | Manipulações uterinas | Menarca precoce | IMC elevado
+│
+├── <span class="r">QUADRO CLÍNICO</span>
+│   Dismenorreia secundária + Sangramento abundante | 35% assintomáticas
+│
+├── <span class="r">DIAGNÓSTICO</span>
+│   ├── 1ª linha      → USG transvaginal (heterogeneidade, cistos, assimetria)
+│   ├── Mais sensível → RM pelve (zona juncional &gt; 12 mm)
+│   └── Selecionados  → Histeroscopia
+│
+└── <span class="r">TRATAMENTO</span>
+    ├── Clínico   → ACO | Progestagênios | SIU-LNG | GnRH (curto prazo)
+    └── Cirúrgico → Histerectomia (definitivo) | Embolização (alternativa)</div>
+    </div>
+  </div>
+
+  <footer>Prof. Dr. Sergio Bigolin &nbsp;·&nbsp; Gustavo Liebgott &amp; Tadeu Sieslevski &nbsp;·&nbsp; Ginecologia Geral</footer>
+</div>
+
+<!-- ══════════ JAVASCRIPT ══════════ -->
+<script>
+  const SLIDE_W = 960, SLIDE_H = 540;
+
+  const slides     = Array.from(document.querySelectorAll('#scroll-view .slide'));
+  const presView   = document.getElementById('present-view');
+  const scrollView = document.getElementById('scroll-view');
+  const topbar     = document.getElementById('topbar');
+  const canvas     = document.getElementById('pres-canvas');
+  const curEl      = document.getElementById('cur');
+  const totEl      = document.getElementById('tot');
+  const fillEl     = document.getElementById('pres-prog-fill');
+  const bottom     = document.getElementById('pres-bottom');
+  const navPrev    = document.getElementById('nav-prev');
+  const navNext    = document.getElementById('nav-next');
+  const keyHint    = document.getElementById('key-hint');
+  const btnFs      = document.getElementById('btn-fs');
+
+  let current = 0;
+  totEl.textContent = slides.length;
+
+  /* dots com separador entre seções */
+  const endoSepIdx  = slides.findIndex(s => s.dataset.section === 'endo');
+  const adenoSepIdx = slides.findIndex(s => s.dataset.section === 'adeno');
+
+  slides.forEach((_, i) => {
+    if (i === adenoSepIdx && i > 0) {
+      const sep = document.createElement('div');
+      sep.className = 'dot-sep';
+      bottom.appendChild(sep);
+    }
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.title = `Slide ${i + 1}`;
+    d.onclick = () => goTo(i);
+    bottom.appendChild(d);
+  });
+  const getDots = () => bottom.querySelectorAll('.dot');
+
+  function scaleCanvas() {
+    const stage  = document.getElementById('pres-stage');
+    const availW = stage.clientWidth  - 160;
+    const availH = stage.clientHeight - 32;
+    const scale  = Math.min(availW / SLIDE_W, availH / SLIDE_H);
+    canvas.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', scaleCanvas);
+
+  function render(dir) {
+    const clone = slides[current].cloneNode(true);
+    const num = clone.querySelector('.slide-num');
+    if (num) num.remove();
+
+    canvas.innerHTML = '';
+    canvas.appendChild(clone);
+    canvas.classList.remove('anim-fwd', 'anim-bck');
+    void canvas.offsetWidth;
+    canvas.classList.add(dir >= 0 ? 'anim-fwd' : 'anim-bck');
+
+    curEl.textContent  = current + 1;
+    fillEl.style.width = ((current + 1) / slides.length * 100) + '%';
+    getDots().forEach((d, i) => d.classList.toggle('on', i === current));
+    navPrev.disabled = current === 0;
+    navNext.disabled = current === slides.length - 1;
+    scaleCanvas();
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= slides.length) return;
+    const dir = idx >= current ? 1 : -1;
+    current = idx;
+    render(dir);
+  }
+
+  function changeSlide(delta) { goTo(current + delta); }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      presView.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+  document.addEventListener('fullscreenchange', () => {
+    const isFs = !!document.fullscreenElement;
+    btnFs.textContent = isFs ? '⊠ Sair tela cheia' : '⛶ Tela cheia';
+    scaleCanvas();
+  });
+
+  function startPresentation() {
+    current = 0;
+    presView.classList.add('active');
+    scrollView.style.display = 'none';
+    topbar.style.display = 'none';
+    render(1);
+    presView.requestFullscreen().catch(() => {});
+    setTimeout(() => { keyHint.style.opacity = '0'; }, 4000);
+  }
+
+  function exitPresentation() {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    presView.classList.remove('active');
+    scrollView.style.display = 'flex';
+    topbar.style.display = 'flex';
+    keyHint.style.opacity = '1';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!presView.classList.contains('active')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+    if (e.key === 'ArrowLeft')                   { e.preventDefault(); changeSlide(-1); }
+    if (e.key === 'Escape')                        exitPresentation();
+    if (e.key === 'f' || e.key === 'F')            toggleFullscreen();
+    if (e.key === 'Home')                          goTo(0);
+    if (e.key === 'End')                           goTo(slides.length - 1);
+  });
+
+  let tx = null;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    if (tx === null || !presView.classList.contains('active')) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+    tx = null;
+  });
+</script>
+</body>
+</html>
