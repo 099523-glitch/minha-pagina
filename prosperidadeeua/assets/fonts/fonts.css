@@ -1,0 +1,17 @@
+/* Self-hosted Google Fonts (latin subset, variable wght axis) */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('roboto-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('montserrat-latin.woff2') format('woff2');
+}
