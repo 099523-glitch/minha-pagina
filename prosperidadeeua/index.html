@@ -200,10 +200,10 @@
       </script>
     </div>
 
-    <!-- CTA PULSATIL (aparece aos 26:38 do vídeo) -->
-    <div id="cta-wrapper" class="cta-wrapper">
+    <!-- CTA PULSATIL (sem delay – visível imediatamente) -->
+    <div id="cta-wrapper" class="cta-wrapper show">
       <!-- ★★★ TROQUE O href ABAIXO PELA URL DO SEU CHECKOUT ★★★ -->
-      <a id="cta-button" class="cta-button" href="https://checkout.vendepay.com/8ee27576-687a-4cbb-b611-a5f794c26a79" target="_self" rel="noopener">
+      <a id="cta-button" class="cta-button esconder" href="https://checkout.vendepay.com/8ee27576-687a-4cbb-b611-a5f794c26a79" target="_self" rel="noopener">
         ACCESS THE CHANT OF THE 4 ARCHANGELS
       </a>
     </div>
@@ -493,11 +493,7 @@
       }
     }, 2220000);
 
-    /* ===== CTA PULSATIL: aparece aos 26:38 (1598s) ===== */
-    setTimeout(function() {
-      var cta = document.getElementById('cta-wrapper');
-      if (cta) cta.classList.add('show');
-    }, 1598 * 1000);
+    /* ===== CTA PULSATIL: delay desativado (visível imediatamente) ===== */
   </script>
 
 </body>
