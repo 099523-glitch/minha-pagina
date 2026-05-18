@@ -124,10 +124,10 @@
     @media (max-width: 600px) { .notification { padding: 6px; font-size: 14px; } .notification img { width: 30px; height: 30px; } }
 
     /* CTA PULSATIL (aparece aos 28:36 do vídeo) */
-    .cta-wrapper { display: none; padding: 16px; max-width: 600px; margin: 0 auto; }
+    .cta-wrapper { display: none; padding: 16px; max-width: 600px; margin: 0 auto; box-sizing: border-box; }
     .cta-wrapper.show { display: block; animation: cta-fade-in 0.6s ease-out; }
     .cta-button {
-      display: block; width: 100%; padding: 18px 24px;
+      display: block; width: 100%; padding: 18px 24px; box-sizing: border-box;
       background: #5ba83f; color: #ffffff;
       font-family: 'Roboto', Arial, sans-serif; font-weight: 700; font-size: 17px;
       text-align: center; text-decoration: none; text-transform: uppercase;
