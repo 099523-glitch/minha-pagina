@@ -200,8 +200,8 @@
       </script>
     </div>
 
-    <!-- CTA PULSATIL (sem delay – visível imediatamente) -->
-    <div id="cta-wrapper" class="cta-wrapper show">
+    <!-- CTA PULSATIL (aparece aos 26:38 do vídeo) -->
+    <div id="cta-wrapper" class="cta-wrapper">
       <!-- ★★★ TROQUE O href ABAIXO PELA URL DO SEU CHECKOUT ★★★ -->
       <a id="cta-button" class="cta-button" href="https://checkout.vendepay.com/8ee27576-687a-4cbb-b611-a5f794c26a79" target="_self" rel="noopener">
         ACCESS THE CHANT OF THE 4 ARCHANGELS
@@ -493,15 +493,11 @@
       }
     }, 2220000);
 
-    /* ===== CTA PULSATIL: delay desativado (visível imediatamente) =====
-       Para reativar o delay aos 28:36, remova a classe "show" do <div id="cta-wrapper">
-       no HTML e descomente o bloco abaixo:
-
-       setTimeout(function() {
-         var cta = document.getElementById('cta-wrapper');
-         if (cta) cta.classList.add('show');
-       }, 1716 * 1000);
-    */
+    /* ===== CTA PULSATIL: aparece aos 26:38 (1598s) ===== */
+    setTimeout(function() {
+      var cta = document.getElementById('cta-wrapper');
+      if (cta) cta.classList.add('show');
+    }, 1598 * 1000);
   </script>
 
 </body>
