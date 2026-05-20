@@ -128,9 +128,9 @@
        <!-- Vídeo VTurb Acima -->
 
         <!-- =============================================
-             CTA BUTTON — altere CTA_DELAY_SECONDS para
-             definir em qual segundo do vídeo o botão aparece.
-             0 = aparece imediatamente.
+             CTA BUTTON — começa escondido pela classe .esconderf
+             A revelação é feita pela VTurb (configurar no painel
+             do player para exibir a classe "esconderf").
         ============================================== -->
         <style>
             @keyframes pulse-cta {
@@ -140,35 +140,15 @@
             }
             #cta-btn { animation: pulse-cta 1.6s ease-in-out infinite; }
             #cta-btn:hover { animation: none; transform: scale(1.07); background:#388e3c !important; }
+            /* Botão CTA escondido até a VTurb revelar */
+            .esconderf { display: none; }
         </style>
         <div style="display:flex;justify-content:center;align-items:center;width:100%;margin:20px auto;">
-            <a id="cta-btn" href="https://www.dtc.news-health81.online/lottopv/" target="_blank" rel="noopener noreferrer"
-               style="display:inline-block;background:#4caf50;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:800;padding:15px 36px;border-radius:5px;text-decoration:none;text-align:center;letter-spacing:0.3px;max-width:360px;width:90%;box-shadow:0 3px 8px rgba(0,0,0,0.25);">
+            <a id="cta-btn" class="esconderf" href="https://www.dtc.news-health81.online/lottopv/" target="_blank" rel="noopener noreferrer"
+               style="background:#4caf50;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:800;padding:15px 36px;border-radius:5px;text-decoration:none;text-align:center;letter-spacing:0.3px;max-width:360px;width:90%;box-shadow:0 3px 8px rgba(0,0,0,0.25);">
                 Click Here to Get Lottocash
             </a>
         </div>
-
-        <script>
-            const CTA_DELAY_SECONDS = 0; // ← mude aqui para definir o minuto/segundo do vídeo
-
-            (function() {
-                var btn = document.getElementById('cta-btn');
-
-                if (CTA_DELAY_SECONDS === 0) {
-                    btn.style.display = 'inline-block';
-                } else {
-                    btn.style.display = 'none';
-                    var player = document.getElementById('vid-6a0dbc7049252ad50780ff85');
-                    var shown = false;
-                    player.addEventListener('timeupdate', function(e) {
-                        if (!shown && e.detail && e.detail.currentTime >= CTA_DELAY_SECONDS) {
-                            shown = true;
-                            btn.style.display = 'inline-block';
-                        }
-                    });
-                }
-            })();
-        </script>
 
         <p class="watch-note">Watch the video until the end to unlock this new AI</p>
 
