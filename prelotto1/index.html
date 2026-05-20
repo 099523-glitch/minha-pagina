@@ -126,7 +126,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubunt
             <p><strong>Do you agree to watch it until the end?</strong></p>
 
             <!-- TROQUE O HREF PELO SEU LINK -->
-            <a href="https://www.dtc.news-health81.online/lottopv/" class="cta-button" target="_blank" rel="noopener noreferrer">Click Here to Watch Until the End and Hit the Next Jackpot</a>
+            <a id="ctaButton" href="https://www.dtc.news-health81.online/lottopv/" class="cta-button" target="_blank" rel="noopener noreferrer">Click Here to Watch Until the End and Hit the Next Jackpot</a>
 
             <p class="warning"><b>WARNING:</b> Powerball is desperate to censor this AI and stop more Americans from winning every week. This video will be taken down within the next few minutes.</p>
 
@@ -279,7 +279,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubunt
             timerInterval = setInterval(updateTimer, 1000);
         }
 
-        window.addEventListener('DOMContentLoaded', loadDrawData);
+        // ── Repassa os parâmetros UTM para o botão da oferta ──
+        function setCtaTracking() {
+            const cta = document.getElementById('ctaButton');
+            if (!cta) return;
+            const params = document.location.search.replace('?', '').trim();
+            if (!params) return;
+            const base = cta.getAttribute('href').trim();
+            cta.setAttribute('href', base + (base.indexOf('?') > 0 ? '&' : '?') + params);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadDrawData();
+            setCtaTracking();
+        });
     </script>
 
 </body>
