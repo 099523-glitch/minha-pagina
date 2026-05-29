@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lucky Burn — O Guia Completo de 30 Dias</title>
+<style>
+  :root{
+    --green:#1e6b2e; --green-2:#2e9e45; --gold:#ffdd57; --ink:#1a2e1a;
+    --muted:#4a6e4a; --soft:#f0faf0; --line:#cfe6cf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:var(--ink); line-height:1.7; background:#fff; font-size:16px;
+  }
+  .page{
+    max-width:780px; margin:0 auto; padding:64px 56px;
+    border-bottom:1px solid #eee;
+  }
+  h1,h2,h3,h4{color:var(--green); line-height:1.25;}
+  h2.chapter-title{font-size:1.9rem; margin:0 0 6px;}
+  h3{font-size:1.25rem; margin:28px 0 10px;}
+  h4{font-size:1.05rem; margin:20px 0 8px; color:var(--green-2);}
+  p{margin:0 0 16px;}
+  ul,ol{margin:0 0 16px 22px;}
+  li{margin:0 0 7px;}
+  em{color:var(--muted);}
+  strong{color:var(--ink);}
+  a{color:var(--green-2);}
+
+  /* COVER */
+  .cover{
+    background:linear-gradient(160deg,#13471e 0%,#1e6b2e 55%,#2e9e45 100%);
+    color:#fff; text-align:center; min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    padding:80px 40px; border:none;
+  }
+  .cover .kicker{
+    display:inline-block; background:var(--gold); color:var(--ink);
+    font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    font-size:.78rem; padding:7px 18px; border-radius:30px; margin-bottom:30px;
+  }
+  .cover h1{color:#fff; font-size:clamp(2rem,6vw,3.4rem); font-weight:800; max-width:680px;}
+  .cover h1 span{color:var(--gold);}
+  .cover .subtitle{
+    color:#eafaea; font-size:clamp(1rem,2.6vw,1.25rem); max-width:620px;
+    margin:22px auto 0; font-weight:400; opacity:.95;
+  }
+  .cover .seal{
+    margin-top:48px; font-size:.85rem; letter-spacing:1px; opacity:.85;
+    border-top:1px solid rgba(255,255,255,.3); padding-top:24px;
+  }
+  .cover .emoji{font-size:3.2rem; margin-bottom:18px;}
+
+  /* CALLOUT BOXES */
+  .box{
+    background:var(--soft); border-left:5px solid var(--green-2);
+    border-radius:0 12px 12px 0; padding:20px 24px; margin:24px 0;
+  }
+  .box.warn{background:#fff8dc; border-left-color:#e0a800;}
+  .box.gold{background:#fffdf2; border-left-color:var(--gold);}
+  .box h4{margin-top:0;}
+  .box .box-label{
+    font-size:.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--green-2); display:block; margin-bottom:6px;
+  }
+  .box.warn .box-label{color:#b8860b;}
+
+  .action{
+    background:var(--green); color:#fff; border-radius:12px;
+    padding:18px 24px; margin:26px 0;
+  }
+  .action .box-label{color:var(--gold); font-size:.72rem; font-weight:700;
+    letter-spacing:1.5px; text-transform:uppercase; display:block; margin-bottom:6px;}
+  .action p{margin:0; color:#eafaea;}
+  .action strong{color:#fff;}
+
+  /* TABLES */
+  table{width:100%; border-collapse:collapse; margin:22px 0; font-size:.93rem;}
+  th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--green); color:#fff; font-weight:700;}
+  tr:nth-child(even) td{background:var(--soft);}
+
+  /* CHECKLIST */
+  .checklist{list-style:none; margin-left:0;}
+  .checklist li{padding-left:34px; position:relative; margin-bottom:10px;}
+  .checklist li::before{
+    content:""; position:absolute; left:0; top:2px;
+    width:20px; height:20px; border:2px solid var(--green-2); border-radius:5px;
+  }
+
+  /* FILL-IN LINES */
+  .fill{border-bottom:1.5px dashed #9bc49b; min-height:1.8em; display:block; margin:8px 0;}
+  .fill-row{display:flex; gap:14px; margin:10px 0;}
+  .fill-row .label{font-weight:600; color:var(--muted); min-width:130px;}
+  .fill-row .line{flex:1; border-bottom:1.5px dashed #9bc49b;}
+
+  /* TOC */
+  .toc ol{list-style:none; margin-left:0;}
+  .toc .part{font-weight:800; color:var(--green); margin:22px 0 8px; font-size:1.05rem;
+    text-transform:uppercase; letter-spacing:.5px;}
+  .toc li.item{display:flex; justify-content:space-between; gap:12px;
+    padding:5px 0; border-bottom:1px dotted #cfe6cf;}
+  .toc li.item .t{color:var(--ink);}
+  .toc li.item .n{color:var(--green-2); font-weight:700;}
+
+  .part-divider{
+    background:var(--soft); text-align:center; padding:90px 40px;
+    border:none; border-top:6px solid var(--green-2);
+  }
+  .part-divider .pn{font-size:.85rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--green-2); font-weight:700;}
+  .part-divider h2{font-size:2.2rem; margin-top:10px; border:none;}
+  .part-divider p{max-width:520px; margin:14px auto 0; color:var(--muted);}
+
+  .lead{font-size:1.12rem; color:var(--green); font-weight:600; margin-bottom:24px;}
+  .chapter-num{font-size:.8rem; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; color:var(--green-2); display:block; margin-bottom:6px;}
+  hr.soft{border:none; border-top:1px solid #e3f0e3; margin:30px 0;}
+
+  footer.book{background:var(--ink); color:#c0d8c0; text-align:center;
+    padding:50px 40px; font-size:.85rem; border:none;}
+  footer.book strong{color:var(--gold);}
+
+  @media print{
+    body{font-size:11.5pt;}
+    .page,.part-divider{max-width:100%; padding:30px 26px; border:none;
+      page-break-after:always;}
+    .cover{min-height:auto; padding:120px 40px; page-break-after:always;}
+    .action,.box{break-inside:avoid;}
+    table{break-inside:avoid;}
+  }
+  @media(max-width:560px){
+    .page{padding:44px 24px;}
+    .fill-row{flex-direction:column; gap:4px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== CAPA ===================== -->
+<section class="cover">
+  <div class="emoji">🔥</div>
+  <span class="kicker">Guia Premium</span>
+  <h1>Lucky <span>Burn</span><br>O Guia Completo de 30 Dias</h1>
+  <p class="subtitle">Hábitos simples, refeições inteligentes e uma rotina realista para apoiar seu metabolismo, aumentar a saciedade e construir resultados que duram — no seu ritmo, depois dos 40.</p>
+  <div class="seal">UM GUIA COMPLEMENTAR DE HÁBITOS E ROTINA · RESULTADOS VARIAM DE PESSOA PARA PESSOA</div>
+</section>
+
+<!-- ===================== AVISO DE SAÚDE ===================== -->
+<section class="page">
+  <span class="chapter-num">Antes de começar</span>
+  <h2 class="chapter-title">Aviso Importante de Saúde</h2>
+  <div class="box warn">
+    <span class="box-label">Leia com atenção</span>
+    <p>Este ebook tem caráter <strong>educativo e informativo</strong>. Ele apresenta orientações gerais de hábitos alimentares, rotina e estilo de vida para o público adulto saudável.</p>
+    <p style="margin-bottom:0;">Este material <strong>não substitui</strong> a orientação de um médico, nutricionista ou outro profissional de saúde qualificado, e <strong>não se destina a diagnosticar, tratar, curar ou prevenir qualquer doença</strong>.</p>
+  </div>
+  <p>Antes de iniciar qualquer mudança na alimentação, na prática de atividade física ou na sua rotina, consulte um profissional de saúde — especialmente se você:</p>
+  <ul>
+    <li>tem alguma condição de saúde (como diabetes, hipertensão, alterações da tireoide, doenças cardíacas, renais ou gastrointestinais);</li>
+    <li>está grávida, amamentando ou planejando engravidar;</li>
+    <li>faz uso contínuo de medicamentos;</li>
+    <li>tem histórico de transtornos alimentares;</li>
+    <li>tem qualquer dúvida sobre a adequação destas orientações ao seu caso.</li>
+  </ul>
+  <p>As sugestões aqui apresentadas são pontos de partida para construir uma rotina mais saudável. <strong>Resultados variam de pessoa para pessoa</strong> e dependem de fatores individuais, consistência e acompanhamento profissional quando necessário. Use este guia como apoio, ouvindo sempre o seu corpo e os profissionais que cuidam de você.</p>
+  <div class="box">
+    <span class="box-label">Como usar este guia</span>
+    <p style="margin-bottom:0;">Leia os capítulos na ordem na primeira vez. Depois, use o <strong>Plano de 30 Dias</strong> e a <strong>Caixa de Ferramentas</strong> (no final) como seu material de trabalho diário. Não é preciso fazer tudo de uma vez — o objetivo é constância, não perfeição.</p>
+  </div>
+</section>
+
+<!-- ===================== SUMÁRIO ===================== -->
+<section class="page toc">
+  <span class="chapter-num">Conteúdo</span>
+  <h2 class="chapter-title">Sumário</h2>
+  <p class="lead">Um percurso de cinco partes — do entendimento à manutenção.</p>
+
+  <div class="part">Introdução</div>
+  <ol>
+    <li class="item"><span class="t">Você não falhou por falta de força de vontade</span></li>
+  </ol>
+
+  <div class="part">Parte 1 · Entender</div>
+  <ol>
+    <li class="item"><span class="t">Por que emagrecer depois dos 40 é diferente</span><span class="n">01</span></li>
+    <li class="item"><span class="t">Erros comuns que travam o emagrecimento</span><span class="n">02</span></li>
+  </ol>
+
+  <div class="part">Parte 2 · Comer melhor</div>
+  <ol>
+    <li class="item"><span class="t">Como criar um déficit calórico sem passar fome</span><span class="n">03</span></li>
+    <li class="item"><span class="t">Proteína, fibras e hidratação: os pilares da saciedade</span><span class="n">04</span></li>
+    <li class="item"><span class="t">Alimentos que ajudam na saciedade</span><span class="n">05</span></li>
+    <li class="item"><span class="t">Como montar pratos simples — o Modelo de Prato Ideal</span><span class="n">06</span></li>
+    <li class="item"><span class="t">Lista de compras inteligente</span><span class="n">07</span></li>
+    <li class="item"><span class="t">Café da manhã, almoço, jantar e lanches inteligentes</span><span class="n">08</span></li>
+  </ol>
+
+  <div class="part">Parte 3 · Controlar os gatilhos</div>
+  <ol>
+    <li class="item"><span class="t">Estratégias para reduzir beliscos e compulsões</span><span class="n">09</span></li>
+    <li class="item"><span class="t">Como lidar com a vontade de doce</span><span class="n">10</span></li>
+    <li class="item"><span class="t">Como comer fora sem sair do plano</span><span class="n">11</span></li>
+    <li class="item"><span class="t">Como aproveitar o fim de semana sem perder o progresso</span><span class="n">12</span></li>
+  </ol>
+
+  <div class="part">Parte 4 · Estilo de vida</div>
+  <ol>
+    <li class="item"><span class="t">Sono e estresse no emagrecimento</span><span class="n">13</span></li>
+    <li class="item"><span class="t">Caminhada e movimento diário</span><span class="n">14</span></li>
+    <li class="item"><span class="t">Jejum intermitente para iniciantes (opcional e seguro)</span><span class="n">15</span></li>
+  </ol>
+
+  <div class="part">Parte 5 · Executar e manter</div>
+  <ol>
+    <li class="item"><span class="t">Plano de 30 dias com ações simples</span><span class="n">16</span></li>
+    <li class="item"><span class="t">Como manter o peso depois de emagrecer</span><span class="n">17</span></li>
+  </ol>
+
+  <div class="part">Caixa de Ferramentas</div>
+  <ol>
+    <li class="item"><span class="t">Modelo de prato · Lista de compras · Substituições</span></li>
+    <li class="item"><span class="t">Cardápio exemplo de 7 dias</span></li>
+    <li class="item"><span class="t">Plano de ação de 30 dias · Checklist diário</span></li>
+    <li class="item"><span class="t">Tracker · Página de metas · Reflexão semanal</span></li>
+  </ol>
+
+  <div class="part">Conclusão</div>
+  <ol>
+    <li class="item"><span class="t">Próximos passos</span></li>
+  </ol>
+</section>
+
+<!-- ===================== INTRODUÇÃO ===================== -->
+<section class="page">
+  <span class="chapter-num">Introdução</span>
+  <h2 class="chapter-title">Você não falhou por falta de força de vontade</h2>
+  <p class="lead">Se você já começou um plano cheio de esperança e o viu desmoronar algumas semanas depois, este guia foi escrito para você.</p>
+
+  <p>Talvez a história seja parecida com a sua: você decide que dessa vez vai dar certo. Compra os alimentos, organiza a geladeira, segue tudo à risca por dez, quinze dias. E então a vida acontece. Uma semana estressante. Um jantar de aniversário. Uma terça-feira difícil. De repente, o plano que parecia tão sólido escorre pelos dedos — e vem aquela voz familiar dizendo que o problema é você.</p>
+
+  <p>Precisamos começar desfazendo essa ideia. <strong>O problema quase nunca é falta de força de vontade.</strong> A maioria dos programas de emagrecimento trata o corpo como uma equação simples — calorias que entram, calorias que saem — e ignora tudo o que realmente sustenta uma mudança: o ambiente em que você vive, a qualidade do seu sono, o nível de estresse do seu dia, a hidratação, o movimento e, acima de tudo, a <strong>consistência</strong> de pequenas escolhas repetidas ao longo do tempo.</p>
+
+  <p>Emagrecer de forma sustentável não é sobre ser perfeito por 30 dias. É sobre fazer escolhas um pouco melhores, com mais frequência, de um jeito que caiba na sua vida real. É a diferença entre uma dieta que você "aguenta" e uma rotina que você "vive".</p>
+
+  <div class="box gold">
+    <span class="box-label">A ideia central deste guia</span>
+    <p style="margin-bottom:0;">Você não precisa de mais força de vontade. Você precisa de um <strong>sistema mais simples</strong> — um ambiente, uma rotina e um conjunto de hábitos que tornem as boas escolhas mais fáceis e as escolhas difíceis menos frequentes.</p>
+  </div>
+
+  <p>O <strong>Lucky Burn</strong> é exatamente isso: um guia complementar de hábitos e rotina, pensado para quem tem uma vida cheia e quer resultados que durem. Não é um tratamento médico. Não é uma dieta radical. É um mapa prático para organizar sua alimentação, controlar gatilhos, dormir e se mover melhor — e seguir por 30 dias com clareza.</p>
+
+  <p>Ao longo das próximas páginas, você vai entender por que o corpo muda depois dos 40, como montar pratos que saciam, como lidar com a vontade de doce e com os fins de semana, e como transformar tudo isso em um plano de ação concreto. No final, você encontra uma Caixa de Ferramentas com cardápios, listas e trackers prontos para usar.</p>
+
+  <p>Respire fundo. Você está prestes a trocar a frustração por um caminho. Vamos juntos.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Escreva em uma frase <strong>por que</strong> você quer essa mudança agora. Não o número na balança — o motivo de verdade (ter energia para os netos, subir a escada sem cansar, se sentir bem numa foto). Guarde essa frase. Ela vai te sustentar nos dias difíceis.</p>
+  </div>
+</section>
+
+<!-- ===================== PARTE 1 ===================== -->
+<section class="part-divider">
+  <div class="pn">Parte 1</div>
+  <h2>Entender</h2>
+  <p>Antes de mudar o que você faz, vale entender por que seu corpo se comporta como se comporta. Conhecimento tira a culpa do caminho.</p>
+</section>
+
+<!-- CAP 1 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 01</span>
+  <h2 class="chapter-title">Por que emagrecer depois dos 40 é diferente</h2>
+  <p class="lead">Não é impressão sua: o que funcionava aos 25 raramente funciona da mesma forma agora. E há boas explicações para isso.</p>
+
+  <p>Com o passar dos anos, o corpo passa por mudanças naturais que influenciam a forma como ele usa e armazena energia. Entender essas mudanças não serve para te desanimar — serve para você parar de lutar contra o próprio corpo e começar a trabalhar <em>a favor</em> dele.</p>
+
+  <h3>O que costuma mudar com a idade</h3>
+  <ul>
+    <li><strong>Massa muscular:</strong> a partir dos 30–40 anos, é comum perder massa muscular gradualmente, sobretudo se a rotina é pouco ativa. Como o músculo é um tecido que consome bastante energia, menos músculo costuma significar um gasto diário um pouco menor.</li>
+    <li><strong>Rotina e movimento:</strong> trabalho mais sentado, mais responsabilidades e menos tempo livre tendem a reduzir o movimento espontâneo do dia.</li>
+    <li><strong>Sono e estresse:</strong> noites mal dormidas e estresse crônico afetam o apetite e a vontade de se mexer.</li>
+    <li><strong>Mudanças hormonais naturais:</strong> homens e mulheres passam por variações hormonais ao longo da vida, que podem influenciar apetite, energia e onde o corpo tende a acumular gordura.</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">Importante</span>
+    <p style="margin-bottom:0;">Essas mudanças são <strong>naturais e comuns</strong> — não são um defeito e não significam que emagrecer ficou impossível. Significam apenas que a estratégia precisa ser mais inteligente: focar em preservar músculo, comer com mais proteína e saciedade, e cuidar de sono, estresse e movimento. Se você suspeita de alguma alteração de saúde, converse com seu médico.</p>
+  </div>
+
+  <h3>A boa notícia</h3>
+  <p>Quase todos esses fatores estão, em alguma medida, sob sua influência. Você pode preservar (e até reconstruir) massa muscular com movimento simples. Pode melhorar o sono. Pode reduzir o estresse. Pode reorganizar a alimentação para sentir mais saciedade comendo bem. Nada disso exige perfeição — exige direção e repetição.</p>
+
+  <p>É por isso que este guia não foca em "comer menos e sofrer mais". Ele foca em <strong>ajustar o ambiente e a rotina</strong> para que o corpo, depois dos 40, tenha as condições de que precisa para responder melhor.</p>
+
+  <h4>Exemplo aplicável</h4>
+  <p>Maria, 52 anos, vivia cortando o jantar para "compensar". Sentia fome à noite, dormia mal e acordava sem energia. Ao trocar o corte radical por um jantar simples com proteína e vegetais, passou a dormir melhor e a sentir menos fome no dia seguinte — sem se privar. Mudou a estratégia, não a força de vontade.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Identifique <strong>um</strong> dos quatro fatores acima (músculo, movimento, sono, estresse) que mais saiu dos trilhos no seu caso. Você vai cuidar dele primeiro ao longo deste guia.</p>
+  </div>
+</section>
+
+<!-- CAP 2 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 02</span>
+  <h2 class="chapter-title">Erros comuns que travam o emagrecimento</h2>
+  <p class="lead">Muitas vezes o que atrapalha não é o que você faz de errado em um dia — é um padrão que se repete sem você perceber.</p>
+
+  <p>Conhecer esses erros antecipadamente é como ter um mapa das armadilhas. Você não precisa ter cometido todos; basta reconhecer os que aparecem na sua rotina.</p>
+
+  <h3>Os erros mais frequentes</h3>
+  <ol>
+    <li><strong>Cortar demais e rápido demais.</strong> Restrições extremas geram fome, irritação e desistência. O que sacia pouco hoje cobra caro amanhã.</li>
+    <li><strong>Pular refeições e "compensar" depois.</strong> Chegar faminto à próxima refeição costuma levar a comer mais e pior.</li>
+    <li><strong>Ignorar a proteína.</strong> Pratos pobres em proteína saciam menos e dificultam a preservação de músculo.</li>
+    <li><strong>Beber pouca água.</strong> A desidratação leve é facilmente confundida com fome.</li>
+    <li><strong>Querer perfeição.</strong> Um deslize vira "já estraguei tudo" — e o dia inteiro descarrila por causa de uma escolha.</li>
+    <li><strong>Não planejar.</strong> Sem comida boa à mão, a escolha fácil quase sempre é a menos saudável.</li>
+    <li><strong>Dormir mal e viver no estresse.</strong> Dois dos maiores sabotadores silenciosos do apetite e da constância.</li>
+    <li><strong>Focar só na balança.</strong> O peso oscila por água, intestino e hormônios. Olhar só para ele esconde o progresso real.</li>
+  </ol>
+
+  <div class="box warn">
+    <span class="box-label">O erro que mais derruba</span>
+    <p style="margin-bottom:0;">É o <strong>pensamento do "tudo ou nada"</strong>. Comer um doce não apaga uma semana de boas escolhas — assim como uma salada não apaga uma semana ruim. O que constrói resultado é a <strong>média</strong> das suas escolhas, não os extremos.</p>
+  </div>
+
+  <h3>A virada de chave</h3>
+  <p>Em vez de buscar o plano "perfeito", busque o plano <strong>repetível</strong>. Pergunte-se sempre: "Eu conseguiria fazer isso na maioria dos dias, mesmo numa semana corrida?" Se a resposta for não, simplifique até virar sim.</p>
+
+  <table>
+    <tr><th>Em vez de…</th><th>Tente…</th></tr>
+    <tr><td>"Vou cortar todo carboidrato"</td><td>"Vou ajustar a porção e priorizar proteína e vegetais"</td></tr>
+    <tr><td>"Estraguei, então hoje vale tudo"</td><td>"O próximo prato volta ao plano"</td></tr>
+    <tr><td>"Só conta se eu fizer 100%"</td><td>"80% feito com constância já me leva longe"</td></tr>
+  </table>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Marque na lista acima os <strong>dois erros</strong> que mais aparecem na sua rotina. Eles serão seus alvos prioritários nas próximas semanas.</p>
+  </div>
+</section>
+
+<!-- ===================== PARTE 2 ===================== -->
+<section class="part-divider">
+  <div class="pn">Parte 2</div>
+  <h2>Comer melhor</h2>
+  <p>Aqui mora o coração da mudança: comer de um jeito que sacia, nutre e cabe no seu dia — sem fome e sem complicação.</p>
+</section>
+
+<!-- CAP 3 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 03</span>
+  <h2 class="chapter-title">Como criar um déficit calórico sem passar fome</h2>
+  <p class="lead">Emagrecer envolve consumir, em média, um pouco menos de energia do que o corpo gasta. O segredo é fazer isso de um jeito confortável — não sofrido.</p>
+
+  <p>"Déficit calórico" assusta porque muita gente associa a passar fome. Mas há uma diferença enorme entre <strong>comer menos calorias</strong> e <strong>comer menos comida</strong>. Você pode reduzir calorias mantendo o prato cheio e a barriga satisfeita — basta escolher melhor o que ocupa esse espaço.</p>
+
+  <h3>O princípio do volume</h3>
+  <p>Alimentos ricos em água e fibras (vegetais, frutas, leguminosas) ocupam bastante espaço no estômago com poucas calorias. Alimentos ultraprocessados fazem o contrário: muita caloria em pouco volume, e ainda saciam pouco. Encha o prato dos primeiros e você comerá menos calorias <em>sem sentir</em> que está comendo menos.</p>
+
+  <div class="box">
+    <span class="box-label">A regra dos 3 ajustes suaves</span>
+    <ul style="margin-bottom:0;">
+      <li><strong>Acrescente</strong> uma fonte de proteína e vegetais em cada refeição principal.</li>
+      <li><strong>Ajuste</strong> a porção dos alimentos mais calóricos (frituras, doces, pães, molhos gordurosos) — sem eliminar, só reduzir.</li>
+      <li><strong>Reduza</strong> as calorias líquidas (refrigerante, suco adoçado, álcool em excesso), que saciam pouco.</li>
+    </ul>
+  </div>
+
+  <h3>Por que ir devagar funciona melhor</h3>
+  <p>Um déficit moderado é mais fácil de manter, preserva mais músculo e gera menos fome do que cortes agressivos. Pressa costuma cobrar o preço do efeito sanfona. Pense em semanas e meses, não em dias.</p>
+
+  <h4>Exemplo aplicável</h4>
+  <p>João trocou o refrigerante do almoço por água com gás e limão, e passou a montar metade do prato com vegetais. Não mudou mais nada de imediato. Sozinhos, esses dois ajustes já reduziram bastante as calorias do dia — sem nenhuma sensação de privação.</p>
+
+  <table>
+    <tr><th>Troca simples</th><th>O que muda</th></tr>
+    <tr><td>Refrigerante → água com gás e limão</td><td>Menos calorias líquidas, mais hidratação</td></tr>
+    <tr><td>Metade do prato de arroz → metade de vegetais</td><td>Mais volume e saciedade, menos calorias</td></tr>
+    <tr><td>Fritura → assado ou grelhado</td><td>Menos gordura adicionada</td></tr>
+    <tr><td>Sobremesa diária → 2–3x por semana</td><td>Mantém o prazer, reduz a média</td></tr>
+  </table>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Escolha <strong>uma</strong> caloria líquida que você consome no automático (refri, suco, segundo café com açúcar) e troque por água, chá ou versão sem açúcar hoje.</p>
+  </div>
+</section>
+
+<!-- CAP 4 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 04</span>
+  <h2 class="chapter-title">Proteína, fibras e hidratação: os pilares da saciedade</h2>
+  <p class="lead">Se existe um "atalho honesto" para comer menos sem sentir fome, ele se chama proteína, fibras e água.</p>
+
+  <h3>Proteína — a âncora do prato</h3>
+  <p>A proteína é o nutriente que mais contribui para a sensação de saciedade e ajuda a preservar a massa muscular — algo especialmente valioso depois dos 40. Ter uma fonte de proteína em <strong>todas</strong> as refeições muda completamente o quanto você sente fome ao longo do dia.</p>
+  <p><strong>Fontes práticas:</strong> ovos, frango, peixe, carne magra, iogurte natural, queijos magros, leite, feijão, lentilha, grão-de-bico, tofu, ervilha.</p>
+
+  <h3>Fibras — volume e regularidade</h3>
+  <p>As fibras retardam o esvaziamento do estômago (você fica satisfeito por mais tempo), ajudam o intestino a funcionar melhor e dão volume ao prato com poucas calorias.</p>
+  <p><strong>Fontes práticas:</strong> verduras e legumes, frutas com casca, aveia, feijões, arroz e pães integrais, sementes.</p>
+
+  <h3>Hidratação — o pilar esquecido</h3>
+  <p>É muito comum confundir sede com fome. Manter-se hidratado ajuda no funcionamento do corpo, na disposição e no controle do apetite. Não precisa contar mililitros com obsessão — basta criar o hábito.</p>
+
+  <div class="box gold">
+    <span class="box-label">Truque dos 3 momentos</span>
+    <p style="margin-bottom:0;">Beba um copo de água ao <strong>acordar</strong>, um <strong>antes de cada refeição</strong> e mantenha uma garrafa <strong>à vista</strong> na mesa de trabalho. O que está à vista, acontece.</p>
+  </div>
+
+  <h4>Quadro de montagem rápida</h4>
+  <table>
+    <tr><th>Pilar</th><th>Meta simples por refeição</th></tr>
+    <tr><td>Proteína</td><td>1 fonte do tamanho da palma da mão</td></tr>
+    <tr><td>Fibras</td><td>Metade do prato em vegetais + frutas no dia</td></tr>
+    <tr><td>Hidratação</td><td>1 copo de água antes de comer</td></tr>
+  </table>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Garanta uma <strong>fonte de proteína</strong> no seu café da manhã hoje (ovo, iogurte natural, queijo ou leite). É a refeição em que a proteína mais costuma faltar.</p>
+  </div>
+</section>
+
+<!-- CAP 5 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 05</span>
+  <h2 class="chapter-title">Alimentos que ajudam na saciedade</h2>
+  <p class="lead">Comer para emagrecer não é comer pouco — é comer os alimentos certos, que te deixam satisfeito por mais tempo.</p>
+
+  <p>Estes alimentos têm em comum a combinação de proteína, fibras e/ou água, que prolonga a saciedade. Tê-los sempre por perto facilita as boas escolhas no automático.</p>
+
+  <table>
+    <tr><th>Categoria</th><th>Opções que saciam</th></tr>
+    <tr><td>Proteínas</td><td>Ovos, frango, peixe, carne magra, iogurte natural, queijo magro</td></tr>
+    <tr><td>Leguminosas</td><td>Feijão, lentilha, grão-de-bico, ervilha</td></tr>
+    <tr><td>Vegetais</td><td>Brócolis, couve-flor, abobrinha, folhas, tomate, cenoura, pepino</td></tr>
+    <tr><td>Frutas</td><td>Maçã, pera, laranja, banana, frutas vermelhas, melão</td></tr>
+    <tr><td>Integrais</td><td>Aveia, arroz integral, batata-doce, pão integral</td></tr>
+    <tr><td>Gorduras boas (com moderação)</td><td>Abacate, azeite, castanhas, sementes</td></tr>
+  </table>
+
+  <div class="box">
+    <span class="box-label">A dupla campeã da saciedade</span>
+    <p style="margin-bottom:0;"><strong>Proteína + fibra na mesma refeição.</strong> Exemplos: iogurte natural com aveia e fruta; ovos com salada; frango com feijão e legumes. Essa combinação é o jeito mais simples de comer menos sem sentir.</p>
+  </div>
+
+  <h4>Lanches que seguram a fome</h4>
+  <ul>
+    <li>Iogurte natural com pedaços de fruta</li>
+    <li>Ovo cozido + uma fruta</li>
+    <li>Punhado pequeno de castanhas + maçã</li>
+    <li>Cenoura/pepino em palitos com homus</li>
+    <li>Queijo magro com tomate</li>
+  </ul>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Escolha <strong>dois lanches</strong> da lista acima e deixe os ingredientes prontos/visíveis. Lanche planejado é o melhor antídoto contra o belisco impulsivo.</p>
+  </div>
+</section>
+
+<!-- CAP 6 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 06</span>
+  <h2 class="chapter-title">Como montar pratos simples — o Modelo de Prato Ideal</h2>
+  <p class="lead">Você não precisa pesar comida nem contar caloria de cada garfada. Precisa de um modelo visual que funcione em qualquer refeição.</p>
+
+  <h3>A regra do prato dividido</h3>
+  <p>Imagine seu prato dividido em partes. Esse mapa simples equilibra saciedade, nutrição e calorias sem nenhuma conta:</p>
+
+  <table>
+    <tr><th>Porção do prato</th><th>O que colocar</th><th>Por quê</th></tr>
+    <tr><td><strong>½ — Vegetais</strong></td><td>Saladas, legumes cozidos ou refogados</td><td>Volume e fibras com poucas calorias</td></tr>
+    <tr><td><strong>¼ — Proteína</strong></td><td>Frango, peixe, ovo, carne magra, leguminosas</td><td>Saciedade e preservação de músculo</td></tr>
+    <tr><td><strong>¼ — Carboidrato</strong></td><td>Arroz, batata, mandioca, pão, massa (de preferência integral)</td><td>Energia, em porção controlada</td></tr>
+    <tr><td><strong>Toque de gordura boa</strong></td><td>Fio de azeite, abacate, castanhas</td><td>Sabor e saciedade, com moderação</td></tr>
+  </table>
+
+  <div class="box gold">
+    <span class="box-label">Medidas pela mão (sem balança)</span>
+    <ul style="margin-bottom:0;">
+      <li><strong>Proteína:</strong> tamanho da palma da mão</li>
+      <li><strong>Carboidrato:</strong> uma mão em concha</li>
+      <li><strong>Vegetais:</strong> duas mãos abertas (à vontade)</li>
+      <li><strong>Gordura boa:</strong> tamanho da ponta do polegar</li>
+    </ul>
+  </div>
+
+  <h4>Exemplo aplicável</h4>
+  <p>Almoço montado pelo modelo: metade do prato com salada de folhas, tomate e cenoura; um quarto com filé de frango grelhado; um quarto com arroz integral; um fio de azeite na salada. Simples, gostoso e equilibrado — sem nenhuma conta.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Monte <strong>uma refeição</strong> de hoje seguindo a regra do prato dividido. Olhe para o prato antes de comer e confira: metade vegetais, um quarto proteína, um quarto carboidrato.</p>
+  </div>
+</section>
+
+<!-- CAP 7 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 07</span>
+  <h2 class="chapter-title">Lista de compras inteligente</h2>
+  <p class="lead">O emagrecimento começa no carrinho do mercado. O que entra em casa é o que você vai comer.</p>
+
+  <p>A estratégia mais poderosa e silenciosa é esta: <strong>encha a casa de boas escolhas e deixe as tentações fora do alcance.</strong> Você não precisa de força de vontade para resistir ao que não está na despensa.</p>
+
+  <h3>Princípios de uma compra inteligente</h3>
+  <ul>
+    <li>Vá ao mercado <strong>alimentado</strong> e com lista — fome no corredor é inimiga do carrinho.</li>
+    <li>Priorize as bordas do supermercado (hortifrúti, carnes, laticínios), onde ficam os alimentos menos processados.</li>
+    <li>Compre proteína e vegetais para a semana inteira.</li>
+    <li>Limite (não proíba) os ultraprocessados — se comprar, compre em porção pequena.</li>
+  </ul>
+
+  <p>A lista completa, dividida por categorias, está na <strong>Caixa de Ferramentas</strong> no final deste guia, pronta para você levar ao mercado.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Monte sua lista usando o modelo da Caixa de Ferramentas <strong>antes</strong> da próxima ida ao mercado. Combine: nada de comprar fora da lista nos corredores de tentação.</p>
+  </div>
+</section>
+
+<!-- CAP 8 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 08</span>
+  <h2 class="chapter-title">Café da manhã, almoço, jantar e lanches inteligentes</h2>
+  <p class="lead">Cada refeição tem um papel. Quando você sabe o que cada uma precisa entregar, montar fica fácil.</p>
+
+  <h3>Café da manhã — comece com proteína</h3>
+  <p>É a refeição em que a proteína mais costuma faltar. Um café da manhã com proteína reduz a fome da manhã inteira e diminui o belisco até o almoço.</p>
+  <p><strong>Ideias:</strong> ovos mexidos + fruta; iogurte natural + aveia + fruta; pão integral + queijo + ovo; tapioca com ovo.</p>
+
+  <h3>Almoço — o prato equilibrado</h3>
+  <p>Aplique o Modelo de Prato Ideal: metade vegetais, um quarto proteína, um quarto carboidrato. É a refeição perfeita para "treinar" o modelo todos os dias.</p>
+
+  <h3>Jantar — leve, mas não vazio</h3>
+  <p>Pular o jantar costuma sair pelo caro (fome à noite, sono ruim, belisco). Prefira uma versão mais leve do almoço: proteína + vegetais, com pouco ou nenhum carboidrato pesado, se preferir.</p>
+  <p><strong>Ideias:</strong> omelete com salada; sopa de legumes com frango; peixe assado com legumes.</p>
+
+  <h3>Lanches — planejados, não impulsivos</h3>
+  <p>Lanches existem para evitar que você chegue faminto à próxima refeição. Devem ser pequenos e ter proteína ou fibra (veja a lista do Capítulo 5).</p>
+
+  <table>
+    <tr><th>Refeição</th><th>Foco principal</th><th>Exemplo rápido</th></tr>
+    <tr><td>Café da manhã</td><td>Proteína</td><td>Iogurte + aveia + fruta</td></tr>
+    <tr><td>Almoço</td><td>Prato equilibrado</td><td>Frango + arroz + salada</td></tr>
+    <tr><td>Jantar</td><td>Leve com proteína</td><td>Omelete + legumes</td></tr>
+    <tr><td>Lanche</td><td>Saciedade pequena</td><td>Fruta + castanhas</td></tr>
+  </table>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Defina <strong>agora</strong> o que será seu jantar de hoje, seguindo a regra "proteína + vegetais". Decidir antes da fome chegar é metade da batalha vencida.</p>
+  </div>
+</section>
+
+<!-- ===================== PARTE 3 ===================== -->
+<section class="part-divider">
+  <div class="pn">Parte 3</div>
+  <h2>Controlar os gatilhos</h2>
+  <p>Saber o que comer é só metade do jogo. A outra metade é lidar com os momentos em que a vontade fala mais alto.</p>
+</section>
+
+<!-- CAP 9 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 09</span>
+  <h2 class="chapter-title">Estratégias para reduzir beliscos e compulsões</h2>
+  <p class="lead">Beliscar não é sinal de fraqueza — quase sempre é resposta a fome real, tédio, estresse ou hábito. Identificar a causa é o caminho.</p>
+
+  <h3>Os quatro gatilhos do belisco</h3>
+  <ol>
+    <li><strong>Fome real:</strong> as refeições estão pequenas demais ou pobres em proteína/fibra.</li>
+    <li><strong>Emoção:</strong> estresse, ansiedade, tristeza ou cansaço.</li>
+    <li><strong>Ambiente:</strong> comida à vista, embalagens grandes, "tá ali, então como".</li>
+    <li><strong>Hábito:</strong> beliscar assistindo TV, no automático, sem fome.</li>
+  </ol>
+
+  <div class="box">
+    <span class="box-label">A pausa dos 10 minutos</span>
+    <p style="margin-bottom:0;">Quando a vontade de beliscar bater, espere <strong>10 minutos</strong> e beba um copo de água. Muitas vontades são impulsos passageiros (ou sede disfarçada) e desaparecem nesse intervalo. Se a fome continuar real depois disso, faça um lanche planejado.</p>
+  </div>
+
+  <h3>Estratégias práticas</h3>
+  <ul>
+    <li><strong>Coma o suficiente nas refeições principais</strong> — a maior causa de belisco é a refeição que saciou pouco.</li>
+    <li><strong>Tire as tentações da vista</strong> e deixe frutas e opções boas à mão.</li>
+    <li><strong>Porcione antes de comer</strong> — nunca coma direto do pacote.</li>
+    <li><strong>Crie um "ritual de fim de refeição"</strong>: escovar os dentes, um chá, um café. Sinaliza ao corpo que a comida acabou.</li>
+    <li><strong>Nomeie a emoção</strong>: "estou com fome ou estou estressado?". Só a pergunta já reduz o piloto automático.</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="box-label">Atenção e acolhimento</span>
+    <p style="margin-bottom:0;">Episódios frequentes de comer compulsivo, com perda de controle e sofrimento, merecem atenção profissional. Não é falta de disciplina — pode ser algo que se beneficia do apoio de um psicólogo ou nutricionista. Procurar ajuda é um ato de cuidado.</p>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Na próxima vontade de beliscar fora de hora, aplique a <strong>pausa dos 10 minutos</strong> com um copo de água. Observe o que acontece.</p>
+  </div>
+</section>
+
+<!-- CAP 10 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 10</span>
+  <h2 class="chapter-title">Como lidar com a vontade de doce</h2>
+  <p class="lead">A meta não é nunca mais comer doce — é fazer do doce uma escolha consciente, e não um impulso que comanda você.</p>
+
+  <p>A vontade de doce é normal e tem várias causas: hábito, queda de energia, noites mal dormidas, estresse ou simplesmente o prazer de comer algo gostoso. Lutar contra ela com proibição total costuma aumentar o desejo e levar ao exagero depois.</p>
+
+  <h3>Estratégias que funcionam</h3>
+  <ul>
+    <li><strong>Não chegue faminto:</strong> a vontade de doce dispara quando você está com muita fome e baixa energia. Refeições com proteína e fibra reduzem isso naturalmente.</li>
+    <li><strong>Tenha alternativas naturalmente doces:</strong> fruta, iogurte com fruta, fruta gelada, um quadradinho de chocolate amargo.</li>
+    <li><strong>Aplique a regra do "um, com atenção":</strong> se for comer o doce, sente-se, coma devagar e aproveite de verdade — em vez de comer vários no automático.</li>
+    <li><strong>Reduza o estoque em casa:</strong> doce difícil de alcançar é doce que você come menos.</li>
+    <li><strong>Cuide do sono:</strong> noites ruins aumentam a vontade de açúcar no dia seguinte.</li>
+  </ul>
+
+  <div class="box gold">
+    <span class="box-label">A regra 80/20</span>
+    <p style="margin-bottom:0;">Coma bem em cerca de <strong>80%</strong> das vezes e dê espaço para o prazer nos outros <strong>20%</strong>, sem culpa. Essa flexibilidade é o que torna o plano sustentável — proibição gera revolta, equilíbrio gera constância.</p>
+  </div>
+
+  <table>
+    <tr><th>Vontade de…</th><th>Troca inteligente</th></tr>
+    <tr><td>Chocolate</td><td>1–2 quadradinhos de chocolate amargo, devagar</td></tr>
+    <tr><td>Sorvete</td><td>Iogurte natural com frutas congeladas</td></tr>
+    <tr><td>Doce após o almoço</td><td>Fruta + café, como ritual de fim de refeição</td></tr>
+    <tr><td>Biscoito recheado</td><td>Fruta com pasta de amendoim (porção pequena)</td></tr>
+  </table>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Deixe à mão <strong>uma alternativa doce natural</strong> (uma fruta, por exemplo) para quando a vontade aparecer. Ter o plano pronto evita a decisão ruim de última hora.</p>
+  </div>
+</section>
+
+<!-- CAP 11 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 11</span>
+  <h2 class="chapter-title">Como comer fora sem sair do plano</h2>
+  <p class="lead">Restaurantes, viagens e eventos fazem parte da vida. O plano precisa funcionar no mundo real — e funciona, com algumas estratégias simples.</p>
+
+  <h3>Antes de sair</h3>
+  <ul>
+    <li>Não vá faminto. Um lanche leve com proteína evita pedir tudo de uma vez.</li>
+    <li>Se possível, olhe o cardápio antes e decida sua escolha com calma.</li>
+    <li>Beba um copo de água ao chegar.</li>
+  </ul>
+
+  <h3>No restaurante</h3>
+  <ul>
+    <li>Aplique mentalmente o Modelo de Prato: busque uma proteína + vegetais/salada como base.</li>
+    <li>Prefira grelhados, assados e cozidos a frituras e empanados.</li>
+    <li>Peça molhos e acompanhamentos calóricos <strong>à parte</strong> — você controla a quantidade.</li>
+    <li>Coma devagar; a saciedade leva alguns minutos para chegar.</li>
+    <li>Se quiser sobremesa, divida com alguém.</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">A regra do "escolha sua indulgência"</span>
+    <p style="margin-bottom:0;">Em ocasiões especiais, escolha <strong>uma</strong> coisa que vale a pena (a entrada, a bebida ou a sobremesa) — não as três. Você aproveita o que mais gosta sem exagerar em tudo.</p>
+  </div>
+
+  <h4>Bebidas</h4>
+  <p>Bebidas alcoólicas e drinques doces somam muitas calorias que saciam pouco. Se for beber, intercale com água e prefira opções mais simples. Beber com moderação ajuda também nas escolhas alimentares da noite.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Para a próxima refeição fora de casa, decida <strong>antecipadamente</strong> qual será sua "indulgência escolhida" — e mantenha o resto do prato equilibrado.</p>
+  </div>
+</section>
+
+<!-- CAP 12 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 12</span>
+  <h2 class="chapter-title">Como aproveitar o fim de semana sem perder o progresso</h2>
+  <p class="lead">Para muita gente, a semana vai bem e o fim de semana desfaz tudo. A boa notícia: dá para aproveitar sem zerar o esforço.</p>
+
+  <p>Dois dias de excessos podem, sozinhos, neutralizar cinco dias de boas escolhas. Não porque o fim de semana seja "proibido", mas porque o "modo férias" costuma virar refeições maiores, mais álcool, mais doce e menos movimento — tudo junto.</p>
+
+  <h3>O Protocolo de Fim de Semana</h3>
+  <ol>
+    <li><strong>Mantenha o café da manhã da semana.</strong> Começar bem dá o tom do dia.</li>
+    <li><strong>Escolha 1–2 refeições especiais</strong>, não o fim de semana inteiro como exceção.</li>
+    <li><strong>Movimente-se um pouco mais:</strong> uma caminhada mais longa, um passeio. O fim de semana tem mais tempo livre — use a favor.</li>
+    <li><strong>Cuidado com o "petisco infinito":</strong> porcione o que vai comer enquanto assiste TV ou conversa.</li>
+    <li><strong>Volte sem drama na segunda.</strong> Um fim de semana solto não apaga seu progresso — só não deixe virar quatro dias.</li>
+  </ol>
+
+  <div class="box gold">
+    <span class="box-label">Mude a régua</span>
+    <p style="margin-bottom:0;">Em vez de "fim de semana é tudo liberado", pense em <strong>"fim de semana é mais flexível"</strong>. A diferença entre essas duas frases é, muitas vezes, a diferença entre progredir e ficar parado.</p>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje (ou no próximo sábado)</span>
+    <p>Planeje qual será sua <strong>refeição especial</strong> do fim de semana — e combine consigo mesmo que as outras seguem o plano normal.</p>
+  </div>
+</section>
+
+<!-- ===================== PARTE 4 ===================== -->
+<section class="part-divider">
+  <div class="pn">Parte 4</div>
+  <h2>Estilo de vida</h2>
+  <p>Alimentação é central, mas não está sozinha. Sono, estresse e movimento são os bastidores que sustentam (ou sabotam) todo o resto.</p>
+</section>
+
+<!-- CAP 13 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 13</span>
+  <h2 class="chapter-title">Sono e estresse no emagrecimento</h2>
+  <p class="lead">Você pode comer bem e mesmo assim travar — se dormir mal e viver no estresse. Estes são os fatores mais subestimados de todos.</p>
+
+  <h3>Por que o sono importa tanto</h3>
+  <p>Noites mal dormidas tendem a aumentar o apetite (sobretudo por doces e ultraprocessados), reduzir a disposição para se mover e dificultar as boas decisões do dia seguinte. Dormir melhor é, para muita gente, o ajuste com maior retorno.</p>
+
+  <h4>Hábitos para dormir melhor</h4>
+  <ul>
+    <li>Horário relativamente regular para deitar e acordar.</li>
+    <li>Reduzir telas e luz forte na última hora antes de dormir.</li>
+    <li>Evitar cafeína à tarde/noite e refeições muito pesadas perto de deitar.</li>
+    <li>Quarto escuro, silencioso e fresco.</li>
+    <li>Um ritual calmo (leitura leve, respiração, banho morno).</li>
+  </ul>
+
+  <h3>Estresse: o gatilho silencioso</h3>
+  <p>O estresse crônico afeta o apetite, aumenta a vontade de "comer para aliviar" e atrapalha o sono — um ciclo que se retroalimenta. Não dá para eliminar o estresse da vida, mas dá para criar válvulas de escape saudáveis.</p>
+
+  <div class="box">
+    <span class="box-label">Mini-práticas anti-estresse (2–5 minutos)</span>
+    <ul style="margin-bottom:0;">
+      <li>Respiração lenta: inspire em 4 tempos, segure 4, solte em 6.</li>
+      <li>Uma caminhada curta ao ar livre.</li>
+      <li>Anotar três coisas que ocuparam sua cabeça (tirar da mente, colocar no papel).</li>
+      <li>Alongar o corpo por alguns minutos.</li>
+    </ul>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Escolha <strong>um</strong> hábito de sono da lista e aplique hoje à noite. Comece pelo mais fácil — por exemplo, desligar as telas 30 minutos antes de deitar.</p>
+  </div>
+</section>
+
+<!-- CAP 14 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 14</span>
+  <h2 class="chapter-title">Caminhada e movimento diário</h2>
+  <p class="lead">Você não precisa de academia nem de treinos puxados para começar. O movimento que mais transforma é o que você consegue manter todos os dias.</p>
+
+  <h3>O poder subestimado da caminhada</h3>
+  <p>Caminhar é acessível, seguro para a maioria das pessoas e fácil de encaixar na rotina. Além de aumentar o gasto de energia do dia, ajuda no humor, no sono e no controle do apetite. É o movimento perfeito para quem está recomeçando.</p>
+
+  <h4>Como começar (sem exageros)</h4>
+  <ul>
+    <li>Comece com o que for confortável — 10 a 15 minutos já contam.</li>
+    <li>Aumente aos poucos, conforme se sentir bem.</li>
+    <li>Encaixe na rotina: caminhar depois das refeições, descer um ponto antes, usar escadas.</li>
+    <li>Torne agradável: música, podcast, companhia, um trajeto bonito.</li>
+  </ul>
+
+  <h3>Movimento ao longo do dia</h3>
+  <p>Além da caminhada, o movimento espontâneo soma muito: levantar-se a cada hora, tarefas domésticas, alongamentos. Para preservar e fortalecer a massa muscular — tão importante depois dos 40 — vale, com o tempo e quando possível, incluir exercícios de força simples (com o peso do corpo ou faixas). Se você tem alguma limitação ou condição de saúde, peça orientação a um profissional antes.</p>
+
+  <div class="box gold">
+    <span class="box-label">A meta do "movimento mínimo"</span>
+    <p style="margin-bottom:0;">Defina um mínimo tão pequeno que seja impossível falhar — por exemplo, <strong>uma caminhada de 10 minutos por dia</strong>. Nos dias bons, você faz mais. Nos dias ruins, você ainda mantém o hábito vivo. Constância vence intensidade.</p>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Faça uma caminhada de <strong>10 minutos</strong> hoje, de preferência depois de uma refeição. Marque no seu tracker.</p>
+  </div>
+</section>
+
+<!-- CAP 15 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 15</span>
+  <h2 class="chapter-title">Jejum intermitente para iniciantes (opcional e seguro)</h2>
+  <p class="lead">O jejum intermitente é uma ferramenta — não uma obrigação. Para algumas pessoas, ajuda a organizar a alimentação; para outras, não é adequado. Tudo bem não fazer.</p>
+
+  <div class="box warn">
+    <span class="box-label">Leia antes de considerar</span>
+    <p style="margin-bottom:0;">O jejum intermitente <strong>não é recomendado</strong> para todo mundo. Pessoas com diabetes ou outras condições de saúde, gestantes, lactantes, quem usa certos medicamentos ou tem histórico de transtornos alimentares <strong>devem evitar</strong> ou só fazer com acompanhamento profissional. Converse com seu médico antes de testar.</p>
+  </div>
+
+  <h3>O que é, de forma simples</h3>
+  <p>O jejum intermitente é apenas uma forma de organizar <em>quando</em> você come, concentrando as refeições em uma janela de tempo. A versão mais comum para iniciantes é a <strong>12/12</strong>: 12 horas comendo, 12 horas em jejum (incluindo o sono) — o que, na prática, é quase o que muita gente já faz naturalmente.</p>
+
+  <h4>Como começar com calma</h4>
+  <ul>
+    <li>Comece pelo 12/12 — por exemplo, jantar às 20h e café da manhã às 8h.</li>
+    <li>Hidrate-se bem no período de jejum (água, chá e café sem açúcar são permitidos).</li>
+    <li>Quando comer, mantenha refeições equilibradas (proteína, fibras, vegetais). Jejuar e depois exagerar não faz sentido.</li>
+    <li>Se sentir mal-estar, tontura, fraqueza ou irritação forte, <strong>interrompa</strong> e reavalie. Jejum não deve virar sofrimento.</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">O ponto essencial</span>
+    <p style="margin-bottom:0;">O jejum <strong>não é mágica</strong>: ele só ajuda se, no conjunto, levar você a comer de forma mais equilibrada e consciente. Se complicar sua vida ou gerar fome descontrolada depois, não é a ferramenta certa para você — e está tudo bem.</p>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje (opcional)</span>
+    <p>Se tiver interesse e nenhuma contraindicação, observe sua janela natural de alimentação hoje. Você talvez já esteja perto de um 12/12 sem perceber.</p>
+  </div>
+</section>
+
+<!-- ===================== PARTE 5 ===================== -->
+<section class="part-divider">
+  <div class="pn">Parte 5</div>
+  <h2>Executar e manter</h2>
+  <p>Conhecimento sem ação não muda nada. Aqui transformamos tudo num plano concreto — e garantimos que ele dure.</p>
+</section>
+
+<!-- CAP 16 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 16</span>
+  <h2 class="chapter-title">Plano de 30 dias com ações simples</h2>
+  <p class="lead">Trinta dias, quatro semanas, um hábito de cada vez. Você não precisa mudar tudo no dia 1 — precisa construir, camada sobre camada.</p>
+
+  <p>Este plano adiciona um foco por semana, sem abandonar o anterior. Ao final, você terá montado uma rotina completa de forma natural. A versão para imprimir e marcar está na Caixa de Ferramentas.</p>
+
+  <h3>Semana 1 — Fundamentos da alimentação</h3>
+  <ul>
+    <li>Proteína em todas as refeições principais.</li>
+    <li>Modelo de Prato Ideal no almoço e no jantar.</li>
+    <li>1 copo de água antes de cada refeição.</li>
+  </ul>
+
+  <h3>Semana 2 — Ambiente e lanches</h3>
+  <ul>
+    <li>Manter a Semana 1.</li>
+    <li>Lista de compras inteligente + tentações fora de vista.</li>
+    <li>2 lanches planejados por dia (proteína ou fibra).</li>
+  </ul>
+
+  <h3>Semana 3 — Movimento e sono</h3>
+  <ul>
+    <li>Manter Semanas 1 e 2.</li>
+    <li>Caminhada de pelo menos 10 minutos por dia.</li>
+    <li>1 hábito de sono (telas, horário ou ritual noturno).</li>
+  </ul>
+
+  <h3>Semana 4 — Gatilhos e consistência</h3>
+  <ul>
+    <li>Manter tudo das semanas anteriores.</li>
+    <li>Aplicar a pausa dos 10 minutos nos beliscos.</li>
+    <li>Planejar o fim de semana com a regra "mais flexível, não liberado".</li>
+  </ul>
+
+  <div class="box gold">
+    <span class="box-label">A regra de ouro dos 30 dias</span>
+    <p style="margin-bottom:0;">Mire em <strong>constância, não perfeição</strong>. Se um dia sair do plano, o próximo prato (não o próximo mês) é a sua chance de voltar. Faça o seu melhor na maioria dos dias — isso é mais do que suficiente.</p>
+  </div>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Marque hoje como o <strong>Dia 1</strong>. Vá à Caixa de Ferramentas, anote a data de início e comece pela única tarefa da Semana 1: proteína na próxima refeição.</p>
+  </div>
+</section>
+
+<!-- CAP 17 -->
+<section class="page">
+  <span class="chapter-num">Capítulo 17</span>
+  <h2 class="chapter-title">Como manter o peso depois de emagrecer</h2>
+  <p class="lead">Emagrecer é metade da jornada. Manter é a outra metade — e é onde a maioria dos planos falha, porque foram feitos para durar pouco.</p>
+
+  <p>A boa notícia: se você chegou até aqui construindo <strong>hábitos</strong> (e não seguindo uma dieta temporária), a manutenção é a continuação natural do que você já faz. Você não vai "voltar ao normal" — porque o novo normal já é este.</p>
+
+  <h3>Os pilares da manutenção</h3>
+  <ul>
+    <li><strong>Mantenha os hábitos-base:</strong> proteína, prato equilibrado, hidratação, movimento e sono continuam valendo para sempre.</li>
+    <li><strong>Ajuste, não abandone:</strong> na manutenção você pode ter um pouco mais de flexibilidade — sem largar a estrutura.</li>
+    <li><strong>Acompanhe com leveza:</strong> uma pesagem semanal ou medidas mensais ajudam a perceber tendências antes que virem problema.</li>
+    <li><strong>Tenha um "plano de reentrada":</strong> depois de uma viagem ou período solto, volte rapidamente aos fundamentos — sem culpa e sem drama.</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">A janela dos 2 kg</span>
+    <p style="margin-bottom:0;">Defina uma faixa de peso confortável (por exemplo, uma variação de 1–2 kg). Dentro dela, siga a vida normal. Se passar do limite de cima, é só retomar os fundamentos por algumas semanas. Isso evita tanto a obsessão quanto o efeito sanfona.</p>
+  </div>
+
+  <h3>O segredo final</h3>
+  <p>Constância vence intensidade, sempre. A pessoa que faz "razoavelmente bem" por anos chega muito mais longe do que a que faz "perfeito" por três semanas. Você não precisa ser perfeito. Precisa ser <strong>consistente o bastante, por tempo suficiente</strong>.</p>
+
+  <div class="action">
+    <span class="box-label">Ação de hoje</span>
+    <p>Escreva qual será sua <strong>faixa de peso confortável</strong> e seu <strong>plano de reentrada</strong> em uma frase (ex.: "se passar de X, volto à Semana 1 por 2 semanas").</p>
+  </div>
+</section>
+
+<!-- ===================== CAIXA DE FERRAMENTAS ===================== -->
+<section class="part-divider">
+  <div class="pn">Material de trabalho</div>
+  <h2>Caixa de Ferramentas</h2>
+  <p>Tudo o que você precisa para colocar o guia em prática: modelos, listas, cardápio, plano, checklists e trackers para preencher.</p>
+</section>
+
+<!-- FERR 1: PRATO + COMPRAS + SUBSTITUIÇÕES -->
+<section class="page">
+  <span class="chapter-num">Ferramenta 01</span>
+  <h2 class="chapter-title">Modelo de Prato Ideal</h2>
+  <table>
+    <tr><th>Parte do prato</th><th>O que colocar</th><th>Medida pela mão</th></tr>
+    <tr><td>½ Vegetais</td><td>Saladas e legumes variados</td><td>2 mãos abertas (à vontade)</td></tr>
+    <tr><td>¼ Proteína</td><td>Frango, peixe, ovo, carne magra, leguminosas</td><td>1 palma da mão</td></tr>
+    <tr><td>¼ Carboidrato</td><td>Arroz, batata, mandioca, integrais</td><td>1 mão em concha</td></tr>
+    <tr><td>Gordura boa</td><td>Azeite, abacate, castanhas</td><td>1 ponta de polegar</td></tr>
+  </table>
+
+  <h2 class="chapter-title" style="margin-top:40px;">Lista de Compras Inteligente</h2>
+  <h4>Proteínas</h4>
+  <p>Ovos · frango · peixe · carne magra · iogurte natural · queijos magros · leite</p>
+  <h4>Leguminosas e integrais</h4>
+  <p>Feijão · lentilha · grão-de-bico · aveia · arroz integral · pão integral · batata-doce</p>
+  <h4>Vegetais e folhas</h4>
+  <p>Alface · couve · brócolis · couve-flor · abobrinha · cenoura · tomate · pepino · cebola · alho</p>
+  <h4>Frutas</h4>
+  <p>Maçã · banana · laranja · mamão · melão · frutas vermelhas · limão</p>
+  <h4>Gorduras boas e extras</h4>
+  <p>Azeite · abacate · castanhas · sementes · temperos naturais · chá · café</p>
+  <div class="box warn" style="margin-top:18px;">
+    <span class="box-label">Comprar com moderação</span>
+    <p style="margin-bottom:0;">Doces, frituras, refrigerantes e ultraprocessados — se comprar, em porção pequena. O que não entra em casa não precisa de força de vontade para ser evitado.</p>
+  </div>
+
+  <h2 class="chapter-title" style="margin-top:40px;">Tabela de Substituições Inteligentes</h2>
+  <table>
+    <tr><th>No lugar de…</th><th>Experimente…</th></tr>
+    <tr><td>Refrigerante / suco adoçado</td><td>Água com gás e limão, chá gelado sem açúcar</td></tr>
+    <tr><td>Pão branco</td><td>Pão integral, tapioca, ovo</td></tr>
+    <tr><td>Fritura</td><td>Assado, grelhado, cozido, air fryer</td></tr>
+    <tr><td>Sorvete</td><td>Iogurte natural com fruta congelada</td></tr>
+    <tr><td>Batata frita</td><td>Batata-doce assada</td></tr>
+    <tr><td>Salgadinho de pacote</td><td>Castanhas (porção pequena), pipoca de panela</td></tr>
+    <tr><td>Creme de leite / maionese</td><td>Iogurte natural, abacate amassado</td></tr>
+    <tr><td>Açúcar no café</td><td>Reduzir aos poucos / adoçante, se preferir</td></tr>
+  </table>
+</section>
+
+<!-- FERR 2: CARDÁPIO 7 DIAS -->
+<section class="page">
+  <span class="chapter-num">Ferramenta 02</span>
+  <h2 class="chapter-title">Cardápio Exemplo de 7 Dias</h2>
+  <p>Opções simples, acessíveis e realistas. Adapte às suas preferências e ao que tem em casa — use a tabela de substituições à vontade. As porções seguem o Modelo de Prato Ideal.</p>
+
+  <table>
+    <tr><th>Dia</th><th>Café da manhã</th><th>Almoço</th><th>Lanche</th><th>Jantar</th></tr>
+    <tr><td><strong>1</strong></td><td>Ovos mexidos + fruta</td><td>Frango grelhado + arroz integral + salada</td><td>Iogurte natural + fruta</td><td>Omelete + legumes refogados</td></tr>
+    <tr><td><strong>2</strong></td><td>Iogurte + aveia + banana</td><td>Peixe assado + batata-doce + brócolis</td><td>Maçã + castanhas</td><td>Sopa de legumes com frango desfiado</td></tr>
+    <tr><td><strong>3</strong></td><td>Pão integral + queijo + ovo</td><td>Carne magra + arroz + feijão + salada</td><td>Cenoura/pepino + homus</td><td>Frango ao forno + salada verde</td></tr>
+    <tr><td><strong>4</strong></td><td>Tapioca com ovo + café</td><td>Frango + purê de mandioca + legumes</td><td>Iogurte + frutas vermelhas</td><td>Omelete de legumes + salada</td></tr>
+    <tr><td><strong>5</strong></td><td>Ovos + tomate + fruta</td><td>Peixe grelhado + arroz integral + salada</td><td>Ovo cozido + fruta</td><td>Sopa de feijão com legumes</td></tr>
+    <tr><td><strong>6</strong></td><td>Iogurte + aveia + fruta</td><td>Carne magra + batata + salada colorida</td><td>Queijo magro + tomate</td><td>Frango refogado + abobrinha</td></tr>
+    <tr><td><strong>7</strong></td><td>Refeição livre equilibrada</td><td>Refeição especial (à sua escolha)</td><td>Fruta</td><td>Omelete leve + salada</td></tr>
+  </table>
+
+  <div class="box">
+    <span class="box-label">Substituições rápidas</span>
+    <ul style="margin-bottom:0;">
+      <li>Não come peixe? Troque por frango, ovo ou leguminosas.</li>
+      <li>Não gosta de iogurte? Use ovo, fruta com castanhas ou queijo magro.</li>
+      <li>Sem tempo de cozinhar? Faça porções maiores no domingo e divida para a semana.</li>
+      <li>Vegetariano? Reforce feijões, lentilha, grão-de-bico, ovos, tofu e queijos.</li>
+    </ul>
+  </div>
+  <div class="box warn">
+    <span class="box-label">Lembrete</span>
+    <p style="margin-bottom:0;">Este é um cardápio <strong>exemplo e educativo</strong>, não uma prescrição individual. Necessidades variam de pessoa para pessoa — para um plano ajustado ao seu caso, procure um nutricionista.</p>
+  </div>
+</section>
+
+<!-- FERR 3: PLANO 30 DIAS + CHECKLIST -->
+<section class="page">
+  <span class="chapter-num">Ferramenta 03</span>
+  <h2 class="chapter-title">Plano de Ação de 30 Dias</h2>
+  <div class="fill-row"><span class="label">Comecei no dia:</span><span class="line"></span></div>
+  <p style="margin-top:14px;">Marque cada dia em que você cumpriu o foco principal da semana. Mire em pelo menos 5 de 7.</p>
+
+  <h4>Semana 1 — Proteína + Prato Ideal + água antes das refeições</h4>
+  <ul class="checklist"><li>D1 &nbsp; D2 &nbsp; D3 &nbsp; D4 &nbsp; D5 &nbsp; D6 &nbsp; D7</li></ul>
+  <h4>Semana 2 — Compras inteligentes + 2 lanches planejados</h4>
+  <ul class="checklist"><li>D8 &nbsp; D9 &nbsp; D10 &nbsp; D11 &nbsp; D12 &nbsp; D13 &nbsp; D14</li></ul>
+  <h4>Semana 3 — Caminhada 10 min + 1 hábito de sono</h4>
+  <ul class="checklist"><li>D15 &nbsp; D16 &nbsp; D17 &nbsp; D18 &nbsp; D19 &nbsp; D20 &nbsp; D21</li></ul>
+  <h4>Semana 4 — Pausa dos 10 min + fim de semana planejado</h4>
+  <ul class="checklist"><li>D22 &nbsp; D23 &nbsp; D24 &nbsp; D25 &nbsp; D26 &nbsp; D27 &nbsp; D28 &nbsp; D29 &nbsp; D30</li></ul>
+
+  <h2 class="chapter-title" style="margin-top:40px;">Checklist Diário de Hábitos</h2>
+  <p>Imprima ou copie para usar todos os dias.</p>
+  <ul class="checklist">
+    <li>Proteína em todas as refeições principais</li>
+    <li>Metade do prato com vegetais (almoço e jantar)</li>
+    <li>Água antes de cada refeição + garrafa à vista</li>
+    <li>Lanches planejados (não impulsivos)</li>
+    <li>Pelo menos 10 minutos de caminhada/movimento</li>
+    <li>Apliquei a pausa dos 10 min quando bateu vontade de beliscar</li>
+    <li>Cuidei do meu sono (ritual / telas / horário)</li>
+    <li>Fiz uma mini-prática anti-estresse</li>
+  </ul>
+</section>
+
+<!-- FERR 4: TRACKER + METAS + REFLEXÃO -->
+<section class="page">
+  <span class="chapter-num">Ferramenta 04</span>
+  <h2 class="chapter-title">Tracker Semanal de Progresso</h2>
+  <p>Acompanhe tendências, não números isolados. Preencha uma vez por semana, sempre no mesmo dia e horário.</p>
+  <table>
+    <tr><th>Semana</th><th>Peso</th><th>Cintura (cm)</th><th>Energia (1–5)</th><th>Sono (1–5)</th><th>Fome (1–5)</th></tr>
+    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p style="font-size:.9rem;color:var(--muted);">Dica: energia, sono e fome (de 1 = muito ruim a 5 = ótimo) muitas vezes melhoram antes do peso. Eles são sinais de que você está no caminho certo.</p>
+
+  <h2 class="chapter-title" style="margin-top:40px;">Página de Metas</h2>
+  <div class="fill-row"><span class="label">Meu porquê:</span><span class="line"></span></div>
+  <div class="fill-row"><span class="label">Meta de hábito:</span><span class="line"></span></div>
+  <div class="fill-row"><span class="label">Como vou comemorar:</span><span class="line"></span></div>
+  <div class="fill-row"><span class="label">Faixa de peso confortável:</span><span class="line"></span></div>
+  <div class="fill-row"><span class="label">Plano de reentrada:</span><span class="line"></span></div>
+
+  <h2 class="chapter-title" style="margin-top:40px;">Reflexão Semanal</h2>
+  <p>Ao fim de cada semana, responda em poucas linhas:</p>
+  <h4>O que funcionou bem nesta semana?</h4>
+  <span class="fill"></span><span class="fill"></span>
+  <h4>Onde eu travei — e qual foi o gatilho?</h4>
+  <span class="fill"></span><span class="fill"></span>
+  <h4>Qual UMA mudança vou aplicar na próxima semana?</h4>
+  <span class="fill"></span><span class="fill"></span>
+</section>
+
+<!-- ===================== CONCLUSÃO ===================== -->
+<section class="page">
+  <span class="chapter-num">Conclusão</span>
+  <h2 class="chapter-title">Próximos passos</h2>
+  <p class="lead">Você chegou ao fim do guia — mas, na verdade, está só no começo da parte que importa: a prática.</p>
+
+  <p>Se há uma única ideia para levar daqui, é esta: <strong>você não precisa de mais força de vontade — precisa de um sistema mais simples e da coragem de repeti-lo.</strong> Os hábitos deste guia não são complicados. O desafio (e a beleza) está em mantê-los, dia após dia, de um jeito gentil consigo mesmo.</p>
+
+  <h3>Comece pequeno, comece hoje</h3>
+  <ol>
+    <li>Marque hoje como o <strong>Dia 1</strong> do seu Plano de 30 Dias.</li>
+    <li>Aplique <strong>só a Semana 1</strong> — não tente fazer tudo de uma vez.</li>
+    <li>Use o <strong>checklist diário</strong> e preencha o <strong>tracker</strong> uma vez por semana.</li>
+    <li>Quando errar, volte no próximo prato. Sem culpa, sem drama.</li>
+  </ol>
+
+  <div class="box gold">
+    <span class="box-label">Lembre-se</span>
+    <p style="margin-bottom:0;">Constância vence intensidade. Progresso vence perfeição. E cada pequena escolha melhor, repetida ao longo do tempo, constrói exatamente a pessoa que você quer se tornar. Você consegue — um dia de cada vez.</p>
+  </div>
+
+  <p>Obrigado por confiar no <strong>Lucky Burn</strong> como seu guia de hábitos e rotina. Que ele acompanhe você não por 30 dias, mas pelo estilo de vida que começa agora.</p>
+</section>
+
+<!-- ===================== RODAPÉ / DISCLAIMER FINAL ===================== -->
+<footer class="book">
+  <p><strong>Lucky Burn</strong> — Guia complementar de hábitos e rotina.</p>
+  <p style="max-width:680px;margin:14px auto;opacity:.85;">AVISO: Este conteúdo é educativo e informativo. Não substitui orientação médica ou nutricional e não se destina a diagnosticar, tratar, curar ou prevenir qualquer doença. Resultados variam de pessoa para pessoa. Consulte um profissional de saúde antes de iniciar qualquer mudança alimentar, de atividade física ou de rotina — especialmente gestantes, lactantes, pessoas com condições de saúde ou em uso de medicamentos.</p>
+  <p style="opacity:.6;margin-top:14px;">© 2026 Lucky Burn. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
