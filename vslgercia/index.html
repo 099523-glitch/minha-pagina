@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>News Header — Example</title>
+
+<!-- VSL player: preload + dns-prefetch para carregar mais rápido -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/ab-test/6a1a16f4987d9d099e250036/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://m3u8.vturb.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+
+<!-- UTMify Pixel -->
+<script>
+  window.pixelId = "6a1a24e546f48c04006f8e06";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<style>
+  :root{
+    --red:#d8120f; --ink:#111; --gray:#6b6b6b; --line:#e2e2e2;
+    --orange:#f08a24; --black:#111;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#fff;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 18px;}
+
+  /* top green line */
+  .topline{height:5px; background:linear-gradient(90deg,#0b6b2e,#19953f);}
+
+  /* ===== HEADER TOP ROW ===== */
+  .head-top{display:flex; align-items:center; gap:20px; padding:14px 0 10px;}
+  .logo{
+    background:var(--red); color:#fff; font-weight:900; font-style:italic;
+    font-size:2.9rem; line-height:.9; letter-spacing:-2px; padding:14px 18px; border-radius:3px;
+    flex-shrink:0;
+  }
+  .utils{display:flex; align-items:center; gap:30px; margin-left:auto;}
+  .util{display:flex; flex-direction:column; align-items:center; gap:7px; cursor:pointer; min-width:54px;}
+  .util svg{width:30px; height:30px; stroke:var(--ink); fill:none; stroke-width:1.7;}
+  .util .ico-fill{fill:var(--ink); stroke:none;}
+  .util span{font-size:.74rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase; color:var(--ink); white-space:nowrap;}
+  .util:hover span{color:var(--red);}
+  .util.plus .badge{
+    background:#000; color:#fff; font-weight:900; font-size:.9rem; padding:5px 9px; border-radius:5px;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .util.plus .badge .p{background:var(--red); width:18px;height:18px;border-radius:50%; display:inline-flex;align-items:center;justify-content:center; font-size:.85rem;}
+  .util-sep{width:1px; height:48px; background:var(--line); align-self:center;}
+
+  /* ===== NAV ROW ===== */
+  .nav{border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .nav .wrap{display:flex; align-items:center; gap:26px; padding:16px 18px; overflow-x:auto; scrollbar-width:none;}
+  .nav .wrap::-webkit-scrollbar{display:none;}
+  .nav a{font-weight:800; font-size:1.18rem; letter-spacing:-.2px; white-space:nowrap; color:#1a1a1a;}
+  .nav a:first-child{color:var(--ink);}
+  .nav a:hover{color:var(--red);}
+
+  /* ===== AI SEARCH BAR ===== */
+  .ai-row{display:flex; align-items:center; gap:14px; padding:16px 0;}
+  .ai-brand{
+    background:var(--red); color:#fff; font-weight:900; font-size:1.5rem; font-style:italic;
+    padding:14px 16px; border-radius:6px; flex-shrink:0; letter-spacing:-1px;
+  }
+  .ai-field{
+    flex:1; display:flex; align-items:center; gap:12px; border:1.5px solid #c9c9c9; border-radius:12px;
+    padding:14px 18px; min-width:0;
+  }
+  .ai-field input{flex:1; border:none; outline:none; font-size:1.15rem; color:#333; background:transparent; min-width:0;}
+  .ai-field input::placeholder{color:#8a8a8a;}
+  .ai-field .act{flex-shrink:0; width:34px;height:34px; display:flex;align-items:center;justify-content:center; cursor:pointer; color:#666;}
+  .ai-field .send{border:1.5px solid #d2d2d2; border-radius:50%;}
+  .ai-field svg{width:20px;height:20px; stroke:currentColor; fill:none; stroke-width:1.8;}
+  .ai-field .close svg{width:26px;height:26px; stroke-width:2;}
+
+  /* ===== ANZEIGEN ===== */
+  .anz{display:flex; align-items:center; justify-content:flex-end; gap:14px; padding:6px 0 14px; flex-wrap:wrap;}
+  .anz .lab{color:#9a9a9a; font-size:.84rem; font-weight:700; letter-spacing:1px;}
+  .anz a{font-weight:800; font-size:.92rem; text-decoration:underline; text-underline-offset:3px; color:var(--ink);}
+  .anz .sep{color:#cfcfcf;}
+
+  /* ===== BREAKING NEWS ===== */
+  .breaking{display:flex; align-items:stretch; background:var(--black); color:#fff; overflow:hidden;}
+  .breaking .flag{
+    background:var(--orange); color:#fff; font-weight:900; font-style:italic; line-height:1;
+    padding:14px 22px; display:flex; flex-direction:column; justify-content:center; flex-shrink:0;
+  }
+  .breaking .flag .s{font-size:1.05rem;} .breaking .flag .b{font-size:1.7rem; margin-top:2px;}
+  .ticker{flex:1; overflow:hidden; position:relative; display:flex; align-items:center;}
+  .ticker .track{
+    display:inline-flex; white-space:nowrap; padding-left:100%;
+    animation:scroll 26s linear infinite;
+    font-weight:800; font-size:1.3rem; font-style:italic; letter-spacing:-.3px;
+  }
+  .ticker .track span{padding-right:60px;}
+  .ticker:hover .track{animation-play-state:paused;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-100%);} }
+
+  /* ===== VSL VIDEO ===== */
+  .vsl-section{
+    max-width:900px; margin:36px auto 0; padding:0 18px;
+  }
+  .vsl-wrap{
+    position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+    background:#0e0e0e; box-shadow:0 14px 40px rgba(0,0,0,.18);
+  }
+  .vsl-wrap iframe, .vsl-wrap video{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  .vsl-placeholder{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:14px; color:#bbb;
+    background:radial-gradient(circle at center, #1f1f1f 0%, #0a0a0a 80%);
+    text-align:center; padding:24px;
+  }
+  .vsl-placeholder .play{
+    width:78px;height:78px;border-radius:50%;
+    background:rgba(255,255,255,.12); display:flex;align-items:center;justify-content:center;
+    border:2px solid rgba(255,255,255,.35);
+  }
+  .vsl-placeholder .play::before{
+    content:""; border-style:solid; border-width:14px 0 14px 22px;
+    border-color:transparent transparent transparent #fff; margin-left:5px;
+  }
+  .vsl-placeholder .lab{font-weight:800; letter-spacing:2px; font-size:.85rem; color:#fff; opacity:.85;}
+  .vsl-placeholder .hint{font-size:.85rem; color:#9a9a9a; max-width:420px;}
+
+  /* ===== CTA PULSANTE ===== */
+  .cta-section{
+    display:flex; justify-content:center; align-items:center;
+    padding:34px 18px; background:#fff;
+  }
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:12px;
+    background:linear-gradient(135deg,#f08a24 0%,#e85a1a 100%);
+    color:#fff; font-weight:900; font-size:1.35rem; letter-spacing:.3px;
+    padding:20px 44px; border:none; border-radius:60px; cursor:pointer;
+    text-decoration:none; box-shadow:0 10px 28px rgba(232,90,26,.35);
+    animation:pulse 1.6s ease-in-out infinite;
+    transition:transform .15s ease;
+  }
+  .cta-btn:hover{transform:scale(1.04);}
+  .cta-btn .arrow{font-size:1.5rem; transition:transform .2s;}
+  .cta-btn:hover .arrow{transform:translateX(4px);}
+  @keyframes pulse{
+    0%   {box-shadow:0 10px 28px rgba(232,90,26,.35), 0 0 0 0 rgba(232,90,26,.55);}
+    70%  {box-shadow:0 10px 28px rgba(232,90,26,.35), 0 0 0 22px rgba(232,90,26,0);}
+    100% {box-shadow:0 10px 28px rgba(232,90,26,.35), 0 0 0 0 rgba(232,90,26,0);}
+  }
+  @media(max-width:620px){
+    .cta-btn{font-size:1.05rem; padding:16px 28px;}
+    .cta-section{padding:24px 14px;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .logo{font-size:2rem; padding:10px 12px;}
+    .utils{gap:16px;}
+    .util span{font-size:.62rem;}
+    .util svg{width:24px;height:24px;}
+    .util-sep{display:none;}
+    .nav a{font-size:1rem;}
+    .ai-brand{font-size:1.1rem; padding:11px 12px;}
+    .ai-field input{font-size:1rem;}
+    .breaking .flag .b{font-size:1.2rem;}
+    .breaking .flag .s{font-size:.8rem;}
+    .ticker .track{font-size:1rem;}
+  }
+  @media(max-width:620px){
+    .utils{display:none;}
+    .anz{justify-content:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header>
+  <!-- TOP ROW: logo + utilities -->
+  <div class="wrap head-top">
+    <a href="#" class="logo">NEWS</a>
+
+    <div class="utils">
+      <div class="util plus">
+        <span class="badge">NEWS<span class="p">+</span></span>
+        <span>Infos zu Plus</span>
+      </div>
+      <div class="util-sep"></div>
+
+      <div class="util">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3V4z"/></svg>
+        <span>Debatte</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 18 18H7z"/></svg>
+        <span>Wetter</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z" class="ico-fill"/></svg>
+        <span>Play</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16l-1 11H5L4 8z"/><path d="M8 8a4 4 0 0 1 8 0"/></svg>
+        <span>Marktplatz</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5V4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        <span>Zeitung</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l4 4"/></svg>
+        <span>Suche</span>
+      </div>
+      <div class="util">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+        <span>Anmelden</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV ROW -->
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#">Startseite</a>
+      <a href="#">News</a>
+      <a href="#">Politik</a>
+      <a href="#">Regio</a>
+      <a href="#">Unterhaltung</a>
+      <a href="#">Kaufberater</a>
+      <a href="#">Sport</a>
+      <a href="#">Fussball</a>
+      <a href="#">Ratgeber</a>
+      <a href="#">Gesundheit</a>
+      <a href="#">Sex &amp; Liebe</a>
+      <a href="#">Auto</a>
+      <a href="#">Spiele</a>
+    </div>
+  </nav>
+
+  <!-- AI SEARCH BAR -->
+  <div class="wrap ai-row">
+    <div class="ai-brand">Hey_</div>
+    <div class="ai-field">
+      <input type="text" placeholder="Die KI. Fragen Sie mich alles!" />
+      <span class="act send" title="Senden">
+        <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-7-8-3z"/></svg>
+      </span>
+      <span class="act close" title="Schließen">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- ANZEIGEN -->
+  <div class="wrap anz">
+    <span class="lab">ANZEIGEN</span>
+    <a href="#">Fan-Wette</a><span class="sep">|</span>
+    <a href="#">Handwerker-Tipp</a><span class="sep">|</span>
+    <a href="#">Volks-Akku-Staubsauger</a><span class="sep">|</span>
+    <a href="#">Fan-Snack</a>
+  </div>
+
+  <!-- BREAKING NEWS -->
+  <div class="breaking">
+    <div class="flag"><span class="s">BREAKING</span><span class="b">NEWS</span></div>
+    <div class="ticker">
+      <div class="track">
+        <span>+++ Wenn Sie mehr als 3 Stunden am Tag sitzen, könnte genau diese Gewohnheit der Grund sein, warum Ihr Ischias nie besser wird — hören Sie nicht auf zu sitzen, fügen Sie nur das hinzu +++</span>
+        <span>+++ Wenn Sie mehr als 3 Stunden am Tag sitzen, könnte genau diese Gewohnheit der Grund sein, warum Ihr Ischias nie besser wird — hören Sie nicht auf zu sitzen, fügen Sie nur das hinzu +++</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="vsl-section">
+  <vturb-smartplayer id="ab-6a1a16f4987d9d099e250036" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+  <script type="text/javascript">
+    var s=document.createElement("script");
+    s.src="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/ab-test/6a1a16f4987d9d099e250036/player.js",
+    s.async=!0,document.head.appendChild(s);
+  </script>
+</section>
+
+<section class="cta-section">
+  <div class="esconder">
+    <a href="https://www.dtc.news-health81.online/dtcciatico/" class="cta-btn">Meine Kits jetzt auswählen! <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ===== DELAY DO CTA (revela após X seg via player Vturb) ===== -->
+<style>
+  .esconder { display: none; }
+</style>
+
+<script>
+  var listPitch = {
+    '6a1a160f5f4238b9b9c97f34': { delay: 3081, utm: 'utm_content=vsl1' }, // Vídeo 1 — pitch em 51:21
+    '6a1a165eb7169516c91ff81d': { delay: 3065, utm: 'utm_content=vsl3' }, // Vídeo 3 — pitch em 51:05
+    '6a1a16a124e6a14613b4a57b': { delay: 3103, utm: 'utm_content=vsl4' }  // Vídeo 4 — pitch em 51:43
+  };
+
+  var alreadyInitialized = false;
+
+  var updateLinksWithUTM = function(utmParam) {
+    var links = document.querySelectorAll('a[href]:not([href*="#"])');
+    var separator = '?';
+    var queryString = separator + utmParam;
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      if (link.href.indexOf(utmParam) !== -1) continue;
+      if (utmParam === undefined) return;
+      var baseUrl = link.href.split('?')[0];
+      link.href = baseUrl + queryString;
+    }
+  };
+
+  document.addEventListener('player:ready', function(event) {
+    if (alreadyInitialized) return;
+
+    var detail = event.detail || {};
+    var config = detail.config || {};
+    var player = detail.player || document.querySelector('vturb-smartplayer');
+    var playerId = config.id;
+    var pitchConfig = listPitch[playerId];
+
+    if (!playerId || !pitchConfig) return;
+
+    alreadyInitialized = true;
+
+    player.displayHiddenElements(pitchConfig.delay, ['.esconder'], { persist: true });
+    //updateLinksWithUTM(pitchConfig.utm);
+  });
+</script>
+
+<!-- ===== Repasse de UTMs da URL para o link do checkout (.cta-btn) ===== -->
+<script>
+(function () {
+  try {
+    var search = window.location.search;            // ex.: "?utm_source=fb&utm_campaign=x"
+    if (!search || search === '?') return;           // sem parâmetros → não faz nada
+    var incoming = new URLSearchParams(search);
+    var ctas = document.querySelectorAll('.cta-btn');
+    for (var i = 0; i < ctas.length; i++) {
+      var url = new URL(ctas[i].href);
+      incoming.forEach(function (value, key) {
+        url.searchParams.set(key, value);            // preserva params já existentes no checkout
+      });
+      ctas[i].href = url.toString();
+    }
+  } catch (e) { /* falha silenciosa: nunca quebra a página */ }
+})();
+</script>
+
+</body>
+</html>
