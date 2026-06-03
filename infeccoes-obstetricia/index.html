@@ -216,7 +216,7 @@
       border-bottom: none !important; padding-bottom: 0 !important; margin-bottom: 0 !important;
     }
     #pres-canvas .slide .s-body {
-      flex: 1; display: flex; flex-direction: column;
+      flex: 1; min-height: 0; display: flex; flex-direction: column;
       justify-content: center; gap: 8px; overflow: hidden;
     }
 
@@ -302,6 +302,7 @@
     .q-card p {
       margin-bottom: 4px;
       line-height: 1.38;
+      font-size: 1.05rem;
     }
     .q-options {
       display: flex;
@@ -317,6 +318,7 @@
       border-radius: 10px;
       padding: 9px 13px;
       transition: all .35s ease;
+      font-size: 1.05rem;
     }
     .q-option::before {
       content: '';
@@ -401,6 +403,20 @@
       margin-bottom: 10px !important;
       flex-shrink: 0 !important;
     }
+    /* ═══ destaque temporizado de palavras-chave (efeito marca-texto) ═══ */
+    .kw { border-radius: 3px; padding: 0 2px; }
+    #pres-canvas .kw {
+      background-image: linear-gradient(#ffe14d, #ffe14d);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 0% 90%;
+      animation: kwSweep .5s ease forwards;
+      animation-delay: var(--t, 0s);
+    }
+    @keyframes kwSweep {
+      to { background-size: 100% 90%; color: #1a1a1a; }
+    }
+
     #pres-canvas .question-slide .s-body {
       justify-content: flex-start !important;
       gap: 0 !important;
@@ -413,30 +429,30 @@
       flex-shrink: 0 !important;
     }
     #pres-canvas .q-card p {
-      font-size: .78rem !important;
-      line-height: 1.17 !important;
-      margin-bottom: 2px !important;
+      font-size: 1.12rem !important;
+      line-height: 1.32 !important;
+      margin-bottom: 5px !important;
     }
     #pres-canvas .q-options {
-      gap: 4px !important;
+      gap: 7px !important;
       flex-shrink: 0 !important;
     }
     #pres-canvas .q-option {
-      font-size: .82rem !important;
-      padding: 6px 10px !important;
-      line-height: 1.12 !important;
+      font-size: 1.12rem !important;
+      padding: 9px 13px !important;
+      line-height: 1.28 !important;
       border-radius: 8px !important;
     }
     #pres-canvas .q-option::before {
-      width: 12px !important;
-      height: 12px !important;
-      margin-top: 1px !important;
+      width: 16px !important;
+      height: 16px !important;
+      margin-top: 2px !important;
     }
     #pres-canvas .q-reveal {
       display: inline-block !important;
-      font-size: .74rem !important;
-      padding: 7px 12px !important;
-      margin-top: 7px !important;
+      font-size: .98rem !important;
+      padding: 8px 14px !important;
+      margin-top: 9px !important;
       flex-shrink: 0 !important;
       position: relative !important;
       z-index: 5 !important;
@@ -445,10 +461,10 @@
       display: none !important;
     }
     #pres-canvas .q-explanation {
-      font-size: .70rem !important;
-      line-height: 1.15 !important;
-      padding: 7px 10px !important;
-      margin-top: 6px !important;
+      font-size: .98rem !important;
+      line-height: 1.32 !important;
+      padding: 9px 13px !important;
+      margin-top: 8px !important;
       border-radius: 7px !important;
     }
 
@@ -639,7 +655,7 @@
 <div class="slide cover">
 <div class="tag">Obstetrícia</div>
 <h1>Infecções em Obstetrícia</h1>
-<p class="author">Corioamnionite · Infecção Puerperal · Abortamento Infectado · Mastite<br/>Gustavo Liebgott &amp; Tadeu Sieslevski<br/>Prof. Dr. Tamires</p>
+<p class="author">Corioamnionite · Infecção Puerperal · Abortamento Infectado · Mastite · Pielonefrite<br/>Gustavo Liebgott &amp; Tadeu Sieslevski<br/>Prof. Dr. Tamires</p>
 </div>
 <!-- SUMÁRIO GERAL -->
 <div class="slide">
@@ -650,9 +666,9 @@
 <div>
 <h3>Parte 1 — Corioamnionite</h3>
 <ul>
-<li>Conceito (Triple I) e fisiopatologia</li>
+<li>Conceito e fisiopatologia</li>
 <li>Microbiologia e fatores de risco</li>
-<li>Classificação NICHD/ACOG e Gibbs</li>
+<li>Classificação (MS e FEBRASGO) e Gibbs</li>
 <li>Diagnóstico e repercussões</li>
 <li>Conduta e antibioticoterapia</li>
 </ul>
@@ -679,6 +695,12 @@
 <li>Infecção de parede abdominal</li>
 <li>Infecção de episiotomia</li>
 </ul>
+<h3>Parte 5 — Pielonefrite na Gestação</h3>
+<ul>
+<li>Quando suspeitar e diagnóstico</li>
+<li>Conduta e antibiótico empírico</li>
+<li>Complicações, alta e profilaxia</li>
+</ul>
 </div>
 </div>
 </div>
@@ -697,15 +719,15 @@
 <h2>Conceito</h2>
 <div class="s-body">
 <div class="hl"><strong>Definição:</strong> infecção e/ou inflamação das membranas fetais (<strong>córion e âmnio</strong>), líquido amniótico, placenta, cordão umbilical e, eventualmente, do feto.</div>
-<p>Denominação atual mais precisa: <strong>infecção intra-amniótica (IAI)</strong> ou <strong>Triple I</strong> — <em>Intrauterine Inflammation or Infection or both</em>.</p>
-<h3>Principais causas associadas</h3>
+<p>Também denominada <strong>infecção intra-amniótica (IAI)</strong>.</p>
+<h3>Principais causas</h3>
 <ul>
-<li>Parto prematuro</li>
-<li>Sepse neonatal precoce</li>
-<li>Paralisia cerebral associada à prematuridade</li>
-<li>Morbidade materna infecciosa</li>
-<li>Óbito fetal e neonatal</li>
+<li>Ascensão de microrganismos da <strong>flora vaginal e cervical</strong> (via mais comum)</li>
+<li>Trabalho de parto e bolsa rota prolongados</li>
+<li>Múltiplos toques vaginais</li>
+<li>Procedimentos invasivos (amniocentese, cerclagem)</li>
 </ul>
+<div class="hl"><strong>Ruptura prematura das membranas (RPMP)</strong> — principal fator associado e porta de entrada da infecção.</div>
 </div>
 </div>
 
@@ -740,18 +762,26 @@
 Ascensão bacteriana pelo colo
    │
    ▼
-Infecção da <span class="r">decídua</span>
+Infecção da <span class="r">decídua</span></div>
+</div>
+</div>
+<div class="slide">
+<span class="slide-num">Slide 5</span>
+<h2>Via Ascendente — Sequência (cont.)</h2>
+<div class="s-body">
+<div class="schema">Infecção da <span class="r">decídua</span>
    │
    ▼
 Infecção das <span class="r">membranas</span>
    │
    ▼
 Contaminação do <span class="r">líquido amniótico</span></div>
+<div class="hl">Do líquido amniótico, a infecção pode atingir a <strong>placenta, o cordão e o feto</strong>.</div>
 </div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 5</span>
+<span class="slide-num">Slide 6</span>
 <h2>Resposta Inflamatória Fetal</h2>
 <div class="s-body">
 <p>A resposta inflamatória libera mediadores: <strong>IL-1, IL-6, IL-8, TNF-α e prostaglandinas</strong>.</p>
@@ -767,7 +797,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 6</span>
+<span class="slide-num">Slide 7</span>
 <h2>Microbiologia</h2>
 <div class="s-body">
 <div class="badge">Infecção polimicrobiana</div>
@@ -793,7 +823,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 7</span>
+<span class="slide-num">Slide 8</span>
 <h2>Fatores de Risco</h2>
 <div class="s-body">
 <div class="two-col">
@@ -822,26 +852,28 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 8</span>
-<h2>Classificação Atual — Triple I (NICHD/ACOG)</h2>
+<span class="slide-num">Slide 9</span>
+<h2>Classificação — Ministério da Saúde e FEBRASGO</h2>
 <div class="s-body">
 <div class="two-col">
 <div class="box">
-<h3>Triple I Isolada Suspeita</h3>
-<p>Febre materna <strong>≥ 39°C</strong> OU <strong>38,0–38,9°C</strong> persistente (após 30 min) associada a ≥ 1:</p>
+<h3>Pelo Ministério da Saúde</h3>
 <ul>
-<li>Taquicardia fetal &gt; 160 bpm</li>
-<li>Leucocitose materna &gt; 15.000</li>
-<li>Secreção purulenta cervical</li>
+<li>Febre materna</li>
+<li>Taquicardia materna</li>
+<li>Taquicardia fetal</li>
+<li>Leucócitos &gt; 20.000/mm³ ou desvio (ou aumento de 20%)</li>
+<li>Movimento respiratório fetal ausente (PBF)</li>
 </ul>
 </div>
 <div class="box">
-<h3>Triple I Confirmada</h3>
-<p>Critérios clínicos <strong>+</strong> evidência laboratorial:</p>
+<h3>Pela FEBRASGO</h3>
+<p>Febre <strong>+ pelo menos 2</strong> dos seguintes:</p>
 <ul>
-<li>Cultura positiva do líquido amniótico</li>
-<li>Gram positivo</li>
-<li>Histopatologia placentária compatível</li>
+<li>Útero doloroso</li>
+<li>Secreção vaginal com odor desagradável</li>
+<li>Taquicardia materna ou fetal</li>
+<li>Leucocitose &gt; 20 mil com desvio à esquerda (ou &lt; 20 mil com aumento de 20% vs. exames anteriores)</li>
 </ul>
 </div>
 </div>
@@ -849,7 +881,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 9</span>
+<span class="slide-num">Slide 10</span>
 <h2>Diagnóstico Clínico — Critérios de Gibbs</h2>
 <div class="s-body">
 <div class="badge">Diagnóstico majoritariamente clínico</div>
@@ -865,7 +897,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 10</span>
+<span class="slide-num">Slide 11</span>
 <h2>Exames Complementares</h2>
 <div class="s-body">
 <h3>Hemograma</h3>
@@ -878,7 +910,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 11</span>
+<span class="slide-num">Slide 12</span>
 <h2>Corioamnionite Histológica</h2>
 <div class="s-body">
 <p>Diagnóstico <strong>anatomopatológico</strong> — infiltrado neutrofílico nas membranas. Pode ocorrer sem sintomas maternos e sem febre.</p>
@@ -895,7 +927,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 12</span>
+<span class="slide-num">Slide 13</span>
 <h2>Repercussões Maternas</h2>
 <div class="s-body">
 <div class="two-col">
@@ -922,7 +954,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 13</span>
+<span class="slide-num">Slide 14</span>
 <h2>Repercussões Fetais e Neonatais</h2>
 <div class="s-body">
 <div class="two-col">
@@ -948,7 +980,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 14</span>
+<span class="slide-num">Slide 15</span>
 <h2>Conduta — Princípio Fundamental</h2>
 <div class="s-body">
 <div class="hl">Diagnóstico de corioamnionite = <strong>indicação de interrupção da gestação</strong>, independentemente da idade gestacional. O tratamento <strong>não</strong> visa manter a gravidez.</div>
@@ -964,7 +996,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 15</span>
+<span class="slide-num">Slide 16</span>
 <h2>Antibioticoterapia</h2>
 <div class="s-body">
 <p>Conduta ativa + ATB de amplo espectro. Três esquemas, conforme disponibilidade do serviço:</p>
@@ -979,7 +1011,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 16</span>
+<span class="slide-num">Slide 17</span>
 <h2>Corticoide e Neuroproteção</h2>
 <div class="s-body">
 <ul>
@@ -991,7 +1023,7 @@ Contaminação do <span class="r">líquido amniótico</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 17</span>
+<span class="slide-num">Slide 18</span>
 <h2>Pontos Clássicos de Prova</h2>
 <div class="s-body">
 <ul>
@@ -1039,10 +1071,10 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 18</span>
+<span class="slide-num">Slide 19</span>
 <h2>Resumo — Corioamnionite</h2>
 <div class="s-body">
-<div class="schema"><span class="r">CORIOAMNIONITE</span> (Triple I)
+<div class="schema"><span class="r">CORIOAMNIONITE</span>
 │
 ├── <span class="r">VIA</span> → Ascendente (flora vaginal/cervical)
 │
@@ -1067,7 +1099,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 19</span>
+<span class="slide-num">Slide 20</span>
 <h2>Definição e Importância</h2>
 <div class="s-body">
 <div class="hl"><strong>Infecção puerperal</strong> (febre puerperal): qualquer infecção bacteriana do trato genital feminino no pós-parto. Principal causa de febre no puerpério — indica endometrite / endomiometrite / endoparametrite.</div>
@@ -1083,7 +1115,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 20</span>
+<span class="slide-num">Slide 21</span>
 <h2>Pontos-Chave</h2>
 <div class="s-body">
 <ul>
@@ -1096,7 +1128,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 21</span>
+<span class="slide-num">Slide 22</span>
 <h2>Fatores de Risco</h2>
 <div class="s-body">
 <div class="hl">A <strong>cesárea</strong> é o principal fator de risco — sobretudo quando realizada após o início do trabalho de parto.</div>
@@ -1124,7 +1156,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 22</span>
+<span class="slide-num">Slide 23</span>
 <h2>Microbiologia e Patogenia</h2>
 <div class="s-body">
 <p>Polimicrobiana — bactérias do intestino e que colonizam períneo/vagina/colo. Mais isoladas: <em>S. agalactiae, Enterococcus, E. coli, Bacteroides bivius e disiens</em>.</p>
@@ -1135,7 +1167,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 23</span>
+<span class="slide-num">Slide 24</span>
 <h2>Bactérias na Endometrite Pós-parto</h2>
 <div class="s-body">
 <table>
@@ -1150,7 +1182,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 24</span>
+<span class="slide-num">Slide 25</span>
 <h2>Endometrite — Diagnóstico Clínico</h2>
 <div class="s-body">
 <p>Diagnóstico <strong>clínico</strong>, baseado na febre (excluídas outras causas). Febre &gt; 38,5°C, mesmo nas primeiras 24h, deve ser tratada — estreptococo dos grupos A/B causa bacteriemia e choque séptico fulminante.</p>
@@ -1163,7 +1195,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 25</span>
+<span class="slide-num">Slide 26</span>
 <h2>Exames Subsidiários</h2>
 <div class="s-body">
 <ul>
@@ -1176,7 +1208,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 26</span>
+<span class="slide-num">Slide 27</span>
 <h2>Tratamento Clínico — Endometrite</h2>
 <div class="s-body">
 <p>ATB de amplo espectro (infecção polimicrobiana), com a paciente internada. Parenteral até <strong>afebril por 24–48h</strong>; depois, sem necessidade de manutenção VO.</p>
@@ -1193,7 +1225,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 27</span>
+<span class="slide-num">Slide 28</span>
 <h2>Esquemas de Escolha (HC-FMUSP)</h2>
 <div class="s-body">
 <ul>
@@ -1207,7 +1239,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 28</span>
+<span class="slide-num">Slide 29</span>
 <h2>Tratamento Cirúrgico</h2>
 <div class="s-body">
 <ul>
@@ -1220,7 +1252,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 29</span>
+<span class="slide-num">Slide 30</span>
 <h2>Profilaxia Antimicrobiana</h2>
 <div class="s-body">
 <div class="hl">Reduz a endometrite pós-cesárea em <strong>~70%</strong>.</div>
@@ -1235,7 +1267,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 30</span>
+<span class="slide-num">Slide 31</span>
 <h2>Tromboflebite Pélvica Puerperal</h2>
 <div class="s-body">
 <div class="badge">Rara — 0,05–0,18%</div>
@@ -1253,7 +1285,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 31</span>
+<span class="slide-num">Slide 32</span>
 <h2>Infecção da Parede Abdominal (Pós-cesárea)</h2>
 <div class="s-body">
 <p>Ocorre em <strong>3–16%</strong> das cesáreas (média 7%); profilaxia reduz para ~2%. Manifesta-se no <strong>5º–7º dia</strong> (precoce, 48–72h, se estreptococo do grupo A).</p>
@@ -1279,7 +1311,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 32</span>
+<span class="slide-num">Slide 33</span>
 <h2>Infecção de Parede — Tratamento por Gravidade</h2>
 <div class="s-body">
 <table>
@@ -1294,7 +1326,7 @@ A via predominante é ascendente, o diagnóstico é majoritariamente clínico (G
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 33</span>
+<span class="slide-num">Slide 34</span>
 <h2>Infecção de Episiotomia</h2>
 <div class="s-body">
 <div class="badge">Incidência &lt; 1% (≈ 0,05%)</div>
@@ -1341,7 +1373,7 @@ Febre persistente com calafrios, apesar de ATB adequado, em paciente em bom esta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 34</span>
+<span class="slide-num">Slide 35</span>
 <h2>Resumo — Infecção Puerperal</h2>
 <div class="s-body">
 <div class="schema"><span class="r">INFECÇÃO PUERPERAL</span>
@@ -1369,7 +1401,7 @@ Febre persistente com calafrios, apesar de ATB adequado, em paciente em bom esta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 35</span>
+<span class="slide-num">Slide 36</span>
 <h2>Conceito e Importância</h2>
 <div class="s-body">
 <p>Frequentemente ligado ao <strong>aborto inseguro / clandestino</strong>, realizado em condições inadequadas, sobretudo onde a interrupção é proibida por lei.</p>
@@ -1382,7 +1414,7 @@ Febre persistente com calafrios, apesar de ATB adequado, em paciente em bom esta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 36</span>
+<span class="slide-num">Slide 37</span>
 <h2>Microbiologia e Propagação</h2>
 <div class="s-body">
 <p>Polimicrobiana (aeróbias + anaeróbias): estreptococos beta-hemolíticos, <em>Enterococcus</em>, <em>E. coli</em>, <em>Peptostreptococcus</em>, <em>Bacteroides fragilis</em>, <em>Clostridium</em>.</p>
@@ -1401,7 +1433,7 @@ Disseminação hematogênica → <span class="r">SEPSE</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 37</span>
+<span class="slide-num">Slide 38</span>
 <h2>Quadro Clínico</h2>
 <div class="s-body">
 <p>Depende do grau de comprometimento da paciente.</p>
@@ -1415,7 +1447,7 @@ Disseminação hematogênica → <span class="r">SEPSE</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 38</span>
+<span class="slide-num">Slide 39</span>
 <h2>Formas Clínicas de Abortamento</h2>
 <div class="s-body">
 <table>
@@ -1431,7 +1463,7 @@ Disseminação hematogênica → <span class="r">SEPSE</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 39</span>
+<span class="slide-num">Slide 40</span>
 <h2>Tratamento Clínico</h2>
 <div class="s-body">
 <p>Tratar hipovolemia (Ringer/SF em veia calibrosa), combater a infecção e reparar lesões.</p>
@@ -1451,7 +1483,7 @@ Disseminação hematogênica → <span class="r">SEPSE</span></div>
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 40</span>
+<span class="slide-num">Slide 41</span>
 <h2>Tratamento — Duração e Cirúrgico</h2>
 <div class="s-body">
 <p>Combinações: <strong>clindamicina + gentamicina</strong> ou <strong>ampicilina/sulbactam</strong>. Nefropata → trocar gentamicina por ceftriaxona.</p>
@@ -1486,7 +1518,7 @@ Abortamento infectado com restos ovulares: ATB de amplo espectro (clinda + genta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 41</span>
+<span class="slide-num">Slide 42</span>
 <h2>Resumo — Abortamento Infectado</h2>
 <div class="s-body">
 <div class="schema"><span class="r">ABORTAMENTO INFECTADO</span>
@@ -1512,7 +1544,7 @@ Abortamento infectado com restos ovulares: ATB de amplo espectro (clinda + genta
 <h2>Mastite e Abscesso Mamário</h2>
 </div>
 <div class="slide">
-<span class="slide-num">Slide 42</span>
+<span class="slide-num">Slide 43</span>
 <h2>Classificação das Mastites</h2>
 <div class="s-body">
 <div class="tree">
@@ -1541,7 +1573,7 @@ Abortamento infectado com restos ovulares: ATB de amplo espectro (clinda + genta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 43</span>
+<span class="slide-num">Slide 44</span>
 <h2>Mastite Puerperal</h2>
 <div class="s-body">
 <ul>
@@ -1564,7 +1596,7 @@ Abortamento infectado com restos ovulares: ATB de amplo espectro (clinda + genta
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 44</span>
+<span class="slide-num">Slide 45</span>
 <h2>Mastite Puerperal — Tratamento</h2>
 <div class="s-body">
 <ul>
@@ -1579,7 +1611,7 @@ Abortamento infectado com restos ovulares: ATB de amplo espectro (clinda + genta
 <div class="slide question-slide">
 <span class="slide-num">Questão</span>
 <div class="s-body">
-<div class="q-card"><p><strong>USP-SP — 2025</strong></p><p>Paciente, 35 anos de idade, com antecedente de parto vaginal e amamentação encerrada há 3 anos. Tabagista, sem outras comorbidades ou uso de medicamentos. Refere dor na mama direita. O exame clínico das mamas revela mamas lipossubstituídas, não lactantes, com área de eritema e edema periareolar direito e ponto de flutuação doloroso. Qual é a conduta adequada neste momento?</p></div>
+<div class="q-card"><p><strong>USP-SP — 2025</strong></p><p>Paciente, 35 anos de idade, com antecedente de parto vaginal e amamentação encerrada há 3 anos. <span class="kw" style="--t:4.9s">Tabagista</span>, sem outras comorbidades ou uso de medicamentos. Refere dor na mama direita. O exame clínico das mamas revela mamas lipossubstituídas, não lactantes, com área de eritema e <span class="kw" style="--t:12.9s">edema periareolar direito</span> e <span class="kw" style="--t:14s">ponto de flutuação doloroso</span>. Qual é a conduta adequada neste momento?</p></div>
 <div class="q-options">
 <div class="q-option">A) Antibioticoterapia tópica.</div>
 <div class="q-option correct">B) Drenagem com bisturi de lâmina.</div>
@@ -1593,7 +1625,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 45</span>
+<span class="slide-num">Slide 46</span>
 <h2>Mastites Infecciosas</h2>
 <div class="s-body">
 <ul>
@@ -1607,7 +1639,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 46</span>
+<span class="slide-num">Slide 47</span>
 <h2>Mastites Não-infecciosas</h2>
 <div class="s-body">
 <ul>
@@ -1619,7 +1651,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 47</span>
+<span class="slide-num">Slide 48</span>
 <h2>Mastites Crônicas Infecciosas</h2>
 <div class="s-body">
 <h3>Abscesso subareolar crônico recidivante</h3>
@@ -1633,7 +1665,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 48</span>
+<span class="slide-num">Slide 49</span>
 <h2>Abscesso Subareolar Crônico Recidivante — Tratamento</h2>
 <div class="s-body">
 <div class="two-col">
@@ -1654,7 +1686,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 49</span>
+<span class="slide-num">Slide 50</span>
 <h2>Mastites Crônicas Não Infecciosas</h2>
 <div class="s-body">
 <h3>Mastite granulomatosa idiopática</h3>
@@ -1669,7 +1701,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 </div>
 
 <div class="slide">
-<span class="slide-num">Slide 50</span>
+<span class="slide-num">Slide 51</span>
 <h2>Mastite Granulomatosa Idiopática — Tratamento</h2>
 <div class="s-body">
 <div class="two-col">
@@ -1695,7 +1727,7 @@ A presença de ponto de flutuação doloroso indica coleção purulenta (abscess
 <div class="slide question-slide">
 <span class="slide-num">Questão</span>
 <div class="s-body">
-<div class="q-card"><p><strong>UEPA — 2025</strong></p><p>Paciente 42 anos, hipotireoidea, tabagista, etilista e diabética, refere formação de pequeno abscesso em mama esquerda, na junção dos quadrantes inferiores, que drenou espontaneamente, com secreção piosanguinolenta e cicatrizou sem tratamento. Quadro recorrente nos últimos 3 anos, com intervalos de ~3 meses, sempre na mesma topografia. Nega doenças infectocontagiosas. O provável diagnóstico e tratamento são:</p></div>
+<div class="q-card"><p><strong>UEPA — 2025</strong></p><p>Paciente <span class="kw" style="--t:1s">42 anos</span>, hipotireoidea, <span class="kw" style="--t:2.3s">tabagista</span>, etilista e diabética, refere formação de pequeno <span class="kw" style="--t:6s">abscesso em mama esquerda</span>, na junção dos quadrantes inferiores, que <span class="kw" style="--t:10.5s">drenou espontaneamente</span>, com secreção piosanguinolenta e cicatrizou sem tratamento. Quadro <span class="kw" style="--t:15s">recorrente nos últimos 3 anos</span>, com intervalos de ~3 meses, sempre na mesma topografia. Nega doenças infectocontagiosas. O provável diagnóstico e tratamento são:</p></div>
 <div class="q-options">
 <div class="q-option">A) Sarcoidose mamária — ressecção total da lesão.</div>
 <div class="q-option">B) Mastite tuberculosa, porém o tratamento não é com tuberculostáticos.</div>
@@ -1712,7 +1744,7 @@ Abscesso subareolar crônico recidivante: quadro recorrente na mesma topografia,
 <div class="slide question-slide">
 <span class="slide-num">Questão</span>
 <div class="s-body">
-<div class="q-card"><p><strong>USP-SP — 2025</strong></p><p>R.T.T., feminino, 55 anos, hipertensa crônica e DM2, 3G3PC. Tabagista (20 cigarros/dia desde os 18 anos). Vermelhidão e dor na mama direita, na união dos quadrantes superiores, e febre 38,3 °C há 1 dia. Ao exame: mama esquerda normal; mama direita com hiperemia na UQS, próximo ao CAP, com área de flutuação e cicatrizes periareolar prévias. Qual a hipótese diagnóstica e principal etiologia?</p></div>
+<div class="q-card"><p><strong>USP-SP — 2025</strong></p><p>R.T.T., feminino, 55 anos, hipertensa crônica e <span class="kw" style="--t:2.3s">DM2</span>, 3G3PC. <span class="kw" style="--t:2.9s">Tabagista</span> (20 cigarros/dia desde os 18 anos). Vermelhidão e dor na mama direita, na união dos quadrantes superiores, e <span class="kw" style="--t:8.3s">febre</span> 38,3 °C há 1 dia. Ao exame: mama esquerda normal; mama direita com hiperemia na UQS, próximo ao CAP, com <span class="kw" style="--t:14.3s">área de flutuação</span> e <span class="kw" style="--t:15.4s">cicatrizes periareolar prévias</span>. Qual a hipótese diagnóstica e principal etiologia?</p></div>
 <div class="q-options">
 <div class="q-option">A) Mastite granulomatosa, tuberculose.</div>
 <div class="q-option">B) Mastite periareolar recidivante, diabetes tipo 2.</div>
@@ -1723,6 +1755,229 @@ Abscesso subareolar crônico recidivante: quadro recorrente na mesma topografia,
 <div class="q-explanation"><strong>Resposta correta: C) Mastite periareolar recidivante, tabagismo.</strong><br/>
 Quadro recorrente periareolar (cicatrizes prévias) com flutuação, fortemente associado ao tabagismo — principal fator etiológico do abscesso/mastite subareolar recidivante.</div>
 </div>
+</div>
+
+<!-- ═══════════════════════════════
+       SEÇÃO 5: PIELONEFRITE NA GESTAÇÃO
+  ═══════════════════════════════ -->
+<div class="slide section-divider" data-section="pielo">
+<div class="sec-label">Parte 5 · Abordagem prática</div>
+<h2>Pielonefrite na Gestação</h2>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 52</span>
+<h2>Por que importa?</h2>
+<div class="s-body">
+<ul>
+<li>Mais comum no <strong>2º e 3º trimestre</strong></li>
+<li>Pode evoluir com <strong>sepse, choque séptico, SDRA</strong>, anemia e insuficiência renal</li>
+<li>Aumenta o risco de <strong>trabalho de parto prematuro</strong> e mortalidade perinatal</li>
+</ul>
+<div class="hl">Reconhecer e internar cedo muda o desfecho materno e perinatal.</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 53</span>
+<h2>Quando suspeitar</h2>
+<div class="s-body">
+<ul>
+<li><strong>Febre &gt; 38 ºC</strong></li>
+<li><strong>Dor em flanco</strong></li>
+<li>Náuseas / vômitos</li>
+<li><strong>Punho-percussão lombar positiva</strong> (Giordano +)</li>
+<li>Pode ter ou não disúria, urgência e polaciúria</li>
+</ul>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 54</span>
+<h2>Diagnóstico inicial</h2>
+<div class="s-body">
+<ul>
+<li>Diagnóstico <strong>clínico + bacteriúria</strong></li>
+<li><strong>Urocultura antes do antibiótico</strong>, se possível</li>
+<li><strong>Hemocultura</strong> se sinais de sepse, diabetes ou quadro grave</li>
+</ul>
+<div class="hl"><strong>Diferenciais:</strong> nefrolitíase · corioamnionite · trabalho de parto prematuro · descolamento de placenta</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 55</span>
+<h2>Conduta imediata</h2>
+<div class="s-body">
+<div class="badge">Decore isso</div>
+<div class="hl"><strong>Pielonefrite na gestação = internação obrigatória.</strong></div>
+<ul>
+<li>Internar</li>
+<li>Hidratação venosa <strong>com cautela</strong> (risco de edema pulmonar/SDRA)</li>
+<li><strong>Antibiótico parenteral</strong></li>
+<li>Controle de sinais vitais + avaliação obstétrica</li>
+<li>Monitorar sinais de <strong>sepse</strong> e <strong>desconforto respiratório</strong></li>
+</ul>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 56</span>
+<h2>Antibiótico empírico</h2>
+<div class="s-body">
+<div class="badge">Decore isso — preferir cefalosporina de 3ª geração</div>
+<table>
+<tr><th>Não complicada</th><th>Complicada / risco de ESBL</th></tr>
+<tr><td><strong>Ceftriaxona</strong> 2 g EV 24/24h (ou 1 g 12/12h)</td><td>Piperacilina-tazobactam 4,5 g EV 8/8h</td></tr>
+<tr><td>Ampicilina + gentamicina</td><td>Meropenem 1 g EV 8/8h</td></tr>
+<tr><td>Ampicilina/sulbactam 3 g EV 8/8h</td><td>—</td></tr>
+</table>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 57</span>
+<h2>O que NÃO usar na pielonefrite</h2>
+<div class="s-body">
+<div class="hl"><strong>Nitrofurantoína NÃO trata pielonefrite</strong> — não atinge nível tecidual renal adequado.</div>
+<ul>
+<li><strong>Sulfametoxazol-trimetoprima:</strong> evitar no 1º e 3º trimestres</li>
+<li>Ajustar o antibiótico após <strong>cultura + antibiograma</strong></li>
+</ul>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 58</span>
+<h2>Quando investigar complicação</h2>
+<div class="s-body">
+<div class="hl"><strong>Febre/sintomas persistentes após 24–48h</strong> → repetir urocultura + <strong>USG de vias urinárias</strong> (obstrução, cálculo, abscesso ou infecção persistente)</div>
+<h3>Considerar USG também se</h3>
+<div class="two-col">
+<ul>
+<li>Paciente gravemente doente / sepse urinária</li>
+<li>Cólica renal ou história de cálculo</li>
+<li>Diabetes</li>
+</ul>
+<ul>
+<li>Cirurgia urológica prévia</li>
+<li>Imunossupressão</li>
+<li>Pielonefrite recorrente</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 59</span>
+<h2>Alta hospitalar</h2>
+<div class="s-body">
+<div class="two-col">
+<div>
+<h3>Critérios</h3>
+<ul>
+<li>Melhora clínica</li>
+<li><strong>Afebril por 48h</strong></li>
+<li>Tolerando via oral</li>
+<li>Sem sinais de sepse/complicação</li>
+</ul>
+</div>
+<div>
+<h3>Conduta</h3>
+<ul>
+<li>Trocar para <strong>ATB oral guiado por cultura</strong></li>
+<li>Completar <strong>14 dias</strong> de tratamento</li>
+<li>Acompanhamento ambulatorial (se sem fatores de risco)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 60</span>
+<h2>Obstetrícia e risco respiratório</h2>
+<div class="s-body">
+<ul>
+<li>Pielonefrite pode desencadear <strong>trabalho de parto prematuro</strong></li>
+<li>TPP &lt; 34 semanas + paciente <strong>estável</strong> → considerar <strong>corticoterapia + tocólise</strong></li>
+</ul>
+<div class="hl"><strong>Paciente séptica:</strong> em geral, evitar tocólise/corticoide — risco de <strong>edema pulmonar e SDRA</strong>.</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 61</span>
+<h2>Seguimento pós-tratamento</h2>
+<div class="s-body">
+<ul>
+<li>Urocultura de controle <strong>7 dias após</strong> o término do tratamento</li>
+<li>Repetir urocultura <strong>mensalmente</strong> até o fim da gestação</li>
+<li>Considerar <strong>antibiótico supressivo</strong> até o final da gravidez</li>
+</ul>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 62</span>
+<h2>Profilaxia</h2>
+<div class="s-body">
+<div class="two-col">
+<div>
+<h3>Indicações</h3>
+<ul>
+<li>Pielonefrite prévia na gestação</li>
+<li>Bacteriúria/cistite persistente ou recorrente</li>
+</ul>
+</div>
+<div>
+<h3>Opções (à noite, até o fim da gestação)</h3>
+<ul>
+<li>Nitrofurantoína 100 mg VO</li>
+<li>Cefalexina 500 mg VO</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<span class="slide-num">Slide 63</span>
+<h2>Resumo Prático</h2>
+<div class="s-body">
+<div class="schema">Suspeita clínica (febre + dor em flanco + Giordano +)
+   │
+   ▼
+<span class="r">INTERNAR</span>  →  urocultura ± hemocultura
+   │
+   ▼
+<span class="r">Antibiótico EV</span>  (ceftriaxona — 3ª geração)
+   │
+   ▼
+Reavaliar em <span class="r">24–48h</span>
+   ├── Melhora → alta com <span class="r">VO por 14 dias</span>
+   └── Febre persistente → repetir urocultura + <span class="r">USG</span>
+   │
+   ▼
+Urocultura de controle  →  <span class="r">profilaxia até o fim da gestação</span></div>
+</div>
+</div>
+<div class="slide">
+<span class="slide-num">Slide 64</span>
+<h2>Referências</h2>
+<div class="s-body">
+<ul>
+<li><strong>Protocolo de Infecção do Trato Urinário na Gestação</strong> — Secretaria de Estado de Saúde do Distrito Federal (SES-DF). Disponível em: <a href="https://www.saude.df.gov.br/documents/d/saude/protocolo-de-infeccao-do-trato-urinario-na-gestacao-1-pdf" target="_blank" rel="noopener" style="color:var(--red-soft);word-break:break-all;">saude.df.gov.br — protocolo de ITU na gestação</a></li>
+<li><strong>Zugaib Obstetrícia.</strong> Corioamnionite, infecção puerperal e abortamento infectado.</li>
+<li><strong>Tratado de Ginecologia FEBRASGO.</strong> Fernandes CE, Sá MFS, Mariani Neto C (coord.). 1. ed. Rio de Janeiro: Elsevier, 2019. <em>(mastologia)</em></li>
+<li><strong>Extensivo MEDCOF</strong> — Mastologia · Ginecologia e Obstetrícia.</li>
+</ul>
+</div>
+</div>
+<div class="slide cover">
+<div class="tag">Agradecimentos</div>
+<h1>Obrigado!</h1>
+<p class="author">Gustavo Liebgott &amp; Tadeu Sieslevski<br/>Orientação: Prof. Dr. Tamires<br/>Material de apoio: Extensivo MEDCOF</p>
 </div>
 <footer>Prof. Dr. Tamires  ·  Gustavo Liebgott &amp; Tadeu Sieslevski  ·  Obstetrícia</footer>
 </div>
@@ -1783,7 +2038,7 @@ Quadro recorrente periareolar (cicatrizes prévias) com flutuação, fortemente 
     const content = body.scrollHeight;
     body.style.justifyContent = prevJC;          // volta ao centralizado do CSS
     if (content > avail + 1) {
-      const k = Math.max(0.45, avail / content);
+      const k = Math.max(0.40, (avail / content) * 0.98);
       body.style.transformOrigin = 'center center';
       body.style.transform = 'scale(' + k + ')';
     }
