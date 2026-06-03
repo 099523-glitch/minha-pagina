@@ -1771,6 +1771,24 @@ Quadro recorrente periareolar (cicatrizes prévias) com flutuação, fortemente 
   }
   window.addEventListener('resize', scaleCanvas);
 
+  /* Auto-ajuste: reduz o conteúdo do slide para caber em 540px (evita corte) */
+  function fitSlide(clone) {
+    const body = clone.querySelector('.s-body');
+    if (!body) return;
+    body.style.transform = 'none';
+    const prevJC = body.style.justifyContent;
+    body.style.justifyContent = 'flex-start';   // mede o conteúdo a partir do topo
+    void body.offsetHeight;
+    const avail   = body.clientHeight;
+    const content = body.scrollHeight;
+    body.style.justifyContent = prevJC;          // volta ao centralizado do CSS
+    if (content > avail + 1) {
+      const k = Math.max(0.45, avail / content);
+      body.style.transformOrigin = 'center center';
+      body.style.transform = 'scale(' + k + ')';
+    }
+  }
+
   function render(dir) {
     const clone = slides[current].cloneNode(true);
     const num = clone.querySelector('.slide-num');
@@ -1788,6 +1806,11 @@ Quadro recorrente periareolar (cicatrizes prévias) com flutuação, fortemente 
     navPrev.disabled = current === 0;
     navNext.disabled = current === slides.length - 1;
     scaleCanvas();
+    fitSlide(clone);
+    /* re-ajusta após carregar imagens (base64 pode dimensionar após layout) */
+    clone.querySelectorAll('img').forEach(img => {
+      if (!img.complete) img.addEventListener('load', () => fitSlide(clone), { once: true });
+    });
   }
 
   function goTo(idx) {
