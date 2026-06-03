@@ -2038,9 +2038,12 @@ Urocultura de controle  →  <span class="r">profilaxia até o fim da gestação
     const content = body.scrollHeight;
     body.style.justifyContent = prevJC;          // volta ao centralizado do CSS
     if (content > avail + 1) {
-      const k = Math.max(0.40, (avail / content) * 0.98);
+      const k = Math.max(0.40, (avail / content) * 0.97);
+      body.style.overflow = 'visible';           // NÃO clipar antes de escalar (slide tem overflow:hidden de backup)
       body.style.transformOrigin = 'center center';
       body.style.transform = 'scale(' + k + ')';
+    } else {
+      body.style.overflow = '';                  // mantém o hidden do CSS quando cabe
     }
   }
 
