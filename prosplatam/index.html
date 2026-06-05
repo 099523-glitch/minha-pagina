@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>El Canto Sagrado de San Miguel Arcángel</title>
+
+<!-- VSL VTurb / ConverteAI - preloads para carregamento rápido -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6a23394f317cd85e603adff6/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/6a233913b3e8dcfa8175fe4d/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+<style>
+  :root{
+    --bg:#020617;
+    --highlight:#dc2626;
+    --highlight-hover:#b91c1c;
+    --yellow:#ffd24a;
+    --card-bg:#0b1222;
+    --card-border:#1e293b;
+    --text:#e5e7eb;
+    --muted:#9aa3b2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    padding:16px 14px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    min-height:100vh;
+  }
+
+  /* Banner de atención */
+  .attention{
+    text-align:center;
+    color:var(--yellow);
+    font-weight:700;
+    font-size:.95rem;
+    line-height:1.35;
+  }
+
+  /* Título */
+  .title{
+    text-align:center;
+    color:#fff;
+    font-weight:800;
+    font-size:1.6rem;
+    line-height:1.2;
+  }
+  .title .hl{color:var(--yellow);}
+
+  /* ====== ESPAÇO PARA SUA VSL ======
+     Cole aqui o embed do seu vídeo (iframe / script do player).
+     Basta substituir TODO o conteúdo de dentro de .vsl-slot. */
+  .vsl-area{
+    width:100%;
+    max-width:400px;
+    margin:0 auto;
+  }
+  .vsl-frame{
+    position:relative;
+    width:100%;
+    padding-top:125%;           /* proporção vertical 4:5 — ajuste se sua VSL for 16:9 (use 56.25%) */
+    background:#000;
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .vsl-frame > *{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    border:0;
+  }
+  /* Placeholder visível enquanto você não cola a VSL — pode apagar */
+  .vsl-placeholder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:#64748b;
+    text-align:center;
+    padding:20px;
+    border:2px dashed #334155;
+    border-radius:16px;
+  }
+  .vsl-placeholder .play{
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .vsl-placeholder .play svg{width:26px;height:26px;fill:#94a3b8;margin-left:4px;}
+  /* ================================== */
+
+  /* Pessoas assistindo */
+  .viewers{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-size:.9rem;
+    color:#cfcfd6;
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:#ef4444;
+    box-shadow:0 0 0 0 rgba(239,68,68,.7);
+    animation:pulse 1.6s infinite;
+  }
+  .viewers b{color:#fff;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(239,68,68,.7);}
+    70%{box-shadow:0 0 0 10px rgba(239,68,68,0);}
+    100%{box-shadow:0 0 0 0 rgba(239,68,68,0);}
+  }
+
+  /* Botão CTA */
+  .cta{
+    display:block;
+    width:100%;
+    max-width:448px;
+    margin:0 auto;
+    background:var(--highlight);
+    color:#fff;
+    font-weight:700;
+    font-size:1.1rem;
+    text-align:center;
+    text-decoration:none;
+    padding:18px 16px;
+    border:0;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .cta:hover{background:var(--highlight-hover);}
+  .cta:active{transform:scale(.99);}
+
+  /* Comentarios */
+  .comments-head .h{
+    color:#fff;font-weight:700;font-size:1.25rem;text-align:center;
+  }
+  .comments-head .sub{
+    color:var(--muted);font-size:.85rem;text-align:center;margin-top:2px;
+  }
+  .comments{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .comment{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:14px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .comment .avatar{
+    width:48px;height:48px;border-radius:50%;
+    object-fit:cover;flex-shrink:0;
+    background:#1e293b;
+  }
+  .comment .body{flex:1;min-width:0;}
+  .stars{color:#facc15;font-size:.8rem;letter-spacing:1px;line-height:1;}
+  .comment .name{color:#fff;font-weight:600;font-size:.95rem;margin-top:3px;}
+  .comment .handle{color:var(--muted);font-size:.78rem;}
+  .comment .text{color:#cbd5e1;font-size:.9rem;margin-top:6px;}
+
+  /* Footer */
+  footer{
+    margin-top:16px;
+    text-align:center;
+    color:#64748b;
+    font-size:.75rem;
+    line-height:1.6;
+  }
+  footer a{color:#94a3b8;text-decoration:none;}
+  footer .links{margin-bottom:8px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Banner de atención -->
+    <div class="attention">
+      ATENCIÓN: Este video estará disponible solo hasta el 05/06/2026.
+    </div>
+
+    <!-- Título -->
+    <h1 class="title">
+      El Canto Sagrado de San Miguel Arcángel para manifestar en
+      <span class="hl">24 horas</span>
+    </h1>
+
+    <!-- ============ SUA VSL ============ -->
+    <div class="vsl-area">
+      <vturb-smartplayer id="vid-6a23394f317cd85e603adff6" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+    </div>
+    <!-- ================================= -->
+
+    <!-- Pessoas assistiendo -->
+    <div class="viewers">
+      <span class="dot"></span>
+      <span><b>609</b> personas están viendo este video ahora mismo</span>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://globalinfo.mycartpanda.com/checkout/209381355:1" class="cta">Recibir mi bendición por $27</a>
+
+    <!-- Comentarios -->
+    <div class="comments-head">
+      <div class="h">Comentarios</div>
+      <div class="sub">Mostrando 18 de 322 comentarios</div>
+    </div>
+
+    <div class="comments">
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-04-05/xs-nhFvX-padre-heribertopnj.jpg" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">Padre Heriberto García</div>
+          <div class="handle">@heriberto.garcia</div>
+          <div class="text">El canto sagrado de San Miguel Arcángel es una de las experiencias espirituales más poderosas que he vivido. Cuando comencé a practicar estas oraciones, percibí cambios reales en mi vida y en la vida de las personas que oraban conmigo. Si estás aquí, es porque tu ángel quiere mostrarte este camino 🙏🏼</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-04-05/xs-7t1t5-padre-jorge.png" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">Padre Jorge Obregón LC</div>
+          <div class="handle">@jorge.obregon</div>
+          <div class="text">Viví lo que está en este video. El canto sagrado de San Miguel Arcángel no es solo un libro, es un encuentro real con Dios. Quien lo haga con fe, sentirá el cambio. ¡Mira hasta el final y permítete vivir esta experiencia!</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-04-05/xs-ibRi9-juan-pedro.jpg" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">Juan Pedro</div>
+          <div class="handle">@juan.pedro</div>
+          <div class="text">Comencé la oración y una luz invadió mi cuarto, ¡fue hermoso! 🙏</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-04-05/xs-sFDyF-tania-souza.jpg" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">Patricia Lima</div>
+          <div class="handle">@patricia.lima</div>
+          <div class="text">¡Mi esposo volvió a trabajar después de hacer la oración 7 días seguidos! ¡Dios es fiel! 🙌🏼</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-02-11/xs-ATbyf-10829624-1.jpg" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">María Núñez</div>
+          <div class="handle">@maria.nunez</div>
+          <div class="text">¿Hay alguien más despertándose a las 3h para orar? ¡Yo sí!</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="avatar" src="https://media.inlead.cloud/uploads/46434/2026-03-25/xs-h15OJ-chatgpt-image-6-de-jun-de-2025-15-42-11.png" alt="">
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <div class="name">Ricardo Ortega</div>
+          <div class="handle">@ricardo.ortega</div>
+          <div class="text">¡Sentí a mi ángel tocando mi cabeza en la oración de ayer a las 3h! ¡Qué increíble! 🙌</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="links">
+        <a href="#">Términos de Uso</a> | <a href="#">Política de Privacidad</a>
+      </div>
+      <div>Este sitio no está afiliado a Facebook o a cualquier entidad de Facebook. Después de que salgas de Facebook, la responsabilidad no es de ellos sino de nuestro sitio.</div>
+      <div style="margin-top:8px;">© 2026 El canto sagrado de San Miguel Arcángel. Todos los derechos reservados.</div>
+    </footer>
+
+  </div>
+
+  <!-- Script do player VTurb -->
+  <script type="text/javascript">
+    var s=document.createElement("script");
+    s.src="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6a23394f317cd85e603adff6/v4/player.js",
+    s.async=!0,document.head.appendChild(s);
+  </script>
+</body>
+</html>
