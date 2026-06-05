@@ -307,14 +307,48 @@
     s.async=!0,document.head.appendChild(s);
   </script>
 
-  <!-- Delay do botão CTA: aparece após 33:40 (2020s). Ajuste DELAY_SEGUNDOS se quiser. -->
+  <!-- Delay do botão CTA SINCRONIZADO com o vídeo da VSL (VTurb).
+       O botão aparece quando o vídeo atingir 33:40 (2020s) de reprodução.
+       Ajuste DELAY_SEGUNDOS se quiser outro tempo. -->
   <script>
     (function(){
-      var DELAY_SEGUNDOS = 2020; // 33 min 40 s
-      setTimeout(function(){
-        var b = document.getElementById('cta-btn');
-        if(b){ b.style.display = 'block'; }
-      }, DELAY_SEGUNDOS * 1000);
+      var DELAY_SEGUNDOS = 2020; // 33 min 40 s de VÍDEO
+      var btn = document.getElementById('cta-btn');
+      var mostrado = false;
+
+      function revelar(){
+        if(!mostrado && btn){ mostrado = true; btn.style.display = 'block'; }
+      }
+
+      // Liga o listener de tempo do vídeo a cada player carregado
+      function ligar(player){
+        if(!player || player.__ctaBound) return;
+        player.__ctaBound = true;
+        player.on('timeupdate', function(time){
+          var t = (typeof time === 'number')
+            ? time
+            : (player.video ? player.video.currentTime : 0);
+          if(t >= DELAY_SEGUNDOS) revelar();
+        });
+      }
+
+      function ligarTodos(){
+        if(window.smartplayer && window.smartplayer.instances){
+          window.smartplayer.instances.forEach(ligar);
+        }
+      }
+
+      // 1) Quando cada player ficar pronto
+      document.addEventListener('player:ready', function(){
+        setTimeout(ligarTodos, 0);
+      });
+
+      // 2) Fallback: caso o evento já tenha disparado, tenta por ~2 min
+      var tentativas = 0;
+      var intervalo = setInterval(function(){
+        ligarTodos();
+        if(++tentativas > 120) clearInterval(intervalo);
+      }, 1000);
     })();
   </script>
 
