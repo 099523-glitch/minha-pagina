@@ -122,14 +122,37 @@
     </a>
   </div>
   <script>
-    // Revela o botao da oferta aos 31:27 (31*60+27 = 1887 segundos)
-    setTimeout(function () {
-      var cta = document.getElementById("offerCta");
-      if (cta) {
-        cta.classList.remove("hidden");
-        cta.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Revela o botao da oferta SINCRONIZADO com o video VTurb, aos 31:27 (1887s de reproducao real)
+    (function () {
+      var REVEAL_AT = 1887; // 31*60 + 27
+      var revealed = false;
+      function showCta() {
+        if (revealed) return;
+        revealed = true;
+        var cta = document.getElementById("offerCta");
+        if (cta) {
+          cta.classList.remove("hidden");
+          cta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
       }
-    }, 1887000);
+      function attach(p) {
+        if (!p || p.__ctaHooked) return;
+        p.__ctaHooked = true;
+        p.on("timeupdate", function (time) {
+          if (time >= REVEAL_AT) showCta();
+        });
+      }
+      var tries = 0;
+      var poll = setInterval(function () {
+        var sp = window.smartplayer;
+        if (sp && sp.instances && sp.instances.length) {
+          sp.instances.forEach(attach);
+          clearInterval(poll);
+        } else if (++tries > 1200) { // desiste apos ~10 min sem player
+          clearInterval(poll);
+        }
+      }, 500);
+    })();
   </script>
   <!--End OFERTA -->
 
