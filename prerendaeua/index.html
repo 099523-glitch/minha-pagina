@@ -1,203 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Sales Letter - How to Receive $2,350.00</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "#fff",
-            blue: "#0a314d",
-            bluedark: "#062135",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#fff",
+              blue: "#0a314d",
+              bluedark: "#062135",
+            },
           },
         },
-      },
-    };
-  </script>
+      };
+    </script>
+    
 
-  <!--Embed vturb-->
-  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload"
-    href="https://scripts.converteai.net/bcbb4526-ba93-48d3-80dd-85b940c7fd35/ab-test/6a0f41657ceab320a8ec02fb/player.js"
-    as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://m3u8.vturb.net">
-  <link rel="dns-prefetch" href="https://license.vturb.com">
-  <!--End embed vturb-->
 
-  <!-- Pixel UTMIFY -->
-  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids async defer></script>
-  <script>
-    window.pixelId = "67d9b32ae161fb9cdd2bc3a0";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-  </script>
+    <!-- vturb/converteai - dns-prefetch (o player só carrega na vsl.html) -->
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://m3u8.vturb.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+  </head>
 
-</head>
+  <body class="bg-primary">
+    <header class="w-full bg-bluedark text-white">
+      <!-- Top Header -->
+      <div class="max-w-3xl mx-auto px-4 py-3">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-4 max-md:flex-col max-md:items-start"
+        >
+          <!-- Logo and Title -->
+          <div class="flex items-center gap-3">
+            <img
+              src="img/bandeira-americana.png"
+              alt="logo"
+              class="w-8 md:w-10"
+            />
+            <div class="">
+              <p class="text-xs md:text-sm font-medium">Official Check</p>
+              <p class="text-xs text-gray-300">
+                Verify if there are restitutions
+              </p>
+            </div>
+          </div>
 
-<body class="bg-primary">
-  <!-- Header -->
-  <header class="w-full bg-bluedark text-white">
-    <div class="max-w-4xl mx-auto px-4 py-3">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-md:flex-col max-md:items-start">
-        <!-- Logo and Title -->
-        <div class="flex items-center gap-3">
-          <img src="img/bandeira-americana.png" alt="logo" class="w-8 md:w-10" />
-          <div class="">
-            <p class="text-xs md:text-sm font-medium">Official Check</p>
-            <p class="text-xs text-gray-300">
-              Verify if there are restitutions
-            </p>
+          <!-- Navigation - Hidden on mobile -->
+          <nav class="hidden md:block">
+            <ul class="flex items-center gap-6">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm hover:text-gray-300 transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm hover:text-gray-300 transition-colors"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm hover:text-gray-300 transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="bg-blue w-full">
+        <div class="max-w-4xl mx-auto px-4 py-4 md:py-6">
+          <h1
+            class="text-center text-base md:text-lg lg:text-xl text-white font-light leading-relaxed max-md:text-sm"
+          >
+            "Official check: verify if there are restitutions in your name —
+            response in 10s"
+          </h1>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex flex-col items-center justify-center mx-auto w-full py-4 md:py-8"
+    >
+      <!-- Step 1: Landing / Captura mínima -->
+      <div id="step1" class="max-w-2xl w-full px-4">
+        <div
+          class="bg-white rounded-lg shadow-lg border border-gray-200 p-4 md:p-8"
+        >
+          <!-- Steps Indicator -->
+          <div class="flex items-center justify-center mb-6 md:mb-8">
+            <div
+              class="flex items-center justify-between relative w-full max-w-sm md:max-w-md"
+            >
+              <div
+                class="absolute top-3 left-6 right-6 md:left-8 md:right-8 h-px bg-gray-300"
+              ></div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-blue text-white rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  1
+                </div>
+                <span class="text-xs text-bluedark font-medium">Data</span>
+              </div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  2
+                </div>
+                <span class="text-xs text-gray-500 font-medium">Verify</span>
+              </div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  3
+                </div>
+                <span class="text-xs text-gray-500 font-medium">Result</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form id="verificationForm" class="space-y-4 md:space-y-6">
+            <div>
+              <label
+                for="fullName"
+                class="block text-sm font-medium text-bluedark mb-2"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+                class="w-full px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label
+                for="state"
+                class="block text-sm font-medium text-bluedark mb-2"
+                >State</label
+              >
+              <select
+                id="state"
+                name="state"
+                required
+                class="w-full px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue focus:border-transparent"
+              >
+                <option value="">Select your state</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+                <option value="DC">District of Columbia</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="VI">U.S. Virgin Islands</option>
+                <option value="GU">Guam</option>
+                <option value="AS">American Samoa</option>
+                <option value="MP">Northern Mariana Islands</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            <!-- Custom State Input (hidden by default) -->
+            <div id="customStateDiv" class="hidden">
+              <label
+                for="customState"
+                class="block text-sm font-medium text-bluedark mb-2"
+                >Please specify your state/territory</label
+              >
+              <input
+                type="text"
+                id="customState"
+                name="customState"
+                class="w-full px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue focus:border-transparent"
+                placeholder="Enter your state or territory"
+              />
+            </div>
+
+            <div class="flex items-start">
+              <input
+                type="checkbox"
+                id="authorization"
+                name="authorization"
+                required
+                class="mt-1 h-4 w-4 text-blue border-gray-300 rounded focus:ring-blue flex-shrink-0"
+              />
+              <label
+                for="authorization"
+                class="ml-3 text-xs md:text-sm text-gray-700 leading-relaxed"
+              >
+                I authorize verification in federal database.
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue hover:bg-bluedark text-white font-semibold py-3 md:py-4 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-200 shadow-md"
+            >
+              Verify Now
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Step 2: Tela de verificação -->
+      <div id="step2" class="max-w-2xl w-full px-4 hidden">
+        <div
+          class="bg-white rounded-lg shadow-lg border border-gray-200 p-4 md:p-8 text-center"
+        >
+          <!-- Steps Indicator -->
+          <div class="flex items-center justify-center mb-6 md:mb-8">
+            <div
+              class="flex items-center justify-between relative w-full max-w-sm md:max-w-md"
+            >
+              <div
+                class="absolute top-3 left-6 right-6 md:left-8 md:right-8 h-px bg-gray-300"
+              ></div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  ✓
+                </div>
+                <span class="text-xs text-green-600 font-medium">Data</span>
+              </div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-blue text-white rounded-full flex items-center justify-center text-xs font-bold mb-1 animate-pulse"
+                >
+                  2
+                </div>
+                <span class="text-xs text-bluedark font-medium">Verify</span>
+              </div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  3
+                </div>
+                <span class="text-xs text-gray-500 font-medium">Result</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading Animation -->
+          <div class="mb-6 md:mb-8">
+            <div
+              class="w-12 h-12 md:w-16 md:h-16 border-4 border-blue border-t-transparent rounded-full animate-spin mx-auto mb-4 md:mb-6"
+            ></div>
+            <div
+              id="loadingMessage"
+              class="text-base md:text-lg font-medium text-bluedark"
+            >
+              Connecting to Federal Restitution System...
+            </div>
+          </div>
+
+          <div class="text-xs md:text-sm text-gray-600">
+            Please wait while we verify your information...
           </div>
         </div>
-
-        <!-- Navigation - Hidden on mobile -->
-        <nav class="hidden md:block">
-          <ul class="flex items-center gap-6">
-            <li>
-              <a href="#" class="text-sm hover:text-gray-300 transition-colors">Home</a>
-            </li>
-            <li>
-              <a href="#" class="text-sm hover:text-gray-300 transition-colors">About</a>
-            </li>
-            <li>
-              <a href="#" class="text-sm hover:text-gray-300 transition-colors">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <!-- Personalized Information -->
-  <div class="bg-blue text-white py-4">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="personalizedGreeting" class="text-lg md:text-xl font-medium">
-        Welcome, <span id="userFirstName"></span> from
-        <span id="userState"></span>
-      </h2>
-      <p class="text-sm md:text-base mt-1">
-        You have
-        <span id="restitutionAmount" class="font-bold">$2,350.00</span>
-        available for claim
-      </p>
-    </div>
-  </div>
-  <div class="text-center text-sm md:text-base mt-1 py-2">
-    <p class="text-blue underline cursor-pointer">
-      Watch the official video: "How to Receive <strong>$2,350.00</strong> "
-    </p>
-    <div class="flex justify-center mt-2">
-      <svg class="w-6 h-6 text-blue animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-    </div>
-  </div>
-  <!--VTURB-->
-  <div id="vturb">
-    <vturb-smartplayer id="ab-6a0f41657ceab320a8ec02fb"
-      style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
-    <script
-      type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/bcbb4526-ba93-48d3-80dd-85b940c7fd35/ab-test/6a0f41657ceab320a8ec02fb/player.js", s.async = !0, document.head.appendChild(s); </script>
-  </div>
-  <!--End VTURB-->
-
-  <!-- Loading Section -->
-  <div class="bg-white py-8">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <!-- Loading Spinner -->
-      <div class="flex justify-center mb-6">
-        <div class="w-12 h-12 border-4 border-blue border-t-transparent rounded-full animate-spin"></div>
       </div>
 
-      <!-- Required Message -->
-      <div class="">
-        <h3 class="text-xl font-bold text-bluedark mb-2">
-          Required to Follow
-        </h3>
+      <!-- Step 3: Reveal -->
+      <div id="step3" class="max-w-2xl w-full px-4 hidden">
+        <div
+          class="bg-white rounded-lg shadow-lg border border-gray-200 p-4 md:p-8 text-center"
+        >
+          <!-- Steps Indicator -->
+          <div class="flex items-center justify-center mb-6 md:mb-8">
+            <div
+              class="flex items-center justify-between relative w-full max-w-sm md:max-w-md"
+            >
+              <div
+                class="absolute top-3 left-6 right-6 md:left-8 md:right-8 h-px bg-gray-300"
+              ></div>
 
-      </div>
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  ✓
+                </div>
+                <span class="text-xs text-green-600 font-medium">Data</span>
+              </div>
 
-      <!-- Rotating Messages -->
-      <div class="bg-gray-50 rounded-lg  mb-6">
-        <div id="rotatingMessage"
-          class="text-lg font-medium text-bluedark min-h-[60px] flex items-center justify-center transition-opacity duration-300">
-          <!-- Messages will be inserted here by JavaScript -->
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  ✓
+                </div>
+                <span class="text-xs text-green-600 font-medium">Verify</span>
+              </div>
+
+              <div class="flex flex-col items-center relative z-10">
+                <div
+                  class="w-5 h-5 md:w-6 md:h-6 bg-blue text-white rounded-full flex items-center justify-center text-xs font-bold mb-1"
+                >
+                  3
+                </div>
+                <span class="text-xs text-bluedark font-medium">Result</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="mb-6 md:mb-8">
+            <h2
+              id="congratulationsText"
+              class="text-lg md:text-2xl font-bold text-bluedark mb-4 leading-tight"
+            >
+              Congratulations, <span id="userName"></span> — there are $2,350.00
+              available in your name.
+            </h2>
+
+            <div class="text-4xl md:text-6xl font-bold text-green-600 mb-4">
+              $2,350.00
+            </div>
+
+            <p class="text-xs md:text-sm text-gray-600 mb-2">
+              Source: Federal Restitution System — Record #:
+              <span id="recordNumber"></span>
+            </p>
+          </div>
+
+          <!-- CTAs -->
+          <div class="space-y-3 md:space-y-4 flex-col flex items-center justify-center gap-8">
+            <a
+             href="vsl.html"
+              class="w-full bg-blue hover:bg-bluedark text-white font-semibold py-3 md:py-4 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-200 shadow-md"
+            >
+              Watch Official Video: How to Receive $2,350.00
+            </a>
+
+            <a
+             href="vsl.html"
+              class="w-full bg-gray-300 text-gray-500 font-semibold py-3 md:py-4 px-4 md:px-6 text-sm md:text-base rounded-lg cursor-not-allowed"
+            >
+              Download Instructions (PDF) - Watch video first
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <script>
-      // Load user data from localStorage
-      document.addEventListener("DOMContentLoaded", function () {
-        const firstName = localStorage.getItem("userFirstName") || "User";
-        const fullName = localStorage.getItem("userFullName") || "User";
-        const state = localStorage.getItem("userState") || "your state";
+      // Generate random record number
+      function generateRecordNumber() {
+        return "FR-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+      }
 
-        // Update personalized greeting
-        document.getElementById("userFirstName").textContent = firstName;
-        document.getElementById("userState").textContent = state;
-
-        // Update restitution amount (you can make this dynamic if needed)
-        document.getElementById("restitutionAmount").textContent = "$2,350.00";
-
-        // Start rotating messages
-        startRotatingMessages();
-      });
-
-      // Rotating messages to encourage video watching
-      const messages = [
-        "Watch the official video: how to withdraw $2,350.00.",
-        "View the VSL before releasing the PDF on how to withdraw $2,350.00.",
-        "Complete the video to unlock your $2,350.00 withdrawal instructions.",
-        "Your $2,350.00 is waiting - watch the full video to access it.",
-        "Don't miss out on $2,350.00 - watch the complete video first.",
-        "The video contains crucial steps to claim your $2,350.00.",
-        "Your withdrawal instructions are locked until you finish watching.",
-        "Watch until the end to get your $2,350.00 withdrawal guide.",
-        "The complete video reveals how to access your $2,350.00.",
-        "Your $2,350.00 claim process is explained in the full video.",
+      // Loading messages for step 2
+      const loadingMessages = [
+        "Connecting to Federal Restitution System...",
+        "Validating identity...",
+        "Generating personalized response...",
       ];
 
       let currentMessageIndex = 0;
-      let messageInterval;
 
-      function startRotatingMessages() {
-        const messageElement = document.getElementById("rotatingMessage");
+      // State selection handler
+      document.getElementById("state").addEventListener("change", function () {
+        const customStateDiv = document.getElementById("customStateDiv");
+        const customStateInput = document.getElementById("customState");
 
-        // Show first message immediately
-        messageElement.textContent = messages[0];
+        if (this.value === "others") {
+          customStateDiv.classList.remove("hidden");
+          customStateInput.required = true;
+        } else {
+          customStateDiv.classList.add("hidden");
+          customStateInput.required = false;
+          customStateInput.value = ""; // Clear the custom input
+        }
+      });
 
-        // Rotate messages every 3 seconds
-        messageInterval = setInterval(() => {
-          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+      // Form submission
+      document
+        .getElementById("verificationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-          // Fade out
-          messageElement.style.opacity = "0";
+          const fullName = document.getElementById("fullName").value;
+          const stateSelect = document.getElementById("state").value;
+          const customState = document.getElementById("customState").value;
 
-          setTimeout(() => {
-            messageElement.textContent = messages[currentMessageIndex];
-            messageElement.style.opacity = "1";
-          }, 300);
-        }, 3000);
+          // Use custom state if "others" is selected, otherwise use selected state
+          const state = stateSelect === "others" ? customState : stateSelect;
+          const userName = fullName.trim().split(" ")[0]; // First name only
+
+          // Store user data in localStorage
+          localStorage.setItem("userFullName", fullName);
+          localStorage.setItem("userState", state);
+          localStorage.setItem("userFirstName", userName);
+
+          // Store user name for later use
+          document.getElementById("userName").textContent = userName;
+          document.getElementById("recordNumber").textContent =
+            generateRecordNumber();
+
+          // Hide step 1, show step 2
+          document.getElementById("step1").classList.add("hidden");
+          document.getElementById("step2").classList.remove("hidden");
+
+          // Start loading animation
+          startLoadingAnimation();
+        });
+
+      function startLoadingAnimation() {
+        const loadingElement = document.getElementById("loadingMessage");
+
+        function showNextMessage() {
+          loadingElement.textContent = loadingMessages[currentMessageIndex];
+          currentMessageIndex++;
+
+          if (currentMessageIndex < loadingMessages.length) {
+            setTimeout(showNextMessage, 2000);
+          } else {
+            // After all messages, show step 3
+            setTimeout(() => {
+              document.getElementById("step2").classList.add("hidden");
+              document.getElementById("step3").classList.remove("hidden");
+            }, 2000);
+          }
+        }
+
+        showNextMessage();
       }
 
+      // Preserva a query string (rtkcid/tid etc.) ao navegar para a VSL
+      document.querySelectorAll('a[href="vsl.html"]').forEach(function (a) {
+        a.setAttribute("href", "vsl.html" + window.location.search);
+      });
     </script>
 
-  </div>
-
-</body>
-
+  </body>
 </html>
