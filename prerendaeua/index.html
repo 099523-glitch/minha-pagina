@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Sales Letter - How to Receive $2,350.00</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#fff",
+            blue: "#0a314d",
+            bluedark: "#062135",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!--Embed vturb-->
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload"
+    href="https://scripts.converteai.net/bcbb4526-ba93-48d3-80dd-85b940c7fd35/ab-test/6a0f41657ceab320a8ec02fb/player.js"
+    as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://m3u8.vturb.net">
+  <link rel="dns-prefetch" href="https://license.vturb.com">
+  <!--End embed vturb-->
+
+  <!-- Pixel UTMIFY -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids async defer></script>
+  <script>
+    window.pixelId = "67d9b32ae161fb9cdd2bc3a0";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+</head>
+
+<body class="bg-primary">
+  <!-- Header -->
+  <header class="w-full bg-bluedark text-white">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-md:flex-col max-md:items-start">
+        <!-- Logo and Title -->
+        <div class="flex items-center gap-3">
+          <img src="img/bandeira-americana.png" alt="logo" class="w-8 md:w-10" />
+          <div class="">
+            <p class="text-xs md:text-sm font-medium">Official Check</p>
+            <p class="text-xs text-gray-300">
+              Verify if there are restitutions
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation - Hidden on mobile -->
+        <nav class="hidden md:block">
+          <ul class="flex items-center gap-6">
+            <li>
+              <a href="#" class="text-sm hover:text-gray-300 transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:text-gray-300 transition-colors">About</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:text-gray-300 transition-colors">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Personalized Information -->
+  <div class="bg-blue text-white py-4">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="personalizedGreeting" class="text-lg md:text-xl font-medium">
+        Welcome, <span id="userFirstName"></span> from
+        <span id="userState"></span>
+      </h2>
+      <p class="text-sm md:text-base mt-1">
+        You have
+        <span id="restitutionAmount" class="font-bold">$2,350.00</span>
+        available for claim
+      </p>
+    </div>
+  </div>
+  <div class="text-center text-sm md:text-base mt-1 py-2">
+    <p class="text-blue underline cursor-pointer">
+      Watch the official video: "How to Receive <strong>$2,350.00</strong> "
+    </p>
+    <div class="flex justify-center mt-2">
+      <svg class="w-6 h-6 text-blue animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+  <!--VTURB-->
+  <div id="vturb">
+    <vturb-smartplayer id="ab-6a0f41657ceab320a8ec02fb"
+      style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+    <script
+      type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/bcbb4526-ba93-48d3-80dd-85b940c7fd35/ab-test/6a0f41657ceab320a8ec02fb/player.js", s.async = !0, document.head.appendChild(s); </script>
+  </div>
+  <!--End VTURB-->
+
+  <!-- Loading Section -->
+  <div class="bg-white py-8">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <!-- Loading Spinner -->
+      <div class="flex justify-center mb-6">
+        <div class="w-12 h-12 border-4 border-blue border-t-transparent rounded-full animate-spin"></div>
+      </div>
+
+      <!-- Required Message -->
+      <div class="">
+        <h3 class="text-xl font-bold text-bluedark mb-2">
+          Required to Follow
+        </h3>
+
+      </div>
+
+      <!-- Rotating Messages -->
+      <div class="bg-gray-50 rounded-lg  mb-6">
+        <div id="rotatingMessage"
+          class="text-lg font-medium text-bluedark min-h-[60px] flex items-center justify-center transition-opacity duration-300">
+          <!-- Messages will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Load user data from localStorage
+      document.addEventListener("DOMContentLoaded", function () {
+        const firstName = localStorage.getItem("userFirstName") || "User";
+        const fullName = localStorage.getItem("userFullName") || "User";
+        const state = localStorage.getItem("userState") || "your state";
+
+        // Update personalized greeting
+        document.getElementById("userFirstName").textContent = firstName;
+        document.getElementById("userState").textContent = state;
+
+        // Update restitution amount (you can make this dynamic if needed)
+        document.getElementById("restitutionAmount").textContent = "$2,350.00";
+
+        // Start rotating messages
+        startRotatingMessages();
+      });
+
+      // Rotating messages to encourage video watching
+      const messages = [
+        "Watch the official video: how to withdraw $2,350.00.",
+        "View the VSL before releasing the PDF on how to withdraw $2,350.00.",
+        "Complete the video to unlock your $2,350.00 withdrawal instructions.",
+        "Your $2,350.00 is waiting - watch the full video to access it.",
+        "Don't miss out on $2,350.00 - watch the complete video first.",
+        "The video contains crucial steps to claim your $2,350.00.",
+        "Your withdrawal instructions are locked until you finish watching.",
+        "Watch until the end to get your $2,350.00 withdrawal guide.",
+        "The complete video reveals how to access your $2,350.00.",
+        "Your $2,350.00 claim process is explained in the full video.",
+      ];
+
+      let currentMessageIndex = 0;
+      let messageInterval;
+
+      function startRotatingMessages() {
+        const messageElement = document.getElementById("rotatingMessage");
+
+        // Show first message immediately
+        messageElement.textContent = messages[0];
+
+        // Rotate messages every 3 seconds
+        messageInterval = setInterval(() => {
+          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+
+          // Fade out
+          messageElement.style.opacity = "0";
+
+          setTimeout(() => {
+            messageElement.textContent = messages[currentMessageIndex];
+            messageElement.style.opacity = "1";
+          }, 300);
+        }, 3000);
+      }
+
+    </script>
+
+  </div>
+
+</body>
+
+</html>
