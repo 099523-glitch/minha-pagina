@@ -164,15 +164,35 @@
     function showBackdrop(el) { el.hidden = false; requestAnimationFrame(function () { el.classList.add('show'); }); }
     function hideBackdrop(el) { el.classList.remove('show'); setTimeout(function () { el.hidden = true; }, 220); }
 
+    var WITHDRAW_LOCK_DAYS = 15;
+    function daysSinceSignup() {
+      var raw; try { raw = JSON.parse(localStorage.getItem('lc_progress') || 'null'); } catch (e) {}
+      if (!raw || !raw.signupDate) return 0;
+      return Math.floor((Date.now() - raw.signupDate) / 86400000);
+    }
+
     withdrawBtn.addEventListener('click', function () {
-      // prefill if bank saved
+      var days = daysSinceSignup();
+      var remaining = Math.max(0, WITHDRAW_LOCK_DAYS - days);
+
+      // 15-day holding period: withdrawals are locked until it passes
+      if (remaining > 0) {
+        $('lcWdForm').hidden = true; $('lcWdSuccess').hidden = true; $('lcWdLocked').hidden = false;
+        $('wdDays').textContent = remaining + (remaining === 1 ? ' day' : ' days');
+        $('wdLockNote').textContent = 'Day ' + Math.min(days, WITHDRAW_LOCK_DAYS) + ' of ' + WITHDRAW_LOCK_DAYS;
+        $('wdLockBar').style.width = Math.min(100, (days / WITHDRAW_LOCK_DAYS) * 100) + '%';
+        showBackdrop(wdModal);
+        return;
+      }
+
+      // unlocked: show the bank form (prefill if saved)
       var bk = Wallet.bank();
       if (bk) {
         $('wdName').value = bk.name || ''; $('wdBank').value = bk.bank || '';
         $('wdRouting').value = bk.routing || ''; $('wdAccount').value = bk.account || '';
         $('wdType').value = bk.type || 'Checking'; $('wdCountry').value = bk.country || 'United States';
       }
-      $('lcWdForm').hidden = false; $('lcWdSuccess').hidden = true;
+      $('lcWdForm').hidden = false; $('lcWdSuccess').hidden = true; $('lcWdLocked').hidden = true;
       showBackdrop(wdModal);
     });
     wdModal.addEventListener('click', function (e) { if (e.target === wdModal) hideBackdrop(wdModal); });
@@ -188,6 +208,7 @@
       renderNotifs();
     });
     $('wdDone').addEventListener('click', function () { hideBackdrop(wdModal); });
+    $('wdLockedDone').addEventListener('click', function () { hideBackdrop(wdModal); });
 
     /* ---- welcome onboarding (home only) ---- */
     var isHome = (document.body.getAttribute('data-active') === 'home');
