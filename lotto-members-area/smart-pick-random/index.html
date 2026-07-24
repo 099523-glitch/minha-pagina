@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LottoCash - Smart Pick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/extra.css" />
+    <script src="/js/lucide.min.js"></script>
+    <script src="/js/progress.js"></script>
+  </head>
+  <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="smart-pick">
+    <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
+      <aside id="site-sidebar" class="w-[260px] bg-white h-screen sticky top-0 border-r border-gray-100 flex flex-col hidden lg:flex"></aside>
+      <main class="flex-1 w-full flex flex-col relative">
+        <header id="site-header" class="w-full max-w-none h-[80px] bg-white border border-[#e6e6e6] flex items-center justify-between px-6 sticky top-0 z-40"></header>
+        <div id="main-content-wrapper" class="p-[10px] flex-1 overflow-x-hidden w-full mx-auto" style="max-width: 1100px;">
+<div class="space-y-6 pt-4">
+  <div class="bg-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] overflow-hidden relative mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
+    <div class="relative z-10 w-full">
+      <h2 class="text-3xl font-bold text-gray-900 flex items-center gap-3" style="font-family: 'Archivo Narrow', sans-serif;">
+        <i data-lucide="zap" class="text-primary w-8 h-8"></i>
+        Smart Pick
+      </h2>
+      <p class="text-gray-500 text-sm mt-1">Choose a lottery to generate a Smart Pick combination.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="/lotteries/mupb/smart-pick/" class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center gap-4 hover:shadow-md transition-all">
+      <img src="/images/powerball.png" alt="Powerball" class="h-10 object-contain">
+      <span class="font-bold text-gray-900">Powerball Smart Pick</span>
+    </a>
+    <a href="/lotteries/mumm/smart-pick/" class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center gap-4 hover:shadow-md transition-all">
+      <img src="/images/megamillions.png" alt="Mega Millions" class="h-10 object-contain">
+      <span class="font-bold text-gray-900">Mega Millions Smart Pick</span>
+    </a>
+  </div>
+
+  <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-3">
+    <i data-lucide="construction" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+    <p class="text-sm text-amber-800 font-medium">Placeholder page — waiting on the real page source for this route.</p>
+  </div>
+</div>
+        </div>
+      </main>
+      <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
+      <div id="site-modals"></div>
+    </div>
+    <script src="/js/site.js"></script>
+    <script>LCProgress.init();</script>
+  </body>
+</html>

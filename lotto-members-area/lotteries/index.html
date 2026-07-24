@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LottoCash - State Lotteries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/extra.css" />
+    <script src="/js/lucide.min.js"></script>
+    <script src="/js/progress.js"></script>
+  </head>
+  <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="lotteries">
+    <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
+
+      <aside id="site-sidebar" class="w-[260px] bg-white h-screen sticky top-0 border-r border-gray-100 flex flex-col hidden lg:flex"></aside>
+
+      <main class="flex-1 w-full flex flex-col relative">
+        <header id="site-header" class="w-full max-w-none h-[80px] bg-white border border-[#e6e6e6] flex items-center justify-between px-6 sticky top-0 z-40"></header>
+
+        <div id="main-content-wrapper" class="p-[10px] flex-1 overflow-x-hidden w-full mx-auto" style="max-width: 1100px;">
+<div class="space-y-6 pt-4">
+  <h2 class="archivo-title text-gray-900 animate-fade-in-up" style="animation-delay: 100ms;">All Lotteries</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <a
+        href="/lotteries/az"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">AZ</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Arizona</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ar"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">AR</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Arkansas</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ca"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">CA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">California</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/co"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">CO</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Colorado</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ct"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">CT</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Connecticut</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/de"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">DE</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Delaware</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/dc"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">DC</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">District of Columbia</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/fl"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">FL</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Florida</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ga"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">GA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Georgia</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/id"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">ID</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Idaho</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/il"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">IL</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Illinois</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/in"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">IN</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Indiana</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ia"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">IA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Iowa</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ks"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">KS</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Kansas</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ky"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">KY</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Kentucky</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/la"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">LA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Louisiana</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/me"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">ME</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Maine</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/md"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MD</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Maryland</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ma"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Massachusetts</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/mi"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MI</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Michigan</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/mn"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MN</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Minnesota</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/mo"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MO</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Missouri</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ms"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MS</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Mississippi</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/mt"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">MT</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Montana</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ne"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NE</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Nebraska</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/nh"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NH</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">New Hampshire</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/nj"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NJ</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">New Jersey</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/nm"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NM</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">New Mexico</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ny"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NY</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">New York</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/nc"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">NC</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">North Carolina</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/nd"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">ND</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">North Dakota</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/oh"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">OH</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Ohio</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ok"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">OK</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Oklahoma</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/or"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">OR</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Oregon</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/pa"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">PA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Pennsylvania</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/pr"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">PR</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Puerto Rico</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/ri"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">RI</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Rhode Island</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/sc"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">SC</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">South Carolina</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/sd"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">SD</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">South Dakota</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/tn"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">TN</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Tennessee</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/tx"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">TX</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Texas</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/vt"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">VT</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Vermont</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/va"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">VA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Virginia</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/wa"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">WA</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Washington</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/wv"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">WV</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">West Virginia</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/wi"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">WI</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Wisconsin</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+      <a
+        href="/lotteries/wy"
+        class="bg-white rounded-[10px] p-[10px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-primary transition-all animate-fade-in-up group"
+        style="border: 1px solid #e6e6e6;"
+      >
+        <div class="w-10 h-10 rounded-full bg-gradient-btn text-white flex items-center justify-center font-numbers font-black text-[14px] shrink-0 shadow-[0_4px_10px_rgba(224,34,26,0.25)] relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white opacity-25 transform -rotate-45 pointer-events-none"></div>
+          <span class="z-10 drop-shadow-md">WY</span>
+        </div>
+        <div class="text-left min-w-0">
+          <span class="text-[15px] font-sans font-bold text-gray-900 block leading-tight truncate group-hover:text-primary transition-colors">Wyoming</span>
+          <span class="text-[12px] text-gray-400 font-normal leading-none mt-1 block">View Games</span>
+        </div>
+      </a>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-4 animate-fade-in-up" style="animation-delay: 200ms;">
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="cashback">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-green-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (70%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">Cashback on Unlock</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 70% progress or wait 15 days to unlock the Cashback Wheel and win up to <span class="font-bold">100% cashback.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-green-50/50 text-green-700/60 flex items-center justify-center shrink-0 border border-green-100/50 relative">
+       <i data-lucide="coins" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-green-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-green-700"></i></div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="draw">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-amber-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (90%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">$5,000 Cash Draw</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 90% progress or wait 30 days to <span class="font-bold">unlock the $5,000 Cash Draw Wheel.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-amber-50/50 text-amber-700/60 flex items-center justify-center shrink-0 border border-amber-100/50 relative">
+       <i data-lucide="gift" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-amber-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-amber-700"></i></div>
+    </div>
+  </div>
+</div>
+        </div>
+      </main>
+
+      <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
+      <div id="site-modals"></div>
+    </div>
+
+    <script src="/js/site.js"></script>
+    <script>LCProgress.init();</script>
+  </body>
+</html>

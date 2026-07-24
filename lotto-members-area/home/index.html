@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LottoCash - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/extra.css" />
+    <script src="/js/lucide.min.js"></script>
+    <script src="/js/progress.js"></script>
+  </head>
+  <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="home">
+    <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
+
+      <aside id="site-sidebar" class="w-[260px] bg-white h-screen sticky top-0 border-r border-gray-100 flex flex-col hidden lg:flex"></aside>
+
+      <main class="flex-1 w-full flex flex-col relative">
+        <header id="site-header" class="w-full max-w-none h-[80px] bg-white border border-[#e6e6e6] flex items-center justify-between px-6 sticky top-0 z-40"></header>
+
+        <div id="main-content-wrapper" class="p-[10px] flex-1 overflow-x-hidden w-full mx-auto" style="max-width: 1100px;">
+
+<!-- Your Learning Journey -->
+<div class="bg-white rounded-[24px] p-5 border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex flex-col gap-4 relative overflow-hidden group mb-4 animate-fade-in-up" style="animation-delay: 100ms;">
+  <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-red-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+
+  <div class="flex items-center justify-between gap-4">
+    <div class="flex-1 min-w-0">
+      <div class="flex justify-between items-center mb-2">
+         <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" style="font-family: 'Archivo Narrow', sans-serif;">Your Learning Journey</span>
+         <span class="text-[#e0221a] font-black text-sm" data-progress-pct>60% Completed</span>
+      </div>
+      <div class="w-full bg-gray-100 rounded-full h-3.5 border border-gray-200 shadow-inner relative mt-5 mb-8 select-none">
+         <div class="absolute left-0 top-0 h-full rounded-full overflow-hidden transition-all duration-700" style="width: 60%;" data-progress-bar>
+            <div class="animate-progress-blue-shimmer h-full w-full"></div>
+         </div>
+
+          <div class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group/step cursor-pointer w-6 h-6 flex flex-col items-center justify-center" style="left: 70%;">
+             <div class="w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 bg-green-300 scale-110 hover:scale-120" style="border: 2px solid #ffffff !important;" title="70% - Cashback">
+                <div class="w-4.5 h-4.5 rounded-full flex items-center justify-center transition-all duration-300 bg-white">
+                    <i data-lucide="lock" class="w-2.5 h-2.5 text-green-800"></i>
+                </div>
+             </div>
+             <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 text-[9px] font-black text-gray-500 bg-white border-gray-250 border px-1 py-0.5 rounded shadow-sm leading-none select-none">70%</span>
+          </div>
+
+          <div class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group/step cursor-pointer w-6 h-6 flex flex-col items-center justify-center" style="left: 90%;">
+             <div class="w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 bg-amber-300 scale-110 hover:scale-120" style="border: 2px solid #ffffff !important;" title="90% - $5,000 Draw">
+                <div class="w-4.5 h-4.5 rounded-full flex items-center justify-center transition-all duration-300 bg-white">
+                    <i data-lucide="lock" class="w-2.5 h-2.5 text-amber-800"></i>
+                </div>
+             </div>
+             <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 text-[9px] font-black text-gray-500 bg-white border-gray-250 border px-1 py-0.5 rounded shadow-sm leading-none select-none">90%</span>
+          </div>
+      </div>
+      <p class="text-xs text-gray-600 mt-2 font-medium leading-relaxed">
+         You're making great progress! More rewards are coming.
+         <span class="block mt-1.5 text-gray-500 text-[11px]">
+            <strong class="text-gray-700 font-bold">70% or 15 days:</strong> Unlock Cashback.<br />
+            <strong class="text-gray-700 font-bold">90% or 30 days:</strong> Unlock the $5,000 Draw.
+         </span>
+      </p>
+    </div>
+
+    <div class="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-[#e0221a] shrink-0 border border-red-100">
+       <i data-lucide="lock" class="w-5 h-5"></i>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-100 pt-3">
+    <button id="btn-toggle-journey" class="flex items-center justify-between w-full text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors uppercase tracking-wider focus:outline-none cursor-pointer">
+      <span data-progress-steps-label>View Learning Steps (4 of 6 Completed)</span>
+      <i data-lucide="chevron-down" id="journey-chevron" class="w-4 h-4 transition-transform duration-300"></i>
+    </button>
+
+    <div id="journey-steps" class="overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0px;">
+      <div class="grid grid-cols-1 gap-3.5 pt-3 border-t border-gray-100">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3 text-[14px]" data-step="login"></div>
+          <div class="flex items-center gap-3 text-[14px]" data-step="map"></div>
+          <div class="flex items-center gap-3 text-[14px]" data-step="smartpick"></div>
+          <div class="flex items-center gap-3 text-[14px] mb-1" data-step="statepage"></div>
+
+          <div class="w-full">
+            <div class="bg-green-50/20 rounded-2xl p-4 flex items-start gap-4 transition-all duration-300" style="border: 1px solid rgba(34, 197, 94, 0.15) !important; box-shadow: none !important;">
+              <div class="w-10 h-10 rounded-xl bg-green-100/40 text-green-600/70 flex items-center justify-center shrink-0 relative" style="border: 1px solid rgba(34, 197, 94, 0.15) !important;">
+                <i data-lucide="coins" class="w-5 h-5"></i>
+                <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center" style="border: 1px solid rgba(34, 197, 94, 0.2) !important;">
+                  <i data-lucide="lock" class="w-2.5 h-2.5 text-green-700"></i>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2">
+                  <h5 class="text-sm font-bold text-green-800/80">5. Cashback on Unlock</h5>
+                  <span class="text-[10px] font-black text-green-700 bg-green-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Requires 70%</span>
+                </div>
+                <p class="text-xs text-green-700/80 mt-1 font-medium leading-relaxed">
+                  Reach 70% progress or wait 15 days to unlock the Cashback Wheel and win up to <span class="font-bold">100% cashback.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full">
+            <div class="bg-amber-50/20 rounded-2xl p-4 flex items-start gap-4 transition-all duration-300" style="border: 1px solid rgba(245, 158, 11, 0.15) !important; box-shadow: none !important;">
+              <div class="w-10 h-10 rounded-xl bg-amber-100/40 text-amber-600/70 flex items-center justify-center shrink-0 relative" style="border: 1px solid rgba(245, 158, 11, 0.15) !important;">
+                <i data-lucide="gift" class="w-5 h-5"></i>
+                <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center" style="border: 1px solid rgba(245, 158, 11, 0.2) !important;">
+                  <i data-lucide="lock" class="w-2.5 h-2.5 text-amber-700"></i>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2">
+                  <h5 class="text-sm font-bold text-amber-800/80">6. $5,000 Cash Draw</h5>
+                  <span class="text-[10px] font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Requires 90%</span>
+                </div>
+                <p class="text-xs text-amber-700/80 mt-1 font-medium leading-relaxed">
+                  Reach 90% progress or wait 30 days to <span class="font-bold">unlock the $5,000 Cash Draw Wheel.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Banner + Top Jackpots -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+  <div class="flex flex-col gap-4 animate-fade-in-up" style="animation-delay: 200ms;">
+    <a href="/smart-pick-random/" class="shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] min-h-[220px] flex-1 flex hover:opacity-95 transition-opacity" style="border-radius: 15px; overflow: hidden;">
+       <img src="/images/hero3.jpg" alt="Play Smart" class="w-full h-full object-cover select-none" style="border-radius: 15px; display: block;" />
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 gap-[0.4rem] animate-fade-in-up" style="animation-delay: 300ms;">
+    <a href="/lotteries/mupb/smart-pick/" class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex flex-col items-center justify-center text-center relative overflow-hidden h-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group">
+        <div class="w-full">
+            <div class="h-10 md:h-16 mb-3 flex items-center justify-center w-full group-hover:scale-105 transition-transform duration-300">
+               <img src="/images/powerball.png" alt="Powerball" class="h-full object-contain max-w-[120px] md:max-w-[200px]" />
+            </div>
+            <div class="mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider text-gray-500 bg-gray-100 uppercase mb-1">Tomorrow, Jul 25, 2026</span>
+                <p class="font-numbers text-[12px] md:text-[14px] text-gray-400 tracking-tight leading-none mb-1 uppercase">EST. JACKPOT</p>
+                <h3 class="font-numbers font-bold text-[28px] leading-[1.1] mb-1 tracking-tighter flex items-center justify-center gap-1">
+                  <span class="text-[#111111]">$600</span><span class="text-[#e0221a] uppercase">Million</span>
+                </h3>
+                <p class="font-sans text-[13px] font-medium text-gray-500">Cash Option: <span class="text-gray-900 font-bold">$266.4 Million</span></p>
+            </div>
+        </div>
+      </a>
+    <a href="/lotteries/mumm/smart-pick/" class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex flex-col items-center justify-center text-center relative overflow-hidden h-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group">
+        <div class="w-full">
+            <div class="h-10 md:h-16 mb-3 flex items-center justify-center w-full group-hover:scale-105 transition-transform duration-300">
+               <img src="/images/megamillions.png" alt="Mega Millions" class="h-full object-contain max-w-[120px] md:max-w-[200px]" />
+            </div>
+            <div class="mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider text-gray-500 bg-gray-100 uppercase mb-1">Today at 11:00 pm EDT</span>
+                <p class="font-numbers text-[12px] md:text-[14px] text-gray-400 tracking-tight leading-none mb-1 uppercase">EST. JACKPOT</p>
+                <h3 class="font-numbers font-bold text-[28px] leading-[1.1] mb-1 tracking-tighter flex items-center justify-center gap-1">
+                  <span class="text-[#111111]">$743</span><span class="text-[#e0221a] uppercase">Million</span>
+                </h3>
+                <p class="font-sans text-[13px] font-medium text-gray-500">Cash Option: <span class="text-gray-900 font-bold">$323.4 Million</span></p>
+            </div>
+        </div>
+      </a>
+  </div>
+</div>
+
+<!-- Locked Modules -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 animate-fade-in-up" style="animation-delay: 350ms;">
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="cashback">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-green-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (70%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">Cashback on Unlock</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 70% progress or wait 15 days to unlock the Cashback Wheel and win up to <span class="font-bold">100% cashback.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-green-50/50 text-green-700/60 flex items-center justify-center shrink-0 border border-green-100/50 relative">
+       <i data-lucide="coins" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-green-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-green-700"></i></div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="draw">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-amber-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (90%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">$5,000 Cash Draw</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 90% progress or wait 30 days to <span class="font-bold">unlock the $5,000 Cash Draw Wheel.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-amber-50/50 text-amber-700/60 flex items-center justify-center shrink-0 border border-amber-100/50 relative">
+       <i data-lucide="gift" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-amber-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-amber-700"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- U.S. Lottery Results Map -->
+<div class="bg-white rounded-[12px] p-6 border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] mb-6 overflow-hidden relative flex flex-col items-center animate-fade-in-up" style="animation-delay: 400ms;">
+  <div class="w-full flex flex-col items-center text-center mb-6 relative z-10 bg-white pb-3 rounded-[12px]">
+    <h2 class="archivo-title text-gray-900 font-extrabold text-2xl md:text-3xl tracking-tight mb-4 uppercase" style="font-family: 'Archivo Narrow', sans-serif;">U.S. Lottery Results Map</h2>
+    <div class="flex items-center justify-center gap-16 text-sm font-semibold text-gray-500">
+      <div class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-[#488dd2] inline-block shadow-sm"></span><span class="text-[15px] font-sans">Participating</span></div>
+      <div class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-[#e8eaee] inline-block shadow-sm border border-gray-200"></span><span class="text-[15px] font-sans">Not Available</span></div>
+    </div>
+  </div>
+
+  <div class="w-full max-w-[800px] flex items-center justify-center relative z-0" id="map-viewport">
+    <div id="map-container" class="w-full h-auto flex items-center justify-center"></div>
+  </div>
+
+  <div class="flex items-center justify-center gap-3.5 mt-6 relative z-10 w-full">
+    <button type="button" id="btn-zoom-out" class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-250 text-gray-700 flex items-center justify-center hover:bg-gray-100 hover:text-gray-900 transition-all active:scale-90 shadow-sm cursor-pointer" title="Zoom Out"><i data-lucide="minus" class="w-5 h-5"></i></button>
+    <button type="button" id="btn-zoom-reset" class="px-4 h-10 rounded-xl bg-gray-50 border border-gray-250 text-gray-700 flex items-center justify-center hover:bg-gray-100 hover:text-gray-900 transition-all active:scale-90 shadow-sm font-semibold text-xs tracking-wider uppercase flex items-center gap-1.5 cursor-pointer" title="Reset View"><i data-lucide="maximize-2" class="w-4 h-4"></i>Recenter</button>
+    <button type="button" id="btn-zoom-in" class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-250 text-gray-700 flex items-center justify-center hover:bg-gray-100 hover:text-gray-900 transition-all active:scale-90 shadow-sm cursor-pointer" title="Zoom In"><i data-lucide="plus" class="w-5 h-5"></i></button>
+  </div>
+</div>
+
+<!-- Arizona and Texas Quick Access -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 animate-fade-in-up" style="animation-delay: 450ms;">
+   <a href="/lotteries/az/" class="block hover:scale-[1.015] active:scale-[0.985] transition-transform duration-300">
+      <img src="/images/arizona-lottery.png" alt="Arizona Lottery" class="w-full h-auto object-contain select-none" />
+   </a>
+   <a href="/lotteries/tx/" class="block hover:scale-[1.015] active:scale-[0.985] transition-transform duration-300">
+      <img src="/images/texas-lottery.png" alt="Texas Lottery" class="w-full h-auto object-contain select-none" />
+   </a>
+</div>
+
+<!-- Top 10 Jackpots + Hot Numbers -->
+<div class="w-full space-y-4 mt-4 mb-6">
+  <div class="w-full animate-fade-in-up" style="animation-delay: 600ms;">
+     <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+       <div class="px-5 py-4 flex items-center justify-between border-b border-[#e6e6e6] bg-white">
+         <h3 class="archivo-title tracking-tight text-gray-900">Top 10 Jackpots</h3>
+       </div>
+       <div class="flex flex-col flex-1 divide-y divide-[#e6e6e6]">
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-white">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#1</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$1.5864 Billion</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Jan 13, 2016</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">3 winners: CA, FL, TN</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-gray-50/50">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#2</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$656 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Mar 30, 2012</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #cba14d;">Mega Millions</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">3 winners: KS, IL, MD</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-white">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#3</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$648 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Dec 17, 2013</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #cba14d;">Mega Millions</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">2 winners: CA, GA</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-gray-50/50">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#4</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$590.5 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">May 18, 2013</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">1 winner: FL</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-white">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#5</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$587.5 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Nov 28, 2012</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">2 winners: AZ, MO</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-gray-50/50">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#6</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$564.1 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Feb 11, 2015</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">3 winners: NC, PR, TX</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-white">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#7</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$536.4 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Jan 8, 2016</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #cba14d;">Mega Millions</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">1 winner: IN</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-gray-50/50">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#8</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$487 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Jan 30, 2016</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">2 winners: NH</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-white">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#9</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$448 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">Aug 9, 2013</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">2 winners: MN, NJ</span></div>
+          </div>
+        </div>
+        <div class="p-[10px] flex items-center gap-3 hover:bg-gray-50 transition-colors bg-gray-50/50">
+          <div class="w-8 flex-shrink-0 flex items-center justify-center"><span class="font-numbers font-black text-xl" style="color: #f4c025;">#10</span></div>
+          <div class="flex-1 min-w-0">
+             <div class="flex justify-between items-end m-0"><h4 class="font-sans font-bold text-[18px] text-gray-900 truncate leading-none">$429.6 Million</h4><span class="text-[15px] font-sans text-gray-500 whitespace-nowrap ml-2">May 7, 2006</span></div>
+             <div class="flex justify-between items-center m-0 mt-1"><span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm" style="background-color: #e0221a;">Powerball</span><span class="text-[15px] font-sans text-gray-500 truncate ml-2">1 winner: NJ</span></div>
+          </div>
+        </div>
+       </div>
+     </div>
+
+     <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden mt-4 p-6 space-y-6 animate-fade-in-up" style="animation-delay: 700ms;">
+        <div>
+           <h3 class="archivo-title text-gray-900 text-xl font-bold flex items-center gap-2" style="font-family: 'Archivo Narrow', sans-serif;"><i data-lucide="flame" class="text-[#e0221a] w-5 h-5"></i>Hot Numbers</h3>
+           <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-0.5">Most frequently drawn numbers based on historical data</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+           <div class="space-y-4">
+              <div class="flex items-center gap-2 border-b border-gray-100 pb-2"><img src="/images/powerball.png" alt="Powerball" class="h-6 object-contain" /><span class="font-bold text-gray-800 text-[15px] font-sans">Powerball Stats</span></div>
+              <div class="space-y-2">
+                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Top 10 Main Numbers</p>
+                 <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">61</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">83×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">32</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">81×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">63</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">79×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">21</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">78×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">69</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">77×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">36</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">76×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">23</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">76×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">39</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">75×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">62</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">74×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">59</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">74×</span></div>
+                 </div>
+              </div>
+              <div class="space-y-2">
+                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Top 5 Powerball</p>
+                 <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-red text-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.5),0_4px_10px_rgba(238,0,0,0.4)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">24</span></div><span class="text-[10px] font-bold text-[#e0221a] mt-1">45×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-red text-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.5),0_4px_10px_rgba(238,0,0,0.4)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">18</span></div><span class="text-[10px] font-bold text-[#e0221a] mt-1">43×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-red text-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.5),0_4px_10px_rgba(238,0,0,0.4)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">10</span></div><span class="text-[10px] font-bold text-[#e0221a] mt-1">42×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-red text-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.5),0_4px_10px_rgba(238,0,0,0.4)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">04</span></div><span class="text-[10px] font-bold text-[#e0221a] mt-1">40×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-red text-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.5),0_4px_10px_rgba(238,0,0,0.4)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">21</span></div><span class="text-[10px] font-bold text-[#e0221a] mt-1">39×</span></div>
+                 </div>
+              </div>
+           </div>
+
+           <div class="space-y-4">
+              <div class="flex items-center gap-2 border-b border-gray-100 pb-2"><img src="/images/megamillions.png" alt="Mega Millions" class="h-6 object-contain" /><span class="font-bold text-gray-800 text-[15px] font-sans">Mega Millions Stats</span></div>
+              <div class="space-y-2">
+                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Top 10 Main Numbers</p>
+                 <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">17</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">90×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">31</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">87×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">10</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">86×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">46</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">85×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">70</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">83×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">14</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">82×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">20</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">81×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">48</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">80×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">04</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">79×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full bg-radial-white text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_6px_rgba(0,0,0,0.15)] flex items-center justify-center font-numbers font-bold text-sm select-none"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">28</span></div><span class="text-[10px] font-bold text-gray-500 mt-1">78×</span></div>
+                 </div>
+              </div>
+              <div class="space-y-2">
+                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Top 5 Mega Ball</p>
+                 <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full flex items-center justify-center font-numbers text-sm font-bold select-none bg-radial-yellow text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_10px_rgba(255,204,0,0.4)]"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">22</span></div><span class="text-[10px] font-bold text-[#cba14d] mt-1">33×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full flex items-center justify-center font-numbers text-sm font-bold select-none bg-radial-yellow text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_10px_rgba(255,204,0,0.4)]"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">11</span></div><span class="text-[10px] font-bold text-[#cba14d] mt-1">32×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full flex items-center justify-center font-numbers text-sm font-bold select-none bg-radial-yellow text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_10px_rgba(255,204,0,0.4)]"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">09</span></div><span class="text-[10px] font-bold text-[#cba14d] mt-1">31×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full flex items-center justify-center font-numbers text-sm font-bold select-none bg-radial-yellow text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_10px_rgba(255,204,0,0.4)]"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">10</span></div><span class="text-[10px] font-bold text-[#cba14d] mt-1">30×</span></div>
+                    <div class="flex flex-col items-center min-w-[36px]"><div class="relative w-9 h-9 rounded-full flex items-center justify-center font-numbers text-sm font-bold select-none bg-radial-yellow text-black shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.3),0_4px_10px_rgba(255,204,0,0.4)]"><div class="absolute top-1 left-2 w-3 h-2 rounded-full bg-white opacity-40 transform -rotate-45 pointer-events-none"></div><span class="z-10 drop-shadow-md">15</span></div><span class="text-[10px] font-bold text-[#cba14d] mt-1">29×</span></div>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="pt-3 border-t border-gray-100">
+           <p class="text-[11px] text-gray-400 italic font-medium leading-relaxed">Frequency data is approximate and based on historical drawings. Past results do not predict future outcomes.</p>
+        </div>
+     </div>
+  </div>
+</div>
+
+        </div>
+      </main>
+
+      <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
+      <div id="site-modals"></div>
+    </div>
+
+    <script src="/js/site.js"></script>
+    <script>LCProgress.init();</script>
+  </body>
+</html>

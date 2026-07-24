@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LottoCash - Powerball Smart Pick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/extra.css" />
+    <script src="/js/lucide.min.js"></script>
+    <script src="/js/progress.js"></script>
+  </head>
+  <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="smart-pick">
+    <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
+
+      <aside id="site-sidebar" class="w-[260px] bg-white h-screen sticky top-0 border-r border-gray-100 flex flex-col hidden lg:flex"></aside>
+
+      <main class="flex-1 w-full flex flex-col relative">
+        <header id="site-header" class="w-full max-w-none h-[80px] bg-white border border-[#e6e6e6] flex items-center justify-between px-6 sticky top-0 z-40"></header>
+
+        <div id="main-content-wrapper" class="p-[10px] flex-1 overflow-x-hidden w-full mx-auto" style="max-width: 1100px;">
+<style>
+@keyframes bill-fall {
+  0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 1; }
+  50% { transform: translateY(50vh) rotate(180deg) translateX(25px); opacity: 0.9; }
+  100% { transform: translateY(105vh) rotate(360deg) translateX(-25px); opacity: 0; }
+}
+.bill-particle { position: fixed; top: -50px; pointer-events: none; z-index: 9999; font-size: 30px; animation: bill-fall 2.2s ease-in-out forwards; }
+</style>
+<div class="space-y-6 pt-4">
+
+  <div class="bg-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] overflow-hidden relative mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
+    <div class="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+    <div class="relative z-10 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1.5">
+          <a href="/home/" class="text-sm font-display font-semibold text-primary flex items-center gap-1 hover:underline">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Back to Home
+          </a>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 flex items-center gap-3" style="font-family: 'Archivo Narrow', sans-serif;">
+          <i data-lucide="zap" class="text-primary w-8 h-8"></i>
+          Powerball Smart Pick
+        </h2>
+        <p class="text-gray-500 text-sm mt-1">Generate dynamic combinations based on hot and overdue frequencies.</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] p-5 mt-4 animate-fade-in-up" style="animation-delay: 200ms;">
+        <div class="font-sans text-sm md:text-base text-gray-800 leading-relaxed space-y-3.5">
+            <p class="font-bold text-gray-900 mb-4 text-[16px]" style="font-family: 'Archivo Narrow', sans-serif;">The Smart Pick Combos are generated with the following numbers:</p>
+            <p><span class="font-semibold text-gray-500 block mb-1">Top 8 hot numbers:</span><span class="font-sans font-bold text-gray-900 text-[20px] block">61, 32, 63, 21, 69, 36, 23, 39</span></p>
+            <p><span class="font-semibold text-gray-500 block mb-1">Top 8 overdue numbers:</span><span class="font-sans font-bold text-gray-900 text-[20px] block">07, 15, 29, 33, 44, 52, 58, 66</span></p>
+            <p><span class="font-semibold text-gray-500 block mb-1">Top 3 hot Powerball numbers:</span><span class="font-sans font-bold text-[#E0221A] text-[20px] block">24, 18, 10</span></p>
+            <p><span class="font-semibold text-gray-500 block mb-1">Top 3 overdue Powerball numbers:</span><span class="font-sans font-bold text-[#E0221A] text-[20px] block">03, 09, 16</span></p>
+        </div>
+    </div>
+
+    <div class="mt-4 mb-6 animate-fade-in-up" style="animation-delay: 300ms;">
+       <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden">
+          <div class="px-5 py-4 flex items-center justify-between border-b border-[#e6e6e6] bg-white">
+            <h3 class="archivo-title tracking-tight text-gray-900" style="font-size: 20px; font-family: 'Archivo Narrow', sans-serif;">Smart Pick</h3>
+            <button id="btn-smart-pick-again" class="bg-gradient-btn text-white font-semibold tracking-wide px-5 py-2.5 rounded-[10px] text-xs flex items-center justify-center gap-1.5 hover:scale-[1.01] active:scale-95 transition-all shadow-[0_4px_14px_rgba(255,0,0,0.15)] animate-zoom-pulse">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              Smart Pick Again
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-gray-50/50 border-b border-[#e6e6e6] text-xs font-bold uppercase tracking-wider text-gray-500">
+                  <th class="px-5 py-3.5 w-20 text-center">#</th>
+                  <th class="px-5 py-3.5">Smart Pick</th>
+                </tr>
+              </thead>
+              <tbody
+                id="smart-pick-combos-container"
+                class="divide-y divide-[#e6e6e6]"
+                data-hot="61,32,63,21,69,36,23,39"
+                data-overdue="07,15,29,33,44,52,58,66"
+                data-hot-special="24,18,10"
+                data-overdue-special="03,09,16"
+                data-is-special="true"
+                data-main-size="5"
+                data-min-main="1"
+                data-max-main="69"
+                data-min-bonus="1"
+                data-max-bonus="26"
+              >
+                <tr class="hover:bg-gray-50/50 transition-colors combo-row bg-white">
+                  <td class="px-5 py-3.5 font-numbers font-black text-lg text-gray-400 text-center w-20">1</td>
+                  <td class="px-5 py-3.5 font-sans text-[20px] font-bold text-gray-900 tracking-wide whitespace-nowrap"><div class="balls-container flex items-center gap-1">05-13-26-33-60-<span class="text-[#E0221A] font-extrabold">10</span></div></td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition-colors combo-row bg-gray-50/50">
+                  <td class="px-5 py-3.5 font-numbers font-black text-lg text-gray-400 text-center w-20">2</td>
+                  <td class="px-5 py-3.5 font-sans text-[20px] font-bold text-gray-900 tracking-wide whitespace-nowrap"><div class="balls-container flex items-center gap-1">02-13-33-50-51-<span class="text-[#E0221A] font-extrabold">14</span></div></td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition-colors combo-row bg-white">
+                  <td class="px-5 py-3.5 font-numbers font-black text-lg text-gray-400 text-center w-20">3</td>
+                  <td class="px-5 py-3.5 font-sans text-[20px] font-bold text-gray-900 tracking-wide whitespace-nowrap"><div class="balls-container flex items-center gap-1">13-33-50-51-56-<span class="text-[#E0221A] font-extrabold">12</span></div></td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition-colors combo-row bg-gray-50/50">
+                  <td class="px-5 py-3.5 font-numbers font-black text-lg text-gray-400 text-center w-20">4</td>
+                  <td class="px-5 py-3.5 font-sans text-[20px] font-bold text-gray-900 tracking-wide whitespace-nowrap"><div class="balls-container flex items-center gap-1">16-21-26-50-63-<span class="text-[#E0221A] font-extrabold">14</span></div></td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition-colors combo-row bg-white">
+                  <td class="px-5 py-3.5 font-numbers font-black text-lg text-gray-400 text-center w-20">5</td>
+                  <td class="px-5 py-3.5 font-sans text-[20px] font-bold text-gray-900 tracking-wide whitespace-nowrap"><div class="balls-container flex items-center gap-1">02-16-33-48-63-<span class="text-[#E0221A] font-extrabold">16</span></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       </div>
+    </div>
+  </div>
+
+<script>
+function triggerBillRain() {
+    const billEmojis = ['💵', '💵', '💸', '💰', '💲', '✨'];
+    const numberOfBills = 40;
+    for (let i = 0; i < numberOfBills; i++) {
+        const bill = document.createElement('div');
+        bill.className = 'bill-particle';
+        bill.textContent = billEmojis[Math.floor(Math.random() * billEmojis.length)];
+        const left = Math.random() * 100;
+        const delay = Math.random() * 0.8;
+        const scale = 0.6 + Math.random() * 0.8;
+        const duration = 1.8 + Math.random() * 0.8;
+        bill.style.left = left + 'vw';
+        bill.style.animationDelay = delay + 's';
+        bill.style.animationDuration = duration + 's';
+        bill.style.transform = `scale(${scale})`;
+        document.body.appendChild(bill);
+        setTimeout(() => bill.remove(), (delay + duration) * 1000 + 100);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnAgain = document.getElementById('btn-smart-pick-again');
+    const container = document.getElementById('smart-pick-combos-container');
+
+    if (btnAgain && container) {
+        const parseAttr = (name) => {
+            const attr = container.getAttribute(name);
+            return attr ? attr.split(',').map(n => n.trim().padStart(2, '0')).filter(Boolean) : [];
+        };
+
+        const hot = parseAttr('data-hot');
+        const overdue = parseAttr('data-overdue');
+        const hotSpecial = parseAttr('data-hot-special');
+        const overdueSpecial = parseAttr('data-overdue-special');
+        const isSpecial = container.getAttribute('data-is-special') === 'true';
+
+        const mainSize = parseInt(container.getAttribute('data-main-size') || '5');
+        const minMain = parseInt(container.getAttribute('data-min-main') || '1');
+        const maxMain = parseInt(container.getAttribute('data-max-main') || '69');
+        const minBonus = parseInt(container.getAttribute('data-min-bonus') || '1');
+        const maxBonus = parseInt(container.getAttribute('data-max-bonus') || '26');
+
+        const generateAndRenderCombos = (triggerRain = false) => {
+            if (triggerRain) triggerBillRain();
+
+            const rows = container.querySelectorAll('.combo-row');
+            const allNormalPool = [...new Set([...hot, ...overdue])];
+            const allSpecialPool = [...new Set([...hotSpecial, ...overdueSpecial])];
+            const getFallbackNormal = () => Math.floor(Math.random() * (maxMain - minMain + 1)) + minMain;
+            const getFallbackSpecial = () => Math.floor(Math.random() * (maxBonus - minBonus + 1)) + minBonus;
+
+            rows.forEach((row, rowIndex) => {
+                let normalNumbers = [];
+                let poolCopy = [...allNormalPool];
+                for (let i = 0; i < mainSize; i++) {
+                    if (poolCopy.length > 0) {
+                        const randomIdx = Math.floor(Math.random() * poolCopy.length);
+                        normalNumbers.push(poolCopy.splice(randomIdx, 1)[0]);
+                    } else {
+                        let val = String(getFallbackNormal()).padStart(2, '0');
+                        while (normalNumbers.includes(val)) val = String(getFallbackNormal()).padStart(2, '0');
+                        normalNumbers.push(val);
+                    }
+                }
+                normalNumbers.sort((a, b) => parseInt(a) - parseInt(b));
+
+                let specialNumber = "";
+                if (isSpecial) {
+                    if (allSpecialPool.length > 0) {
+                        specialNumber = allSpecialPool[Math.floor(Math.random() * allSpecialPool.length)];
+                    } else {
+                        specialNumber = String(getFallbackSpecial()).padStart(2, '0');
+                    }
+                }
+
+                const ballsContainer = row.querySelector('.balls-container');
+                if (ballsContainer) {
+                    let htmlContent = normalNumbers.join('-');
+                    if (isSpecial && specialNumber) {
+                        htmlContent += '-<span class="text-[#E0221A] font-extrabold">' + specialNumber + '</span>';
+                    }
+                    ballsContainer.innerHTML = htmlContent;
+                }
+            });
+        };
+
+        if (window.LCProgress) window.LCProgress.markStep('smartpick');
+        generateAndRenderCombos(false);
+
+        btnAgain.addEventListener('click', function() {
+            const icon = btnAgain.querySelector('i');
+            if (icon) {
+                icon.classList.add('animate-spin');
+                setTimeout(() => icon.classList.remove('animate-spin'), 600);
+            }
+            generateAndRenderCombos(true);
+        });
+    }
+});
+</script>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-4 animate-fade-in-up" style="animation-delay: 200ms;">
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="cashback">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-green-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (70%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">Cashback on Unlock</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 70% progress or wait 15 days to unlock the Cashback Wheel and win up to <span class="font-bold">100% cashback.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-green-50/50 text-green-700/60 flex items-center justify-center shrink-0 border border-green-100/50 relative">
+       <i data-lucide="coins" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-green-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-green-700"></i></div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center justify-between relative overflow-hidden group" data-reward="draw">
+    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-amber-500 opacity-5 rounded-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-1.5"><span class="text-[10px] font-black text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-reward-badge>Locked (90%)</span></div>
+      <h4 class="font-bold text-gray-900 text-[16px] uppercase tracking-tight font-display">$5,000 Cash Draw</h4>
+      <p class="text-xs text-gray-500 mt-1 max-w-[85%]">Reach 90% progress or wait 30 days to <span class="font-bold">unlock the $5,000 Cash Draw Wheel.</span></p>
+      <div class="mt-4"><button class="bg-gray-150 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer" data-reward-btn><i data-lucide="lock" class="w-3.5 h-3.5"></i>ACCESS MODULE</button></div>
+    </div>
+    <div class="w-12 h-12 rounded-2xl bg-amber-50/50 text-amber-700/60 flex items-center justify-center shrink-0 border border-amber-100/50 relative">
+       <i data-lucide="gift" class="w-5 h-5"></i>
+       <div class="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center border border-amber-200" data-reward-lock-icon><i data-lucide="lock" class="w-2.5 h-2.5 text-amber-700"></i></div>
+    </div>
+  </div>
+</div>
+        </div>
+      </main>
+
+      <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
+      <div id="site-modals"></div>
+    </div>
+
+    <script src="/js/site.js"></script>
+    <script>LCProgress.init();</script>
+  </body>
+</html>
