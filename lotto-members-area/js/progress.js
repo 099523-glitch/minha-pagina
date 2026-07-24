@@ -212,6 +212,17 @@
         }
     }
 
+    function refreshRewards() {
+        var result = compute();
+        renderReward(document, 'cashback', result.cashbackUnlocked, 70, result.percent, result.daysSince, 15);
+        renderReward(document, 'draw', result.drawUnlocked, 90, result.percent, result.daysSince, 30);
+        bindUnlockButtons(document);
+        if (window.lucide) lucide.createIcons();
+    }
+
+    // Rewards helper for dynamically-rendered pages (state.html / game.html)
+    window.LCRewards = { refresh: refreshRewards };
+
     window.LCProgress = {
         markStep: markStep,
         compute: compute,

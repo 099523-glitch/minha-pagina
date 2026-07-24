@@ -99,7 +99,17 @@
         '</div>';
     }
 
+    // Base path (matches <base href>) — used for JS navigation, which does NOT honor <base>.
+    var baseEl = document.querySelector('base');
+    var BASE = (baseEl && baseEl.getAttribute('href')) || '/';
+
     document.addEventListener('DOMContentLoaded', function () {
+        // Login gate: internal pages require a session; otherwise back to login.
+        if (!localStorage.getItem('member_email')) {
+            window.location.replace(BASE);
+            return;
+        }
+
         var active = document.body.getAttribute('data-active') || '';
 
         var sidebarEl = document.getElementById('site-sidebar');
@@ -118,7 +128,7 @@
             el.addEventListener('click', function (e) {
                 e.preventDefault();
                 localStorage.removeItem('member_email');
-                window.location.href = '.';
+                window.location.href = BASE;
             });
         });
 
@@ -148,7 +158,6 @@
         var mapContainer = document.getElementById('map-container');
         if (mapContainer) {
             var UNAVAILABLE = ['NV', 'UT', 'AL'];
-            var BUILT_STATES = ['AZ', 'TX'];
             var scale = 1;
 
             fetch('vendor/us-map.svg')
@@ -163,8 +172,7 @@
                         if (UNAVAILABLE.indexOf(code) === -1) {
                             el.addEventListener('click', function () {
                                 if (window.LCProgress) window.LCProgress.markStep('map');
-                                var target = BUILT_STATES.indexOf(code) > -1 ? 'lotteries/' + code.toLowerCase() + '/' : 'lotteries/';
-                                window.location.href = target;
+                                window.location.href = 'lotteries/state.html?s=' + code.toLowerCase();
                             });
                         }
                     });

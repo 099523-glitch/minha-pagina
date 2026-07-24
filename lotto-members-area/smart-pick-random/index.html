@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/lotto-members-area/">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>LottoCash - Smart Pick</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +31,27 @@
     </div>
   </div>
 
+  <!-- Quick stateless generator -->
+  <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 150ms;">
+    <div class="px-5 py-4 border-b border-[#e6e6e6] flex items-center justify-between flex-wrap gap-3">
+      <h3 class="archivo-title tracking-tight text-gray-900">Quick Random Pick</h3>
+      <select id="game-select" class="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm font-semibold text-gray-800 focus:outline-none focus:border-primary">
+        <option value="pb">Powerball (5/69 + 1/26)</option>
+        <option value="mm">Mega Millions (5/70 + 1/25)</option>
+        <option value="l6">Lotto (6/49)</option>
+        <option value="c5">Cash 5 (5/35)</option>
+      </select>
+    </div>
+    <div class="p-6 flex flex-col items-center gap-6">
+      <div id="qp-balls" class="flex flex-wrap gap-2 justify-center min-h-[44px]"></div>
+      <button id="qp-btn" class="bg-gradient-btn text-white font-bold px-6 py-3 rounded-xl text-sm flex items-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_4px_14px_rgba(255,0,0,0.2)]">
+        <i data-lucide="dices" class="w-4 h-4"></i> Generate lucky numbers
+      </button>
+    </div>
+  </div>
+
+  <!-- Official games smart pick -->
+  <h3 class="archivo-title tracking-tight text-gray-900 pt-2">Official game Smart Picks</h3>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <a href="lotteries/mupb/smart-pick/" class="bg-white rounded-[24px] p-5 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] flex items-center gap-4 hover:shadow-md transition-all">
       <img src="images/powerball.png" alt="Powerball" class="h-10 object-contain">
@@ -41,11 +63,35 @@
     </a>
   </div>
 
-  <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-3">
-    <i data-lucide="construction" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-    <p class="text-sm text-amber-800 font-medium">Placeholder page — waiting on the real page source for this route.</p>
-  </div>
+  <p class="text-[11px] text-gray-400 italic">Quick picks are randomly generated for entertainment. Lottery draws are random — past results do not predict future outcomes.</p>
 </div>
+<script>
+  var GAMES = {
+    pb: { n: 5, max: 69, sp: 26, spType: 'red' },
+    mm: { n: 5, max: 70, sp: 25, spType: 'yellow' },
+    l6: { n: 6, max: 49, sp: 0, spType: null },
+    c5: { n: 5, max: 35, sp: 0, spType: null }
+  };
+  function uniq(count, max) {
+    var s = [];
+    while (s.length < count) { var x = Math.floor(Math.random() * max) + 1; if (s.indexOf(x) === -1) s.push(x); }
+    return s.sort(function (a, b) { return a - b; });
+  }
+  function drawQuick() {
+    var g = GAMES[document.getElementById('game-select').value];
+    var box = document.getElementById('qp-balls');
+    var html = '';
+    uniq(g.n, g.max).forEach(function (x) { html += '<div class="ball">' + x + '</div>'; });
+    if (g.sp) { var s = Math.floor(Math.random() * g.sp) + 1; html += '<div class="' + (g.spType === 'yellow' ? 'ball-yellow' : 'ball-red') + '">' + s + '</div>'; }
+    box.innerHTML = html;
+    if (window.LCProgress) window.LCProgress.markStep('smartpick');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('qp-btn').addEventListener('click', drawQuick);
+    document.getElementById('game-select').addEventListener('change', drawQuick);
+    drawQuick();
+  });
+</script>
         </div>
       </main>
       <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>

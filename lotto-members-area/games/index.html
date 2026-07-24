@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/lotto-members-area/">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>LottoCash - Games</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +27,94 @@
         <i data-lucide="gamepad-2" class="text-primary w-8 h-8"></i>
         Games
       </h2>
-      <p class="text-gray-500 text-sm mt-1">Coming soon.</p>
+      <p class="text-gray-500 text-sm mt-1">Free-to-play mini games. Just for fun — no purchase, no real prizes.</p>
     </div>
   </div>
+
+  <!-- Lucky number of the day -->
+  <div class="bg-gradient-to-r from-[#0b1f4d] via-[#16265e] to-[#b0182b] text-white rounded-[24px] p-6 md:p-8 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex flex-col md:flex-row items-center justify-between gap-6 animate-fade-in-up" style="animation-delay: 150ms;">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Your lucky number of the day</p>
+      <div class="flex items-center gap-3">
+        <span id="lucky-number" class="text-6xl font-black font-numbers">–</span>
+        <span class="text-white/70 text-sm max-w-[180px]">Comes back the same all day, resets at midnight.</span>
+      </div>
+    </div>
+    <i data-lucide="sparkles" class="w-16 h-16 text-white/30 shrink-0"></i>
+  </div>
+
+  <!-- Scratch card game -->
+  <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 250ms;">
+    <div class="px-5 py-4 border-b border-[#e6e6e6] flex items-center gap-2"><i data-lucide="ticket" class="w-5 h-5 text-primary"></i><h3 class="archivo-title tracking-tight text-gray-900">Lucky Scratch — match 3</h3></div>
+    <div class="p-6 flex flex-col items-center gap-5">
+      <p class="text-sm text-gray-500 text-center">Tap the three panels to reveal. Match all three symbols to win a virtual jackpot!</p>
+      <div class="grid grid-cols-3 gap-3" id="scratch-row"></div>
+      <div id="scratch-msg" class="h-6 text-center font-bold"></div>
+      <button id="scratch-again" class="bg-gradient-btn text-white font-bold px-6 py-3 rounded-xl text-sm flex items-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_4px_14px_rgba(255,0,0,0.2)]"><i data-lucide="refresh-cw" class="w-4 h-4"></i> New card</button>
+    </div>
+  </div>
+
+  <p class="text-[11px] text-gray-400 italic">Entertainment only. These games do not involve real money, wagering, or prizes.</p>
 </div>
+<style>
+  .scratch-tile { width: 84px; height: 84px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px; cursor: pointer; user-select: none; transition: transform .15s, background .2s; }
+  .scratch-tile.covered { background: linear-gradient(135deg,#c0c4cc,#8f95a3); }
+  .scratch-tile.covered:hover { transform: scale(1.04); }
+  .scratch-tile.revealed { background: #f3f4f6; border: 1px solid #e5e7eb; }
+</style>
+<script>
+  var SYMBOLS = ['🍒', '💰', '🍀', '💎', '⭐', '🔔'];
+  function newCard() {
+    var row = document.getElementById('scratch-row');
+    var msg = document.getElementById('scratch-msg');
+    msg.textContent = ''; msg.className = 'h-6 text-center font-bold';
+    // 30% chance of a winning card
+    var win = Math.random() < 0.3;
+    var symbols;
+    if (win) { var s = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]; symbols = [s, s, s]; }
+    else {
+      do { symbols = [0, 1, 2].map(function () { return SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]; }); }
+      while (symbols[0] === symbols[1] && symbols[1] === symbols[2]);
+    }
+    row.innerHTML = '';
+    var revealed = 0;
+    symbols.forEach(function (sym) {
+      var t = document.createElement('div');
+      t.className = 'scratch-tile covered';
+      t.textContent = '?';
+      t.addEventListener('click', function () {
+        if (!t.classList.contains('covered')) return;
+        t.classList.remove('covered'); t.classList.add('revealed');
+        t.textContent = sym; revealed++;
+        if (revealed === 3) {
+          var w = symbols[0] === symbols[1] && symbols[1] === symbols[2];
+          msg.textContent = w ? '🎉 JACKPOT! Three of a kind!' : 'So close — try another card!';
+          msg.className = 'h-6 text-center font-bold ' + (w ? 'text-green-600' : 'text-gray-500');
+          if (w && window.LCConfettiGames) window.LCConfettiGames();
+        }
+      });
+      row.appendChild(t);
+    });
+  }
+  function luckyOfDay() {
+    var today = new Date(); var seed = today.getFullYear() * 1000 + today.getMonth() * 50 + today.getDate();
+    var x = Math.sin(seed) * 10000; x = x - Math.floor(x);
+    document.getElementById('lucky-number').textContent = Math.floor(x * 69) + 1;
+  }
+  // tiny confetti reused for wins
+  window.LCConfettiGames = function () {
+    var c = document.createElement('canvas'); c.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999';
+    document.body.appendChild(c); var ctx = c.getContext('2d'); var W = c.width = innerWidth, H = c.height = innerHeight;
+    var cols = ['#e0221a', '#f4c025', '#22c55e', '#2451e0', '#e91e63']; var ps = [];
+    for (var i = 0; i < 120; i++) ps.push({ x: Math.random() * W, y: Math.random() * H - H, r: Math.random() * 6 + 4, c: cols[i % cols.length], t: Math.random() * 120, ti: Math.random() * .07 + .02, ta: 0 });
+    var fr; (function d() { ctx.clearRect(0, 0, W, H); var rem = false; ps.forEach(function (p) { p.ta += p.ti; p.y += (Math.cos(p.t) + 3 + p.r / 2) / 2; p.x += Math.sin(p.ta); if (p.y <= H) rem = true; ctx.beginPath(); ctx.lineWidth = p.r / 2; ctx.strokeStyle = p.c; ctx.moveTo(p.x, p.y); ctx.lineTo(p.x + Math.sin(p.ta - p.t / 2) * 15, p.y + p.r); ctx.stroke(); }); if (rem) fr = requestAnimationFrame(d); else c.remove(); })();
+    setTimeout(function () { cancelAnimationFrame(fr); c.remove(); }, 5000);
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    luckyOfDay(); newCard();
+    document.getElementById('scratch-again').addEventListener('click', newCard);
+  });
+</script>
         </div>
       </main>
       <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>

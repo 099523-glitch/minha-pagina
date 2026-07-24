@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/lotto-members-area/">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>LottoCash - How to Use</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +30,60 @@
       <p class="text-gray-500 text-sm mt-1">Learn how to get the most out of your account.</p>
     </div>
   </div>
-  <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-3">
-    <i data-lucide="construction" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-    <p class="text-sm text-amber-800 font-medium">Placeholder page — waiting on the real page source for this route.</p>
+  <!-- Getting started steps -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 animate-fade-in-up" style="animation-delay: 150ms;">
+    <div class="bg-white rounded-[24px] p-6 border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)]">
+      <div class="w-11 h-11 rounded-2xl bg-red-50 text-primary flex items-center justify-center mb-4"><i data-lucide="list" class="w-5 h-5"></i></div>
+      <h3 class="font-bold text-gray-900 mb-1">1. Browse lotteries</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Open <a href="lotteries/" class="text-primary font-semibold hover:underline">Lotteries</a> or tap a state on the map to see the latest winning numbers for every game in that state.</p>
+    </div>
+    <div class="bg-white rounded-[24px] p-6 border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)]">
+      <div class="w-11 h-11 rounded-2xl bg-red-50 text-primary flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
+      <h3 class="font-bold text-gray-900 mb-1">2. Generate Smart Picks</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Every game has a <span class="font-semibold text-gray-700">Smart Pick</span> that builds combinations from hot &amp; overdue numbers. Tap "Smart Pick Again" for a fresh set.</p>
+    </div>
+    <div class="bg-white rounded-[24px] p-6 border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)]">
+      <div class="w-11 h-11 rounded-2xl bg-red-50 text-primary flex items-center justify-center mb-4"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
+      <h3 class="font-bold text-gray-900 mb-1">3. Study the stats</h3>
+      <p class="text-sm text-gray-500 leading-relaxed">Use <span class="font-semibold text-gray-700">Frequency Chart</span>, <span class="font-semibold text-gray-700">Number Matcher</span> and <span class="font-semibold text-gray-700">Jackpot Analysis</span> on each game to make informed picks.</p>
+    </div>
+  </div>
+
+  <!-- Tools explained -->
+  <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 250ms;">
+    <div class="px-5 py-4 border-b border-[#e6e6e6]"><h3 class="archivo-title tracking-tight text-gray-900">The tools on every game</h3></div>
+    <div class="divide-y divide-[#f0f0f0]">
+      <div class="flex items-start gap-4 p-5"><i data-lucide="history" class="w-5 h-5 text-primary shrink-0 mt-0.5"></i><div><p class="font-bold text-gray-900">Past Results</p><p class="text-sm text-gray-500">Recent winning numbers with draw dates.</p></div></div>
+      <div class="flex items-start gap-4 p-5"><i data-lucide="zap" class="w-5 h-5 text-primary shrink-0 mt-0.5"></i><div><p class="font-bold text-gray-900">Smart Pick</p><p class="text-sm text-gray-500">Auto-generated combinations from the hottest and most overdue numbers.</p></div></div>
+      <div class="flex items-start gap-4 p-5"><i data-lucide="target" class="w-5 h-5 text-primary shrink-0 mt-0.5"></i><div><p class="font-bold text-gray-900">Number Matcher</p><p class="text-sm text-gray-500">Type your numbers and instantly see how many match the latest draw.</p></div></div>
+      <div class="flex items-start gap-4 p-5"><i data-lucide="bar-chart-3" class="w-5 h-5 text-primary shrink-0 mt-0.5"></i><div><p class="font-bold text-gray-900">Frequency Chart &amp; Prize Matrix</p><p class="text-sm text-gray-500">See how often each number hits, plus the full odds and payout table.</p></div></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 350ms;">
+    <div class="px-5 py-4 border-b border-[#e6e6e6]"><h3 class="archivo-title tracking-tight text-gray-900">Frequently asked questions</h3></div>
+    <div class="divide-y divide-[#f0f0f0]" id="faq">
+      <div class="faq-item"><button class="faq-q w-full flex items-center justify-between gap-3 p-5 text-left font-bold text-gray-900"><span>Does Smart Pick guarantee a win?</span><i data-lucide="chevron-down" class="faq-i w-5 h-5 text-gray-400 transition-transform shrink-0"></i></button><div class="faq-a px-5 pb-5 text-sm text-gray-500 leading-relaxed hidden">No. Smart Pick is a helper based on historical frequency. Lottery draws are random and past results never predict future outcomes.</div></div>
+      <div class="faq-item"><button class="faq-q w-full flex items-center justify-between gap-3 p-5 text-left font-bold text-gray-900"><span>How often are the numbers updated?</span><i data-lucide="chevron-down" class="faq-i w-5 h-5 text-gray-400 transition-transform shrink-0"></i></button><div class="faq-a px-5 pb-5 text-sm text-gray-500 leading-relaxed hidden">Results are refreshed after each official draw for every participating state and game.</div></div>
+      <div class="faq-item"><button class="faq-q w-full flex items-center justify-between gap-3 p-5 text-left font-bold text-gray-900"><span>What are the Cashback and $5,000 Draw modules?</span><i data-lucide="chevron-down" class="faq-i w-5 h-5 text-gray-400 transition-transform shrink-0"></i></button><div class="faq-a px-5 pb-5 text-sm text-gray-500 leading-relaxed hidden">They are member rewards that unlock as you use the platform — reach 70% of your Learning Journey (or wait 15 days) for Cashback, and 90% (or 30 days) for the $5,000 Cash Draw.</div></div>
+      <div class="faq-item"><button class="faq-q w-full flex items-center justify-between gap-3 p-5 text-left font-bold text-gray-900"><span>I need help — how do I contact support?</span><i data-lucide="chevron-down" class="faq-i w-5 h-5 text-gray-400 transition-transform shrink-0"></i></button><div class="faq-a px-5 pb-5 text-sm text-gray-500 leading-relaxed hidden">Head to the <a href="assistance/" class="text-primary font-semibold hover:underline">Support</a> page and email our team — we reply within 24 business hours.</div></div>
+    </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#faq .faq-q').forEach(function (q) {
+      q.addEventListener('click', function () {
+        var a = q.parentElement.querySelector('.faq-a');
+        var i = q.querySelector('.faq-i');
+        var open = !a.classList.contains('hidden');
+        a.classList.toggle('hidden', open);
+        i.style.transform = open ? '' : 'rotate(180deg)';
+      });
+    });
+  });
+</script>
         </div>
       </main>
       <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
