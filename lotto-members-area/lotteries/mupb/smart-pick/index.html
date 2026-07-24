@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/lotto-members-area/">
     <title>LottoCash - Powerball Smart Pick</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/extra.css" />
-    <script src="/js/lucide.min.js"></script>
-    <script src="/js/progress.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/extra.css" />
+    <script src="js/lucide.min.js"></script>
+    <script src="js/progress.js"></script>
   </head>
   <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="smart-pick">
     <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
@@ -36,7 +37,7 @@
     <div class="relative z-10 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
         <div class="flex items-center gap-2 mb-1.5">
-          <a href="/home/" class="text-sm font-display font-semibold text-primary flex items-center gap-1 hover:underline">
+          <a href="home/" class="text-sm font-display font-semibold text-primary flex items-center gap-1 hover:underline">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             Back to Home
           </a>
@@ -257,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div id="site-modals"></div>
     </div>
 
-    <script src="/js/site.js"></script>
+    <script src="js/site.js"></script>
     <script>LCProgress.init();</script>
   </body>
 </html>

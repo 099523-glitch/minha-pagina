@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/lotto-members-area/">
     <title>Lotto - Secure Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/lucide.min.js"></script>
-    <script src="/js/progress.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/lucide.min.js"></script>
+    <script src="js/progress.js"></script>
   </head>
   <body class="bg-white min-h-screen antialiased font-sans flex items-center justify-center relative py-8 overflow-y-auto">
 
@@ -18,7 +19,7 @@
       <div class="bg-white border border-[#e6e6e6] rounded-[28px] shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
 
         <div class="bg-white px-8 pt-8 pb-0 flex flex-col items-center border-b border-gray-50">
-          <img src="/images/logo.png" alt="Lotto" style="height: 90px;" class="object-contain" />
+          <img src="images/logo.png" alt="Lotto" style="height: 90px;" class="object-contain" />
         </div>
 
         <div class="px-8 pt-5 pb-8 space-y-5">
@@ -135,7 +136,7 @@
               localStorage.setItem('member_email', email);
           }
           if (window.LCProgress) window.LCProgress.markStep('login');
-          window.location.href = '/home/';
+          window.location.href = 'home/';
       });
     </script>
   </body>
