@@ -187,14 +187,29 @@
         });
     }
 
+    function wheelUrl() {
+        var baseEl = document.querySelector('base');
+        var base = (baseEl && baseEl.getAttribute('href')) || '';
+        return base + 'cashback-wheel/';
+    }
+
     function bindUnlockButtons(root) {
+        // The Cashback card ALWAYS opens the wheel page (it gates itself when locked),
+        // so members can preview it and spin once unlocked.
+        root.querySelectorAll('[data-reward="cashback"] [data-reward-btn]').forEach(function (btn) {
+            if (btn.dataset.wheel) return;
+            btn.dataset.wheel = '1';
+            btn.style.cursor = 'pointer';
+            btn.addEventListener('click', function () { window.location.href = wheelUrl(); });
+        });
+        // Other unlocked rewards (e.g. $5,000 Draw) still show the coming-soon modal.
         root.querySelectorAll('[data-reward-open]').forEach(function (btn) {
             if (btn.dataset.bound) return;
             btn.dataset.bound = '1';
             btn.addEventListener('click', function () {
                 var key = btn.getAttribute('data-reward-open');
-                var name = key === 'cashback' ? 'Cashback on Unlock' : '$5,000 Cash Draw';
-                showUnlockModal(name + ' — coming soon');
+                if (key === 'cashback') { window.location.href = wheelUrl(); return; }
+                showUnlockModal('$5,000 Cash Draw — coming soon');
             });
         });
     }

@@ -1,5 +1,22 @@
 /* Regras que no site original ficam em <style> inline por página (não fazem parte do style.css compilado global) */
 
+/* Barra de progresso do Learning Journey (gradiente azul animado) */
+@keyframes progressShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.animate-progress-blue-shimmer {
+    background: linear-gradient(90deg, #1a3ee0, #1ac8e0, #1a3ee0);
+    background-size: 200% 100%;
+    animation: progressShimmer 3s linear infinite;
+}
+.animate-progress-red-gold {
+    background: linear-gradient(90deg, #e0221a, #f4c025, #e0221a);
+    background-size: 200% 100%;
+    animation: progressShimmer 3s linear infinite;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }

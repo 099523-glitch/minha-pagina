@@ -105,7 +105,12 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         // Login gate: internal pages require a session; otherwise back to login.
-        if (!localStorage.getItem('member_email')) {
+        // Fail open if localStorage is unavailable (blocked/private mode) so the
+        // user is never trapped in a redirect loop.
+        var hasSession;
+        try { hasSession = !!localStorage.getItem('member_email'); }
+        catch (e) { hasSession = true; }
+        if (!hasSession) {
             window.location.replace(BASE);
             return;
         }
@@ -115,8 +120,7 @@
         var sidebarEl = document.getElementById('site-sidebar');
         if (sidebarEl) sidebarEl.innerHTML = renderSidebar(active);
 
-        var headerEl = document.getElementById('site-header');
-        if (headerEl) headerEl.innerHTML = renderHeader();
+        // The premium header (#site-header) is now rendered by header.js.
 
         var mobileNavEl = document.getElementById('site-mobile-nav');
         if (mobileNavEl) mobileNavEl.innerHTML = renderMobileNav(active);
@@ -154,11 +158,48 @@
             });
         }
 
-        // US map (Home only)
+        // US map (Home only) — pan + zoom, click a state to open its data
         var mapContainer = document.getElementById('map-container');
-        if (mapContainer) {
+        var mapViewport = document.getElementById('map-viewport');
+        if (mapContainer && mapViewport) {
             var UNAVAILABLE = ['NV', 'UT', 'AL'];
-            var scale = 1;
+            var scale = 1, tx = 0, ty = 0;
+            var MIN = 1, MAX = 4;
+            var dragging = false, moved = false, sx = 0, sy = 0, stx = 0, sty = 0;
+
+            mapContainer.style.transformOrigin = '0 0';
+            mapContainer.style.transition = 'transform .12s ease-out';
+            mapViewport.style.overflow = 'hidden';
+            mapViewport.style.cursor = 'grab';
+            mapViewport.style.touchAction = 'none';
+
+            function clampPan() {
+                // keep the scaled map from drifting away from the frame
+                var vw = mapViewport.clientWidth, vh = mapViewport.clientHeight;
+                var cw = mapContainer.offsetWidth * scale, ch = mapContainer.offsetHeight * scale;
+                var maxX = Math.max(0, (cw - vw)) + vw * 0.15;
+                var maxY = Math.max(0, (ch - vh)) + vh * 0.15;
+                tx = Math.min(maxX, Math.max(-maxX, tx));
+                ty = Math.min(maxY, Math.max(-maxY, ty));
+            }
+            function apply(anim) {
+                mapContainer.style.transition = anim === false ? 'none' : 'transform .12s ease-out';
+                clampPan();
+                mapContainer.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+            }
+            function zoomAt(factor, cx, cy) {
+                var rect = mapViewport.getBoundingClientRect();
+                var px = (cx - rect.left - tx) / scale;
+                var py = (cy - rect.top - ty) / scale;
+                var ns = Math.min(MAX, Math.max(MIN, scale * factor));
+                if (ns === scale) return;
+                tx = (cx - rect.left) - px * ns;
+                ty = (cy - rect.top) - py * ns;
+                scale = ns;
+                apply();
+                if (window.LCProgress) window.LCProgress.markStep('map');
+            }
+            function reset() { scale = 1; tx = 0; ty = 0; apply(); }
 
             fetch('vendor/us-map.svg')
                 .then(function (res) { return res.text(); })
@@ -170,7 +211,9 @@
                         if (!code) return;
                         el.classList.add(UNAVAILABLE.indexOf(code) > -1 ? 'state-inactive' : 'state-active');
                         if (UNAVAILABLE.indexOf(code) === -1) {
+                            el.style.cursor = 'pointer';
                             el.addEventListener('click', function () {
+                                if (moved) return; // ignore click that was actually a drag
                                 if (window.LCProgress) window.LCProgress.markStep('map');
                                 window.location.href = 'lotteries/state.html?s=' + code.toLowerCase();
                             });
@@ -178,16 +221,46 @@
                     });
                 });
 
-            function applyZoom() {
-                mapContainer.style.transform = 'scale(' + scale + ')';
-            }
+            // Drag to pan — no pointer capture, so clicks still reach the states.
+            mapViewport.addEventListener('pointerdown', function (e) {
+                dragging = true; moved = false;
+                sx = e.clientX; sy = e.clientY; stx = tx; sty = ty;
+                mapViewport.style.cursor = 'grabbing';
+            });
+            window.addEventListener('pointermove', function (e) {
+                if (!dragging) return;
+                var dx = e.clientX - sx, dy = e.clientY - sy;
+                if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+                tx = stx + dx; ty = sty + dy;
+                apply(false);
+            });
+            window.addEventListener('pointerup', function () {
+                if (!dragging) return;
+                dragging = false; mapViewport.style.cursor = 'grab';
+                setTimeout(function () { moved = false; }, 60);
+            });
 
+            // Wheel to zoom (centered on cursor)
+            mapViewport.addEventListener('wheel', function (e) {
+                e.preventDefault();
+                zoomAt(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX, e.clientY);
+            }, { passive: false });
+
+            // Double-click toggles zoom
+            mapViewport.addEventListener('dblclick', function (e) {
+                if (scale > 1.2) reset(); else zoomAt(1.8, e.clientX, e.clientY);
+            });
+
+            function centerZoom(factor) {
+                var r = mapViewport.getBoundingClientRect();
+                zoomAt(factor, r.left + r.width / 2, r.top + r.height / 2);
+            }
             var btnZoomIn = document.getElementById('btn-zoom-in');
             var btnZoomOut = document.getElementById('btn-zoom-out');
             var btnZoomReset = document.getElementById('btn-zoom-reset');
-            if (btnZoomIn) btnZoomIn.addEventListener('click', function () { if (window.LCProgress) window.LCProgress.markStep('map'); scale = Math.min(scale + 0.2, 2.4); applyZoom(); });
-            if (btnZoomOut) btnZoomOut.addEventListener('click', function () { if (window.LCProgress) window.LCProgress.markStep('map'); scale = Math.max(scale - 0.2, 0.6); applyZoom(); });
-            if (btnZoomReset) btnZoomReset.addEventListener('click', function () { if (window.LCProgress) window.LCProgress.markStep('map'); scale = 1; applyZoom(); });
+            if (btnZoomIn) btnZoomIn.addEventListener('click', function () { centerZoom(1.35); });
+            if (btnZoomOut) btnZoomOut.addEventListener('click', function () { centerZoom(1 / 1.35); });
+            if (btnZoomReset) btnZoomReset.addEventListener('click', reset);
         }
 
         // Mobile bottom nav scroll fades (only meaningful if injected)

@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/extra.css" />
+    <link rel="stylesheet" href="header/header.css" />
     <script src="js/lucide.min.js"></script>
     <script src="js/progress.js"></script>
   </head>
@@ -32,15 +33,15 @@
   </div>
 
   <!-- Lucky number of the day -->
-  <div class="bg-gradient-to-r from-[#0b1f4d] via-[#16265e] to-[#b0182b] text-white rounded-[24px] p-6 md:p-8 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex flex-col md:flex-row items-center justify-between gap-6 animate-fade-in-up" style="animation-delay: 150ms;">
+  <div class="rounded-[24px] p-6 md:p-8 shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] flex flex-col md:flex-row items-center justify-between gap-6 animate-fade-in-up" style="animation-delay: 150ms; background:linear-gradient(120deg,#0b1f4d 0%,#16265e 45%,#b0182b 100%); color:#fff;">
     <div>
-      <p class="text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Your lucky number of the day</p>
+      <p class="text-xs font-bold uppercase tracking-wider mb-1" style="color:rgba(255,255,255,0.72);">Your lucky number of the day</p>
       <div class="flex items-center gap-3">
-        <span id="lucky-number" class="text-6xl font-black font-numbers">–</span>
-        <span class="text-white/70 text-sm max-w-[180px]">Comes back the same all day, resets at midnight.</span>
+        <span id="lucky-number" class="text-6xl font-black font-numbers" style="color:#fff;">–</span>
+        <span class="text-sm max-w-[180px]" style="color:rgba(255,255,255,0.72);">Comes back the same all day, resets at midnight.</span>
       </div>
     </div>
-    <i data-lucide="sparkles" class="w-16 h-16 text-white/30 shrink-0"></i>
+    <i data-lucide="sparkles" class="w-16 h-16 shrink-0" style="color:rgba(255,255,255,0.3);"></i>
   </div>
 
   <!-- Scratch card game -->
@@ -121,6 +122,7 @@
       <div id="site-modals"></div>
     </div>
     <script src="js/site.js"></script>
+    <script src="header/header.js"></script>
     <script>LCProgress.init();</script>
   </body>
 </html>

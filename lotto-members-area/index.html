@@ -132,12 +132,15 @@
 
       document.getElementById('login-form').addEventListener('submit', function (e) {
           e.preventDefault();
-          var email = document.getElementById('email').value.trim();
-          if (email) {
-              localStorage.setItem('member_email', email);
-          }
+          // Fake login: any email/password works. Never leave the user stuck —
+          // always create a session (even if the field is empty) and tolerate
+          // browsers where localStorage is blocked.
+          var email = document.getElementById('email').value.trim() || 'member@lottocash';
+          try { localStorage.setItem('member_email', email); } catch (err) {}
           if (window.LCProgress) window.LCProgress.markStep('login');
-          window.location.href = 'home/';
+          var baseEl = document.querySelector('base');
+          var base = baseEl ? baseEl.getAttribute('href') : '';
+          window.location.href = base + 'home/';
       });
     </script>
   </body>

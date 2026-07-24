@@ -78,10 +78,10 @@
         if (state.banner) {
             header += '<div class="mt-2 select-none w-full"><img src="' + state.banner + '" alt="' + state.name + ' Lottery" class="w-full h-auto object-contain rounded-[15px]"></div>';
         } else {
-            header += '<div class="mt-2 select-none w-full rounded-[18px] bg-gradient-to-r from-[#0b1f4d] via-[#16265e] to-[#b0182b] text-white px-6 py-8 flex items-center gap-4">' +
-                '<div class="w-16 h-16 rounded-full bg-white/15 flex items-center justify-center font-numbers font-black text-2xl border border-white/25">' + state.code.toUpperCase() + '</div>' +
-                '<div><h1 class="text-3xl font-bold" style="font-family:\'Archivo Narrow\',sans-serif;">' + state.name + ' Lottery</h1>' +
-                '<p class="text-sm text-white/80">Latest results & tools for every ' + state.name + ' game</p></div></div>';
+            header += '<div class="mt-2 select-none w-full rounded-[18px] px-6 py-8 flex items-center gap-4" style="background:linear-gradient(120deg,#0b1f4d 0%,#16265e 45%,#b0182b 100%);color:#fff;">' +
+                '<div class="w-16 h-16 rounded-full flex items-center justify-center font-numbers font-black text-2xl shrink-0" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.28);color:#fff;">' + state.code.toUpperCase() + '</div>' +
+                '<div><h1 class="text-3xl font-bold" style="font-family:\'Archivo Narrow\',sans-serif;color:#fff;">' + state.name + ' Lottery</h1>' +
+                '<p class="text-sm" style="color:rgba(255,255,255,0.85);">Latest results &amp; tools for every ' + state.name + ' game</p></div></div>';
         }
         header += '</div>';
 

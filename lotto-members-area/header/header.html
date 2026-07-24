@@ -1,0 +1,128 @@
+<!-- =========================================================
+     PREMIUM HEADER markup. Injected by header.js:
+       #lc-hdr-bar      -> into the page's #site-header
+       #lc-hdr-overlays -> appended to <body>
+     ========================================================= -->
+
+<template id="lc-hdr-bar">
+  <div class="lc-hdr">
+    <!-- Balance -->
+    <button class="lc-balance" id="lcBalance" aria-label="Balance">
+      <span class="coin">💰</span>
+      <span class="bcol">
+        <span class="blab">Available balance</span>
+        <span class="bval" id="lcBalVal">US$ 0.00</span>
+      </span>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+
+    <span class="lc-spacer"></span>
+
+    <!-- Withdraw -->
+    <button class="lc-withdraw" id="lcWithdraw">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M5 6l7-3 7 3"/><path d="M4 10v11"/><path d="M20 10v11"/><path d="M8 14v3"/><path d="M12 14v3"/><path d="M16 14v3"/></svg>
+      <span>WITHDRAW</span>
+    </button>
+
+    <!-- Bell -->
+    <button class="lc-ibtn" id="lcBell" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <span class="lc-badge" id="lcBellBadge" hidden>0</span>
+    </button>
+
+    <!-- Avatar -->
+    <button class="lc-ibtn lc-avatar-btn" id="lcAvatar" aria-label="Account">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </div>
+</template>
+
+<template id="lc-hdr-overlays">
+
+  <!-- Balance breakdown panel -->
+  <div class="lc-pop lc-balance-pop" id="lcBalancePop">
+    <h4>Balance summary</h4>
+    <div class="lc-row"><span class="lbl"><i>💸</i> Cashback received</span><span class="amt" id="lcSumCashback">US$ 0.00</span></div>
+    <div class="lc-row"><span class="lbl"><i>🏆</i> Prizes won</span><span class="amt" id="lcSumPrizes">US$ 0.00</span></div>
+    <div class="lc-row"><span class="lbl"><i>📤</i> Withdrawn</span><span class="amt" id="lcSumWithdrawn">US$ 0.00</span></div>
+    <div class="lc-row total"><span class="lbl"><i>✅</i> Available balance</span><span class="amt" id="lcSumAvailable">US$ 0.00</span></div>
+  </div>
+
+  <!-- Notifications dropdown -->
+  <div class="lc-pop lc-notif" id="lcNotifPop">
+    <h4>Notifications</h4>
+    <div id="lcNotifList"></div>
+  </div>
+
+  <!-- Avatar menu -->
+  <div class="lc-pop lc-menu" id="lcMenuPop">
+    <a href="profile/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> My Profile</a>
+    <a href="profile/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg> History</a>
+    <a href="profile/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    <div class="sep"></div>
+    <a href="#" class="danger" data-logout><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout</a>
+  </div>
+
+  <!-- Withdraw modal -->
+  <div class="lc-backdrop" id="lcWithdrawModal" hidden>
+    <div class="lc-modal">
+      <div id="lcWdForm">
+        <div class="lc-modal-head">
+          <h3>Set up your account to receive your winnings</h3>
+          <p>Add a bank account to withdraw your balance securely.</p>
+        </div>
+        <div class="lc-modal-body">
+          <div class="lc-field"><label>Full name</label><input id="wdName" type="text" placeholder="Your full name" /></div>
+          <div class="lc-field"><label>Bank</label><input id="wdBank" type="text" placeholder="Bank name" /></div>
+          <div class="lc-grid2">
+            <div class="lc-field"><label>Routing Number</label><input id="wdRouting" type="text" inputmode="numeric" placeholder="000000000" /></div>
+            <div class="lc-field"><label>Account Number</label><input id="wdAccount" type="text" inputmode="numeric" placeholder="0000000000" /></div>
+          </div>
+          <div class="lc-grid2">
+            <div class="lc-field"><label>Account Type</label>
+              <select id="wdType"><option>Checking</option><option>Savings</option></select>
+            </div>
+            <div class="lc-field"><label>Country</label>
+              <select id="wdCountry"><option>United States</option><option>Brazil</option><option>United Kingdom</option><option>Canada</option><option>Portugal</option><option>Other</option></select>
+            </div>
+          </div>
+          <button class="lc-save" id="wdSave">Save Account</button>
+        </div>
+      </div>
+
+      <div id="lcWdSuccess" hidden>
+        <div class="lc-modal-body">
+          <div class="lc-success">
+            <div class="ok"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3>Account set up successfully.</h3>
+            <p>Your balance can be withdrawn once it reaches the minimum amount set by the platform rules.</p>
+            <button class="lc-save" id="wdDone">Got it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome modal -->
+  <div class="lc-backdrop lc-welcome" id="lcWelcome" hidden>
+    <div class="lc-modal">
+      <div class="wrap">
+        <div class="glow"></div>
+        <div class="emoji">🎉</div>
+        <h2>Welcome!</h2>
+        <p>Great to have you here. To get you started, we've prepared a welcome gift.</p>
+        <div class="gift">🎁 1 Free Spin on the Cashback Wheel</div>
+        <button class="spin-cta" id="lcWelcomeSpin">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><path d="M21 3v6h-6"/></svg>
+          Spin Now
+        </button>
+        <button class="skip" id="lcWelcomeSkip">Not now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container + confetti -->
+  <div class="lc-toasts" id="lcToasts"></div>
+  <canvas id="lc-fx"></canvas>
+
+</template>
