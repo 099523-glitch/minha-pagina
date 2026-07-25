@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$5,000 Cash Draw Wheel — LottoCash</title>
+    <link rel="icon" type="image/png" href="../images/logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400..700&family=Inter:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Ambient background glows -->
+    <div class="ambient a1"></div>
+    <div class="ambient a2"></div>
+    <div class="ambient a3"></div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <a class="back" href="../home/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </a>
+      <div class="brand">$5,000&nbsp;<span>CASH DRAW</span></div>
+      <button id="muteBtn" class="mute" title="Sound" aria-label="Toggle sound">
+        <svg class="ic-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>
+        <svg class="ic-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+      </button>
+    </header>
+
+    <main class="stage">
+      <!-- LEFT: info -->
+      <section class="info glass">
+        <span class="eyebrow"><i class="dot"></i> Reward unlocked</span>
+        <h1>Spin to enter the <span class="grad">$5,000 Cash Draw</span> or win a bonus</h1>
+        <p class="sub">You reached 90% of your journey. Take your exclusive VIP spin — secure your draw entry or claim a consolation reward.</p>
+
+        <div class="stats">
+          <div class="stat"><div class="k" id="statSpins">1</div><div class="l">Spin available</div></div>
+          <div class="stat"><div class="k">22</div><div class="l">Rewards on the wheel</div></div>
+          <div class="stat"><div class="k">$5K</div><div class="l">Grand draw</div></div>
+        </div>
+
+        <ul class="perks">
+          <li><i>🎟️</i> Secure your entry into the $5,000 draw</li>
+          <li><i>💸</i> Instant cash consolation rewards</li>
+          <li><i>🔄</i> Chance to win bonus draw entries</li>
+        </ul>
+
+        <div class="legend" id="legend"></div>
+      </section>
+
+      <!-- RIGHT: wheel -->
+      <section class="wheel-area">
+        <div class="wheel-shell" id="wheelShell">
+          <div class="pointer" id="pointer">
+            <svg viewBox="0 0 48 60" width="46" height="58"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6b6b"/><stop offset="0.5" stop-color="#e0221a"/><stop offset="1" stop-color="#8a0f0a"/></linearGradient></defs><path d="M24 58 4 14a20 20 0 0 1 40 0L24 58Z" fill="url(#pg)" stroke="#ffd9d5" stroke-width="1.5"/><circle cx="24" cy="18" r="6" fill="#fff" opacity="0.85"/></svg>
+          </div>
+
+          <div class="wheel-glow"></div>
+          <div class="led-ring" id="ledRing"></div>
+
+          <div class="wheel-wrap">
+            <div class="wheel" id="wheel"></div>
+            <div class="wheel-labels" id="labels"></div>
+          </div>
+
+          <!-- Center hub / spin button -->
+          <button class="hub" id="spinBtn">
+            <span class="hub-inner">
+              <span class="hub-text" id="hubText">SPIN</span>
+            </span>
+          </button>
+
+          <!-- Locked overlay -->
+          <div class="locked" id="locked" hidden>
+            <div class="lock-badge">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <p class="lock-title">Locked</p>
+            <p class="lock-sub" id="lockSub">Reach 90% of your journey to spin</p>
+            <a class="lock-cta" href="../home/">Continue progress</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Win modal -->
+    <div class="modal-backdrop" id="modal" hidden>
+      <div class="modal glass">
+        <div class="modal-glow"></div>
+        <div class="modal-emoji" id="modalEmoji">🎉</div>
+        <p class="modal-eyebrow">CONGRATULATIONS!</p>
+        <p class="modal-label">You won</p>
+        <h2 class="modal-prize" id="modalPrize">$5,000 Draw Entry</h2>
+        <div class="modal-actions">
+          <button class="btn-primary" id="claimBtn">Claim now</button>
+          <button class="btn-ghost" id="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particle canvas -->
+    <canvas id="fx"></canvas>
+
+    <script src="../header/header.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

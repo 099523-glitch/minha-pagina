@@ -187,29 +187,29 @@
         });
     }
 
-    function wheelUrl() {
+    function moduleUrl(key) {
         var baseEl = document.querySelector('base');
         var base = (baseEl && baseEl.getAttribute('href')) || '';
-        return base + 'cashback-wheel/';
+        return base + (key === 'draw' ? 'cash-draw-wheel/' : 'cashback-wheel/');
     }
 
     function bindUnlockButtons(root) {
-        // The Cashback card ALWAYS opens the wheel page (it gates itself when locked),
-        // so members can preview it and spin once unlocked.
-        root.querySelectorAll('[data-reward="cashback"] [data-reward-btn]').forEach(function (btn) {
-            if (btn.dataset.wheel) return;
-            btn.dataset.wheel = '1';
-            btn.style.cursor = 'pointer';
-            btn.addEventListener('click', function () { window.location.href = wheelUrl(); });
+        // Each reward card ALWAYS opens its wheel page (the page gates itself when
+        // locked), so members can preview it and spin once unlocked.
+        ['cashback', 'draw'].forEach(function (key) {
+            root.querySelectorAll('[data-reward="' + key + '"] [data-reward-btn]').forEach(function (btn) {
+                if (btn.dataset.wheel) return;
+                btn.dataset.wheel = '1';
+                btn.style.cursor = 'pointer';
+                btn.addEventListener('click', function () { window.location.href = moduleUrl(key); });
+            });
         });
-        // Other unlocked rewards (e.g. $5,000 Draw) still show the coming-soon modal.
+        // Unlocked reward buttons (rendered with data-reward-open) route to the wheel.
         root.querySelectorAll('[data-reward-open]').forEach(function (btn) {
             if (btn.dataset.bound) return;
             btn.dataset.bound = '1';
             btn.addEventListener('click', function () {
-                var key = btn.getAttribute('data-reward-open');
-                if (key === 'cashback') { window.location.href = wheelUrl(); return; }
-                showUnlockModal('$5,000 Cash Draw — coming soon');
+                window.location.href = moduleUrl(btn.getAttribute('data-reward-open'));
             });
         });
     }

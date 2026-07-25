@@ -45,6 +45,66 @@
     </div>
   </div>
 
+  <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 250ms;">
+    <div class="px-5 py-4 border-b border-[#e6e6e6] flex items-center justify-between">
+      <h3 class="archivo-title tracking-tight text-gray-900">Account Settings</h3>
+      <span class="text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-[6px] bg-gray-500 text-white">Basic Access</span>
+    </div>
+    <div class="p-6 md:p-8">
+      <div id="profileMsg" class="lc-formmsg"></div>
+      <form id="profileForm" class="space-y-6">
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider border-b border-gray-100 pb-2">Personal Information</h4>
+          <div class="lc-grid-2">
+            <div class="space-y-1.5">
+              <label for="pfName" class="block text-[14px] font-semibold text-gray-700">Name</label>
+              <input type="text" id="pfName" name="name" placeholder="Your full name" class="lc-inp" />
+            </div>
+            <div class="space-y-1.5">
+              <label for="pfEmail" class="block text-[14px] font-semibold text-gray-700">E-mail Address</label>
+              <input type="email" id="pfEmail" name="email" placeholder="you@email.com" class="lc-inp" />
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider border-b border-gray-100 pb-2">Change Password</h4>
+          <p class="text-xs text-gray-500 font-medium">Leave password fields blank if you do not wish to change your current password.</p>
+          <div class="space-y-4">
+            <div class="space-y-1.5">
+              <label for="pfCurrent" class="block text-[14px] font-semibold text-gray-700">Current Password</label>
+              <div class="lc-inp-wrap">
+                <input type="password" id="pfCurrent" name="current_password" placeholder="••••••••" class="lc-inp" style="padding-right:48px;" />
+                <button type="button" class="lc-eye" data-eye="pfCurrent"><i data-lucide="eye" class="w-5 h-5"></i></button>
+              </div>
+            </div>
+            <div class="lc-grid-2">
+              <div class="space-y-1.5">
+                <label for="pfNew" class="block text-[14px] font-semibold text-gray-700">New Password</label>
+                <div class="lc-inp-wrap">
+                  <input type="password" id="pfNew" name="new_password" placeholder="Minimum 6 characters" class="lc-inp" style="padding-right:48px;" />
+                  <button type="button" class="lc-eye" data-eye="pfNew"><i data-lucide="eye" class="w-5 h-5"></i></button>
+                </div>
+              </div>
+              <div class="space-y-1.5">
+                <label for="pfConfirm" class="block text-[14px] font-semibold text-gray-700">Confirm New Password</label>
+                <div class="lc-inp-wrap">
+                  <input type="password" id="pfConfirm" name="confirm_password" placeholder="Repeat new password" class="lc-inp" style="padding-right:48px;" />
+                  <button type="button" class="lc-eye" data-eye="pfConfirm"><i data-lucide="eye" class="w-5 h-5"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-3 pt-2">
+          <a href="home/" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all text-center uppercase tracking-wider">Back to Home</a>
+          <button type="submit" class="flex-1 bg-gradient-btn text-white font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 text-center uppercase tracking-wider shadow-[0_4px_14px_rgba(255,0,0,0.2)]">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 300ms;">
     <div class="px-5 py-4 border-b border-[#e6e6e6]"><h3 class="archivo-title tracking-tight text-gray-900">Account</h3></div>
     <div class="divide-y divide-[#f0f0f0]">
@@ -66,13 +126,66 @@
       LCProgress.init();
       document.addEventListener('DOMContentLoaded', function () {
         var email = localStorage.getItem('member_email');
-        if (email) document.getElementById('profile-email').textContent = email;
+        var name = localStorage.getItem('member_name');
+        if (email) document.getElementById('profile-email').textContent = name || email;
         if (window.LCProgress) {
           var r = window.LCProgress.compute();
           document.getElementById('stat-progress').textContent = r.percent;
           document.getElementById('stat-days').textContent = r.daysSince;
           document.getElementById('stat-rewards').textContent = (r.cashbackUnlocked ? 1 : 0) + (r.drawUnlocked ? 1 : 0);
         }
+
+        // Prefill settings form
+        var nameEl = document.getElementById('pfName');
+        var emailEl = document.getElementById('pfEmail');
+        if (nameEl) nameEl.value = name || '';
+        if (emailEl) emailEl.value = email || '';
+
+        // Password visibility toggles
+        document.querySelectorAll('[data-eye]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var inp = document.getElementById(btn.getAttribute('data-eye'));
+            if (!inp) return;
+            var show = inp.type === 'password';
+            inp.type = show ? 'text' : 'password';
+            btn.innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" class="w-5 h-5"></i>';
+            if (window.lucide) lucide.createIcons();
+          });
+        });
+
+        // Save
+        var form = document.getElementById('profileForm');
+        var msg = document.getElementById('profileMsg');
+        function showMsg(text, ok) {
+          msg.textContent = text;
+          msg.className = 'lc-formmsg ' + (ok ? 'ok' : 'err');
+          msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        if (form) form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var nm = nameEl.value.trim();
+          var em = emailEl.value.trim();
+          var cur = document.getElementById('pfCurrent').value;
+          var nw = document.getElementById('pfNew').value;
+          var cf = document.getElementById('pfConfirm').value;
+          if (!em) { showMsg('Please enter a valid e-mail address.', false); return; }
+          if (nw || cf || cur) {
+            if (nw.length < 6) { showMsg('New password must be at least 6 characters.', false); return; }
+            if (nw !== cf) { showMsg('New password and confirmation do not match.', false); return; }
+          }
+          try {
+            localStorage.setItem('member_name', nm);
+            localStorage.setItem('member_email', em);
+          } catch (err) {}
+          document.getElementById('profile-email').textContent = nm || em;
+          document.getElementById('pfCurrent').value = '';
+          document.getElementById('pfNew').value = '';
+          document.getElementById('pfConfirm').value = '';
+          showMsg('Your account settings were saved successfully.', true);
+          if (window.LCWallet && window.LCWallet.addNotification) {
+            window.LCWallet.addNotification('Account settings updated', 'Your profile information was saved.', 'info');
+          }
+        });
       });
     </script>
   </body>

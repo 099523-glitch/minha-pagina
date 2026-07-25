@@ -152,3 +152,34 @@ nav a span {
 .animate-scale-up {
     animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ---- Profile settings form ---- */
+.lc-inp {
+    width: 100%; background: #fff; height: 48px; padding: 0 16px;
+    border-radius: 12px; border: 1px solid #dfe3e8; font-size: 14px;
+    font-weight: 600; color: #1f2937; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    transition: border-color .15s ease;
+}
+.lc-inp:focus { outline: none; border-color: #e0221a; box-shadow: 0 0 0 3px rgba(224,34,26,.08); }
+.lc-inp::placeholder { color: #9aa4b2; font-weight: 500; }
+.lc-inp-wrap { position: relative; }
+.lc-eye {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: #9aa4b2; background: none; border: none; cursor: pointer; padding: 0;
+    display: flex; align-items: center;
+}
+.lc-eye:hover { color: #4b5563; }
+.lc-formmsg {
+    display: none; padding: 12px 16px; border-radius: 12px; font-size: 13px;
+    font-weight: 700; margin-bottom: 4px;
+}
+.lc-formmsg.ok { display: block; background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+.lc-formmsg.err { display: block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+
+/* ---- Responsive grid helpers (compiled Tailwind lacks md:grid-cols-*) ---- */
+.lc-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.lc-grid-3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 768px) {
+    .lc-grid-2 { grid-template-columns: 1fr 1fr; }
+    .lc-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+}
