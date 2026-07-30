@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/lotto-members-area/">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>LottoCash - Request a Refund</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/extra.css" />
+    <link rel="stylesheet" href="header/header.css" />
+    <script src="js/lucide.min.js"></script>
+    <script src="js/progress.js"></script>
+  </head>
+  <body class="bg-[#F6F7FB] text-[#111111] antialiased" data-active="refund">
+    <div class="flex min-h-screen bg-[#F6F7FB] pb-20 lg:pb-0">
+
+      <aside id="site-sidebar" class="w-[260px] bg-white h-screen sticky top-0 border-r border-gray-100 flex flex-col hidden lg:flex"></aside>
+
+      <main class="flex-1 w-full flex flex-col relative">
+        <header id="site-header" class="w-full max-w-none h-[80px] bg-white border border-[#e6e6e6] flex items-center justify-between px-6 sticky top-0 z-40"></header>
+
+        <div id="main-content-wrapper" class="p-[10px] flex-1 overflow-x-hidden w-full mx-auto" style="max-width: 1100px;">
+<div class="space-y-6 pt-4">
+
+  <!-- Hero -->
+  <div class="bg-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] border border-[#e6e6e6] overflow-hidden relative mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
+    <div class="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+    <div class="relative z-10 w-full mb-4 md:mb-0">
+      <h2 class="text-3xl font-bold text-gray-900 flex flex-wrap items-center gap-3 mb-2" style="font-family: 'Archivo Narrow', sans-serif;">
+        <i data-lucide="rotate-ccw" class="text-primary w-8 h-8"></i>
+        <span>Request a Refund</span>
+      </h2>
+      <p class="text-gray-600 font-medium">Changed your mind? Request your money back here — no phone calls, no back and forth.</p>
+    </div>
+  </div>
+
+  <!-- ============ STATE A: request form ============ -->
+  <div id="refundFormCard" class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 200ms;" hidden>
+    <div class="px-5 py-4 border-b border-[#e6e6e6] flex items-center justify-between">
+      <h3 class="archivo-title tracking-tight text-gray-900">Refund Request</h3>
+      <span class="text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-[6px] bg-gray-500 text-white">Step 1 of 1</span>
+    </div>
+    <div class="p-6 md:p-8">
+      <div id="refundMsg" class="lc-formmsg"></div>
+      <form id="refundForm" class="space-y-6">
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider border-b border-gray-100 pb-2">Purchase Details</h4>
+          <div class="space-y-1.5">
+            <label for="rfEmail" class="block text-[14px] font-semibold text-gray-700">E-mail used on the purchase</label>
+            <input type="email" id="rfEmail" name="email" placeholder="you@email.com" class="lc-inp" />
+            <p class="text-xs text-gray-500 font-medium pt-1">We locate your order by this e-mail, so make sure it is the one you used at checkout.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider border-b border-gray-100 pb-2">Reason for the Refund</h4>
+          <div class="space-y-1.5">
+            <label for="rfReason" class="block text-[14px] font-semibold text-gray-700">Main reason</label>
+            <select id="rfReason" name="reason" class="lc-inp">
+              <option value="">Select a reason…</option>
+              <option>It did not meet my expectations</option>
+              <option>I no longer want access to the platform</option>
+              <option>I had technical problems using it</option>
+              <option>I found it too difficult to use</option>
+              <option>I purchased by mistake</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="space-y-1.5">
+            <label for="rfDetails" class="block text-[14px] font-semibold text-gray-700">Tell us a bit more <span class="text-gray-400 font-medium">(optional)</span></label>
+            <textarea id="rfDetails" name="details" placeholder="Anything that helps us understand what went wrong." class="lc-inp" style="height:120px;padding:14px 16px;line-height:1.5;resize:vertical;"></textarea>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 border border-[#e6e6e6] rounded-2xl p-5 flex gap-4">
+          <i data-lucide="credit-card" class="w-6 h-6 text-primary shrink-0 mt-0.5"></i>
+          <div class="space-y-1">
+            <h4 class="font-bold text-gray-900 text-sm">How the money comes back</h4>
+            <p class="text-xs text-gray-600 leading-relaxed font-medium">
+              The refund is credited to the <strong>same card used for the purchase</strong> — we cannot send it to a different card or account.
+              Card issuers post refunds on their own cycle, so the credit normally shows up on your statement within <strong>1 to 2 billing statements</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-3 pt-2">
+          <a href="assistance/" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all text-center uppercase tracking-wider">Talk to Support First</a>
+          <button type="submit" class="flex-1 bg-gradient-btn text-white font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 text-center uppercase tracking-wider shadow-[0_4px_14px_rgba(255,0,0,0.2)]">
+            <i data-lucide="send" class="w-4 h-4"></i>Submit Refund Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ STATE B: confirmation / status ============ -->
+  <div id="refundStatusCard" class="bg-white rounded-[24px] border border-[#e6e6e6] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.05)] overflow-hidden animate-fade-in-up" style="animation-delay: 200ms;" hidden>
+
+    <div class="p-6 md:p-8 flex flex-col items-center text-center border-b border-gray-100">
+      <div class="w-16 h-16 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-4 shadow-sm border border-green-100">
+        <i data-lucide="circle-check" class="w-7 h-7"></i>
+      </div>
+      <h1 class="text-2xl font-black text-gray-950 tracking-tight uppercase" style="font-family: 'Archivo Narrow', sans-serif;">Refund Approved</h1>
+      <p class="text-xs font-semibold text-green-600 tracking-wider uppercase mt-1">Your request was registered</p>
+      <p class="text-[15px] text-gray-600 leading-relaxed font-medium max-w-xl mt-4">
+        Your refund has been approved and is being processed. The full amount will be credited back to the
+        <strong>same card used for the purchase</strong> and will appear on your statement within
+        <strong>1 to 2 billing statements</strong>, depending on your card issuer's closing date.
+      </p>
+    </div>
+
+    <div class="p-6 md:p-8 space-y-6">
+
+      <!-- Reference summary -->
+      <div class="bg-gray-50 border border-[#e6e6e6] rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Reference code</span>
+          <span class="font-numbers font-black text-lg text-gray-900" id="rfRefCode">—</span>
+        </div>
+        <div class="flex items-center justify-between gap-3 border-t border-gray-200 pt-3">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Requested on</span>
+          <span class="text-sm font-semibold text-gray-800" id="rfRefDate">—</span>
+        </div>
+        <div class="flex items-center justify-between gap-3 border-t border-gray-200 pt-3">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">E-mail</span>
+          <span class="text-sm font-semibold text-gray-800 truncate" id="rfRefEmail">—</span>
+        </div>
+        <div class="flex items-center justify-between gap-3 border-t border-gray-200 pt-3">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Reason</span>
+          <span class="text-sm font-semibold text-gray-800 truncate" id="rfRefReason">—</span>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider border-b border-gray-100 pb-2">What happens next</h4>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <i data-lucide="circle-check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-bold text-gray-800">Request received</p>
+              <p class="text-xs text-gray-500 font-medium">We have your request and the reason you selected.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="circle-check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-bold text-gray-800">Refund approved</p>
+              <p class="text-xs text-gray-500 font-medium">The reversal has been authorized on our side.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="hourglass" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-bold text-gray-800">Credited to your card</p>
+              <p class="text-xs text-gray-500 font-medium">Appears on your statement within 1 to 2 billing statements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+        <i data-lucide="shield-check" class="w-6 h-6 text-primary shrink-0 mt-0.5"></i>
+        <div class="space-y-1">
+          <h4 class="font-bold text-gray-900 text-sm">Keep your reference code</h4>
+          <p class="text-xs text-gray-600 leading-relaxed font-medium">
+            If the credit has not shown up after two statements, contact support with the reference code above and we will track it for you.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-3 pt-2">
+        <a href="assistance/" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all text-center uppercase tracking-wider">
+          <i data-lucide="headset" class="w-4 h-4"></i>Contact Support
+        </a>
+        <a href="home/" class="flex-1 bg-gradient-btn text-white font-extrabold py-3.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 text-center uppercase tracking-wider shadow-[0_4px_14px_rgba(255,0,0,0.2)]">
+          Back to Home<i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+        </div>
+      </main>
+
+      <div id="site-mobile-nav" class="lg:hidden fixed bottom-0 left-0 right-0 h-[80px] bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 overflow-hidden pb-[env(safe-area-inset-bottom,4px)]"></div>
+      <div id="site-modals"></div>
+    </div>
+
+    <script src="js/site.js"></script>
+    <script src="header/header.js"></script>
+    <script>
+      LCProgress.init();
+
+      (function () {
+        'use strict';
+
+        var STORAGE_KEY = 'lc_refund_request';
+
+        /* Backend seam — front-end only for now.
+           Set this to the Worker URL later and submissions start POSTing there;
+           nothing else on the page needs to change. */
+        var REFUND_ENDPOINT = '';
+
+        function loadRequest() {
+          try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); }
+          catch (e) { return null; }
+        }
+        function saveRequest(req) {
+          try { localStorage.setItem(STORAGE_KEY, JSON.stringify(req)); } catch (e) {}
+        }
+
+        function makeRefCode() {
+          var t = Date.now().toString(36).toUpperCase().slice(-6);
+          var r = Math.floor(Math.random() * 1296).toString(36).toUpperCase();
+          while (r.length < 2) r = '0' + r;
+          return 'LC-' + t + '-' + r;
+        }
+
+        function formatDate(ts) {
+          try {
+            return new Date(ts).toLocaleDateString('en-US',
+              { year: 'numeric', month: 'short', day: '2-digit' });
+          } catch (e) { return ''; }
+        }
+
+        /* Deliver the request to the backend when one is configured.
+           Fire-and-forget: the member's confirmation never depends on the network. */
+        function deliver(req) {
+          if (!REFUND_ENDPOINT) return;
+          try {
+            fetch(REFUND_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(req)
+            }).catch(function () {});
+          } catch (e) {}
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var formCard = document.getElementById('refundFormCard');
+          var statusCard = document.getElementById('refundStatusCard');
+          var form = document.getElementById('refundForm');
+          var msg = document.getElementById('refundMsg');
+          var emailEl = document.getElementById('rfEmail');
+          var reasonEl = document.getElementById('rfReason');
+          var detailsEl = document.getElementById('rfDetails');
+
+          function showMsg(text) {
+            msg.textContent = text;
+            msg.className = 'lc-formmsg err';
+            msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          function showStatus(req) {
+            document.getElementById('rfRefCode').textContent = req.ref;
+            document.getElementById('rfRefDate').textContent = formatDate(req.createdAt);
+            document.getElementById('rfRefEmail').textContent = req.email;
+            document.getElementById('rfRefReason').textContent = req.reason;
+            formCard.hidden = true;
+            statusCard.hidden = false;
+            if (window.lucide) lucide.createIcons();
+          }
+
+          // Already requested? Show the standing status instead of the form.
+          var existing = loadRequest();
+          if (existing && existing.ref) {
+            showStatus(existing);
+            return;
+          }
+
+          formCard.hidden = false;
+          try {
+            var saved = localStorage.getItem('member_email');
+            if (saved) emailEl.value = saved;
+          } catch (e) {}
+          if (window.lucide) lucide.createIcons();
+
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var email = emailEl.value.trim();
+            var reason = reasonEl.value;
+
+            if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+              showMsg('Please enter the e-mail address you used on the purchase.');
+              emailEl.focus();
+              return;
+            }
+            if (!reason) {
+              showMsg('Please select the main reason for your refund.');
+              reasonEl.focus();
+              return;
+            }
+
+            var req = {
+              ref: makeRefCode(),
+              createdAt: Date.now(),
+              email: email,
+              reason: reason,
+              details: detailsEl.value.trim(),
+              status: 'approved'
+            };
+
+            saveRequest(req);
+            deliver(req);
+
+            showStatus(req);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

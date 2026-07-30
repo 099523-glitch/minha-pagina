@@ -5,7 +5,7 @@
         { key: 'smart-pick', href: 'smart-pick-random/', icon: 'zap', label: 'Smart Pick' },
         { key: 'assistance', href: 'assistance/', icon: 'headset', label: 'Support' },
         { key: 'how-to-use', href: 'how-to-use/', icon: 'help-circle', label: 'How to Use' },
-        { key: 'games', href: 'games/', icon: 'gamepad-2', label: 'Games' }
+        { key: 'refund', href: 'refund/', icon: 'rotate-ccw', label: 'Refund' }
     ];
 
     function sidebarLink(item, active) {
