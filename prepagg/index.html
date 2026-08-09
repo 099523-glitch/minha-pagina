@@ -421,6 +421,7 @@
     font-family:"Plus Jakarta Sans","Urbanist",system-ui,sans-serif;
   }
   #vslView.on{display:block;animation:in .4s cubic-bezier(.22,1,.36,1)}
+  #vslView.instant{animation:none}
   #vslView .wrap{max-width:720px;margin:0 auto;padding:26px 18px 40px;text-align:center}
 
   #vslView .pill{
@@ -626,6 +627,15 @@ const VSL = {
 
   // Player VTurb/ConverteAI. O script so carrega quando a VSL abre.
   playerScript: "https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6a78c053768468a685b7e711/v4/player.js",
+
+  /* --- lembrar que a pessoa ja chegou na VSL ---
+     "local"   sobrevive a fechar o navegador
+     "session" so sobrevive ao refresh, zera ao fechar a aba
+     "off"     desliga, sempre comeca pelo quiz               */
+  memory: "local",
+
+  // Validade em horas. Depois disso o quiz volta. 0 = nunca expira.
+  memoryHours: 24,
 };
 
 /* ===================== MOTOR ===================== */
@@ -1002,11 +1012,44 @@ function finish(){
   openVsl();
 }
 
+/* --- memoria: quem ja chegou na VSL volta direto pra ela --- *
+ * Tudo em try/catch: em aba anonima o acesso a Storage joga excecao, e uma
+ * excecao aqui derrubaria o quiz inteiro por causa de um recurso opcional.  */
+const VSL_KEY = "vslSeen";
+
+function vslStore(){
+  if (VSL.memory === "session") return window.sessionStorage;
+  if (VSL.memory === "local")   return window.localStorage;
+  return null;
+}
+
+function markVslSeen(){
+  try {
+    const st = vslStore();
+    if (st) st.setItem(VSL_KEY, String(Date.now()));
+  } catch (e) {}
+}
+
+function vslWasSeen(){
+  try {
+    const st = vslStore();
+    if (!st) return false;
+    const t = parseInt(st.getItem(VSL_KEY), 10);
+    if (!t) return false;
+    if (VSL.memoryHours > 0 && Date.now() - t > VSL.memoryHours * 3600e3){
+      st.removeItem(VSL_KEY);
+      return false;
+    }
+    return true;
+  } catch (e) { return false; }
+}
+
 /* --- troca o quiz pela VSL na mesma pagina --- */
 let vslOpen = false;
-function openVsl(){
+function openVsl(instant){
   if (vslOpen) return;
   vslOpen = true;
+  markVslSeen();
 
   const set = (id, txt, html) => {
     const el = document.getElementById(id);
@@ -1021,7 +1064,11 @@ function openVsl(){
   set("vsl-copyright", VSL.copyright.replace("{year}", new Date().getFullYear()));
 
   document.body.classList.add("vsl-mode");
-  document.getElementById("vslView").classList.add("on");
+  const view = document.getElementById("vslView");
+  /* Vindo de refresh, sem animacao de entrada: a pessoa nao "chegou" agora,
+     ela ja estava aqui — animar faz a pagina parecer que recarregou errado. */
+  if (instant) view.classList.add("instant");
+  view.classList.add("on");
   window.scrollTo(0, 0);
 
   /* O player so entra agora: iniciado dentro de um container escondido, ele
@@ -1032,7 +1079,9 @@ function openVsl(){
   document.head.appendChild(s);
 }
 
-renderIntro();
+/* Quem ja chegou na VSL nao refaz o quiz ao atualizar a pagina. */
+if (vslWasSeen()) openVsl(true);
+else renderIntro();
 </script>
 
 <!-- ===== UTMify — pixel ===== -->
