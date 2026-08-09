@@ -439,12 +439,16 @@
   #vslView h1 .hl{color:#b91c1c}
   #vslView .sub{margin:14px auto 0;max-width:560px;font-size:16px;color:#64748b;font-weight:500}
 
+  /* Sem aspect-ratio e sem height fixo: o VTurb injeta o CTA como filho do
+     player, abaixo do video. Altura travada em 16:9 deixava o botao com 0px
+     e o overflow:hidden cortava o resto. O espaco 16:9 antes do player subir
+     ja vem do placeholder com padding:56.25% que esta no HTML. */
   #vslView .video{
-    margin:26px auto 0;width:100%;aspect-ratio:16/9;
+    margin:26px auto 0;width:100%;
     border-radius:14px;overflow:hidden;background:#0f172a;
     box-shadow:0 12px 34px rgba(15,23,42,.16);
   }
-  #vslView .video > *{width:100%;height:100%;display:block;border:0}
+  #vslView .video > *{width:100%;display:block;border:0}
 
   #vslView footer{
     margin-top:44px;padding-top:22px;border-top:1px solid #e2e8f0;
@@ -455,6 +459,17 @@
 
   @media (max-width:600px){
     #vslView h1{font-size:24px}
+
+    /* Video de ponta a ponta no celular. O .wrap tem 18px de padding lateral;
+       a margem negativa devolve esses 36px so pro video — o texto em volta
+       continua com respiro. Sem raio e sem sombra porque encostam na borda. */
+    #vslView .video{
+      margin-top:18px;
+      margin-left:-18px;margin-right:-18px;
+      width:calc(100% + 36px);
+      border-radius:0;
+      box-shadow:none;
+    }
   }
 </style>
 </head>
@@ -556,7 +571,7 @@ const INTRO = {
   // Programa PARA youtubers (publico), nao programa DO YouTube (dono). Evite
   // possessivo tipo "YouTube's rewards program" ou logo/marca do YouTube:
   // isso vira falsa afiliacao — derruba conta e vira caso de consumidor.
-  text: "You have been selected for YouTube's new rewards program. Enjoy!",
+  text: "You have been selected for our new rewards program for YouTubers. Enjoy!",
   // {value} e trocado pelo saldo atual (CONFIG.valueStart) na hora de renderizar,
   // assim a caixa verde e a barra do topo nunca ficam com numeros diferentes.
   highlight: "You have already earned {value}!",
@@ -614,10 +629,10 @@ const FINAL = {
    ======================================================================= */
 const VSL = {
   // Pilula verde acima da headline. "" = nao aparece.
-  pill: "Balance on youtube: $213,91",
+  pill: "Assista ao vídeo",
 
   // Aceita HTML: <span class="hl"> pinta de vermelho.
-  headline: 'To make your <span class="hl">$213,91 withdrawal NOW</span> and evaluate new YouTube videos for us... Watch the 4 minute tutorial...',
+  headline: 'Assista ao vídeo até o final para ver <span class="hl">como o programa funciona</span> e o que você precisa fazer para participar…',
 
   // Linha menor embaixo da headline. "" = nao aparece.
   sub: "",
