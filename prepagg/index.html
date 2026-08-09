@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Quiz — estrutura base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- player da VSL: resolve DNS e baixa o manifesto enquanto o quiz roda -->
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+<link rel="preload" as="script" href="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6a78c053768468a685b7e711/v4/player.js">
+<link rel="preload" as="script" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js">
+<link rel="preload" as="fetch" href="https://cdn.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/6a78c043f401edc0432a167a/main.m3u8" crossorigin>
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<style>
+  :root{
+    --bg:#081525;
+    --bg-2:#0d1f33;
+    --card:#152b41;
+    --card-2:#1a3350;
+    --line:rgba(255,255,255,.08);
+    --text:#f2f7fb;
+    --muted:#93a8bd;
+    --green:#43a047;
+    --green-lt:#5cc45f;
+    --green-dk:#2e7d32;
+    --yellow:#f2c94c;
+    --yellow-dk:#d4a91f;
+    --red:#d0392b;
+    --red-dk:#a52c20;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Urbanist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    min-height:100vh;line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+    position:relative;overflow-x:hidden;
+  }
+  /* fundo chapado — sem halos radiais atras do card */
+
+  /* ---------- BARRA FIXA DE VALOR ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,21,37,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:12px 20px;
+    display:flex;justify-content:center;
+  }
+  .value-pill{
+    position:relative;
+    width:100%;max-width:520px;
+    background:var(--green);
+    border-radius:10px;
+    padding:13px 20px;
+    text-align:center;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .value-pill.bump{ transform:scale(1.05) translateY(-2px) }
+  .value-num{
+    display:block;font-size:30px;font-weight:800;letter-spacing:-.01em;
+    text-shadow:0 1px 2px rgba(0,0,0,.25);
+    font-variant-numeric:tabular-nums;
+  }
+  .value-cap{
+    display:block;margin-top:1px;
+    font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(255,255,255,.8);
+  }
+
+  /* ---------- PALCO ---------- */
+  .stage{
+    position:relative;z-index:1;
+    /* ancorado no topo (nao centraliza em tela alta), com um respiro antes do card.
+       Suba/desca o card so mexendo neste padding-top. */
+    display:flex;align-items:flex-start;justify-content:center;
+    padding:58px 18px 40px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    width:100%;max-width:520px;
+    padding:30px 26px;
+    min-height:340px;
+    display:flex;flex-direction:column;justify-content:center;
+    text-align:center;
+    animation:in .4s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes in{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+
+  /* ---------- TELA DE ABERTURA ---------- */
+  .card-intro{ background:var(--card); padding:36px 26px }
+  .intro-title{font-size:31px;font-weight:900;line-height:1.2;letter-spacing:-.01em}
+  .intro-text{margin-top:16px;font-size:22px;font-weight:500;line-height:1.4;color:#e3edf5}
+  .intro-highlight{
+    margin:22px auto 0;max-width:360px;
+    background:#dcefdd;
+    color:#2e7d32;
+    border-radius:8px;padding:16px 18px;
+    font-size:21px;font-weight:600;line-height:1.35;
+  }
+  .intro-sub{margin-top:20px;font-size:19.5px;font-weight:600;line-height:1.4;color:#dce8f2}
+
+  /* ---------- TELA FINAL ---------- */
+  .fin-mark{position:relative;width:104px;height:104px;margin:4px auto 0}
+  .fin-arc{
+    position:absolute;inset:-10px;border-radius:50%;
+    border:2px solid transparent;
+    border-top-color:var(--green-lt);
+    transform:rotate(-55deg);
+  }
+  .fin-arc.b{transform:rotate(125deg)}
+  .fin-disc{
+    position:absolute;inset:0;border-radius:50%;
+    background:var(--green-lt);
+    display:flex;align-items:center;justify-content:center;
+    animation:finPop .42s cubic-bezier(.16,1.5,.3,1) both;
+  }
+  @keyframes finPop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+  .fin-disc svg{
+    width:100%;height:100%;fill:none;
+    stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:48;stroke-dashoffset:48;
+    animation:draw .26s cubic-bezier(.5,0,.2,1) .3s forwards;
+  }
+  .fin-title{margin-top:24px;font-size:26px;font-weight:800;letter-spacing:-.01em}
+  .fin-balance{
+    margin:16px auto 0;max-width:360px;
+    background:var(--green-lt);color:#fff;
+    border-radius:7px;padding:11px 16px;
+    font-size:19px;font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .fin-text{margin-top:16px;font-size:17px;font-weight:600;line-height:1.4;color:#dce8f2}
+  .wide.pill{border-radius:999px;font-size:20px;padding:18px}
+
+  /* ---------- SLOT DE MÍDIA ---------- */
+  .media{
+    position:relative;
+    width:100%;max-width:340px;margin:0 auto;
+    aspect-ratio:16/9;
+    border-radius:12px;overflow:hidden;
+    background:var(--card-2);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .media img{width:100%;height:100%;object-fit:cover;display:block}
+  .media .placeholder{color:var(--muted);font-size:12px;letter-spacing:.14em;font-weight:600}
+  .media .stamp{
+    position:absolute;right:8px;bottom:8px;
+    background:rgba(0,0,0,.78);color:#fff;
+    font-size:12px;font-weight:700;
+    padding:3px 7px;border-radius:5px;
+  }
+  .media-title{margin:13px auto 0;max-width:340px;font-size:15.5px;font-weight:700;text-align:left}
+  .media-meta{margin:3px auto 0;max-width:340px;font-size:13px;color:var(--muted);text-align:left;font-weight:500}
+
+  /* ---------- PERGUNTA ---------- */
+  .question{margin-top:26px;font-size:23px;font-weight:800;line-height:1.3;letter-spacing:-.01em}
+  .helper{margin-top:12px;font-size:17px;color:#c8d7e4;font-weight:500}
+
+  /* ---------- BOTOES DE REACAO ---------- */
+  .reactions{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+  .react{
+    border:none;border-radius:999px;
+    padding:15px 0 13px;
+    font-size:26px;line-height:1;
+    cursor:pointer;
+    transition:transform .16s cubic-bezier(.34,1.56,.64,1), filter .16s ease;
+  }
+  .react:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .react:active{transform:scale(.93)}
+  .react.g{background:var(--green)}
+  .react.y{background:var(--yellow)}
+  .react.r{background:var(--red)}
+
+  /* carinha em traco dentro do botao */
+  .face{
+    display:block;margin:0 auto;
+    width:27px;height:27px;
+    fill:none;
+    stroke:#fff;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  }
+  .face .eye{fill:#fff;stroke:none}
+  /* no botao amarelo o traco branco some: escurece */
+  .react.y .face{stroke:#5a4407}
+  .react.y .face .eye{fill:#5a4407}
+
+  /* ---------- BOTOES DE ESCOLHA (Yes / No) ---------- */
+  .choices{margin-top:22px;display:flex;flex-direction:column;gap:11px;align-items:center}
+  .choices.row{flex-direction:row;justify-content:center;gap:14px}
+  .choice{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    border:none;border-radius:999px;
+    padding:14px 30px;min-width:140px;
+    font-family:inherit;font-size:19px;font-weight:800;letter-spacing:.01em;
+    color:#fff;cursor:pointer;
+    transition:transform .16s cubic-bezier(.34,1.56,.64,1), filter .16s ease;
+  }
+  .choice:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .choice:active{transform:scale(.95)}
+  .choice.green{background:var(--green)}
+  .choice.red{background:var(--red)}
+  .choice-ico{font-size:19px;line-height:1}
+  .choices:not(.row) .choice{width:100%;max-width:300px}
+
+  /* ---------- BOTAO LARGO ---------- */
+  .wide{
+    display:block;width:100%;
+    margin-top:24px;padding:17px;
+    border:none;border-radius:8px;
+    background:var(--green);
+    color:#fff;
+    font-family:inherit;font-size:18px;font-weight:800;
+    letter-spacing:.04em;text-transform:uppercase;
+    cursor:pointer;
+    transition:transform .16s cubic-bezier(.34,1.56,.64,1), filter .16s ease;
+    animation:breathe 2.6s ease-in-out infinite;
+    will-change:transform;
+  }
+  .wide:hover{transform:translateY(-2px) scale(1);filter:brightness(1.07);animation:none}
+  .wide:active{transform:scale(.98);animation:none}
+  /* escala em vez de box-shadow: composita na GPU, nao repinta a tela */
+  @keyframes breathe{50%{transform:scale(1.018)}}
+  .wide.red{background:var(--red);animation:none}
+
+  /* ---------- PROGRESSO ---------- */
+  .progress{margin-top:26px;height:6px;width:100%;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden}
+  .progress span{
+    display:block;height:100%;width:0;border-radius:999px;
+    background:var(--green);
+    transition:width .5s cubic-bezier(.22,1,.36,1);
+  }
+  .step-label{margin-top:10px;font-size:11px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+
+  /* ---------- PROCESSAMENTO ---------- */
+  .spinner{
+    width:58px;height:58px;margin:6px auto 0;
+    border:4px solid rgba(255,255,255,.12);
+    border-top-color:var(--green-lt);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- CHUVA DE EMOJI DE DINHEIRO ---------- */
+  #fx{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}
+  .coin{
+    position:absolute;
+    font-size:30px;line-height:1;
+    will-change:transform,opacity;
+    animation:coinFly var(--dur,1100ms) cubic-bezier(.22,.7,.3,1) forwards;
+  }
+  @keyframes coinFly{
+    0%{opacity:0;transform:translate(0,0) scale(.4) rotate(0deg)}
+    12%{opacity:1;transform:translate(calc(var(--dx) * .18), calc(var(--dy) * .12)) scale(1.15) rotate(calc(var(--rot) * .2))}
+    100%{opacity:0;transform:translate(var(--dx), var(--dy)) scale(.85) rotate(var(--rot))}
+  }
+
+  /* "+$47" subindo */
+  .gain-pop{
+    position:absolute;transform:translateX(-50%);
+    font-size:30px;font-weight:900;color:#7ee081;
+    text-shadow:0 1px 3px rgba(0,0,0,.6);
+    white-space:nowrap;
+    animation:gainUp 1400ms cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes gainUp{
+    0%{opacity:0;transform:translateX(-50%) translateY(6px) scale(.6)}
+    18%{opacity:1;transform:translateX(-50%) translateY(-4px) scale(1.18)}
+    32%{transform:translateX(-50%) translateY(-10px) scale(1)}
+    100%{opacity:0;transform:translateX(-50%) translateY(-64px) scale(.95)}
+  }
+
+  /* ---------- CARD DE RECOMPENSA ---------- */
+  #reward{
+    position:fixed;inset:0;z-index:100;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    background:rgba(4,12,22,.72);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    opacity:0;pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  #reward.show{opacity:1}
+  #reward.out{opacity:0;transition:opacity .35s ease}
+
+  .rw-card{
+    position:relative;
+    background:#fff;
+    border-radius:16px;
+    width:100%;max-width:380px;
+    padding:38px 30px 34px;
+    text-align:center;
+    transform:scale(.75) translateY(30px);opacity:0;
+  }
+  #reward.show .rw-card{
+    animation:rwIn .42s cubic-bezier(.16,1.4,.3,1) forwards;
+  }
+  #reward.out .rw-card{animation:rwOut .35s ease forwards}
+  @keyframes rwIn{
+    0%{transform:scale(.75) translateY(30px);opacity:0}
+    55%{transform:scale(1.04) translateY(-4px);opacity:1}
+    100%{transform:scale(1) translateY(0);opacity:1}
+  }
+  @keyframes rwOut{to{transform:scale(.92) translateY(-14px);opacity:0}}
+
+  /* aneis pulsando atras do check */
+  .rw-mark{position:relative;width:104px;height:104px;margin:0 auto}
+  .rw-ring{
+    position:absolute;inset:0;border-radius:50%;
+    border:2px solid rgba(92,196,95,.55);
+    opacity:0;
+  }
+  #reward.show .rw-ring{animation:rwRing 1.05s cubic-bezier(0,.6,.3,1) .26s infinite}
+  #reward.show .rw-ring.d2{animation-delay:.6s}
+  @keyframes rwRing{
+    0%{transform:scale(.75);opacity:.9}
+    100%{transform:scale(1.75);opacity:0}
+  }
+
+  /* circulo + check desenhando */
+  .rw-svg{position:absolute;inset:0;width:104px;height:104px;transform:rotate(-90deg)}
+  .rw-circle{
+    fill:rgba(92,196,95,.14);
+    stroke:#5cc45f;stroke-width:4;
+    stroke-dasharray:295;stroke-dashoffset:295;
+  }
+  #reward.show .rw-circle{animation:draw .34s cubic-bezier(.3,.9,.4,1) .05s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+
+  .rw-check{
+    position:absolute;inset:0;width:104px;height:104px;
+  }
+  .rw-check path{
+    fill:none;stroke:#43a047;stroke-width:7;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:48;stroke-dashoffset:48;
+  }
+  #reward.show .rw-check path{animation:draw .22s cubic-bezier(.5,0,.2,1) .3s forwards}
+
+  .rw-title{
+    margin-top:24px;font-size:25px;font-weight:800;color:#243240;letter-spacing:-.01em;
+    opacity:0;
+  }
+  #reward.show .rw-title{animation:rise .3s cubic-bezier(.22,1,.36,1) .36s forwards}
+
+  .rw-line{
+    margin-top:10px;font-size:17px;font-weight:600;color:#6b7c8c;
+    opacity:0;
+  }
+  #reward.show .rw-line{animation:rise .3s cubic-bezier(.22,1,.36,1) .44s forwards}
+  .rw-amount{
+    color:#2e9e34;font-weight:900;
+    display:inline-block;font-variant-numeric:tabular-nums;
+  }
+  #reward.show .rw-amount{animation:amountPop .42s cubic-bezier(.16,1.6,.3,1) .52s backwards}
+  @keyframes amountPop{
+    0%{transform:scale(.4);opacity:0}
+    60%{transform:scale(1.28)}
+    100%{transform:scale(1);opacity:1}
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* barrinha de tempo ate avancar */
+  .rw-timer{
+    margin-top:26px;height:4px;width:100%;
+    background:rgba(36,50,64,.12);border-radius:999px;overflow:hidden;
+  }
+  .rw-timer span{
+    display:block;height:100%;width:0;border-radius:999px;
+    background:var(--green);
+  }
+  #reward.show .rw-timer span{animation:rwTimer var(--timer,1150ms) linear .3s forwards}
+  @keyframes rwTimer{to{width:100%}}
+
+  /* flash verde na tela ao ganhar */
+  #flash{
+    position:fixed;inset:0;z-index:80;pointer-events:none;
+    background:radial-gradient(circle at 50% 0%, rgba(92,196,95,.15), transparent 62%);
+    opacity:0;will-change:opacity;transform:translateZ(0);
+  }
+  /* keyframe unico em vez de ligar/desligar classe: sem blip */
+  #flash.on{animation:flashPulse .55s ease-out forwards}
+  @keyframes flashPulse{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+
+  @media (max-width:420px){
+    .stage{padding-top:34px}
+    .intro-title{font-size:26px}
+    .intro-text{font-size:19.5px}
+    .intro-highlight{font-size:18.5px}
+    .intro-sub{font-size:17.5px}
+    .question{font-size:20.5px}
+    .helper{font-size:15.5px}
+    .value-num{font-size:26px}
+    .wide{font-size:16.5px}
+  }
+  /* =======================================================================
+     ETAPA FINAL — VSL
+     Vive na mesma pagina, escondida, e assume a tela quando o quiz termina.
+     Tema claro proprio: o quiz e escuro, entao body ganha .vsl-mode.
+     ======================================================================= */
+  body.vsl-mode{background:#f3f5f7;color:#0f172a}
+  body.vsl-mode .topbar,
+  body.vsl-mode .stage{display:none}
+
+  #vslView{
+    display:none;
+    font-family:"Plus Jakarta Sans","Urbanist",system-ui,sans-serif;
+  }
+  #vslView.on{display:block;animation:in .4s cubic-bezier(.22,1,.36,1)}
+  #vslView .wrap{max-width:720px;margin:0 auto;padding:26px 18px 40px;text-align:center}
+
+  #vslView .pill{
+    display:none;margin:0 auto 20px;
+    background:#1b9e55;color:#fff;border-radius:999px;
+    padding:13px 30px;font-size:17px;font-weight:700;line-height:1.2;
+    box-shadow:0 6px 18px rgba(27,158,85,.24);
+  }
+  #vslView .pill.on{display:inline-block}
+
+  #vslView h1{
+    font-size:30px;font-weight:800;line-height:1.25;letter-spacing:-.015em;
+    max-width:660px;margin:0 auto;color:#0f172a;
+  }
+  #vslView h1 .hl{color:#b91c1c}
+  #vslView .sub{margin:14px auto 0;max-width:560px;font-size:16px;color:#64748b;font-weight:500}
+
+  #vslView .video{
+    margin:26px auto 0;width:100%;aspect-ratio:16/9;
+    border-radius:14px;overflow:hidden;background:#0f172a;
+    box-shadow:0 12px 34px rgba(15,23,42,.16);
+  }
+  #vslView .video > *{width:100%;height:100%;display:block;border:0}
+
+  #vslView footer{
+    margin-top:44px;padding-top:22px;border-top:1px solid #e2e8f0;
+    color:#64748b;font-size:12.5px;line-height:1.6;
+  }
+  #vslView .foot-link{color:#64748b;cursor:default;user-select:none}
+  #vslView .disclaimer{margin-top:10px;font-size:11.5px;max-width:600px;margin-inline:auto}
+
+  @media (max-width:600px){
+    #vslView h1{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="value-pill" id="value-pill">
+    <span class="value-num" id="value-num">$0.00</span>
+    <span class="value-cap" id="value-cap"></span>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="card" id="card"></div>
+</div>
+
+<!-- ===== ETAPA FINAL: VSL (escondida ate o quiz acabar) ===== -->
+<section id="vslView">
+  <div class="wrap">
+    <p class="pill" id="vsl-pill"></p>
+    <h1 id="vsl-headline"></h1>
+    <p class="sub" id="vsl-sub"></p>
+
+    <div class="video" id="vsl-video">
+      <vturb-smartplayer id="vid-6a78c053768468a685b7e711" style="display:block;margin:0 auto;width:100%">
+        <div style="position:relative;width:100%;padding:56.25% 0 0;background:#000"></div>
+      </vturb-smartplayer>
+    </div>
+
+    <footer>
+      <p id="vsl-copyright"></p>
+      <p style="margin-top:6px">
+        <span class="foot-link">Terms of use</span> · <span class="foot-link">Privacy</span>
+      </p>
+      <p class="disclaimer">
+        Results vary from person to person and depend on the work each participant puts in.
+        We do not guarantee any specific earnings. This site is not affiliated with, endorsed
+        by, or sponsored by any third-party platform.
+      </p>
+    </footer>
+  </div>
+</section>
+
+<div id="flash"></div>
+<div id="fx"></div>
+
+<div id="reward">
+  <div class="rw-card">
+    <div class="rw-mark">
+      <span class="rw-ring"></span>
+      <span class="rw-ring d2"></span>
+      <svg class="rw-svg" viewBox="0 0 104 104">
+        <circle class="rw-circle" cx="52" cy="52" r="47"></circle>
+      </svg>
+      <svg class="rw-check" viewBox="0 0 104 104">
+        <path d="M32 53.5 L45.5 67 L72 40.5"></path>
+      </svg>
+    </div>
+    <h2 class="rw-title" id="rw-title">Reward Unlocked</h2>
+    <p class="rw-line"><span id="rw-label">You've unlocked:</span>
+       <span class="rw-amount" id="rw-amount">+$45.00</span></p>
+    <div class="rw-timer"><span></span></div>
+  </div>
+</div>
+
+<script>
+/* =======================================================================
+   ESTRUTURA BASE DE QUIZ  —  edite so os blocos abaixo
+   ======================================================================= */
+
+const CONFIG = {
+  valueMode: "currency",        // "currency" | "percent" | "points"
+  currencySymbol: "$",
+  valueStart: 33.91,           // saldo inicial ja exibido na barra do topo
+  valueStep: 45,                // ganho por etapa (igual em todas, qualquer que seja a escolha)
+  valueCaption: "",             // legenda embaixo do numero na barra ("" = sem legenda)
+  redirectUrl: "",              // "" = a VSL abre na propria pagina (bloco VSL abaixo).
+                                // Se puser uma URL aqui, o botao final redireciona em vez disso.
+  processingOn: false,          // true = mostra "Recording your answers..." antes da tela final
+  processingMs: 3200,           // so vale se processingOn: true
+
+  /* --- feedback de ganho a cada resposta --- */
+  soundOn: true,
+  soundPreset: "notification",  // "notification" | "register" | "chime"
+  soundVolume: 0.7,             // 0 a 1
+  coinsPerBurst: 34,            // quantos emojis voam por resposta
+  coinEmojis: ["💵","💰","🤑","💸","💲"],  // 💵 💰 🤑 💸 💲
+
+  /* --- card de confirmacao entre as etapas --- */
+  rewardCardOn: true,
+  rewardCardMs: 1150,           // quanto tempo o card fica na tela
+  rewardTitle: "Reward Unlocked",
+  rewardLabel: "You've unlocked:",
+};
+
+const INTRO = {
+  emoji: "&#127873;",                                   // 🎁
+  title: "Congratulations!",
+  // Programa PARA youtubers (publico), nao programa DO YouTube (dono). Evite
+  // possessivo tipo "YouTube's rewards program" ou logo/marca do YouTube:
+  // isso vira falsa afiliacao — derruba conta e vira caso de consumidor.
+  text: "You have been selected for our new rewards program for YouTubers. Enjoy!",
+  // {value} e trocado pelo saldo atual (CONFIG.valueStart) na hora de renderizar,
+  // assim a caixa verde e a barra do topo nunca ficam com numeros diferentes.
+  highlight: "You have already earned {value}!",
+  sub: "Complete 5 more evaluations and make your first withdrawal!",
+  button: "CLICK HERE AND START!",
+};
+
+/* "reward" define o ganho da etapa. Sem ele, usa CONFIG.valueStep.
+   O valor e o mesmo qualquer que seja a opcao escolhida.
+   options aceita string ("Yes") ou objeto ({label:"Yes", icon:"&#128077;"}). */
+const QUESTIONS = [
+  { media:"thumb1.jpg",
+    mediaTitle:"I Survived The Backrooms In Real Life..",
+    mediaMeta:"11M views · 4 days ago",
+    question:"What is your reaction when you see this video's thumbnail?",
+    helper:"Select an option below ⬇️", type:"reaction" },
+
+  { media:"thumb2.jpg",
+    mediaTitle:"7 Days Stranded On An Island",
+    mediaMeta:"506M views · 2 years ago",
+    question:"Does this thumbnail make you want to watch the video?",
+    helper:"Select an option below ⬇️", type:"reaction" },
+
+  { media:"thumb3.jpg",
+    mediaTitle:"$1 vs $500,000 Plane Ticket!",
+    mediaMeta:"574M views · 3 years ago",
+    question:"How likely would you be to click on this video?",
+    helper:"Select an option below ⬇️", type:"reaction" },
+
+  { media:"thumb4.jpg",
+    mediaTitle:"THE FINAL SCENE OF MONEY HEIST PART 3 | Netflix Spain",
+    mediaMeta:"4.7 million views · 4 years ago",
+    question:"What's your reaction when you see this video thumbnail?",
+    helper:"Select an option below ⬇️",
+    type:"buttons", layout:"row",
+    options:[ {label:"Yes", icon:"&#128077;"}, {label:"NO", icon:"&#128078;"} ] },
+];
+
+const PROCESSING_STEPS = [
+  "Recording your answers...",
+  "Matching your profile...",
+  "Preparing your result...",
+];
+
+/* {value} vira o saldo acumulado (mesmo numero da barra do topo). */
+const FINAL = {
+  title: "&#127873; Congratulations! &#127873;",
+  balance: "Your current balance: {value}",
+  text: "To register your bank account and withdraw funds, watch a 4-minute video.",
+  button: "WATCH THE VIDEO",
+};
+
+/* =======================================================================
+   ETAPA FINAL — VSL
+   ======================================================================= */
+const VSL = {
+  // Pilula verde acima da headline. "" = nao aparece.
+  pill: "Assista ao vídeo",
+
+  // Aceita HTML: <span class="hl"> pinta de vermelho.
+  headline: 'Assista ao vídeo até o final para ver <span class="hl">como o programa funciona</span> e o que você precisa fazer para participar…',
+
+  // Linha menor embaixo da headline. "" = nao aparece.
+  sub: "",
+
+  // {year} vira o ano atual.
+  copyright: "Copyright {year}. All rights reserved.",
+
+  // Player VTurb/ConverteAI. O script so carrega quando a VSL abre.
+  playerScript: "https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6a78c053768468a685b7e711/v4/player.js",
+};
+
+/* ===================== MOTOR ===================== */
+let step = 0;
+let value = CONFIG.valueStart;
+const answers = [];
+
+const card    = document.getElementById("card");
+const pill    = document.getElementById("value-pill");
+const numEl   = document.getElementById("value-num");
+const capEl   = document.getElementById("value-cap");
+
+function formatValue(v){
+  if (CONFIG.valueMode === "currency") return CONFIG.currencySymbol + v.toFixed(2);
+  if (CONFIG.valueMode === "percent")  return Math.round(v) + "%";
+  return Math.round(v) + " pts";
+}
+
+/* anima o numero subindo em vez de trocar seco */
+function paintValue(from, to, bump){
+  if (bump){ pill.classList.add("bump"); setTimeout(()=>pill.classList.remove("bump"), 320); }
+  const t0 = performance.now(), dur = 520;
+  (function frame(now){
+    const p = Math.min((now - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    numEl.textContent = formatValue(from + (to - from) * eased);
+    if (p < 1) requestAnimationFrame(frame);
+  })(t0);
+}
+
+/* =========================================================
+   SOM DE NOTIFICACAO DE VENDA (sintetizado, sem arquivo)
+   Troque o preset em CONFIG.soundPreset:
+     "notification" -> sino FM, arpejo maior subindo (tipo alerta de venda)
+     "register"     -> caixa registradora de verdade (cha-ching + gaveta)
+     "chime"        -> dois toques suaves, mais discreto
+   ========================================================= */
+let audioCtx = null, masterGain = null;
+
+function initAudio(){
+  if (audioCtx) return;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return;
+  audioCtx = new AC();
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = CONFIG.soundVolume;
+  masterGain.connect(audioCtx.destination);
+}
+
+/* sino por FM: portadora senoidal + modulador em razao nao-inteira = timbre metalico */
+function bell(freq, at, dur, vol, ratio){
+  const car = audioCtx.createOscillator();
+  const mod = audioCtx.createOscillator();
+  const modGain = audioCtx.createGain();
+  const amp = audioCtx.createGain();
+
+  car.type = "sine";
+  mod.type = "sine";
+  car.frequency.value = freq;
+  mod.frequency.value = freq * (ratio || 3.47);   // razao inarmonica = sino
+
+  /* indice de modulacao cai rapido: brilho so no ataque, como sino real */
+  modGain.gain.setValueAtTime(freq * 5.5, at);
+  modGain.gain.exponentialRampToValueAtTime(freq * 0.15, at + dur * 0.45);
+
+  amp.gain.setValueAtTime(0.0001, at);
+  amp.gain.exponentialRampToValueAtTime(vol, at + 0.006);
+  amp.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+
+  mod.connect(modGain).connect(car.frequency);
+  car.connect(amp).connect(masterGain);
+
+  mod.start(at); car.start(at);
+  mod.stop(at + dur + 0.05); car.stop(at + dur + 0.05);
+}
+
+/* estalo curto de ruido filtrado = mecanica da gaveta / sineta */
+function noiseHit(at, dur, vol, freq, q){
+  const len = Math.ceil(audioCtx.sampleRate * dur);
+  const buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+
+  const src = audioCtx.createBufferSource(); src.buffer = buf;
+  const bp = audioCtx.createBiquadFilter();
+  bp.type = "bandpass"; bp.frequency.value = freq; bp.Q.value = q || 6;
+  const g = audioCtx.createGain();
+  g.gain.setValueAtTime(vol, at);
+  g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+
+  src.connect(bp).connect(g).connect(masterGain);
+  src.start(at); src.stop(at + dur);
+}
+
+function playCoinSound(){
+  if (!CONFIG.soundOn) return;
+  initAudio();
+  if (!audioCtx) return;
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  masterGain.gain.value = CONFIG.soundVolume;
+
+  const t = audioCtx.currentTime + 0.01;
+
+  if (CONFIG.soundPreset === "register"){
+    /* cha-ching: sineta dupla + estalo da gaveta abrindo */
+    noiseHit(t,          0.05, 0.5, 3200, 3);
+    bell(1046, t,        0.28, 0.55, 3.2);
+    bell(1568, t + 0.005,0.24, 0.35, 4.1);
+    noiseHit(t + 0.10,   0.06, 0.35, 2400, 4);
+    bell(1318, t + 0.105,0.75, 0.6, 3.47);
+    bell(1975, t + 0.11, 0.65, 0.35, 5.2);
+    bell(2637, t + 0.115,0.45, 0.18, 6.8);
+
+  } else if (CONFIG.soundPreset === "chime"){
+    /* dois toques limpos, discreto */
+    bell(880,  t,        0.55, 0.5, 3.0);
+    bell(1318, t + 0.13, 0.95, 0.55, 3.0);
+
+  } else {
+    /* "notification" (padrao): arpejo maior subindo, brilhante e otimista */
+    bell(784,  t,        0.45, 0.45, 3.47);   // G5
+    bell(1046, t + 0.085,0.55, 0.52, 3.47);   // C6
+    bell(1318, t + 0.170,1.20, 0.60, 3.47);   // E6
+    bell(1568, t + 0.175,1.00, 0.30, 4.20);   // G6 (brilho)
+    noiseHit(t, 0.035, 0.18, 5200, 8);        // ataque seco por cima
+  }
+}
+
+/* ---------- EXPLOSAO DE EMOJIS DE DINHEIRO ---------- */
+const fx    = document.getElementById("fx");
+const flash = document.getElementById("flash");
+
+function moneyBurst(){
+  const rect = pill.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.bottom - 6;
+
+  for (let i = 0; i < CONFIG.coinsPerBurst; i++){
+    const el = document.createElement("span");
+    el.className = "coin";
+    el.textContent = CONFIG.coinEmojis[(Math.random() * CONFIG.coinEmojis.length) | 0];
+
+    /* leque saindo da barra, caindo pela tela */
+    const spread = (Math.random() - 0.5) * window.innerWidth * 0.95;
+    const fall   = window.innerHeight * (0.45 + Math.random() * 0.5);
+
+    el.style.left = originX + "px";
+    el.style.top  = originY + "px";
+    el.style.setProperty("--dx",  spread.toFixed(0) + "px");
+    el.style.setProperty("--dy",  fall.toFixed(0) + "px");
+    el.style.setProperty("--rot", ((Math.random() - 0.5) * 720).toFixed(0) + "deg");
+    el.style.setProperty("--dur", (900 + Math.random() * 700).toFixed(0) + "ms");
+    el.style.fontSize = (20 + Math.random() * 20).toFixed(0) + "px";
+    el.style.animationDelay = (Math.random() * 120).toFixed(0) + "ms";
+
+    fx.appendChild(el);
+    el.addEventListener("animationend", () => el.remove());
+  }
+
+  flash.classList.remove("on");
+  void flash.offsetWidth;              // reinicia o keyframe
+  flash.classList.add("on");
+}
+
+/* "+$47" flutuando a partir da barra do topo */
+function floatGain(amount){
+  const rect = pill.getBoundingClientRect();
+  const el = document.createElement("div");
+  el.className = "gain-pop";
+  el.textContent = "+" + formatValue(amount);
+  el.style.left = (rect.left + rect.width / 2) + "px";
+  el.style.top  = (rect.bottom + 4) + "px";
+  fx.appendChild(el);
+  el.addEventListener("animationend", () => el.remove());
+}
+
+function celebrate(gain){
+  playCoinSound();
+  moneyBurst();
+  if (gain !== undefined) floatGain(gain);
+}
+
+/* ---------- CARINHAS EM TRACO (SVG inline) ---------- */
+function faceSvg(kind){
+  const mouth = {
+    happy:   'M8.1 14.2c1 1.3 2.3 2 3.9 2s2.9-.7 3.9-2',
+    neutral: 'M8.6 15h6.8',
+    sad:     'M8.1 16.4c1-1.3 2.3-2 3.9-2s2.9.7 3.9 2',
+  }[kind];
+
+  return '<svg class="face" viewBox="0 0 24 24" aria-hidden="true">' +
+           '<circle cx="12" cy="12" r="9.2"/>' +
+           '<circle class="eye" cx="8.9" cy="9.8" r="1.15"/>' +
+           '<circle class="eye" cx="15.1" cy="9.8" r="1.15"/>' +
+           '<path d="' + mouth + '"/>' +
+         '</svg>';
+}
+
+function mediaBlock(q){
+  if (!q.media && !q.mediaTitle) return "";
+  const inner = q.media ? '<img src="' + q.media + '" alt="">'
+                        : '<span class="placeholder">YOUR IMAGE HERE</span>';
+  const stamp = q.stamp ? '<span class="stamp">' + q.stamp + '</span>' : "";
+  let html = '<div class="media">' + inner + stamp + '</div>';
+  if (q.mediaTitle) html += '<p class="media-title">' + q.mediaTitle + '</p>';
+  if (q.mediaMeta)  html += '<p class="media-meta">' + q.mediaMeta + '</p>';
+  return html;
+}
+
+function progressBlock(){
+  const pct = Math.round((step / QUESTIONS.length) * 100);
+  return '<div class="progress"><span style="width:' + pct + '%"></span></div>' +
+         '<p class="step-label">Step ' + (step + 1) + ' of ' + QUESTIONS.length + '</p>';
+}
+
+function renderIntro(){
+  card.classList.add("card-intro");
+  card.innerHTML =
+    '<h1 class="intro-title">' + INTRO.emoji + ' ' + INTRO.title + ' ' + INTRO.emoji + '</h1>' +
+    '<p class="intro-text">' + INTRO.text + '</p>' +
+    '<div class="intro-highlight">' + INTRO.highlight.replace("{value}", formatValue(value)) + '</div>' +
+    '<p class="intro-sub">' + INTRO.sub + '</p>' +
+    '<button class="wide" onclick="startQuiz()">' + INTRO.button + '</button>';
+  capEl.textContent = CONFIG.valueCaption;
+  capEl.style.display = CONFIG.valueCaption ? "" : "none";   // sem legenda = barra so com o numero
+  numEl.textContent = formatValue(value);
+}
+
+function startQuiz(){
+  initAudio();                       // destrava o audio no 1o toque do usuario
+  card.classList.remove("card-intro");
+  step = 0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[step];
+  let html = mediaBlock(q);
+  html += '<p class="question">' + q.question + '</p>';
+  if (q.helper) html += '<p class="helper">' + q.helper + '</p>';
+
+  if (q.type === "reaction"){
+    html += '<div class="reactions">' +
+      '<button class="react g" onclick="answer(\'pos\')">' + faceSvg("happy")   + '</button>' +
+      '<button class="react y" onclick="answer(\'neu\')">' + faceSvg("neutral") + '</button>' +
+      '<button class="react r" onclick="answer(\'neg\')">' + faceSvg("sad")     + '</button>' +
+    '</div>';
+  } else {
+    const opts = q.options || ["Yes","No"];
+    const row  = q.layout === "row";
+    html += '<div class="choices' + (row ? " row" : "") + '">';
+    opts.forEach((opt, i) => {
+      const label = (typeof opt === "string") ? opt : opt.label;
+      const icon  = (typeof opt === "string") ? ""  : (opt.icon || "");
+      html += '<button class="choice ' + (i ? "red" : "green") + '" ' +
+              'onclick="answer(\'' + label + '\')">' +
+              (icon ? '<span class="choice-ico">' + icon + '</span>' : '') +
+              '<span>' + label + '</span></button>';
+    });
+    html += '</div>';
+  }
+
+  html += progressBlock();
+  card.innerHTML = html;
+  card.style.pointerEvents = "";
+  card.style.animation = "none"; void card.offsetWidth; card.style.animation = "";
+}
+
+function advance(){
+  if (step < QUESTIONS.length - 1){ step++; renderQuestion(); }
+  else if (CONFIG.processingOn){ renderProcessing(); }
+  else { renderFinal(); }
+}
+
+/* card de confirmacao entre as etapas */
+const rewardEl = document.getElementById("reward");
+function showRewardCard(gain, done){
+  document.getElementById("rw-title").textContent  = CONFIG.rewardTitle;
+  document.getElementById("rw-label").textContent  = CONFIG.rewardLabel;
+  document.getElementById("rw-amount").textContent = "+" + formatValue(gain);
+  rewardEl.style.setProperty("--timer", CONFIG.rewardCardMs + "ms");
+
+  rewardEl.classList.remove("out");
+  rewardEl.classList.add("show");
+  rewardEl.style.pointerEvents = "auto";
+
+  /* segundo estouro de emoji quando o check termina de desenhar */
+  setTimeout(() => { moneyBurst(); }, 300);
+
+  setTimeout(() => {
+    /* troca a pergunta ENQUANTO o overlay ainda cobre a tela:
+       o usuario nunca ve o card de baixo sendo remontado */
+    done();
+    rewardEl.classList.remove("show");
+    rewardEl.classList.add("out");
+    rewardEl.style.pointerEvents = "none";
+    setTimeout(() => {
+      rewardEl.classList.remove("out");
+      card.style.pointerEvents = "";
+      locked = false;
+    }, 360);
+  }, CONFIG.rewardCardMs + 350);
+}
+
+let locked = false;   // impede segundo clique enquanto a animacao roda
+
+function answer(val){
+  if (locked) return;
+  locked = true;
+
+  card.style.pointerEvents = "none";   // corta clique no mesmo frame
+  answers.push({ step: step, value: val });
+  const from = value;
+  const gain = (QUESTIONS[step].reward !== undefined) ? QUESTIONS[step].reward : CONFIG.valueStep;
+  value += gain;
+  paintValue(from, value, true);
+  celebrate(gain);
+
+  if (CONFIG.rewardCardOn){
+    setTimeout(() => showRewardCard(gain, advance), 200);
+  } else {
+    setTimeout(() => { advance(); locked = false; }, 340);
+  }
+}
+
+function renderProcessing(){
+  card.innerHTML =
+    '<div class="spinner"></div>' +
+    '<p class="question" id="proc-text">' + PROCESSING_STEPS[0] + '</p>' +
+    '<div class="progress" style="margin-top:24px"><span id="proc-bar" style="width:6%"></span></div>';
+
+  let i = 0;
+  const el  = document.getElementById("proc-text");
+  const bar = document.getElementById("proc-bar");
+  const tick = CONFIG.processingMs / PROCESSING_STEPS.length;
+  bar.style.width = "33%";
+
+  const t = setInterval(() => {
+    i++;
+    if (i < PROCESSING_STEPS.length){
+      el.textContent = PROCESSING_STEPS[i];
+      bar.style.width = Math.round(((i + 1) / PROCESSING_STEPS.length) * 100) + "%";
+    }
+  }, tick);
+
+  setTimeout(() => { clearInterval(t); renderFinal(); }, CONFIG.processingMs);
+}
+
+function renderFinal(){
+  card.classList.add("card-intro");
+  card.innerHTML =
+    '<div class="fin-mark">' +
+      '<span class="fin-arc"></span><span class="fin-arc b"></span>' +
+      '<span class="fin-disc">' +
+        '<svg viewBox="0 0 104 104"><path d="M32 53.5 L45.5 67 L72 40.5"/></svg>' +
+      '</span>' +
+    '</div>' +
+    '<h1 class="fin-title">' + FINAL.title + '</h1>' +
+    '<div class="fin-balance">' +
+      FINAL.balance.replace("{value}", formatValue(value)) + '</div>' +
+    '<p class="fin-text">' + FINAL.text + '</p>' +
+    '<button class="wide pill" onclick="finish()">' + FINAL.button + '</button>';
+}
+
+/* repassa as UTMs da URL atual para o destino final */
+function finish(){
+  /* Com redirectUrl preenchido, sai da pagina levando as UTMs. */
+  if (CONFIG.redirectUrl){
+    const qs = window.location.search;
+    const sep = CONFIG.redirectUrl.includes("?") ? "&" : "?";
+    window.location.href = CONFIG.redirectUrl + (qs ? sep + qs.substring(1) : "");
+    return;
+  }
+  openVsl();
+}
+
+/* --- troca o quiz pela VSL na mesma pagina --- */
+let vslOpen = false;
+function openVsl(){
+  if (vslOpen) return;
+  vslOpen = true;
+
+  const set = (id, txt, html) => {
+    const el = document.getElementById(id);
+    if (!txt){ el.style.display = "none"; return; }
+    if (html) el.innerHTML = txt; else el.textContent = txt;
+  };
+
+  set("vsl-pill", VSL.pill);
+  if (VSL.pill) document.getElementById("vsl-pill").classList.add("on");
+  set("vsl-headline", VSL.headline, true);
+  set("vsl-sub", VSL.sub);
+  set("vsl-copyright", VSL.copyright.replace("{year}", new Date().getFullYear()));
+
+  document.body.classList.add("vsl-mode");
+  document.getElementById("vslView").classList.add("on");
+  window.scrollTo(0, 0);
+
+  /* O player so entra agora: iniciado dentro de um container escondido, ele
+     nao consegue medir o proprio tamanho e sobe com layout quebrado. */
+  const s = document.createElement("script");
+  s.src = VSL.playerScript;
+  s.async = true;
+  document.head.appendChild(s);
+}
+
+renderIntro();
+</script>
+
+<!-- ===== UTMify — pixel ===== -->
+<script>
+  window.pixelId = "6a78d1c57687c61a124028b2";
+  (function(){
+    var s = document.createElement("script");
+    s.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  })();
+</script>
+
+<!-- ===== UTMify — captura de UTMs ===== -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async defer></script>
+</body>
+</html>
