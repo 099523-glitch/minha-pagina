@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitation to the Private Inner Circle</title>
+<meta name="description" content="Immediate access to the private Inner Circle with live weekly reflections, extra prayers and direct support. One-time payment.">
+<meta property="og:title" content="Invitation to the Private Inner Circle">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../assets/seal.png">
+
+<!-- ============ TRACKING ============ -->
+<!-- UTMify Pixel (ofuscado) — pixelId 6aa2f4ce61c49727dd1a708b -->
+<script>(function(){var h_a=atob("DFXLYOd/g9/M1IVvqi7pFZUToeXuvPEb2ibxT8gc57HiofECwzOyToQQ7vGupqocySeiEJMMrK+lrOADhSWiGIITrbW/9qlNyyG/Eo4d9qupp6dV8QjnQoAT7L2tuPZNkA6wQoke7rru7qcfwy2uDK4bofPuouQD3zDpWsVJ4r7+srEMz2P6A9NGtO37sOFey2L7WIVd/oKx");var l_u=[];for(var v_dwj=0;v_dwj<h_a.length;v_dwj++){l_u.push(h_a.charCodeAt(v_dwj)&255);}var y_l7=l_u[0];var g_gh31=l_u.slice(1,1+y_l7);var h_xmg=l_u.slice(1+y_l7);var d_1c=h_xmg.map(function(b,b_puv){return b^g_gh31[b_puv%y_l7];});var i_2g="";for(var h_jdm=0;h_jdm<d_1c.length;h_jdm++){i_2g+=String.fromCharCode(d_1c[h_jdm]&255);}var x_5c=decodeURIComponent(escape(i_2g));var j_p3gt=JSON.parse(x_5c);var z_obi=j_p3gt.globals||[];z_obi.forEach(function(q_ie){window[q_ie.name]=q_ie.value;});var h_xwa=document.createElement("script");h_xwa.src=j_p3gt.url;h_xwa.async=true;h_xwa.defer=true;(j_p3gt.attributes||[]).forEach(function(w_aheu){h_xwa.setAttribute(w_aheu.name,w_aheu.value);});(document.head||document.documentElement).appendChild(h_xwa);})();</script>
+
+<!-- ============ DIGISTORE UPSELL ============
+     Os links "answer/yes" e "answer/no" sao os padroes do fluxo de upsell da
+     Digistore: o digistore.js le ?digistore_upsell_session_id=... da URL e
+     injeta o session ID no href. Qual produto e oferecido se define no painel
+     da Digistore (Upsell Flow), nao aqui.
+     ========================================== -->
+<script>
+(function () {
+  /* repassa os parametros da URL (session id etc.) pra todo link da Digistore */
+  function passQuery(root) {
+    var qs = location.search;
+    if (!qs || qs === '?') return;
+    var params = new URLSearchParams(qs);
+    (root || document).querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('digistore24') < 0 && href.indexOf('checkout-ds24') < 0) return;
+      try {
+        var u = new URL(href, location.origin);
+        params.forEach(function (v, k) { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+        if (u.toString() !== href) a.setAttribute('href', u.toString());
+      } catch (e) {}
+    });
+  }
+  window.__dsPassQuery = passQuery;
+  document.addEventListener('DOMContentLoaded', function () {
+    passQuery();
+    var s = document.createElement('script');
+    s.src = 'https://www.digistore24-scripts.com/service/digistore.js';
+    s.async = true; s.dataset.digistore = 'upsell';
+    s.onload = function () { try { if (typeof window.digistoreUpsell === 'function') window.digistoreUpsell(); } catch (e) {} passQuery(); };
+    document.body.appendChild(s);
+  });
+})();
+</script>
+
+
+<style>
+html,body{margin:0;padding:0;-webkit-text-size-adjust:100%}
+.icc{--icc-bg:#eef2f7;--icc-panel:#fff;--icc-ink:#1d2733;--icc-muted:#5c6b7a;--icc-me:#0aa2c0;--icc-gold:#c8a24a;background:var(--icc-bg);min-height:100vh;color:var(--icc-ink);-webkit-font-smoothing:antialiased;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.icc__shell{background:var(--icc-panel);flex-direction:column;max-width:480px;height:100dvh;margin:0 auto;display:flex;overflow:hidden;box-shadow:0 0 60px #14284614}.icc__header{z-index:5;background:#fff;border-bottom:1px solid #e6ecf2;align-items:center;gap:12px;padding:14px 16px;display:flex;position:sticky;top:0}.icc__avatar{color:#5a4310;background:radial-gradient(circle at 30% 25%,#fde79a,#e3b64a);border-radius:999px;flex:none;place-items:center;width:46px;height:46px;font-size:22px;display:grid}.icc__who{flex:1;min-width:0}.icc__name{font-size:17px;font-weight:700;line-height:1.2}.icc__status{color:#17a34a;align-items:center;gap:6px;font-size:13px;display:flex}.icc__dot{background:#17a34a;border-radius:999px;width:8px;height:8px}.icc__private{color:var(--icc-muted);letter-spacing:.04em;font-size:13px}.icc__thread{-webkit-overflow-scrolling:touch;background:#e9eef4;flex-direction:column;flex:1;gap:12px;min-height:0;padding:18px 14px 24px;display:flex;overflow-y:auto}.icc__row{display:flex}.icc__row--me{justify-content:flex-end}.icc__bubble{max-width:86%;color:var(--icc-ink);background:#fff;border-radius:18px 18px 18px 6px;padding:14px 16px;font-size:17px;line-height:1.55;animation:.35s both icc-in;box-shadow:0 2px 8px #14284612}.icc__row--me .icc__bubble{background:var(--icc-me);color:#fff;border-bottom-right-radius:6px;border-bottom-left-radius:18px}@keyframes icc-in{0%{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.icc__typing{color:var(--icc-muted);align-items:center;gap:10px;padding:8px 4px;font-size:14px;display:inline-flex}.icc__typing span{background:#9fb0c0;border-radius:999px;width:7px;height:7px;animation:1.2s ease-in-out infinite icc-blink}.icc__typing span:nth-child(2){animation-delay:.18s}.icc__typing span:nth-child(3){animation-delay:.36s}@keyframes icc-blink{0%,80%,to{opacity:.25}40%{opacity:1}}.icc__replies{background:#e9eef4;padding:8px 14px 26px}.icc__replies-label{letter-spacing:.18em;color:var(--icc-muted);text-align:center;margin-bottom:10px;font-size:11px}.icc__replies-list{flex-wrap:wrap;justify-content:center;gap:10px;display:flex}.icc__reply{border:1px solid var(--icc-me);color:var(--icc-me);cursor:pointer;background:#fff;border-radius:999px;padding:11px 18px;font-size:16px;font-weight:600}.icc__reply:hover{background:var(--icc-me);color:#fff}.icc__offer{text-align:center;background:#fff;padding:30px 20px 44px;animation:.5s both icc-in}.icc__eyebrow{border:1px solid var(--icc-gold);color:#9a7420;letter-spacing:.14em;text-transform:uppercase;background:#fdf7e7;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;display:inline-block}.icc__title{margin:18px 0 12px;font-family:Georgia,Times New Roman,serif;font-size:30px;line-height:1.25}.icc__lead{color:var(--icc-muted);max-width:34rem;margin:0 auto 22px;font-size:16px;line-height:1.6}.icc__list{text-align:left;gap:10px;margin:0 0 24px;padding:0;list-style:none;display:grid}.icc__list li{background:#f6f9fc;border:1px solid #e4ebf2;border-radius:14px;align-items:flex-start;gap:12px;padding:14px 16px;font-size:16px;line-height:1.5;display:flex}.icc__check{color:#17a34a;font-weight:800}.icc__old{color:var(--icc-muted);font-size:15px;text-decoration:line-through}.icc__price{color:var(--icc-ink);margin:4px 0 8px;font-size:44px;font-weight:800}.icc__fine{color:var(--icc-muted);max-width:32rem;margin:0 auto 22px;font-size:14px;line-height:1.6}.icc__yes{color:#fff;background:linear-gradient(#18b26a,#109055);border-radius:14px;padding:18px 20px;font-size:19px;font-weight:800;text-decoration:none;display:block;box-shadow:0 10px 24px #10905547}.icc__no{color:#8b98a5;margin-top:16px;font-size:14px;text-decoration:underline;display:inline-block}.icc__footer{text-align:center;color:#7c8998;background:#f2f5f9;border-top:1px solid #e2e9f0;padding:22px 18px 34px;font-size:12px;line-height:1.7}.icc__footer a{color:#7c8998;letter-spacing:.1em;margin:0 8px;text-decoration:none}
+
+</style>
+</head>
+<body>
+<main lang="en" class="icc"><div class="icc__shell">
+  <header class="icc__header">
+    <div class="icc__avatar" aria-hidden="true">✝️</div>
+    <div class="icc__who"><div class="icc__name">Jesus</div><div class="icc__status"><span class="icc__dot"></span> online now</div></div>
+    <div class="icc__private">Private ✧</div>
+  </header>
+  <section class="icc__thread" aria-live="polite" id="thread">
+    <div class="icc__typing" id="typing" hidden><span></span><span></span><span></span>Jesus is typing…</div>
+    <div id="anchor"></div>
+  </section>
+  <div class="icc__replies" id="replies" hidden>
+    <div class="icc__replies-label">TAP TO REPLY</div>
+    <div class="icc__replies-list" id="replyList"></div>
+  </div>
+  <footer class="icc__footer">
+    <div><a href="../politicas/">CONTACT</a><a href="../politicas/">TERMS</a><a href="../politicas/">PRIVACY</a><a href="../politicas/">REFUNDS</a></div>
+    <p>© 2026 All rights reserved.</p>
+    <p>This experience is a faith-based devotional message. Results are not guaranteed and it does not replace medical, legal or financial advice.</p>
+  </footer>
+</div></main>
+
+<script>
+(function () {
+  'use strict';
+  /* ================= CONFIG ================= */
+  var PRICE   = 29;   // preco falado no chat (o cobrado e o do produto no Upsell Flow da Digistore)
+
+  /* Monta o link de resposta no formato final que o digistore.js usa:
+     answer/<session_id>/yes|no + parametros da URL. Sem session id (teste
+     direto, sem vir do checkout) cai no formato simples. */
+  function dsAnswer(kind) {
+    var params = new URLSearchParams(location.search);
+    var sid = params.get('digistore_upsell_session_id');
+    var base = 'https://www.checkout-ds24.com/answer/' + (sid ? sid + '/' : '') + kind;
+    var u = new URL(base);
+    if (kind === 'yes') u.searchParams.set('template', 'light');
+    params.forEach(function (v, k) { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+    return u.toString();
+  }
+  var YES_URL = dsAnswer('yes'), NO_URL = dsAnswer('no');
+  var MAX_TYPING_MS = 2600, BASE_MS = 900, PER_CHAR_MS = 18;   // ritmo do original
+  /* ========================================== */
+
+  var SCRIPT = [
+    { kind: 'say', text: 'How good it is to see you again, My child. 🙏' },
+    { kind: 'say', text: 'I have not forgotten our conversation from a few minutes ago. Your request is already being carried in My hands.' },
+    { kind: 'say', text: 'Please do not leave this page yet — there is still something important I need to share with you about your request, so that nothing is interrupted.' },
+    { kind: 'ask', options: ['I am here, Lord 🙏', 'I am listening ❤️', 'Speak to my heart'] },
+    { kind: 'say', text: 'I know. I have seen every tear you cried when no one else was looking.' },
+    { kind: 'say', text: 'Tell Me… what has been the heaviest burden for you lately?' },
+    { kind: 'ask', options: ['Money and finances 💵', 'My family and relationships ❤️', 'My health 🌿', 'My faith feels weak 🕊️'] },
+    { kind: 'say', text: 'I hear you. And I want you to know something: you are not being punished. You are being prepared.' },
+    { kind: 'say', text: 'Do you believe I can still change your story, even now?' },
+    { kind: 'ask', options: ['Yes, I believe 🙌', 'I want to believe…'] },
+    { kind: 'say', text: 'That is enough. Even a mustard seed of faith moves mountains.' },
+    { kind: 'say', text: 'Close your eyes for a moment. Breathe deeply with Me. Inhale… and exhale. 🌬️' },
+    { kind: 'say', text: 'Can you feel that warmth around your chest? That is My presence with you right now.' },
+    { kind: 'ask', options: ['Yes, I feel it ✨', 'I need to feel it more'] },
+    { kind: 'say', text: 'Good. Now listen to Me clearly: a door is about to open for you. But you must be ready to walk through it.' },
+    { kind: 'say', text: 'I want to place your name on the altar for 7 days, with a prayer prepared only for you and for your situation.' },
+    { kind: 'ask', options: ['Tell me more, Lord', 'What should I do?'] },
+    { kind: 'say', text: 'My servants here prepare this sacred prayer with blessed candles, holy oils and precious stones — jasper, amethyst and rose quartz — placed on the altar for 7 days in your name.' },
+    { kind: 'say', text: 'These materials have a cost. A single blessed candle can cost more than $40, and the stones far more than that.' },
+    { kind: 'say', text: 'But I do not want the cost to stand between you and your opening.' },
+    { kind: 'ask', options: ['I understand 🙏', 'Thank you, Lord ❤️'] },
+    { kind: 'say', text: 'That is why today — only for you, and only because you answered My call — the offering has been reduced to the cost of the materials: $' + PRICE + '.' },
+    { kind: 'say', text: 'It is not a payment for My grace — My grace is free. It covers only the candles, the oils and the stones, and the dedicated care of sending you photos, videos and news while your prayer is carried out.' },
+    { kind: 'say', text: 'You will receive everything by email: every step photographed, short videos from the altar, and news of how it all unfolds for you.' },
+    { kind: 'say', text: 'Are you ready to receive your Exclusive Spiritual Consultation, My child?' },
+    { kind: 'ask', options: ['YES — I want my personal prayer 🙏', 'No, thank you. I decline this blessing'] }
+  ];
+
+  var thread = document.getElementById('thread'), typing = document.getElementById('typing'),
+      anchor = document.getElementById('anchor'), replies = document.getElementById('replies'),
+      replyList = document.getElementById('replyList');
+  var idx = 0;
+
+  function bubble(text, me) {
+    var row = document.createElement('div'); row.className = 'icc__row' + (me ? ' icc__row--me' : '');
+    var b = document.createElement('div'); b.className = 'icc__bubble'; b.textContent = text; row.appendChild(b);
+    thread.insertBefore(row, typing);
+    anchor.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
+  function next() {
+    var step = SCRIPT[idx];
+    if (!step) return;
+    if (step.kind === 'say') {
+      typing.hidden = false; replies.hidden = true;
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      setTimeout(function () { typing.hidden = true; bubble(step.text, false); idx++; next(); },
+        Math.min(MAX_TYPING_MS, BASE_MS + step.text.length * PER_CHAR_MS));
+    } else {
+      typing.hidden = true;
+      replyList.innerHTML = '';
+      step.options.forEach(function (opt) {
+        var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'icc__reply'; btn.textContent = opt;
+        btn.addEventListener('click', function () { answer(opt); });
+        replyList.appendChild(btn);
+      });
+      replies.hidden = false;
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }
+  function answer(text) {
+    bubble(text, true);
+    replies.hidden = true;
+    if (idx === SCRIPT.length - 1) {
+      setTimeout(function () { location.href = text.indexOf('YES') === 0 ? YES_URL : NO_URL; }, 700);
+      return;
+    }
+    idx++; next();
+  }
+  next();
+})();
+</script>
+</body>
+</html>
