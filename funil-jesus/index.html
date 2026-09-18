@@ -61,15 +61,6 @@
   .chat-input input:focus { border-color: #555; }
   .chat-input button { background: #3ea6ff; color: #0f0f0f; border: none; border-radius: 20px; padding: 0 18px; font-weight: 600; cursor: pointer; }
 
-  /* CTA (aparece aos 32:20 do video) */
-  .cta-wrap { display: none; padding: 20px 0 4px; }
-  .cta-wrap.show { display: block; }
-  .cta-btn { display: flex; align-items: center; justify-content: center; width: 100%; background: #4CAF50; color: #fff; text-decoration: none; font-weight: 700; font-size: 26px; letter-spacing: 0.5px; text-transform: uppercase; padding: 22px 16px; border-radius: 8px; box-shadow: 0 4px 0 #3b8a3e; transition: background .15s, transform .1s; }
-  .cta-btn:hover { background: #45a049; }
-  .cta-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #3b8a3e; }
-  .cta-btn .arrow { margin-left: 12px; font-weight: 400; }
-  @media (max-width: 600px) { .cta-btn { font-size: 19px; padding: 18px 12px; } }
-
   @media (max-width: 600px) {
     .chat-body { height: 260px; }
     .video-info h1 { font-size: 14px; }
@@ -92,11 +83,6 @@
     <vturb-smartplayer id="vid-6aad8f2420600c9d7d473480" style="display: block; margin: 0 auto; width: 100%;">
       <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div>
     </vturb-smartplayer>
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-wrap" id="ctaWrap">
-    <a class="cta-btn" id="ctaBtn" href="https://checkout-ds24.com/product/720338?plan=1507155&hide_plans">Secure My Spot Now <span class="arrow">&rarr;</span></a>
   </div>
 
   <div class="video-info">
@@ -205,45 +191,5 @@ input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); }
 setTimeout(loopChat, 4000);
 </script>
 
-<!-- CTA delay: 32:20 (1940s) do tempo do video -->
-<script>
-(function(){
-  var SECONDS_TO_DISPLAY = 32*60 + 20; // 1940s
-  var KEY = 'cta_shown_6aad8f2420600c9d7d473480';
-  var shown = false;
-  var wrap = document.getElementById('ctaWrap');
-
-  function show(){
-    if (shown) return;
-    shown = true;
-    wrap.classList.add('show');
-    try { localStorage.setItem(KEY, '1'); } catch(e){}
-  }
-
-  // Ja viu o CTA antes (voltou na pagina) -> mostra direto
-  try { if (localStorage.getItem(KEY) === '1') show(); } catch(e){}
-
-  // Acompanha o tempo real do player ConverteAI (respeita pausa/resume)
-  var tries = 0;
-  function watch(){
-    if (shown) return;
-    if (!window.smartplayer || !smartplayer.instances || !smartplayer.instances.length) {
-      if (++tries > 60) return fallback(); // player nao carregou em 60s -> cronometro
-      return setTimeout(watch, 1000);
-    }
-    smartplayer.instances[0].on('timeupdate', function(){
-      if (shown) return;
-      var p = smartplayer.instances[0];
-      if (p.smartAutoPlay) return; // ainda no modo mudo/autoplay
-      if (p.video && p.video.currentTime >= SECONDS_TO_DISPLAY) show();
-    });
-  }
-
-  // Fallback: se nao achou a API do player, usa relogio de parede
-  function fallback(){ setTimeout(show, SECONDS_TO_DISPLAY * 1000); }
-
-  watch();
-})();
-</script>
 </body>
 </html>
