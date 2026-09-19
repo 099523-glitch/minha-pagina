@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GML Digital — Marketing, Publicidade e Educação Digital</title>
+<meta name="description" content="GML Digital LTDA — empresa de promoção de vendas, publicidade, edição de livros e treinamento profissional. Jacutinga, RS. CNPJ 49.118.352/0001-35.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1020;--bg2:#111834;--card:#151d3b;--line:rgba(255,255,255,.08);
+    --txt:#eef1f8;--muted:#9aa3bd;--accent:#4f7cff;--accent2:#22d3ee;--ok:#22c55e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.5px}
+  .logo span{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-size:14px;color:#fff}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:500;color:var(--muted)}
+  nav ul a:hover{color:var(--txt)}
+  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;background:var(--accent);color:#fff;transition:.2s}
+  .btn:hover{background:#3d68f0;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;border:1px solid var(--line)}
+  .btn.ghost:hover{background:var(--bg2)}
+
+  /* HERO */
+  .hero{padding:110px 0 90px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 70% 20%,rgba(79,124,255,.25),transparent 70%),radial-gradient(500px 300px at 20% 80%,rgba(34,211,238,.15),transparent 70%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);font-size:13px;color:var(--muted);margin-bottom:24px}
+  .tag i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+  h1{font-size:clamp(36px,6vw,64px);line-height:1.08;letter-spacing:-1.5px;font-weight:800;max-width:760px}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:18px;color:var(--muted);max-width:600px;margin:24px 0 36px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+
+  /* SECTIONS */
+  section{padding:80px 0}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+  h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1px;line-height:1.15;margin-bottom:16px}
+  .lead{color:var(--muted);font-size:17px;max-width:640px}
+
+  .grid{display:grid;gap:20px;margin-top:48px}
+  .grid.c3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;transition:.2s}
+  .card:hover{border-color:rgba(79,124,255,.4);transform:translateY(-3px)}
+  .card .ico{width:44px;height:44px;border-radius:12px;background:rgba(79,124,255,.15);display:grid;place-items:center;margin-bottom:18px;font-size:20px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+  .card small{display:block;margin-top:14px;font-size:12px;color:#6b7597;font-family:ui-monospace,Menlo,monospace}
+  .card.main{grid-column:1/-1;background:linear-gradient(135deg,rgba(79,124,255,.18),rgba(34,211,238,.08));border-color:rgba(79,124,255,.35)}
+  .card.main h3{font-size:22px}
+
+  /* DADOS */
+  .dados{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin-top:40px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .dl div{background:var(--bg);padding:20px 22px}
+  .dl dt{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .dl dd{font-size:16px;font-weight:600}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:rgba(34,197,94,.15);color:var(--ok);font-size:13px;font-weight:700}
+
+  /* CONTATO */
+  .contato .box{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-top:40px;align-items:start}
+  .contact-list{list-style:none;display:grid;gap:14px}
+  .contact-list li{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+  .contact-list .ico{font-size:20px;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:rgba(34,211,238,.12);flex-shrink:0}
+  .contact-list b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:2px}
+  .contact-list a:hover{color:var(--accent2)}
+  .map{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:320px;background:var(--card)}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;filter:grayscale(1) invert(.9) contrast(.9)}
+
+  footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .hero{padding:70px 0 60px}
+    section{padding:60px 0}
+    .contato .box{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo"><span>G</span>GML Digital</a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#dados">Dados cadastrais</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="#contato" class="btn">Fale conosco</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="tag"><i></i> Empresa ativa desde janeiro de 2023 · Jacutinga, RS</div>
+    <h1>Marketing digital, publicidade e <em>educação</em> para negócios que querem crescer.</h1>
+    <p>A GML Digital atua em promoção de vendas, agenciamento de negócios, produção editorial e treinamento profissional — unindo estratégia e execução.</p>
+    <div class="actions">
+      <a href="#servicos" class="btn">Conheça os serviços</a>
+      <a href="#dados" class="btn ghost">Dados da empresa</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="eyebrow">Sobre</div>
+    <h2>Quem somos</h2>
+    <p class="lead">A GML Digital LTDA é uma sociedade empresária limitada, enquadrada como microempresa, sediada em Jacutinga, no Rio Grande do Sul. Trabalhamos com promoção de vendas e publicidade, edição e comercialização de livros, consultoria em comunicação e programas de desenvolvimento profissional e gerencial.</p>
+  </div>
+</section>
+
+<section id="servicos" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Serviços</div>
+    <h2>O que fazemos</h2>
+    <p class="lead">Áreas de atuação registradas junto à Receita Federal.</p>
+    <div class="grid c3">
+      <div class="card main">
+        <div class="ico">🚀</div>
+        <h3>Promoção de vendas</h3>
+        <p>Atividade principal. Planejamento e execução de campanhas para gerar demanda, aumentar conversão e escalar resultados comerciais.</p>
+        <small>CNAE 73.19-0-02</small>
+      </div>
+      <div class="card">
+        <div class="ico">📣</div>
+        <h3>Agência de publicidade</h3>
+        <p>Criação, gestão e veiculação de campanhas publicitárias em mídias digitais.</p>
+        <small>CNAE 73.11-4-00</small>
+      </div>
+      <div class="card">
+        <div class="ico">💡</div>
+        <h3>Consultoria em publicidade</h3>
+        <p>Diagnóstico, estratégia de comunicação e orientação para marcas e anunciantes.</p>
+        <small>CNAE 73.19-0-04</small>
+      </div>
+      <div class="card">
+        <div class="ico">🤝</div>
+        <h3>Intermediação de negócios</h3>
+        <p>Agenciamento de serviços e negócios em geral, conectando empresas e oportunidades.</p>
+        <small>CNAE 74.90-1-04</small>
+      </div>
+      <div class="card">
+        <div class="ico">📚</div>
+        <h3>Edição de livros</h3>
+        <p>Produção editorial de conteúdo próprio e de terceiros, impresso e digital.</p>
+        <small>CNAE 58.11-5-00</small>
+      </div>
+      <div class="card">
+        <div class="ico">🛒</div>
+        <h3>Comércio de livros</h3>
+        <p>Venda varejista de publicações, com foco em canais digitais.</p>
+        <small>CNAE 47.61-0-01</small>
+      </div>
+      <div class="card">
+        <div class="ico">🎓</div>
+        <h3>Treinamento profissional</h3>
+        <p>Programas de desenvolvimento profissional e gerencial para pessoas e equipes.</p>
+        <small>CNAE 85.99-6-04</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dados" class="dados">
+  <div class="wrap">
+    <div class="eyebrow">Transparência</div>
+    <h2>Dados cadastrais</h2>
+    <p class="lead">Informações conforme o Cadastro Nacional da Pessoa Jurídica (CNPJ) da Receita Federal do Brasil.</p>
+    <dl class="dl">
+      <div><dt>Razão social</dt><dd>GML DIGITAL LTDA</dd></div>
+      <div><dt>CNPJ</dt><dd>49.118.352/0001-35</dd></div>
+      <div><dt>Situação cadastral</dt><dd><span class="badge">● ATIVA</span></dd></div>
+      <div><dt>Data de abertura</dt><dd>09/01/2023</dd></div>
+      <div><dt>Natureza jurídica</dt><dd>206-2 – Sociedade Empresária Limitada</dd></div>
+      <div><dt>Porte</dt><dd>ME – Microempresa</dd></div>
+      <div><dt>Tipo</dt><dd>Matriz</dd></div>
+      <div><dt>Atividade principal</dt><dd>73.19-0-02 – Promoção de vendas</dd></div>
+      <div><dt>Endereço</dt><dd>Rua da Liberdade, 265 – Casa<br>Centro – Jacutinga/RS<br>CEP 99730-000</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="contato" class="contato">
+  <div class="wrap">
+    <div class="eyebrow">Contato</div>
+    <h2>Fale com a gente</h2>
+    <p class="lead">Estamos à disposição para orçamentos, parcerias e dúvidas.</p>
+    <div class="box">
+      <ul class="contact-list">
+        <li><div class="ico">✉️</div><div><b>E-mail</b><a href="mailto:glemprendedorismodigital@outlook.com">glemprendedorismodigital@outlook.com</a></div></li>
+        <li><div class="ico">📞</div><div><b>Telefone</b><a href="tel:+555492421596">(54) 9242-1596</a></div></li>
+        <li><div class="ico">📍</div><div><b>Endereço</b>Rua da Liberdade, 265 – Centro<br>Jacutinga – RS, 99730-000</div></li>
+        <li><div class="ico">🕘</div><div><b>Atendimento</b>Segunda a sexta, 9h às 18h</div></li>
+      </ul>
+      <div class="map">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua+da+Liberdade,+265,+Centro,+Jacutinga,+RS,+99730-000&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2023–2026 GML Digital LTDA · CNPJ 49.118.352/0001-35</div>
+    <div>Jacutinga – RS · Brasil</div>
+  </div>
+</footer>
+
+</body>
+</html>
