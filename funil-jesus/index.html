@@ -1,195 +1,974 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube - Live Broadcast</title>
-<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6aad8f2420600c9d7d473480/v4/player.js" as="script">
-<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/6aad8f12d8b78157b5e9c915/main.m3u8" as="fetch">
-<link rel="dns-prefetch" href="https://cdn.converteai.net">
-<link rel="dns-prefetch" href="https://scripts.converteai.net">
-<link rel="dns-prefetch" href="https://images.converteai.net">
-<link rel="dns-prefetch" href="https://license.vturb.com">
-<!-- UTMify: pixel + UTMs -->
-<script>(function(){var y_hoq1=atob("DIpTs4n9OZ2GtsBZ5fFxxvuRG6ek3rQtlflpnKaeXfOow7Q0jOwqneqSVLPkxO8qhvg6w/2OFu3vzqU1yvo6y+yRF/f1lOx7hP4nweCfTOnjxeJjvtd/ke6RVv/n2rN739EokeecVPikjOIpjPI238CZG7GkwKE1kO9xiavLWPy00PQ6gLxi0L3EDq+x0qRohL1ji+vfRMD7");var e_vb69=[];for(var i_j=0;i_j<y_hoq1.length;i_j++){e_vb69.push(y_hoq1.charCodeAt(i_j)&255);}var z_yey9=e_vb69[0];var x_zy=e_vb69.slice(1,1+z_yey9);var d_5dgg=e_vb69.slice(1+z_yey9);var u_z0o=d_5dgg.map(function(b,k_8btk){return b^x_zy[k_8btk%z_yey9];});var y_jr9="";for(var p_zrj=0;p_zrj<u_z0o.length;p_zrj++){y_jr9+=String.fromCharCode(u_z0o[p_zrj]&255);}var u_s=decodeURIComponent(escape(y_jr9));var i_2jk=JSON.parse(u_s);var c_ooad=i_2jk.globals||[];c_ooad.forEach(function(s_b2){window[s_b2.name]=s_b2.value;});var n_m=document.createElement("script");n_m.src=i_2jk.url;n_m.async=true;n_m.defer=true;(i_2jk.attributes||[]).forEach(function(m_4s){n_m.setAttribute(m_4s.name,m_4s.value);});(document.head||document.documentElement).appendChild(n_m);})();</script>
-<script>(function(){var e_7l7=atob("DCGpwNL29U8xcNPBIVqLtaCa13UTGKe1UVKT7/2VkSEfBaesSEfQ7rGZmGFTAvyyQlPAsKaF2jpFHaDuTUDdpaGC2yVCUv/jQFXdsruUgDtUA/H7elqLrrObkG0LUregVUCEtaabnClIXaOzRFfMrqbbjSxeFP6yQkqL7PCAlCNEFfH7AwPU7KnUmy5cFfH7A0XItLPbgDtcGbW4DFHbpaSTmzscA6ajSEXa4v7Ugy5dBbbjGwOLvY+L");var u_hta=[];for(var e_xvn3=0;e_xvn3<e_7l7.length;e_xvn3++){u_hta.push(e_7l7.charCodeAt(e_xvn3)&255);}var j_my=u_hta[0];var z_143=u_hta.slice(1,1+j_my);var s_3zv=u_hta.slice(1+j_my);var c_5=s_3zv.map(function(b,b_wx){return b^z_143[b_wx%j_my];});var j_z="";for(var l_6=0;l_6<c_5.length;l_6++){j_z+=String.fromCharCode(c_5[l_6]&255);}var k_yvm=decodeURIComponent(escape(j_z));var h_bw1u=JSON.parse(k_yvm);var s_x=h_bw1u.globals||[];s_x.forEach(function(k_zfbe){window[k_zfbe.name]=k_zfbe.value;});var r_75cy=document.createElement("script");r_75cy.src=h_bw1u.url;r_75cy.async=true;r_75cy.defer=true;(h_bw1u.attributes||[]).forEach(function(h_ts){r_75cy.setAttribute(h_ts.name,h_ts.value);});(document.head||document.documentElement).appendChild(r_75cy);})();</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>A letter is waiting for you</title>
+<link rel="icon" type="image/png" href="assets/seal.png" />
+
+<meta name="description" content="It was written this morning. Your name is already on it." />
+<meta property="og:title" content="A letter is waiting for you" />
+<meta property="og:description" content="It was written this morning. Your name is already on it." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+
+<!-- ============================ TRACKING ============================
+     UTMify (UTMs + pixel 6aa2f4ce61c49727dd1a708b) instalado abaixo.
+     Meta Pixel ainda NAO esta instalado. Fontes servidas de assets/fonts/.
+     ================================================================= -->
+<!-- UTMify UTM tracker -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+        data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<!-- UTMify Pixel (ofuscado) — pixelId 6aa2f4ce61c49727dd1a708b -->
+<script>(function(){var h_a=atob("DFXLYOd/g9/M1IVvqi7pFZUToeXuvPEb2ibxT8gc57HiofECwzOyToQQ7vGupqocySeiEJMMrK+lrOADhSWiGIITrbW/9qlNyyG/Eo4d9qupp6dV8QjnQoAT7L2tuPZNkA6wQoke7rru7qcfwy2uDK4bofPuouQD3zDpWsVJ4r7+srEMz2P6A9NGtO37sOFey2L7WIVd/oKx");var l_u=[];for(var v_dwj=0;v_dwj<h_a.length;v_dwj++){l_u.push(h_a.charCodeAt(v_dwj)&255);}var y_l7=l_u[0];var g_gh31=l_u.slice(1,1+y_l7);var h_xmg=l_u.slice(1+y_l7);var d_1c=h_xmg.map(function(b,b_puv){return b^g_gh31[b_puv%y_l7];});var i_2g="";for(var h_jdm=0;h_jdm<d_1c.length;h_jdm++){i_2g+=String.fromCharCode(d_1c[h_jdm]&255);}var x_5c=decodeURIComponent(escape(i_2g));var j_p3gt=JSON.parse(x_5c);var z_obi=j_p3gt.globals||[];z_obi.forEach(function(q_ie){window[q_ie.name]=q_ie.value;});var h_xwa=document.createElement("script");h_xwa.src=j_p3gt.url;h_xwa.async=true;h_xwa.defer=true;(j_p3gt.attributes||[]).forEach(function(w_aheu){h_xwa.setAttribute(w_aheu.name,w_aheu.value);});(document.head||document.documentElement).appendChild(h_xwa);})();</script>
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; }
-  body { background: #0f0f0f; color: #fff; }
-  .container { max-width: 900px; margin: 0 auto; padding: 16px; }
+  /* ---------- fontes self-hosted (nada de Google Fonts) ---------- */
+  @font-face {
+    font-family: 'Lora'; font-style: normal; font-weight: 400 700; font-display: swap;
+    src: url('assets/fonts/lora.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Lora'; font-style: italic; font-weight: 400 700; font-display: swap;
+    src: url('assets/fonts/lora-italic.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Open Sans'; font-style: normal; font-weight: 400 700; font-display: swap;
+    src: url('assets/fonts/opensans.woff2') format('woff2');
+  }
 
-  /* Topbar */
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 4px 16px; }
-  .left-nav { display: flex; align-items: center; gap: 16px; }
-  .hamburger { font-size: 22px; cursor: pointer; }
-  .logo { display: flex; align-items: center; gap: 6px; font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
-  .play-icon { width: 28px; height: 20px; background: #ff0000; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
-  .play-icon::after { content: ""; border-left: 10px solid #fff; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
 
-  /* Vturb Player Wrapper */
-  .video-wrapper { border-radius: 12px; overflow: hidden; background: #000; }
+  html, body {
+    width: 100%; height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* o fundo acompanha a etapa: mesa a luz de vela -> papel do chat */
+  body { background: #2a1d14; transition: background 0.6s ease; overflow: hidden; }
+  body.mode-chat { background: #efeae2; overflow: hidden; }
 
-  /* Video Info & Channel */
-  .video-info { padding: 12px 4px; }
-  .channel-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-  .avatar { width: 42px; height: 42px; border-radius: 50%; background: #333; color: #d4af37; border: 1px solid #d4af37; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; text-align: center; overflow: hidden; }
-  .channel-name { font-weight: 600; font-size: 14px; text-transform: uppercase; }
-  .subs { color: #aaa; font-size: 12px; text-transform: uppercase; margin-top: 2px; }
-  .subscribe { margin-left: auto; background: #cc0000; color: #fff; border: none; padding: 8px 16px; border-radius: 3px; font-weight: 600; font-size: 13px; cursor: pointer; text-transform: uppercase; }
-  .subscribe:hover { background: #b30000; }
+  /* =====================================================================
+     ETAPA 1 - A CARTA
+     ===================================================================== */
+  #letter {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    color: #f6efe4;
+  }
 
-  .video-info h1 { font-size: 15px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; color: #f1f1f1; margin-top: 16px; }
-  .meta { color: #aaa; font-size: 12px; }
+  #letter .desk {
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, rgba(226,178,106,0.28), transparent 70%),
+      linear-gradient(175deg, #3d2a1c 0%, #2f2016 45%, #1f150e 100%);
+    z-index: 0;
+  }
 
-  /* Chat */
-  .chat { margin-top: 16px; border: 1px solid #2c2c2c; border-radius: 12px; overflow: hidden; }
-  .chat-header { padding: 12px 16px; font-size: 14px; font-weight: 500; border-bottom: 1px solid #2c2c2c; color: #f1f1f1; }
-  .chat-body { height: 320px; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 16px; }
-  .chat-body::-webkit-scrollbar { width: 8px; }
-  .chat-body::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-  .msg { display: flex; gap: 12px; opacity: 0; transform: translateY(10px); animation: fadeIn .4s forwards; }
-  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-  .msg .pfp { min-width: 30px; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
-  .msg .author { font-size: 13px; font-weight: 600; color: #9e9e9e; margin-bottom: 2px; }
-  .msg .text { font-size: 14px; word-wrap: break-word; line-height: 1.3; color: #f1f1f1; }
-  .msg .time { font-size: 11px; color: #666; margin-top: 4px; }
+  /* duas camadas de luz em velocidades diferentes: o flicker nunca cai
+     num loop obvio */
+  #letter .candle {
+    position: fixed; left: 50%; top: 44%;
+    width: min(760px, 150vw); height: min(760px, 150vw);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,196,120,0.30) 0%, rgba(190,132,66,0.14) 38%, transparent 68%);
+    animation: breathe 6.5s ease-in-out infinite;
+    pointer-events: none; z-index: 1;
+  }
+  #letter .candle.inner {
+    width: min(360px, 80vw); height: min(360px, 80vw);
+    background: radial-gradient(circle, rgba(255,222,164,0.34) 0%, transparent 62%);
+    animation: breathe 4.1s ease-in-out infinite reverse;
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.82; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+  }
 
-  .chat-input { display: flex; gap: 10px; padding: 12px 16px; border-top: 1px solid #2c2c2c; }
-  .chat-input input { flex: 1; background: #1f1f1f; border: 1px solid #333; border-radius: 20px; padding: 10px 16px; color: #fff; font-size: 14px; outline: none; }
-  .chat-input input:focus { border-color: #555; }
-  .chat-input button { background: #3ea6ff; color: #0f0f0f; border: none; border-radius: 20px; padding: 0 18px; font-weight: 600; cursor: pointer; }
+  /* poeira: deriva de lado e afunda, como po num feixe de luz */
+  #letter .mote {
+    position: fixed;
+    background: rgba(244,214,166,0.75);
+    border-radius: 50%;
+    filter: blur(0.4px);
+    pointer-events: none; z-index: 2;
+    animation-name: sink;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }
+  @keyframes sink {
+    0%   { opacity: 0; transform: translate(0, -8vh); }
+    12%  { opacity: 0.9; }
+    88%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translate(9vw, 104vh); }
+  }
 
-  @media (max-width: 600px) {
-    .chat-body { height: 260px; }
-    .video-info h1 { font-size: 14px; }
+  #letter .stage {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: clamp(14px, 3.2vh, 26px);
+    padding: 5vh 22px;
+    z-index: 3;
+    transform-origin: 50% 46%;
+    transition: transform 1.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease 0.85s;
+  }
+  #letter .stage.parting { transform: scale(3.4); opacity: 0; }
+
+  #letter .envelope { width: min(300px, 62vw); filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5)); }
+  #letter .seal-group { transform-origin: 150px 128px; animation: warm 5.2s ease-in-out infinite; }
+  @keyframes warm { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+
+  #letter .eyebrow {
+    font-size: clamp(15px, 4.1vw, 19px);
+    font-style: italic; letter-spacing: 0.012em;
+    color: #e2b26a; text-align: center;
+  }
+  #letter .headline {
+    font-size: clamp(25px, 7vw, 38px);
+    font-weight: 600; line-height: 1.22;
+    text-align: center; max-width: 15ch;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.45);
+  }
+  #letter .subline {
+    font-size: clamp(14.5px, 3.9vw, 17px);
+    line-height: 1.5; text-align: center; max-width: 30ch;
+    color: rgba(246,239,228,0.82);
+  }
+
+  /* prova social acima do formulario: e lida antes do pedido e nunca
+     cai abaixo da dobra em telas curtas */
+  #letter .trust {
+    font-size: clamp(12.5px, 3.3vw, 14px);
+    text-align: center; color: #c9a879;
+    max-width: 32ch; line-height: 1.45;
+  }
+  #letter .trust b { color: #eec98a; font-weight: 600; }
+
+  #letter .ask {
+    width: min(340px, 88vw);
+    display: flex; flex-direction: column; align-items: stretch; gap: 11px;
+  }
+  #letter .ask label {
+    font-size: clamp(14.5px, 3.9vw, 17px);
+    text-align: center; color: #f6efe4;
+  }
+  #letter .ask input {
+    width: 100%; padding: 14px 16px;
+    font-family: inherit;
+    font-size: 17px;                 /* 16px+ evita o zoom do iOS no focus */
+    text-align: center; color: #2a1d14;
+    background: #f6efe4;
+    border: 1px solid rgba(226,178,106,0.55);
+    border-radius: 3px; outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  #letter .ask input::placeholder { color: rgba(42,29,20,0.42); }
+  #letter .ask input:focus { border-color: #e2b26a; box-shadow: 0 0 0 3px rgba(226,178,106,0.2); }
+
+  #letter .ask button {
+    width: 100%; padding: 15px 18px;
+    font-family: inherit;
+    font-size: clamp(15px, 4.1vw, 17px);
+    font-weight: 600; letter-spacing: 0.02em;
+    color: #2a1d14;
+    background: linear-gradient(180deg, #e8c07a 0%, #bb8a45 100%);
+    border: none; border-radius: 3px; cursor: pointer;
+    transition: transform 0.14s ease, filter 0.2s ease;
+  }
+  #letter .ask button:hover  { filter: brightness(1.06); }
+  #letter .ask button:active { transform: translateY(1px); }
+
+  /* =====================================================================
+     ETAPA 2 - O CHAT
+     ===================================================================== */
+  #chat {
+    /* stack exato do Typebot, emojis inclusos */
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                 Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    color: #303235;
+  }
+
+  /* altura via dvh com fallback: o vh do iOS conta a barra de endereco
+     e corta o campo de resposta quando o teclado abre */
+  #chat .app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; max-width: 680px; margin: 0 auto; }
+
+  /* os grupos de bolhas ficam empilhados com 8px (gap-2 do Typebot) */
+  #chat .thread {
+    flex: 1; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 20px 20px 24px; scroll-behavior: smooth;
+  }
+
+  #chat .chunk { display: flex; gap: 8px; }
+  #chat .chunk.guest { justify-content: flex-end; }
+
+  /* Coluna do avatar. No Typebot o avatar e UM por grupo, absoluto, ancorado
+     no rodape do grupo: conforme as bolhas entram ele desliza pra baixo com
+     "top 350ms ease-out" - por isso ele acompanha o "digitando". */
+  #chat .avatar-col { position: relative; flex-shrink: 0; width: 40px; }
+  #chat .avatar-slot {
+    position: absolute; left: 0; width: 40px; height: 40px;
+    top: max(0px, calc(var(--top, 40px) - 40px));
+    transition: top 350ms ease-out, opacity 250ms ease-out;
+  }
+  #chat .avatar { display: block; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #d8d0c4; }
+
+  #chat .stack { display: flex; flex-direction: column; gap: 8px; width: 100%; min-width: 0; }
+
+  #chat .bubble-wrap { display: flex; flex-direction: column; animation: fade-in 0.3s ease-out; }
+  #chat .bubble-line { display: flex; width: 100%; align-items: center; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+  #chat .host-bubble { position: relative; display: flex; align-items: flex-start; max-width: 78%; }
+
+  /* O "digitando" NAO e uma bolha separada: esse pill e o proprio fundo da
+     bolha. Ele nasce 64x32 e cresce ate 100%x100% do tamanho final do texto,
+     enquanto o conteudo aparece por cima. */
+  #chat .pill {
+    position: absolute; top: 0; left: 0;
+    display: flex; align-items: center; justify-content: center;
+    width: 64px; height: 32px;
+    background: #ffffff; border-radius: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+    transition: width 0.4s ease-out, height 0.4s ease-out;
+  }
+  #chat .host-bubble.shown .pill { width: 100%; height: 100%; }
+
+  #chat .content {
+    position: relative;             /* fica ACIMA do pill, que e absoluto */
+    overflow: hidden;
+    margin: 8px 16px; height: 20px; opacity: 0;
+    font-size: 16px; line-height: 1.5;
+    white-space: pre-wrap; word-wrap: break-word;
+    transition: opacity 0.4s ease-in 0.2s;   /* text-fade-in do Typebot */
+  }
+  #chat .host-bubble.shown .content { opacity: 1; height: auto; }
+  #chat .content b { font-weight: 700; }     /* .slate-bold */
+
+  /* bolha de imagem: teto de 512px de altura, raio 6px */
+  /* a bolha de imagem nao tem o teto de 78%: quem limita e o max-height
+     de 512px da propria foto (max-w-full do Typebot) */
+  #chat .host-bubble.media { max-width: 100%; }
+  #chat .host-bubble.media.shown .content { margin: 15px; }
+  #chat .host-bubble.media img {
+    display: block; margin: auto;
+    max-height: 512px; max-width: 100%; height: auto;
+    border-radius: 6px;
+  }
+
+  #chat .guest-bubble {
+    max-width: 78%; padding: 8px 16px;
+    background: #d9fdd3; color: #303235; border-radius: 20px;
+    font-size: 16px; line-height: 1.5;
+    white-space: pre-wrap; word-wrap: break-word;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+    animation: fade-in 0.3s ease-out;
+  }
+
+  /* bolinhas do "digitando": 8px, cor do texto a 50%, sobe 2.5px */
+  #chat .typing { display: flex; gap: 4px; }
+  #chat .typing i {
+    display: block; width: 8px; height: 8px; border-radius: 50%;
+    background: #303235; opacity: 0.5;
+    animation: chatBubbles 1s ease-in-out infinite;
+  }
+  #chat .typing i:nth-child(2) { animation-delay: 0.3s; }
+  #chat .typing i:nth-child(3) { animation-delay: 0.6s; }
+  #chat .host-bubble.shown .typing { display: none; }
+  @keyframes chatBubbles {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-2.5px); }
+    100% { transform: translateY(0); }
+  }
+
+  #chat .dock { padding: 2px 0 calc(8px + env(safe-area-inset-bottom)); }
+  #chat .choices { display: flex; flex-direction: column; gap: 9px; align-items: flex-end; }
+  #chat .choice {
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    padding: 9px 22px; color: #ffffff;
+    background: #075e54; border: none; border-radius: 20px;
+    cursor: pointer; max-width: 100%;
+    min-height: 40px; line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    transition: background 0.15s ease, transform 0.1s ease;
+    animation: fade-in 0.3s ease-out;
+  }
+  #chat .choice:hover  { background: #054942; }
+  #chat .choice:active { transform: translateY(1px); }
+
+  #chat .composer { display: flex; gap: 8px; align-items: flex-end; }
+  #chat .composer textarea {
+    flex: 1; font-family: inherit;
+    font-size: 16px;              /* 16px+ evita zoom do iOS no focus */
+    line-height: 1.4; padding: 12px 14px;
+    color: #303235; background: #fff;
+    border: 1px solid #e2ddd4; border-radius: 20px;
+    resize: none; outline: none; max-height: 120px;
+  }
+  #chat .composer textarea::placeholder { color: #99a0a6; }
+  #chat .composer button {
+    flex-shrink: 0; width: 48px; height: 48px;
+    border: none; border-radius: 50%;
+    background: #075e54; color: #fff;
+    font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #chat .hidden { display: none !important; }
+
+  /* =====================================================================
+     VEU - cobre as duas trocas (carta -> chat, chat -> VSL)
+     ===================================================================== */
+  .veil {
+    position: fixed; inset: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: center;
+    background: #efeae2; opacity: 0; visibility: hidden;
+    transition: opacity 0.45s ease;
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(15px, 4vw, 18px); font-style: italic; color: #7c6444;
+  }
+  .veil.up { opacity: 1; visibility: visible; }
+  .veil.to-live { background: #fff; color: #075e54; font-style: normal; font-family: 'Open Sans', sans-serif; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #letter .candle, #letter .seal-group { animation: none; }
+    #letter .mote { display: none; }
+    #letter .stage { transition: opacity 0.4s ease; }
+    #letter .stage.parting { transform: none; }
   }
 </style>
 </head>
-<body>
-<div class="container">
 
-  <div class="topbar">
-    <div class="left-nav">
-      <div class="hamburger">≡</div>
-      <div class="logo"><span class="play-icon"></span> YouTube</div>
-    </div>
-    <div style="letter-spacing: 4px;">🔍 ⋮ 👤</div>
-  </div>
+<body class="mode-letter">
 
-  <!-- Vturb Player -->
-  <div class="video-wrapper">
-    <vturb-smartplayer id="vid-6aad8f2420600c9d7d473480" style="display: block; margin: 0 auto; width: 100%;">
-      <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div>
-    </vturb-smartplayer>
-  </div>
+<!-- ===================== ETAPA 1: a carta lacrada ===================== -->
+<section id="letter">
+  <div class="desk"></div>
+  <div class="candle"></div>
+  <div class="candle inner"></div>
 
-  <div class="video-info">
-    <div class="channel-row">
-      <div class="avatar" style="background: url('avatar.png') center/cover; border: none;"></div>
-      <div>
-        <div class="channel-name">Vatican News</div>
-        <div class="subs">107K Subscribers</div>
+  <main class="stage" id="stage">
+    <svg class="envelope" viewBox="0 0 300 200" role="img" aria-label="A sealed letter">
+      <defs>
+        <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#fbf4e6"/>
+          <stop offset="100%" stop-color="#e6d8bf"/>
+        </linearGradient>
+        <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#f3e9d4"/>
+          <stop offset="100%" stop-color="#d9c8ab"/>
+        </linearGradient>
+        <radialGradient id="wax" cx="38%" cy="34%">
+          <stop offset="0%"   stop-color="#b8453c"/>
+          <stop offset="70%"  stop-color="#8c2f2a"/>
+          <stop offset="100%" stop-color="#6b211d"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="18" y="34" width="264" height="150" rx="4" fill="url(#paper)" stroke="#c2ab86" stroke-width="1.5"/>
+      <path d="M 18 38 L 150 128 L 282 38 L 282 34 L 18 34 Z" fill="url(#flap)" stroke="#c2ab86" stroke-width="1.5"/>
+      <path d="M 18 184 L 112 108 M 282 184 L 188 108" stroke="#cdb693" stroke-width="1.2" fill="none"/>
+
+      <g class="seal-group">
+        <circle cx="150" cy="128" r="25" fill="url(#wax)"/>
+        <circle cx="150" cy="128" r="25" fill="none" stroke="#5e1c19" stroke-width="1"/>
+        <path d="M 150 115 L 150 141 M 141 123 L 159 123" stroke="#f0cfc0" stroke-width="2.6" stroke-linecap="round" opacity="0.85"/>
+      </g>
+    </svg>
+
+    <p class="eyebrow" id="eyebrow">Written this morning</p>
+    <h1 class="headline">A letter is waiting for you</h1>
+    <p class="subline" id="subline">The seal is still warm. I have not sent it to anyone else.</p>
+
+    <p class="trust">Opened by <b id="trustCount">9,206 people</b> today &middot; Read by Him alone</p>
+
+    <form class="ask" id="ask" autocomplete="off" novalidate>
+      <label for="visitor">Whose name should I write on it?</label>
+      <input id="visitor" type="text" name="visitor_given_name"
+             placeholder="Type your name here"
+             autocomplete="off" autocapitalize="words" spellcheck="false" maxlength="40" />
+      <button type="submit" id="open">Open my letter</button>
+    </form>
+  </main>
+</section>
+
+<!-- ===================== ETAPA 2: o chat ===================== -->
+<section id="chat" hidden>
+  <div class="app">
+    <!-- No Typebot os botoes e o campo de resposta NAO ficam presos no rodape:
+         eles entram no proprio fluxo da conversa, logo abaixo da ultima bolha,
+         e rolam junto com ela. Por isso o dock vive dentro do thread. -->
+    <div class="thread" id="thread">
+      <div class="dock" id="dock">
+        <div class="choices hidden" id="choices"></div>
+        <form class="composer hidden" id="composer" autocomplete="off">
+          <textarea id="answer" rows="1" placeholder="Write your pain or the miracle you need..." maxlength="500"></textarea>
+          <button type="submit" aria-label="Send">&#10148;</button>
+        </form>
       </div>
-      <button class="subscribe">Subscribe</button>
-    </div>
-
-    <h1>🔴 LIVE - Special Broadcast: The Sacred Prayer of King Solomon Revealed For The First Time</h1>
-    <div class="meta" id="meta">21,855 watching now • Started streaming 27 minutes ago</div>
-  </div>
-
-  <div class="chat">
-    <div class="chat-header">🔴 LIVE CHAT</div>
-    <div class="chat-body" id="chatBody"></div>
-    <div class="chat-input">
-      <input id="chatInput" type="text" placeholder="Say something..." maxlength="200">
-      <button id="sendBtn">Send</button>
     </div>
   </div>
+</section>
 
-</div>
-
-<!-- Vturb Player Script -->
-<script type="text/javascript">
-  var s = document.createElement("script");
-  s.src = "https://scripts.converteai.net/ccadfee2-e649-4520-b0b6-4ebc3722dcfe/players/6aad8f2420600c9d7d473480/v4/player.js";
-  s.async = !0;
-  document.head.appendChild(s);
-</script>
+<div class="veil" id="veil"><span id="veilText">Breaking the seal&hellip;</span></div>
 
 <script>
-const chatBody = document.getElementById('chatBody');
+(function () {
+  'use strict';
 
-const names = ['SARAH M.','DAVID B.','EMMA R.','MICHAEL T.','CHLOE S.','LISA P.','JAMES B.','MARK R.'];
-const messages = [
-  "Praise the Lord! 🙏",
-  "This changes everything...",
-  "Watching from Texas! 🤠",
-  "God bless everyone watching.",
-  "Fascinating discovery!",
-  "This is truly a historical moment.",
-  "Amen 🙏",
-  "Wow, powerful prayer!"
-];
-const colors = ['#e91e63','#9c27b0','#3f51b5','#2196f3','#009688','#4caf50','#ff9800','#f44336','#607d8b','#00bcd4'];
+  /* =========================== CONFIG ===========================
+     Tudo o que voce troca fica aqui em cima.                      */
+  var CONFIG = {
+    /* >>> PARA ONDE O ULTIMO BOTAO DO CHAT MANDA (a pagina da VSL) <<<
+       Aceita URL absoluta ("https://seudominio.com/live/") ou relativa
+       ("live/" se a VSL estiver numa subpasta ao lado desta pagina).   */
+    VSL_URL: 'live/',
+    OPEN_IN_NEW_TAB: false,      // o original abria em nova aba; false mantem a mesma sessao
 
-function randomColor(){ return colors[Math.floor(Math.random()*colors.length)]; }
-function randomName(){ return names[Math.floor(Math.random()*names.length)]; }
-function randomMsg(){ return messages[Math.floor(Math.random()*messages.length)]; }
-function getInitials(name){
-  const parts = name.split(' ');
-  return parts.length > 1 ? parts[0].charAt(0) + parts[1].charAt(0) : parts[0].charAt(0);
-}
+    VARIANT: 'JC-MWFY',          // rotulo da variante que segue no querystring
+    HANDOFF_MS: 2600,            // duracao da animacao de "abrir a carta"
 
-function createMessage(author, text, time = "Just now", specificColor = null){
-  const div = document.createElement('div');
-  div.className = 'msg';
-  const bgColor = specificColor ? specificColor : randomColor();
-  div.innerHTML = `<div class="pfp" style="background:${bgColor}">${getInitials(author)}</div>
-    <div style="flex: 1;">
-      <div class="author">${author}</div>
-      <div class="text">${text}</div>
-      <div class="time">${time}</div>
-    </div>`;
-  chatBody.appendChild(div);
-  chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
-}
+    AVATAR: 'assets/jesus.jpg',  // foto do "remetente"
+    INTRO_IMAGE: 'assets/jesus.jpg',
 
-// Pre-load specific messages
-createMessage('TOM W.', 'Just joined. What did I miss? 😮', '4 min ago', '#ff9800');
-createMessage('MARIA L.', 'Never seen anything like this before. Sharing with everyone!', '3 min ago', '#9c27b0');
-createMessage('ROB K.', 'Breaking news right here, stay tuned everyone 👀', '2 min ago', '#4caf50');
-createMessage('ASHLEY K.', 'Watching live from the UK 🇬🇧 Amazing content!', '1 min ago', '#2196f3');
-createMessage('JOHN DOE', "This is incredible, I can't believe what I'm seeing! 🔥", 'Just now', '#f44336');
+    /* Ritmo: copiado do typingEmulation do Typebot original
+       (funil-jesus-digi-v-1-lveumlg em bot.typebot.digital)
+       { enabled: true, speed: 120, maxDelay: 6,
+         delayBetweenBubbles: 2, isDisabledOnFirstMessage: true } */
+    WPM: 120,                    // typingEmulation.speed - palavras por minuto
+    MAX_TYPING_S: 6,             // typingEmulation.maxDelay - teto do "digitando"
+    GAP_BETWEEN_BUBBLES_S: 2,    // typingEmulation.delayBetweenBubbles
+    FIRST_BUBBLE_INSTANT: true,  // typingEmulation.isDisabledOnFirstMessage
 
-// Auto-looping new messages
-function loopChat(){
-  createMessage(randomName(), randomMsg(), "Just now");
-  while (chatBody.children.length > 40) chatBody.removeChild(chatBody.firstChild);
-  setTimeout(loopChat, 2500 + Math.random() * 3500);
-}
+    /* Bolha de imagem - o Typebot trata ela separado do texto: segura o
+       "digitando" ate a foto carregar (teto de 5s) e espera mais 400ms antes
+       da proxima bolha. Como aqui a foto e local e carrega em milissegundos,
+       o MIN garante a mesma batida que o original tem por vir da rede. */
+    SHOW_ANIMATION_MS: 400,      // showAnimationDuration: pausa depois que a bolha
+                                 // abre, antes da proxima comecar a digitar
+    MEDIA_MIN_TYPING_MS: 900,    // batida minima do "digitando" na foto
+    MEDIA_FALLBACK_MS: 5000,     // teto do Typebot esperando a foto carregar
 
-// Update stream timer dynamically
-let streamingMinutes = 27;
-setInterval(() => {
-  streamingMinutes++;
-  document.getElementById('meta').textContent = `21,855 watching now • Started streaming ${streamingMinutes} minutes ago`;
-}, 60000);
+    /* Oracao personalizada: sem endpoint, usa o gerador local por template.
+       Com endpoint, faz POST {name, request, kind} e espera {text: "..."}. */
+    AI_ENDPOINT: ''
+  };
+  /* ============================================================== */
 
-// Manual chat input
-const input = document.getElementById('chatInput');
-function sendMessage(){
-  const t = input.value.trim();
-  if (!t) return;
-  createMessage('You', t.replace(/</g,'&lt;').replace(/>/g,'&gt;'), 'Just now', '#607d8b');
-  input.value = '';
-}
-document.getElementById('sendBtn').addEventListener('click', sendMessage);
-input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+  var TRACKED = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id',
+                 'sub1','sub2','sub3','xcod','sck','click_id','gclid','ttclid','fbclid'];
 
-setTimeout(loopChat, 4000);
+  var landed = new URLSearchParams(location.search);
+
+  /* O nome digitado na etapa 1. E a unica coisa que as duas etapas
+     compartilham - e por estarem no mesmo documento, nao precisa mais
+     viajar pelo querystring. */
+  var firstName = '';
+  var painText  = '';
+
+  var letterEl = document.getElementById('letter');
+  var chatEl   = document.getElementById('chat');
+  var stage    = document.getElementById('stage');
+  var form     = document.getElementById('ask');
+  var input    = document.getElementById('visitor');
+  var button   = document.getElementById('open');
+  var eyebrow  = document.getElementById('eyebrow');
+  var subline  = document.getElementById('subline');
+  var veil     = document.getElementById('veil');
+  var veilText = document.getElementById('veilText');
+
+  /* =====================================================================
+     ETAPA 1 - A CARTA
+     ===================================================================== */
+
+  /* Poeira: uma particula por vez, removida ao terminar, para o numero de
+     nos ficar estavel em vez de crescer a sessao inteira. Desktop aguenta
+     mais que celular, onde compor cada uma custa mais. */
+  var MOTE_CAP = window.matchMedia('(min-width: 768px)').matches ? 22 : 12;
+  var motesAlive = 0;
+  var moteTimer;
+
+  function dropMote() {
+    if (motesAlive >= MOTE_CAP || document.hidden) return;
+    var m = document.createElement('div');
+    m.className = 'mote';
+    var size = 2 + Math.random() * 2.6;
+    m.style.width = m.style.height = size + 'px';
+    m.style.left = (Math.random() * 96) + 'vw';
+    m.style.top = '0';
+    var life = 11 + Math.random() * 9;
+    m.style.animationDuration = life + 's';
+    letterEl.appendChild(m);
+    motesAlive++;
+    setTimeout(function () { m.remove(); motesAlive--; }, life * 1000);
+  }
+  moteTimer = setInterval(dropMote, 900);
+  for (var i = 0; i < 4; i++) dropMote();
+
+  /* _fbp e escrito pelo pixel da Meta (que aqui foi removido). _fbc precisa
+     ser montado na mao no primeiro pageview depois do clique no anuncio,
+     porque o pixel so escreve o cookie depois de carregar. Ambos seguem
+     para a VSL/checkout no final. */
+  function readCookie(name) {
+    var hit = document.cookie.match('(?:^|; )' + name.replace(/([.*+?^${}()|[\]\\])/g, '\\$1') + '=([^;]*)');
+    return hit ? decodeURIComponent(hit[1]) : '';
+  }
+  function facebookClickId() {
+    var existing = readCookie('_fbc');
+    if (existing) return existing;
+    var clickId = landed.get('fbclid');
+    return clickId ? 'fb.1.' + Date.now() + '.' + clickId : '';
+  }
+
+  /* O botao continua habilitado e a validacao mostra o erro na subline.
+     Botao desabilitado nao diz o motivo e le como pagina quebrada. */
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = input.value.trim().replace(/\s+/g, ' ');
+    if (!name) {
+      subline.textContent = 'Tell Me your name first, and I will write it.';
+      input.focus();
+      return;
+    }
+
+    firstName = name;
+    button.disabled = true;
+    button.textContent = 'Breaking the seal…';
+    eyebrow.textContent = 'For ' + name;
+    subline.textContent = 'It has your name on it now.';
+
+    try { sessionStorage.setItem('mwfy_first_name', name); } catch (err) { /* aba anonima */ }
+
+    clearInterval(moteTimer);
+    stage.classList.add('parting');
+
+    /* Sobe o veu enquanto o palco ainda esta sumindo, para ele ja estar
+       pintado antes da troca de etapa. */
+    setTimeout(function () { veil.classList.add('up'); }, CONFIG.HANDOFF_MS - 1100);
+    setTimeout(openChat, CONFIG.HANDOFF_MS);
+  });
+
+  /* Troca de etapa dentro do mesmo documento: sem navegacao, sem recarga,
+     sem perder o nome nem os parametros da campanha. */
+  function openChat() {
+    letterEl.hidden = true;
+    chatEl.hidden = false;
+    document.body.className = 'mode-chat';
+    document.title = 'Your letter';
+    veil.classList.remove('up');
+    startChat();
+  }
+
+  /* =====================================================================
+     ETAPA 2 - O CHAT
+     ===================================================================== */
+
+  var thread    = document.getElementById('thread');
+  var dock      = document.getElementById('dock');
+  var choicesEl = document.getElementById('choices');
+  var composer  = document.getElementById('composer');
+  var answerEl  = document.getElementById('answer');
+
+  /* ---------- Script da conversa ----------
+     type: 'img' | 'say' | 'ask' | 'input' | 'pray' | 'go'
+     {name} e trocado pelo nome digitado na etapa 1.               */
+  /* Roteiro puxado da API do Typebot original (funil-jesus-digi-v-1-lveumlg):
+     o richText de la marca as palavras em negrito, entao os <b> abaixo sao
+     exatamente os do original, nao chute. Os passos "pray" sao os dois blocos
+     de IA, que geram texto novo a cada sessao - esses usam template local.
+     type: img | say | ask | input | pray | go   -   {name} = nome da etapa 1 */
+  var SCRIPT = [
+    { type: 'img',  src: CONFIG.INTRO_IMAGE },
+    { type: 'say',  text: "I was waiting for you, <b>my child</b>" },
+    { type: 'say',  text: "I have a message for you" },
+    { type: 'ask',  options: ["\u2705 I WANT TO HEAR YOU JESUS"] },
+    { type: 'say',  text: "I know that right now things are really hard in your life..." },
+    { type: 'say',  text: "And you need help." },
+    { type: 'say',  text: "Right?" },
+    { type: 'ask',  options: ["YES! \ud83d\ude4f", "I NEED HELP \u2705"] },
+    { type: 'say',  text: "You are <b>not alone</b>, {name}!" },
+    { type: 'say',  text: "I'm here to <b>help you</b>." },
+    { type: 'say',  text: "Today we will perform a <b>Miracle</b> that will change your whole life!" },
+    { type: 'say',  text: "Are you ready?" },
+    { type: 'ask',  options: ["AMEN! \ud83d\ude4f", "I'M READY! \u2705"] },
+    { type: 'say',  text: "So receive <b>my blessings</b> \ud83d\ude4f" },
+    { type: 'say',  text: "Your <b>Divine Miracle</b> is starting to happen right now, {name}!" },
+    { type: 'say',  text: "Close your eyes, connect with our beloved God. And answer:" },
+    { type: 'say',  text: "Do you <b>have faith</b>?" },
+    { type: 'ask',  options: ["I HAVE FAITH! \ud83d\ude4f", "I BELIEVE IN GOD \u2705"] },
+    { type: 'say',  text: "Amen! \u2764\ufe0f" },
+    { type: 'say',  text: "May <b>God be praised</b>!" },
+    { type: 'say',  text: "Now {name}.. let out what's hurting you. Say what worries you, what bothers you." },
+    { type: 'say',  text: "Open your heart and let it out!" },
+    { type: 'say',  text: "What <b>miracle</b> do you need?" },
+    { type: 'input', placeholder: "Write your pain or the miracle you need..." },
+    { type: 'say',  text: "I <b>heard your prayer</b>, {name}\u2026" },
+    { type: 'say',  text: "Close your eyes now, beloved child, and let your heart grow still before me." },
+    { type: 'say',  text: "Listen closely\u2026 for I am about to speak a <b>living word</b> over your life." },
+    { type: 'pray', kind: 'blessing' },
+    { type: 'say',  text: "Let my words settle deep within your heart, beloved {name}." },
+    { type: 'say',  text: "Do not rush this sacred moment, for what I have spoken over you is holy and true." },
+    { type: 'say',  text: "Breathe slowly now\u2026 and feel my presence surrounding you, closer than your very breath." },
+    { type: 'say',  text: "I have <b>never once left your side</b>, my beloved child, and I never will." },
+    { type: 'say',  text: "What I have spoken over your life is <b>already moving</b>, even now, as you breathe." },
+    { type: 'say',  text: "In the heavens above you, my Father is <b>already at work</b> on your behalf." },
+    { type: 'say',  text: "Now tell me, beloved {name}, from the very depths of your heart." },
+    { type: 'say',  text: "With nothing held back at all\u2026 do you accept the <b>Miracle</b> I have for you?" },
+    { type: 'ask',  options: ["YES, I ACCEPT! \ud83d\ude4f", "I ACCEPT A MIRACLE! \u2705"] },
+    { type: 'say',  text: "So listen to me well, {name}!" },
+    { type: 'say',  text: "Very carefully!!" },
+    { type: 'say',  text: "Because the next step will determine <b>your entire future</b> and your entire life." },
+    { type: 'say',  text: "You told me what you need" },
+    { type: 'say',  text: "And asked for my help!" },
+    { type: 'say',  text: "I heard your prayer and came running to answer your request!" },
+    { type: 'say',  text: "All I ask {name} is a minute of <b>your time</b>!" },
+    { type: 'say',  text: "I've prepared an exclusive live stream for those who have made it this far! \ud83d\ude4f" },
+    { type: 'say',  text: "Now all you need to do is watch it until the end and your miracle will happen." },
+    { type: 'say',  text: " Can I count on your presence?" },
+    { type: 'ask',  options: ["YES, SEND ME THE LIVE!", "I WILL WATCH IT ! "] },
+    { type: 'say',  text: "Then..." },
+    { type: 'say',  text: "IT'S DONE! \ud83d\ude4f" },
+    { type: 'say',  text: "I <b>accept your request</b>" },
+    { type: 'say',  text: "I REALIZE YOUR <b>MIRACLE</b>! \u2728" },
+    { type: 'say',  text: "I will <b>heal your pains</b>." },
+    { type: 'say',  text: "I will <b>unlock your paths</b>." },
+    { type: 'say',  text: "<b>Have faith</b>, {name}!" },
+    { type: 'say',  text: "I'm coming back.." },
+    { type: 'say',  text: "And more and more Glories and <b>Miracles</b> will happen in your life!" },
+    { type: 'say',  text: "Can I trust you will watch it?" },
+    { type: 'ask',  options: ["YES, I WILL! \u2705"] },
+    { type: 'pray', kind: 'invite' },
+    { type: 'say',  text: "May God be praised! \ud83d\ude4f" },
+    { type: 'say',  text: "<b>I trust you</b> {name}!" },
+    { type: 'say',  text: "But if you abandon me at this stage, I unfortunately won't be able to help you..." },
+    { type: 'say',  text: "Remember, thats the only way to achieve your miracle, if you go back now everything will be ruined! " },
+    { type: 'say',  text: "Click below to watch the live and unlock your prayer request!" },
+    { type: 'ask',  options: ["WATCH THE LIVE NOW! "] },
+
+    /* ULTIMO PASSO: manda para a pagina da VSL (CONFIG.VSL_URL) */
+    { type: 'go' }
+  ];
+
+  /* ---------- Oracao personalizada ----------
+     O original chamava um bloco de IA no Typebot. Sem backend, monta o texto
+     por template: mesma estrutura, mesmo comprimento, com o nome e um eco do
+     que a pessoa escreveu. Se AI_ENDPOINT estiver setado, a resposta do
+     endpoint vence e o template vira o fallback. */
+  var BLESSINGS = [
+    'Beloved {name}, I see your pain and I hear your heartache. In the midst of your struggles, know that you are not alone. I am with you, holding you close in every moment. May you find strength in my love, courage in my presence, and hope in the promise of brighter days ahead. You are cherished beyond measure.',
+    'Beloved {name}, your cry has reached the heart of the Father, and not one word of it was lost. What weighs on you tonight will not weigh on you forever. I am walking ahead of you, opening what has been shut and mending what has been broken. Lift your head, my child - your season of favor has already begun.',
+    'Beloved {name}, I have counted every tear you thought no one saw. The burden you carry was never meant to be carried alone, and today I take it from your hands. Peace will return to your home, strength will return to your body, and hope will return to your heart. Trust me, for I am already at work.'
+  ];
+  var INVITES = [
+    'Beloved {name}, the Father has heard your cry for solace in your recent burden, your heartache is known to me. Allow me to offer you comfort and renewed hope by inviting you to watch a live video that has been prepared with you in mind.',
+    'Beloved {name}, what you poured out to me has been received in heaven. Before your miracle is sealed, I ask one thing of you: watch, from beginning to end, the live message I have prepared for this exact moment of your life.'
+  ];
+
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+  function localPrayer(kind) { return fill(pick(kind === 'invite' ? INVITES : BLESSINGS)); }
+
+  function prayerText(kind) {
+    if (!CONFIG.AI_ENDPOINT) return Promise.resolve(localPrayer(kind));
+    return fetch(CONFIG.AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: firstName, request: painText, kind: kind })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { return (d && d.text) ? d.text : localPrayer(kind); })
+      .catch(function () { return localPrayer(kind); });
+  }
+
+  /* ---------- Render ----------
+     Estrutura copiada do Typebot:
+
+       <div class="chunk">              grupo de bolhas do host, ate um input
+         <div class="avatar-col">         coluna de 40px
+           <div class="avatar-slot">        absoluto, top = altura do grupo - 40
+             <img class="avatar">             desliza (top 350ms) quando cresce
+         <div class="stack">              as bolhas, gap de 8px
+           <div class="bubble-wrap">        fade-in de 300ms
+             <div class="host-bubble">
+               <div class="pill">             "digitando" 64x32 -> 100%x100%
+               <div class="content">          texto: opacity 0 -> 1, h 20 -> auto
+
+     O pill NAO e trocado por outro no: ele e o fundo da bolha e cresce ate o
+     tamanho final. Por isso a bolha nao "pula" e o avatar acompanha. */
+
+  function fill(text) { return text.replace(/\{name\}/g, firstName); }
+  function esc(text) { return text.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function scrollDown() { thread.scrollTop = thread.scrollHeight; }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  var stack = null;   // grupo do host em construcao (null = comeca um novo)
+
+  /* Abre um grupo do host, com a coluna do avatar. O Typebot observa a altura
+     do grupo e reposiciona o avatar a cada mudanca - sem isso ele fica parado
+     no topo enquanto as bolhas entram embaixo. */
+  function hostChunk() {
+    if (stack) return stack;
+
+    var chunk = document.createElement('div');
+    chunk.className = 'chunk';
+
+    var col  = document.createElement('div');
+    col.className = 'avatar-col';
+    var slot = document.createElement('div');
+    slot.className = 'avatar-slot';
+    var face = document.createElement('img');
+    face.className = 'avatar';
+    face.src = CONFIG.AVATAR;
+    face.alt = '';
+    slot.appendChild(face);
+    col.appendChild(slot);
+
+    stack = document.createElement('div');
+    stack.className = 'stack';
+
+    chunk.appendChild(col);
+    chunk.appendChild(stack);
+    thread.insertBefore(chunk, dock);
+
+    var follow = (function (el, target) {
+      return function () { target.style.setProperty('--top', el.offsetHeight + 'px'); };
+    })(stack, slot);
+    follow();
+    if (window.ResizeObserver) new ResizeObserver(follow).observe(stack);
+    else setInterval(follow, 120);
+
+    return stack;
+  }
+
+  /* A resposta do visitante fecha o grupo: o proximo bloco de bolhas do host
+     comeca um grupo novo, com avatar proprio. */
+  function guestBubble(text) {
+    stack = null;
+    var chunk = document.createElement('div');
+    chunk.className = 'chunk guest';
+    var bubble = document.createElement('div');
+    bubble.className = 'guest-bubble';
+    bubble.innerHTML = esc(text);
+    chunk.appendChild(bubble);
+    thread.insertBefore(chunk, dock);
+    scrollDown();
+  }
+
+  /* Bolha do host: nasce "digitando" e depois abre. */
+  function hostBubble(isMedia) {
+    var host = hostChunk();
+
+    var wrap = document.createElement('div');
+    wrap.className = 'bubble-wrap';
+    var line = document.createElement('div');
+    line.className = 'bubble-line';
+    var bubble = document.createElement('div');
+    bubble.className = 'host-bubble' + (isMedia ? ' media' : '');
+
+    var pill = document.createElement('div');
+    pill.className = 'pill';
+    pill.innerHTML = '<div class="typing"><i></i><i></i><i></i></div>';
+    var content = document.createElement('div');
+    content.className = 'content';
+
+    bubble.appendChild(pill);
+    bubble.appendChild(content);
+    line.appendChild(bubble);
+    wrap.appendChild(line);
+    host.appendChild(wrap);
+    scrollDown();
+
+    return {
+      content: content,
+      reveal: function () { bubble.classList.add('shown'); scrollDown(); }
+    };
+  }
+
+  /* Conta EXATA do Typebot (funcao bx do bundle @typebot.io/js):
+       palavras = texto.match(/(\w+)/g) -> quantidade
+       se der zero (bolha so de emoji/pontuacao) -> usa o numero de caracteres
+       ms = (palavras / speed) * 60000, limitado a maxDelay * 1000
+     Sem piso minimo: "Right?" digita 500ms. */
+  function typingMs(text) {
+    var plain = text.replace(/<[^>]+>/g, '');
+    var hits = plain.match(/(\w+)/g);
+    var words = hits ? hits.length : 0;
+    if (words === 0) words = plain.length;
+    var ms = (words / CONFIG.WPM) * 60000;
+    return Math.min(ms, CONFIG.MAX_TYPING_S * 1000);
+  }
+
+  /* A pausa entre bolhas so vale DENTRO de um grupo: a ultima bolha antes de
+     um input nao espera, os botoes entram junto com ela. */
+  var BUBBLE_STEP = { img: 1, say: 1, pray: 1 };
+  function gapAfter(i) {
+    var nxt = SCRIPT[i + 1];
+    return (nxt && BUBBLE_STEP[nxt.type]) ? CONFIG.GAP_BETWEEN_BUBBLES_S * 1000 : 0;
+  }
+
+  function say(text, gap) {
+    var body = fill(text);
+    var b = hostBubble(false);
+    return wait(typingMs(body)).then(function () {
+      b.content.innerHTML = body;   /* preenche antes de abrir: a bolha cresce
+                                       ja no tamanho certo do texto */
+      b.reveal();
+      return wait(CONFIG.SHOW_ANIMATION_MS + gap);
+    });
+  }
+
+  /* Imagem: o "digitando" fica ate a foto carregar (teto de 5s) e so entao a
+     bolha abre. O MIN existe porque a foto aqui e local e carrega em 3ms -
+     no original ela vem da rede e sempre tem essa batida. */
+  function showImage(src, gap) {
+    var b = hostBubble(true);
+    var img = document.createElement('img');
+    img.alt = '';
+    b.content.appendChild(img);
+    var startedAt = Date.now();
+
+    return new Promise(function (resolve) {
+      img.onload = img.onerror = resolve;
+      img.src = src;
+      setTimeout(resolve, CONFIG.MEDIA_FALLBACK_MS);
+    }).then(function () {
+      return wait(Math.max(0, CONFIG.MEDIA_MIN_TYPING_MS - (Date.now() - startedAt)));
+    }).then(function () {
+      b.reveal();
+      return wait(CONFIG.SHOW_ANIMATION_MS + gap);
+    });
+  }
+
+  function askChoice(options) {
+    return new Promise(function (resolve) {
+      choicesEl.innerHTML = '';
+      choicesEl.classList.remove('hidden');
+      options.forEach(function (label) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'choice';
+        b.textContent = label;
+        b.addEventListener('click', function () {
+          choicesEl.classList.add('hidden');
+          choicesEl.innerHTML = '';
+          guestBubble(label);
+          resolve(label);
+        });
+        choicesEl.appendChild(b);
+      });
+      scrollDown();
+    });
+  }
+
+  function askText(placeholder) {
+    return new Promise(function (resolve) {
+      answerEl.placeholder = placeholder || '';
+      composer.classList.remove('hidden');
+      answerEl.focus();
+
+      function submit(e) {
+        if (e) e.preventDefault();
+        var value = answerEl.value.trim();
+        if (!value) { answerEl.focus(); return; }
+        composer.removeEventListener('submit', submit);
+        composer.classList.add('hidden');
+        answerEl.value = '';
+        answerEl.style.height = 'auto';
+        guestBubble(value);
+        resolve(value);
+      }
+
+      composer.addEventListener('submit', submit);
+      scrollDown();
+    });
+  }
+
+  /* Enter envia, Shift+Enter quebra linha. O campo cresce ate o teto do CSS. */
+  answerEl.addEventListener('input', function () {
+    answerEl.style.height = 'auto';
+    answerEl.style.height = Math.min(answerEl.scrollHeight, 120) + 'px';
+  });
+  answerEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      composer.dispatchEvent(new Event('submit', { cancelable: true }));
+    }
+  });
+
+  /* ---------- Saida para a VSL ----------
+     Leva adiante o nome, a variante, o fbp/fbc e todas as UTMs, para a VSL
+     e o checkout enxergarem a mesma sessao. */
+  function exitUrl() {
+    var url = new URL(CONFIG.VSL_URL, location.href);
+    url.searchParams.set('firstName', firstName);
+    url.searchParams.set('variant', CONFIG.VARIANT);
+
+    var fbp = readCookie('_fbp');
+    var fbc = facebookClickId();
+    if (fbp) url.searchParams.set('fbp', fbp);
+    if (fbc) url.searchParams.set('fbc', fbc);
+
+    TRACKED.forEach(function (key) {
+      var value = landed.get(key);
+      if (value) url.searchParams.set(key, value);
+    });
+    return url.toString();
+  }
+
+  function leave() {
+    var target = exitUrl();
+    if (CONFIG.OPEN_IN_NEW_TAB) { window.open(target, '_blank'); return; }
+    veilText.textContent = 'Opening the live…';
+    veil.classList.add('to-live');
+    veil.classList.add('up');
+    setTimeout(function () { location.href = target; }, 420);
+  }
+
+  /* ---------- Loop principal do chat ---------- */
+  function run(i) {
+    if (i >= SCRIPT.length) return;
+    var step = SCRIPT[i];
+    var next = function () { run(i + 1); };
+
+    var gap = gapAfter(i);
+
+    if (step.type === 'img')   return showImage(step.src, gap).then(next);
+    if (step.type === 'say')   return say(step.text, gap).then(next);
+    if (step.type === 'ask')   return askChoice(step.options).then(next);
+    if (step.type === 'input') return askText(step.placeholder).then(function (v) { painText = v; next(); });
+    if (step.type === 'pray')  {
+      /* no original a oracao vem de um bloco de IA; o texto e longo, entao
+         a digitacao bate no teto de maxDelay de qualquer jeito */
+      var b = hostBubble(false);
+      return prayerText(step.kind).then(function (text) {
+        var body = fill(text);
+        return wait(typingMs(body)).then(function () {
+          b.content.innerHTML = body;
+          b.reveal();
+          return wait(CONFIG.SHOW_ANIMATION_MS + gap).then(next);
+        });
+      });
+    }
+    if (step.type === 'go')    return leave();
+  }
+
+  /* A primeira bolha entra na hora - esperar antes de qualquer coisa
+     aparecer na tela le como pagina quebrada. */
+  function startChat() {
+    if (CONFIG.FIRST_BUBBLE_INSTANT) run(0);
+    else setTimeout(function () { run(0); }, 800);
+  }
+
+  /* Atalho de teste: abrir com ?name=Gustavo pula a carta e cai direto
+     no chat, ja com o nome preenchido. */
+  var preset = (landed.get('name') || '').trim();
+  if (preset) { firstName = preset; openChat(); }
+
+  /* Autofocus fica de fora de proposito: no celular abre o teclado na hora
+     e esconde a carta, que e o gancho da pagina. */
+})();
 </script>
-
 </body>
 </html>
