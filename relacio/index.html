@@ -244,6 +244,49 @@ ol.steps2{padding-left:22px;margin:8px 0} ol.steps2 li{margin:8px 0}
 .foot nav a{min-height:44px;display:inline-flex;align-items:center}
 .legal h2{margin:18px 0 10px} .legal h3{margin:20px 0 6px;font-size:21px}
 
+/* extras 02/11 */
+.bellwrap{position:relative}
+.bell-dot{position:absolute;top:10px;right:11px;width:9px;height:9px;border-radius:50%;background:#C0574F;border:2px solid var(--bg)}
+.npanel{position:fixed;top:62px;right:12px;left:12px;max-width:420px;margin-left:auto;z-index:40;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.18);padding:8px;animation:fade .15s}
+.npanel .nh{display:flex;justify-content:space-between;align-items:center;padding:8px 10px}
+.nitem{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:0;background:transparent;padding:12px 10px;border-radius:12px;cursor:pointer;min-height:56px}
+.nitem:hover{background:var(--bg)} .nitem .ic{font-size:22px;width:30px;text-align:center}
+.nitem .tx{flex:1;line-height:1.3} .nitem small{display:block;color:var(--muted);font-size:14px}
+.nitem .ud{width:9px;height:9px;border-radius:50%;background:#C0574F} .nitem.read .ud{visibility:hidden} .nitem.read{opacity:.7}
+.feat{display:flex;gap:14px;align-items:center;text-decoration:none;background:linear-gradient(135deg,#2B2140,#4A3560);color:#F6EEDD;border-radius:20px;padding:16px 18px;margin:14px 0;box-shadow:var(--shadow);border:1px solid rgba(201,162,74,.35)}
+.feat .fi{font-size:34px;flex:none} .feat .ey{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#E2C27A;font-weight:700}
+.feat b{display:block;font-family:var(--serif);font-size:22px;line-height:1.15;margin:2px 0} .feat span.s{font-size:15px;opacity:.85;line-height:1.35;display:block}
+.feat .go{flex:none;background:#E2C27A;color:#2B2140;border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px}
+.pr-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.pr{display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;min-height:60px;background:var(--card)}
+.pr .ck{width:26px;height:26px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;color:#fff}
+.pr.done .ck{background:var(--sage-d);border-color:var(--sage-d)} .pr.done b{text-decoration:line-through;opacity:.7}
+.pr .tx{flex:1;line-height:1.3} .pr small{display:block;color:var(--muted);font-size:14px}
+.trail{display:flex;align-items:center;overflow-x:auto;padding:14px 4px 6px;gap:0;scrollbar-width:none}
+.trail::-webkit-scrollbar{display:none}
+.tcell{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none}
+.tcell .c{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--card);color:var(--muted)}
+.tcell.past .c{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.tcell.miss .c{opacity:.45}
+.tcell.cur .c{border-color:var(--gold);color:var(--gold-d);box-shadow:0 0 0 4px var(--gold-l)}
+.tcell.gift .c{background:var(--gold-l);border-color:var(--gold)}
+.tcell small{font-size:12px;color:var(--muted)}
+.tline{width:16px;height:2px;background:var(--line);flex:none;margin-bottom:20px} .tline.on{background:var(--sage-d)}
+.ms{display:flex;gap:14px;align-items:center;text-decoration:none;padding:14px;border-radius:16px;border:1px solid var(--line);background:var(--card);margin:10px 0;min-height:72px}
+.ms .mi{font-size:28px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--gold-l);flex:none}
+.ms.locked{opacity:.6} .ms.locked .mi{filter:grayscale(1)}
+.ms .tx{flex:1;line-height:1.3} .ms small{display:block;color:var(--muted);font-size:14px}
+.bigday{font-family:var(--serif);font-size:72px;line-height:1;color:var(--gold-d);font-weight:600}
+.amen{display:flex;align-items:center;justify-content:center;gap:10px}
+.cert{position:relative;max-width:460px;margin:0 auto;background:#FFFCF5;color:#3B2A22;border-radius:6px;padding:40px 28px;text-align:center;box-shadow:0 10px 30px rgba(59,42,34,.18);border:1px solid #E8D9BC}
+.cert .frame{position:absolute;inset:12px;border:2px solid #B8913A;border-radius:4px;pointer-events:none}
+.cert .frame:before{content:"";position:absolute;inset:5px;border:.5px solid #D9C28A}
+.cert .nm2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:42px;line-height:1.1;margin:10px 0;border-bottom:1px solid #D9C28A;padding-bottom:8px}
+.cert .locks{display:flex;justify-content:center;gap:4px;margin:14px 0}
+.dm{position:fixed;inset:0;z-index:55;background:rgba(20,14,10,.55);display:grid;place-items:end center;padding:0;animation:fade .25s}
+.dm .sheet{background:var(--card);width:100%;max-width:520px;border-radius:24px 24px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+@media print{ body.print-cert .wrap > *:not(.printable){display:none!important} .cert{box-shadow:none} }
+
 @media (min-width:720px){ h1{font-size:40px} .nhead h1{font-size:38px} }
 @media print{
   body{background:#fff;color:#000;padding:0}
@@ -280,7 +323,7 @@ const store = {
 };
 const blank = () => ({ email:"", her:"", his:"", phon:"", rel:"", apart:"", third:"", contact:"", prayerTime: CONFIG.defaultPrayerTime,
   tz: (Intl.DateTimeFormat().resolvedOptions().timeZone||""), nightPref:"auto", onboarded:0, prayed:{}, journal:[], lockmap:null,
-  audioPos:{}, namesEdited:false, safety:false });
+  audioPos:{}, namesEdited:false, safety:false, practice:{}, circle:{}, giftsOpened:{}, giftNotes:{}, dailyModal:"", notifRead:{}, visits:[] });
 let S = Object.assign(blank(), store.get(KEY) || {});
 const save = () => store.set(KEY, S);
 
@@ -293,7 +336,8 @@ const FORCE_NIGHT = qs.has("night") ? qs.get("night")!=="0" : null;
 
 function seedDemo(){
   const at = (daysAgo,h,m) => { const d=new Date(); d.setDate(d.getDate()-daysAgo); d.setHours(h,m,0,0); return d.getTime(); };
-  S = Object.assign(blank(), { email:"sarah@example.com", her:"Sarah", his:"Michael", phon:"", rel:"husband", apart:"1-3", third:"unsure", contact:"some",
+  const ds = n => { const d=new Date(); d.setDate(d.getDate()-n); return dstr(d); };
+  S = Object.assign(blank(), { email:"sarah@example.com", her:"Sarah", his:"Michael", visits:[ds(3),ds(2),ds(1)], giftsOpened:{}, phon:"", rel:"husband", apart:"1-3", third:"unsure", contact:"some",
     prayerTime:"22:00", onboarded: at(3,21,20), prayed:{0:at(3,21,40), 1:at(3,22,10), 2:at(2,22,15)},
     journal:[
       {id:1,n:0,signs:["I slept better"],other:"",note:"Tore up the paper. Cried a little, then slept.",mood:3,at:at(3,21,55)},
@@ -303,6 +347,7 @@ function seedDemo(){
   save();
 }
 
+function dstr(d){ d=d||new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 /* =====================================================================
    UTILITÁRIOS
    ===================================================================== */
@@ -386,6 +431,8 @@ const I = {
   candle:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1.5 1.8 1.5 3.2 0 4.2-1.5-1-1.5-2.4 0-4.2zM9 10h6v11H9zM6 21h12"/></svg>`,
   lockS:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
   heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
+  bell:`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>`,
+  path:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>`,
   check:`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>`,
   arrow:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>`,
   phone:`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>`
@@ -431,14 +478,14 @@ function playerHTML(key, src, title){
     <div class="player ${off?"off":""}" data-key="${key}" data-src="${esc(src||"")}" data-title="${esc(title)}">
       <button class="play" data-act="play" aria-label="Play">${I.play}</button>
       <div class="ttl">${esc(title)}</div>
-      <div><input type="range" min="0" max="100" value="0" step="0.1" data-act="seek" aria-label="Position"><div class="times"><span data-t="cur">0:00</span><span data-t="dur">~2:30</span></div></div>
+      <div><input type="range" min="0" max="100" value="0" step="0.1" data-act="seek" aria-label="Position"><div class="times"><span data-t="cur">0:00</span><span data-t="dur">~2:00</span></div></div>
       <div class="ctrls">
         <button class="chip" data-act="back15" aria-label="Back 15 seconds">↺ 15s</button>
         <button class="chip" data-act="rate" data-v="0.75">0.75×</button><button class="chip on" data-act="rate" data-v="1">1×</button><button class="chip" data-act="rate" data-v="1.25">1.25×</button>
         <button class="chip" data-act="sleep" data-v="0" aria-label="Sleep timer">⏾ Off</button>
       </div>
     </div>
-    ${off ? `<div class="note">Marsha's voice for this prayer is being prepared. Tonight, read the prayer above out loud, slowly. The words are the same.</div>` : ""}
+    ${off ? `<div class="note">Marsha's voice for this prayer is being prepared. Tonight, read the prayer above out loud, slowly. The words are the same.</div>` : key!=="sos" ? `<div class="note">Where Marsha says "the man I love", whisper ${esc(S.his?poss(S.his).replace(/'s?$/,""):"his name")}${S.his?"'s name":""}. Your written prayer above already has it.</div>` : ""}
   </div>`;
 }
 const fmtS = s => !isFinite(s) ? "0:00" : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
@@ -490,18 +537,16 @@ function chime(){
 function renderTop(){
   const night=document.body.classList.contains("night");
   $("#top").innerHTML = `<div class="wrap"><a class="brand" href="#/home">7 Psalms <i>for</i> Love</a>
+    ${S.onboarded?`<span class="bellwrap"><button class="iconbtn" data-act="bell" aria-label="Notifications">${I.bell}</button>${notifs().some(n=>!S.notifRead[n.id])?'<span class="bell-dot"></span>':""}</span>`:""}
     <button class="iconbtn" data-act="night" aria-label="${night?"Switch to day mode":"Switch to night mode"}">${night?I.sun:I.moon}</button></div>`;
 }
 function renderNav(route){
-  const tab = {home:"home",night:"home",journal:"journal",bonuses:"bonuses",lockmap:"bonuses",psalm91:"bonuses",reach:"bonuses",reunion:"bonuses",namecard:"bonuses",settings:"settings"}[route]||"";
+  const tab = {home:"home",night:"home",today:"home",circle:"home",journey:"journey",gift:"journey",certificate:"journey",journal:"journal",bonuses:"bonuses",lockmap:"bonuses",psalm91:"bonuses",reach:"bonuses",reunion:"bonuses",namecard:"bonuses",settings:"settings"}[route]||"";
   const it=(k,h,ic,l)=>`<a href="${h}" class="${tab===k?"on":""}" ${tab===k?'aria-current="page"':""}>${ic}<span>${l}</span></a>`;
-  $("#nav").innerHTML = `<div class="wrap">${it("home","#/home",I.home,"Home")}${it("journal","#/journal",I.book,"Journal")}${it("bonuses","#/bonuses",I.gift,"Bonuses")}${it("settings","#/settings",I.gear,"Settings")}</div>`;
+  $("#nav").innerHTML = `<div class="wrap">${it("home","#/home",I.home,"Home")}${it("journey","#/journey",I.path,"Journey")}${it("journal","#/journal",I.book,"Journal")}${it("bonuses","#/bonuses",I.gift,"Gifts")}${it("settings","#/settings",I.gear,"Settings")}</div>`;
 }
 function footer(){
   return `<footer class="foot noprint">
-    <a class="help" href="#/help">${I.heart.replace("<svg",'<svg width="18" height="18"')} Need help now?</a>
-    <nav><a href="#/terms">Terms</a><a href="#/privacy">Privacy</a><a href="#/refund">Refunds</a><a href="#/contact">Contact</a></nav>
-    <p class="small">A faith-based program of prayer. It is not a substitute for professional counseling, and results vary from person to person.</p>
     <p class="small">© ${new Date().getFullYear()} ${esc(CONFIG.company||CONFIG.brand)}</p>
   </footer>`;
 }
@@ -577,7 +622,7 @@ V.welcome = () => {
     <button class="link" data-act="ob-back">Back</button>`;
   return `${steps}<h2 class="mt">A note from Marsha</h2>
     <div class="card"><p>These seven nights are about prayer, and about restoring a loving relationship. We never ask God to force anyone. We ask Him to soften, heal and open.</p>
-    <p class="mb0">If he has ever hurt you, threatened you, or made you feel unsafe, your safety comes first. Help is always one call away. There's a "Need help now?" link at the bottom of every page.</p></div>
+    <p class="mb0">If he has ever hurt you, threatened you, or made you feel unsafe, your safety comes first. Help is always one call away: <a href="#/help">see where to get help</a>.</p></div>
     <div class="card"><div class="eyebrow">Tonight</div><h3 style="margin-top:6px">Night Zero · The Clean Heart</h3><p class="muted mt mb0">Before we pray for him, we pray for you. It takes about five minutes.</p></div>
     <button class="btn gold" data-act="ob-finish">Begin Night Zero</button>
     <button class="link" data-act="ob-back">Back</button>`;
@@ -595,7 +640,7 @@ V.home = () => {
   if(cur===8){
     tonight = `<div class="card tonight center"><div class="eyebrow">All seven locks are open</div><h2>You did it, ${esc(S.her||"friend")}.</h2>
       <p class="mt">Seven nights of prayer. Keep writing down what you notice, and read "The Reunion Conversation" before you see him.</p>
-      <a class="btn" href="#/journal">Open my Signs Journal</a><a class="btn ghost mt" href="#/reunion">The Reunion Conversation</a></div>`;
+      <a class="btn gold" href="#/certificate">See my certificate</a><a class="btn ghost mt" href="#/journal">Open my Signs Journal</a><a class="btn ghost mt" href="#/reunion">The Reunion Conversation</a></div>`;
   } else if(isOpen(cur)){
     const prev = cur>0 ? S.prayed[cur-1] : null;
     const waited = prev && (Date.now()-prev > 40*3600e3);
@@ -613,6 +658,7 @@ V.home = () => {
   const s = streak();
   return `<div class="hello"><img class="avatar dim" src="img/marsha.jpg" alt=""><div><div class="muted small">${greet},</div><h1 style="font-size:30px">${esc(S.her||"friend")}</h1></div></div>
     ${S.safety?safetyCard():""}
+    ${featuredHTML()}
     <div class="card"><div class="row" style="justify-content:space-between"><b>Your 7 locks</b><span class="pill">${opened} of 7 open</span></div>
     ${locks}<div class="bar mt" style="margin-top:10px"><i style="width:${opened/7*100}%"></i></div></div>
     ${tonight}
@@ -620,6 +666,8 @@ V.home = () => {
       <div class="stat"><b>${s}</b><span>${s===1?"night":"nights"} in a row</span></div>
       <a class="stat" href="#/settings" style="text-decoration:none"><b>${esc(fmtTime(timeToDate(S.prayerTime)))}</b><span>your prayer time</span></a>
     </div>
+    ${todayCardHTML()}
+    ${journeyTeaserHTML()}
     <button class="btn ghost mt" data-act="ics">${I.candle.replace("<svg",'<svg width="22" height="22"')} Add a nightly reminder to my calendar</button>
     <div class="sec-title">Your gifts from Marsha</div>
     ${bonusTiles(true)}
@@ -633,6 +681,8 @@ function bonusTiles(short){
   let html = `<div class="grid">
     ${t("#/lockmap",I.map,"The Reading of His 7 Locks",lm,"Bonus")}
     ${t("#/psalm91",I.shield,"Psalm 91 Couple's Protection","Shelter for the two of you","Bonus")}
+    ${t("#/circle",I.heart,"Prayer Circle","Today's prayer, together")}
+    ${t("#/journey",I.path,"Your Journey","Gifts that open as you return")}
     ${t("#/journal",I.book,"Signs Journal","Write down what you notice")}
     ${t("#/reach",I.chat,"When He Reaches Out","What to say back","Gift")}
     ${t("#/reunion",I.door,"The Reunion Conversation","Before, during and after","Gift")}
@@ -691,6 +741,7 @@ function markPrayed(n){
     <div class="msg"><h2>${n===0?"Your heart is ready.":`The lock of ${esc(NIGHTS[n].lock.replace(/^The /,""))} is open.`}</h2><p class="mt">${msg}</p>
     <div class="bar" style="margin:16px 0"><i style="width:${openedCount()/7*100}%"></i></div>
     ${n===0?`<a class="btn gold" href="#/night/1">Pray Night 1 now</a><a class="btn ghost mt" href="#/home">Back home</a>`
+           :n===7?`<a class="btn gold" href="#/certificate">Receive my certificate</a><a class="btn ghost mt" href="#/journal/7">Write what I noticed</a>`
            :`<a class="btn" href="#/journal/${n}">Write what I noticed</a><a class="btn ghost mt" href="#/home">Back home</a>`}</div></div>`;
   document.body.appendChild(ov); requestAnimationFrame(()=>requestAnimationFrame(()=>ov.classList.add("go")));
   ov.addEventListener("click",e=>{ if(e.target.closest("a")) setTimeout(()=>ov.remove(),10); });
@@ -878,15 +929,153 @@ V.refund = () => `<div class="legal"><a class="back" href="#/home">${I.arrow} Ho
   <p>After a refund, your access to the program ends.</p></div>${footer()}`;
 V.contact = () => `<a class="back" href="#/home">${I.arrow} Home</a><h1 class="mt">Contact us</h1>
   <p class="muted mt">We read every message. You'll get an answer within 1 to 2 business days.</p>
-  <label class="f" for="c-subj">Subject</label><input class="in" id="c-subj" placeholder="How can we help?">
-  <label class="f" for="c-msg">Message</label><textarea class="in" id="c-msg"></textarea>
-  <button class="btn mt" data-act="contact">Send message</button>
-  <p class="small muted mt">Or write directly to <a href="mailto:${esc(CONFIG.supportEmail)}">${esc(CONFIG.supportEmail)}</a>.</p>${footer()}`;
+  <div class="card mt"><p class="mb0">Send us an email at <a href="mailto:${esc(CONFIG.supportEmail)}"><b>${esc(CONFIG.supportEmail)}</b></a> with the email you used at checkout, and tell us how we can help.</p></div>
+  <a class="btn mt" href="mailto:${esc(CONFIG.supportEmail)}?subject=${encodeURIComponent(CONFIG.brand+" - Support")}">Email us</a>${footer()}`;
+
+/* =====================================================================
+   EXTRAS 02/11: prática do dia, círculo, jornada, presentes, certificado,
+   oferta em destaque, sino de notificações e pop-up diário
+   ===================================================================== */
+const MILESTONES = () => GIFTS.map(g=>g.day);
+function dayNum(){ if(!S.onboarded) return 1; const a=new Date(S.onboarded); a.setHours(0,0,0,0); const b=new Date(); b.setHours(0,0,0,0); return Math.max(1, Math.round((b-a)/864e5)+1); }
+function cycleIdx(len){ const a=new Date(2026,0,1), b=new Date(); b.setHours(0,0,0,0); return ((Math.floor((b-a)/864e5)%len)+len)%len; }
+const todayDaily = () => DAILY[(dayNum()-1) % DAILY.length];
+const todayCircle = () => CIRCLE[cycleIdx(CIRCLE.length)];
+const pDone = k => !!(S.practice[dstr()]||{})[k];
+const giftOpen = g => UNLOCK_ALL || dayNum() >= g.day;
+function giftDate(g){ const d=new Date(S.onboarded||Date.now()); d.setHours(0,0,0,0); d.setDate(d.getDate()+g.day-1); return d; }
+
+const feats = () => [].concat(window.FEATURED||[]).filter(f=>f && f.url);
+function featuredHTML(){
+  return feats().map(F=>`<a class="feat" href="${esc(F.url)}" ${F.url==="#"?"":'target="_blank" rel="noopener"'} data-act="feat" data-id="${esc(F.id)}"><div class="fi">${F.icon||"👼"}</div><div style="flex:1"><div class="ey">${esc(F.eyebrow)}</div><b>${esc(F.title)}</b><span class="s">${esc(F.sub)}</span></div><span class="go">${esc(F.cta)} ›</span></a>`).join("");
+}
+function todayCardHTML(){
+  const D=todayDaily(), C=todayCircle(), all=pDone("psalm")&&pDone("decl")&&S.circle[dstr()];
+  const row=(done,h,t,s)=>`<a class="pr ${done?"done":""}" href="${h}"><span class="ck">${done?I.check.replace('width="22" height="22"','width="16" height="16"'):""}</span><span class="tx"><b>${t}</b><small>${s}</small></span>›</a>`;
+  return `<div class="card"><div class="row" style="justify-content:space-between"><div class="eyebrow">Today's practice</div>${all?'<span class="pill">All done today</span>':`<span class="small muted">Day ${dayNum()}</span>`}</div>
+    <div class="pr-list">
+      ${row(pDone("psalm"),"#/today","Psalm of the day",esc(D.ref))}
+      ${row(pDone("decl"),"#/today#decl","Today's declaration","Speak it out loud")}
+      ${row(!!S.circle[dstr()],"#/circle","Prayer Circle",esc(C.t))}
+    </div></div>`;
+}
+function journeyTeaserHTML(){
+  const next=GIFTS.find(g=>!giftOpen(g)), unopened=GIFTS.find(g=>giftOpen(g)&&!S.giftsOpened[g.day]);
+  if(unopened) return `<a class="ms" href="#/gift/${unopened.day}" style="border-color:var(--gold)"><span class="mi">${unopened.icon}</span><span class="tx"><span class="eyebrow">New gift · Day ${unopened.day}</span><b style="display:block;font-family:var(--serif);font-size:21px">${esc(unopened.title)}</b><small>Tap to open it</small></span>›</a>`;
+  if(next){ const left=next.day-dayNum(); return `<a class="ms" href="#/journey"><span class="mi">🎁</span><span class="tx"><span class="eyebrow">Your journey · Day ${dayNum()}</span><b style="display:block">Next gift in ${left} day${left>1?"s":""}</b><small>${esc(next.title)}</small></span>›</a>`; }
+  return "";
+}
+
+/* ---- notificações ---- */
+function notifs(){
+  const L=[], t=dstr(), cur=currentNight();
+  feats().filter(F=>F.url!=="#").forEach(F=>L.push({id:"offer-"+F.id, ic:F.icon||"👼", t:F.title, s:F.sub, href:F.url, ext:true}));
+  if(cur<=7 && isOpen(cur)) L.push({id:`night-${cur}-${t}`, ic:"🔓", t:`${cur===0?"Night Zero":"Night "+cur} is open`, s:nightTitle(cur), href:`#/night/${cur}`});
+  GIFTS.filter(g=>giftOpen(g)&&!S.giftsOpened[g.day]).forEach(g=>L.push({id:`gift-${g.day}`, ic:g.icon, t:`New gift: ${g.title}`, s:`Day ${g.day} of your journey`, href:`#/gift/${g.day}`}));
+  if(!(pDone("psalm")&&pDone("decl"))) L.push({id:`practice-${t}`, ic:"📖", t:"Your practice for today is waiting", s:todayDaily().ref, href:"#/today"});
+  if(!S.circle[t]) L.push({id:`circle-${t}`, ic:"🙏", t:"Today's Prayer Circle", s:todayCircle().t, href:"#/circle"});
+  return L;
+}
+function closePanel(){ const p=document.getElementById("npanel"); if(p) p.remove(); }
+function togglePanel(){
+  if(document.getElementById("npanel")) return closePanel();
+  const L=notifs(); const el=document.createElement("div"); el.className="npanel"; el.id="npanel"; el.setAttribute("role","dialog"); el.setAttribute("aria-label","Notifications");
+  el.innerHTML=`<div class="nh"><b>Notifications</b>${L.length?'<button class="link" data-act="nread-all" style="padding:6px;min-height:40px">Mark all as read</button>':""}</div>
+    ${L.length?L.map(n=>`<button class="nitem ${S.notifRead[n.id]?"read":""}" data-act="nopen" data-id="${esc(n.id)}"><span class="ic">${n.ic}</span><span class="tx"><b>${esc(n.t)}</b><small>${esc(n.s)}</small></span><span class="ud"></span></button>`).join(""):'<p class="muted center" style="padding:16px">You\'re all caught up.</p>'}`;
+  document.body.appendChild(el);
+}
+
+/* ---- pop-up diário (1x por dia, não no dia do cadastro) ---- */
+const DM_SUBS = ["Every night you return, the door hears you.","You are building something that lasts.","Small, faithful steps. That's how locks open.","Heaven notices every return.","Your heart is getting stronger.","God's timing is never late.","Keep walking. You're not alone."];
+function trailHTML(){
+  const day=dayNum(), start=Math.max(1,day-3), end=day+5, ms=MILESTONES(); let h="";
+  for(let d=start; d<=end; d++){
+    const dt=new Date(S.onboarded||Date.now()); dt.setHours(0,0,0,0); dt.setDate(dt.getDate()+d-1);
+    const visited=S.visits.includes(dstr(dt)), cls = d<day ? (visited?"past":"miss") : d===day?"cur":"";
+    const g = ms.includes(d);
+    if(d>start) h+=`<div class="tline ${d<=day?"on":""}"></div>`;
+    h+=`<div class="tcell ${cls} ${g?"gift":""}"><div class="c">${g?"🎁":d<day&&visited?"✓":d}</div><small>Day ${d}</small></div>`;
+  }
+  return `<div class="trail" id="trail">${h}</div>`;
+}
+function maybeDailyModal(){
+  const t=dstr(); if(!S.onboarded || S.dailyModal===t || dstr(new Date(S.onboarded))===t || qs.has("nomodal")) return;
+  S.dailyModal=t; save();
+  const cur=currentNight(), day=dayNum();
+  const cta = cur<=7 && isOpen(cur) ? `<a class="btn gold" href="#/night/${cur}" data-act="dm-close">Pray ${cur===0?"Night Zero":"Night "+cur} tonight</a>` : `<a class="btn gold" href="#/today" data-act="dm-close">Open today's practice</a>`;
+  const el=document.createElement("div"); el.className="dm"; el.id="dm";
+  el.innerHTML=`<div class="sheet" role="dialog" aria-label="Your journey today"><div class="center"><div class="eyebrow">Your journey with Marsha</div><h2 style="margin-top:6px">Day ${day}</h2><p class="muted mt mb0">${DM_SUBS[(day-1)%DM_SUBS.length]}</p></div>${trailHTML()}${cta}<button class="link" data-act="dm-close" style="width:100%">Not now</button></div>`;
+  el.addEventListener("click",e=>{ if(e.target===el) el.remove(); });
+  document.body.appendChild(el);
+  setTimeout(()=>{ const c=el.querySelector(".tcell.cur"); if(c) c.scrollIntoView({inline:"center",block:"nearest"}); },60);
+}
+
+/* ---- telas ---- */
+V.today = () => { const D=todayDaily();
+  return `<a class="back" href="#/home">${I.arrow} Home</a>
+  <div class="nhead"><div class="eyebrow">Today's practice · Day ${dayNum()}</div><h1>Psalm of the day</h1></div>
+  <div class="card center"><div class="psalm">${esc(D.text)}</div><div class="ref mt">${esc(D.ref)} · KJV</div></div>
+  <div class="card word"><div class="who"><img class="dim" src="img/marsha.jpg" alt=""><div class="eyebrow">Marsha's word</div></div><p class="mb0">${esc(D.reflect)}</p></div>
+  ${pDone("psalm")?`<div class="prayed mt">${I.check} Received today</div>`:`<button class="btn" data-act="pdone" data-k="psalm">I received this word</button>`}
+  <div class="card mt2" id="decl"><div class="eyebrow">Today's declaration</div><p class="mt" style="font-family:var(--serif);font-size:26px;line-height:1.3">${esc(D.decl)}</p><p class="small muted mb0">Say it out loud three times, slowly.</p></div>
+  ${pDone("decl")?`<div class="prayed">${I.check} Declared today</div>`:`<button class="btn gold" data-act="pdone" data-k="decl">I declared it</button>`}
+  <p class="small muted center mt">A new psalm and declaration arrive every day.</p>${footer()}`; };
+
+V.circle = () => { const t=dstr(), C=todayCircle(), done=!!S.circle[t];
+  const past=[1,2,3,4,5,6].map(i=>{ const d=new Date(); d.setDate(d.getDate()-i); const a=new Date(2026,0,1); d.setHours(0,0,0,0); const k=((Math.floor((d-a)/864e5)%CIRCLE.length)+CIRCLE.length)%CIRCLE.length; return {d, c:CIRCLE[k], amen:!!S.circle[dstr(d)]}; });
+  const amens = Object.keys(S.circle).length;
+  return `<a class="back" href="#/home">${I.arrow} Home</a>
+  <div class="nhead"><div class="eyebrow">Prayer Circle</div><h1>Today's prayer</h1><p class="muted mt">Every woman in 7 Psalms for Love prays this same prayer today. You're not praying alone.</p></div>
+  <div class="card"><div class="eyebrow">${new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})}</div><h3 style="margin:6px 0 10px">${esc(C.t)}</h3><p class="prayer mb0" style="font-size:19px">${esc(C.p)}</p></div>
+  ${done?`<div class="prayed">${I.check} You said Amen today</div>`:`<button class="btn gold" data-act="amen">🙏 Amen</button>`}
+  <p class="small muted center mt">You've said Amen on ${amens} day${amens===1?"":"s"}.</p>
+  <div class="sec-title">Earlier this week</div>
+  ${past.map(x=>`<details class="sc"><summary>${x.d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})} · ${esc(x.c.t)} ${x.amen?"🙏":""}</summary><div class="in2"><p class="mb0">${esc(x.c.p)}</p></div></details>`).join("")}
+  ${footer()}`; };
+
+V.journey = () => { const day=dayNum(), next=GIFTS.find(g=>!giftOpen(g));
+  return `<h1 style="margin-top:18px">Your Journey</h1><p class="muted mt">Every day you come back, a little more opens.</p>
+  <div class="card center"><div class="eyebrow">Day</div><div class="bigday">${day}</div><p class="muted mb0">${S.visits.length} day${S.visits.length===1?"":"s"} with Marsha · ${openedCount()} of 7 locks open</p>
+    ${trailHTML()}
+    ${next?`<div class="mt" style="text-align:left"><div class="row" style="justify-content:space-between"><span class="small"><b>Next gift:</b> ${esc(next.title)}</span><span class="small muted">Day ${next.day}</span></div><div class="bar" style="margin-top:6px"><i style="width:${Math.min(100,day/next.day*100)}%"></i></div></div>`:""}</div>
+  <div class="sec-title">Gifts along the way</div>
+  ${GIFTS.map(g=>{ const o=giftOpen(g); return o
+      ? `<a class="ms" href="#/gift/${g.day}"><span class="mi">${g.icon}</span><span class="tx"><span class="eyebrow">Day ${g.day}${S.giftsOpened[g.day]?" · Opened":" · New"}</span><b style="display:block;font-family:var(--serif);font-size:21px">${esc(g.title)}</b><small>${esc(g.teaser)}</small></span>›</a>`
+      : `<div class="ms locked"><span class="mi">${g.icon}</span><span class="tx"><span class="eyebrow">Day ${g.day} · Opens ${giftDate(g).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span><b style="display:block;font-family:var(--serif);font-size:21px">${esc(g.title)}</b><small>${esc(g.teaser)}</small></span>${I.lockS.replace("<svg",'<svg width="22" height="22"')}</div>`; }).join("")}
+  <a class="ms" href="${isPrayed(7)||UNLOCK_ALL?"#/certificate":"#/home"}" ${isPrayed(7)||UNLOCK_ALL?"":'style="opacity:.6"'}><span class="mi">📜</span><span class="tx"><span class="eyebrow">${isPrayed(7)?"Earned":"After Night 7"}</span><b style="display:block;font-family:var(--serif);font-size:21px">${esc(CERT.title)}</b><small>With your name, to print and keep.</small></span>›</a>
+  ${footer()}`; };
+
+V.gift = (d) => { const g=GIFTS.find(x=>x.day===parseInt(d)); if(!g) return V.journey();
+  if(!giftOpen(g)) return `<a class="back" href="#/journey">${I.arrow} Journey</a><div class="card lockedbox"><div style="font-size:44px">${g.icon}</div><h2 class="mt">${esc(g.title)}</h2><p class="muted">This gift opens on Day ${g.day} (${giftDate(g).toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})}).</p><a class="btn ghost" href="#/journey">Back to my journey</a></div>${footer()}`;
+  if(!S.giftsOpened[g.day]){ S.giftsOpened[g.day]=Date.now(); save(); setTimeout(renderTop,0); }
+  return `<a class="back" href="#/journey">${I.arrow} Journey</a>
+  <div class="nhead"><div class="eyebrow">Day ${g.day} gift</div><div style="font-size:52px;margin:6px 0">${g.icon}</div><h1>${esc(g.title)}</h1></div>
+  <div class="card word"><div class="who"><img class="dim" src="img/marsha.jpg" alt=""><div class="eyebrow">Marsha's word</div></div>${paras(g.word)}</div>
+  <div class="card"><div class="eyebrow">Scripture</div><div class="psalm mt">${g.verses.map(([v,t])=>`<p><sup>${v}</sup>${esc(t)}</p>`).join("")}</div><div class="ref">${esc(g.ref)} · King James Version</div></div>
+  <div class="card prayer"><div class="eyebrow">Pray with me</div><div class="mt">${paras(g.prayer)}</div></div>
+  <div class="card"><label class="f" for="g-note" style="margin-top:0">${esc(g.prompt)}</label><textarea class="in" id="g-note" placeholder="Only you can see this.">${esc(S.giftNotes[g.day]||"")}</textarea><button class="btn ghost mt" data-act="gnote" data-d="${g.day}">Save</button></div>
+  ${footer()}`; };
+
+V.certificate = () => {
+  if(!isPrayed(7) && !UNLOCK_ALL) return `<a class="back" href="#/journey">${I.arrow} Journey</a><div class="card lockedbox"><div style="font-size:44px">📜</div><h2 class="mt">${esc(CERT.title)}</h2><p class="muted">Your certificate is waiting at the end of Night 7. ${openedCount()} of 7 locks are open.</p><a class="btn" href="#/home">Continue my nights</a></div>${footer()}`;
+  const when = S.prayed[7] ? new Date(S.prayed[7]) : new Date();
+  return `<a class="back noprint" href="#/journey">${I.arrow} Journey</a>
+  <div class="nhead noprint"><h1>Your certificate</h1><p class="muted mt">Print it, or save it as a PDF from the print window.</p></div>
+  <div class="printable mt"><div class="cert"><div class="frame"></div>
+    <div class="eyebrow" style="color:#8C6C25">${esc(CERT.title)}</div>
+    <p style="margin:16px 0 0;font-size:15px">This is to remember that</p>
+    <div class="nm2">${esc(S.her||"Your name")}</div>
+    <p style="font-size:17px">${esc(CERT.body)}</p>
+    <div class="locks">${[1,2,3,4,5,6,7].map(()=>lockSVG("open","",26)).join("")}</div>
+    <p style="font-family:var(--serif);font-style:italic;font-size:19px;margin:8px 0 4px">${esc(CERT.verse)}</p>
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8C6C25">${esc(CERT.ref)}</div>
+    <p style="margin:18px 0 0;font-size:14px;color:#6F5B4F">${when.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})} · with love, Marsha</p></div></div>
+  <button class="btn mt2 noprint" data-act="printcert">Print my certificate</button>${footer()}`; };
 
 /* =====================================================================
    ROTEADOR
    ===================================================================== */
-function parse(){ const h=(location.hash||"#/home").slice(2).split("/"); return { r:h[0]||"home", p:h[1] }; }
+function parse(){ const h=(location.hash||"#/home").slice(2).split("#")[0].split("/"); return { r:h[0]||"home", p:h[1] }; }
 function render(){
   applyNight();
   let { r, p } = parse();
@@ -905,7 +1094,11 @@ function render(){
   $("#sos").hidden = !( (isNightTime()||qs.has("sos")) && S.onboarded && !["sos","welcome"].includes(r) );
   wirePlayer();
   if(r==="sos") startBreath();
+  closePanel();
+  if(S.onboarded){ const t=dstr(); if(!S.visits.includes(t)){ S.visits.push(t); S.visits=S.visits.slice(-120); save(); } }
+  if(r==="home") maybeDailyModal();
   if(r==="reach" && p){ const el=document.getElementById("r-"+p); if(el) setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60); }
+  else if(r==="today" && location.hash.includes("#decl")){ setTimeout(()=>{ const el=document.getElementById("decl"); if(el) el.scrollIntoView({behavior:"smooth",block:"center"}); },60); }
   else window.scrollTo(0,0);
 }
 window.addEventListener("hashchange", render);
@@ -917,9 +1110,20 @@ setInterval(()=>{ document.querySelectorAll("[data-count]").forEach(el=>{ const 
    ===================================================================== */
 function readOb(){ const g=id=>document.getElementById(id); if(g("f-her")){ ob.d.her=g("f-her").value.trim(); ob.d.his=g("f-his").value.trim(); ob.d.phon=g("f-phon").value.trim(); } if(g("f-time")) ob.d.prayerTime=g("f-time").value||"22:00"; }
 document.addEventListener("click", e=>{
+  if(!e.target.closest(".npanel") && !e.target.closest('[data-act="bell"]')) closePanel();
   const b=e.target.closest("[data-act]"); if(!b || b.closest(".player")) return;
   const a=b.dataset.act;
   if(a==="night") return toggleNight();
+  if(a==="bell") return togglePanel();
+  if(a==="nread-all"){ notifs().forEach(n=>S.notifRead[n.id]=1); save(); closePanel(); renderTop(); return; }
+  if(a==="nopen"){ const n=notifs().find(x=>x.id===b.dataset.id); S.notifRead[b.dataset.id]=1; save(); closePanel(); renderTop();
+    if(n&&n.ext){ window.open(n.href,"_blank","noopener"); } else if(n){ location.hash=n.href.slice(1); } return; }
+  if(a==="pdone"){ const t=dstr(); S.practice[t]=Object.assign({},S.practice[t],{[b.dataset.k]:Date.now()}); save(); toast(b.dataset.k==="psalm"?"Psalm received 🙏":"Declared. Amen."); render(); return; }
+  if(a==="amen"){ const t=dstr(); if(!S.circle[t]){ S.circle[t]=Date.now(); save(); chime(); } render(); return; }
+  if(a==="dm-close"){ const el=document.getElementById("dm"); if(el) el.remove(); return; }
+  if(a==="gnote"){ const d=b.dataset.d; S.giftNotes[d]=$("#g-note").value.trim(); save(); toast("Saved"); return; }
+  if(a==="printcert"){ document.body.classList.add("print-cert"); window.print(); setTimeout(()=>document.body.classList.remove("print-cert"),500); return; }
+  if(a==="feat"){ S.notifRead["offer-"+b.dataset.id]=1; save(); if(b.getAttribute("href")==="#"){ e.preventDefault(); toast("Coming soon ✨"); } return; }
   if(a==="access"){ const v=$("#a-email").value.trim().toLowerCase(); if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){ $("#err").textContent="Please check your email address."; return; }
     S.email=v; save(); history.replaceState(null,"",location.pathname+"#/welcome"); return render(); }
   if(a==="ob-next"){

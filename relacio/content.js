@@ -72,7 +72,7 @@ As I begin these seven nights, I place {HIS} in Your hands, not mine. Your will 
     ],
     action: `Write what hurt you on a piece of paper. Pray over it. Then tear it up and throw it away.`,
     journal: `What did you write on the paper tonight? How did it feel to tear it up?`,
-    audio: ""   // caminho do MP3 genérico (ex.: "audio/night-0.mp3")
+    audio: "audio/night-0.mp3"   // áudio genérico da Marsha (ElevenLabs, voz Laurel)
   },
   {
     n: 1, lock: "Anger", lockSub: "the fight you never talked through",
@@ -106,7 +106,7 @@ Help {HIS} lie down tonight in peace, and help me do the same. I won't reach for
     ],
     action: `Send him no message today. If you feel the urge, pray tonight's psalm again instead.`,
     journal: `What's one fight you're ready to stop replaying?`,
-    audio: ""
+    audio: "audio/night-1.mp3"
   },
   {
     n: 2, lock: "Pride", lockSub: "\"I can't go back now\"",
@@ -137,7 +137,7 @@ I give You my need to control how this ends. I trust You with {HIS}, and I trust
     ],
     action: `Post nothing aimed at him today. Not a quote, not a photo, not a song.`,
     journal: `Where did you notice pride today, in him or in you?`,
-    audio: ""
+    audio: "audio/night-2.mp3"
   },
   {
     n: 3, lock: "Swallowed Longing", lockSub: "he misses you and won't admit it",
@@ -169,7 +169,7 @@ Command Your lovingkindness in the daytime, and be my song tonight. Whatever {HI
     ],
     action: `Do one thing just for you today. A walk, a long bath, a call with a friend.`,
     journal: `What memory with him came back to you today?`,
-    audio: ""
+    audio: "audio/night-3.mp3"
   },
   {
     n: 4, lock: "Forgetting", lockSub: "he decided to forget you",
@@ -200,7 +200,7 @@ I will remember Your works, Lord. I will remember Your wonders of old. You have 
     ],
     action: `Write three things you love about who you are. Keep the list inside your Bible.`,
     journal: `Which of your three things surprised you the most?`,
-    audio: ""
+    audio: "audio/night-4.mp3"
   },
   {
     n: 5, lock: "Shame", lockSub: "\"she'll never forgive me\"",
@@ -232,7 +232,7 @@ You are nigh unto them that are of a broken heart. Be near to him tonight. Be ne
     ],
     action: `If he reaches out, answer warmly and briefly. "When He Reaches Out" has words you can use.`,
     journal: `If he apologized tomorrow, what would you want to say back?`,
-    audio: ""
+    audio: "audio/night-5.mp3"
   },
   {
     n: 6, lock: "The One In Between", lockSub: "the other woman, family, friends",
@@ -268,7 +268,7 @@ Bring to pass what is good for both of us. In Jesus' name, amen.`,
     action: `Tonight, also pray the Psalm 91 Couple's Protection.`,
     actionLink: "#/psalm91",
     journal: `What worry are you giving to God tonight?`,
-    audio: ""
+    audio: "audio/night-6.mp3"
   },
   {
     n: 7, lock: "The Door", lockSub: "the reunion",
@@ -301,7 +301,7 @@ And whatever happens, keep my heart clean, the way we started on Night Zero. I'm
     action: `Read "The Reunion Conversation" before you see him.`,
     actionLink: "#/reunion",
     journal: `What do you want your first conversation to feel like?`,
-    audio: ""
+    audio: "audio/night-7.mp3"
   }
 ];
 
@@ -320,7 +320,7 @@ window.PSALM91 = {
 Where envy, gossip or interference tries to come near, let it not come nigh our dwelling. Give Your angels charge over {HIS}, to keep him in all his ways: at work, with his friends, with his family, in the places where he's tempted to give up. Give Your angels charge over me too, so I walk in peace and not in fear.
 
 I don't ask You to harm anyone, Lord. I ask You to protect what You are restoring. Let no voice that isn't Yours have the last word in our story. You are the most High, and You are our habitation. In You I trust. In Jesus' name, amen.`,
-  audio: ""
+  audio: "audio/psalm-91.mp3"
 };
 
 window.SOS = {
@@ -329,7 +329,7 @@ window.SOS = {
     { ref: "Psalm 27:14", text: "Wait on the LORD: be of good courage, and he shall strengthen thine heart: wait, I say, on the LORD." }
   ],
   intro: `It's late and your mind won't stop. That's all right. You don't have to fix anything tonight. Breathe with me for a few minutes. Put the phone face down when you're done.`,
-  audio: ""
+  audio: "audio/sos.mp3"
 };
 
 /* ---------- When He Reaches Out (10 cenários) ---------- */
@@ -508,3 +508,144 @@ window.LOCKMAP = [
     { t: "Tired of waiting",             w: { door: 3 } },
     { t: "I'm afraid of him",            w: {}, safety: true } ] }
 ];
+
+/* =====================================================================
+   02/11/2026 — EXTRAS (inspirados no app do Abundance)
+   ===================================================================== */
+
+/* Ofertas em destaque (topo da home + sino), na ordem da lista. url vazio = o card some. */
+window.FEATURED = [
+  { id: "angel", icon: "👼",
+    eyebrow: "A gift for you",
+    title: "Discover Your Guardian Angel",
+    sub: "A short reading about the angel watching over you and your home.",
+    cta: "Discover now",
+    url: "#" },   // em espera (02/11). Link real: https://quizangel.vercel.app/
+  { id: "soulmate", icon: "💞",
+    eyebrow: "A gift for you",
+    title: "Discover Your Soulmate",
+    sub: "A short reading that reveals the soul written for yours, and the signs he's already near.",
+    cta: "Discover now",
+    url: "#" }   // em espera (02/11): falta o link da oferta de alma gêmea
+];
+
+/* Prática do dia: ciclo de 14 dias (salmo + reflexão + declaração). KJV exata. */
+window.DAILY = [
+  { ref: "Psalm 30:5",     text: "For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.",
+    reflect: `Some nights are long. But the night is never the end of the story.`, decl: `My tears are not wasted. Joy is coming in the morning.` },
+  { ref: "Psalm 37:7",     text: "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass.",
+    reflect: `Waiting patiently isn't doing nothing. It's trusting God while you keep living your life.`, decl: `I rest in the Lord. I don't have to rush what God is doing.` },
+  { ref: "Psalm 46:10",    text: "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
+    reflect: `Take two minutes of silence today. No phone, no plans. Just you and God.`, decl: `I am still, and I know that He is God.` },
+  { ref: "Psalm 55:22",    text: "Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved.",
+    reflect: `Name the heaviest thing on your heart today, and hand it over out loud.`, decl: `I cast my burden on the Lord. He carries me today.` },
+  { ref: "Psalm 62:8",     text: "Trust in him at all times; ye people, pour out your heart before him: God is a refuge for us. Selah.",
+    reflect: `Pour it all out. God is not afraid of your honesty.`, decl: `I pour out my heart before God. He is my refuge.` },
+  { ref: "Psalm 103:4",    text: "Who redeemeth thy life from destruction; who crowneth thee with lovingkindness and tender mercies;",
+    reflect: `You are crowned with lovingkindness, even on the days you don't feel it.`, decl: `I am crowned with lovingkindness and tender mercies.` },
+  { ref: "Psalm 121:1–2",  text: "I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.",
+    reflect: `When you look for help today, look up first.`, decl: `My help comes from the Lord, who made heaven and earth.` },
+  { ref: "Psalm 126:5",    text: "They that sow in tears shall reap in joy.",
+    reflect: `Every tear you've prayed is a seed in God's hands.`, decl: `I sow in tears, and I will reap in joy.` },
+  { ref: "Psalm 127:1",    text: "Except the LORD build the house, they labour in vain that build it: except the LORD keep the city, the watchman waketh but in vain.",
+    reflect: `Ask God to be the builder of your home, whatever it looks like today.`, decl: `The Lord builds my house. I let Him lead.` },
+  { ref: "Psalm 133:1",    text: "Behold, how good and how pleasant it is for brethren to dwell together in unity!",
+    reflect: `Pray for peace in your family today, and be one small part of it.`, decl: `I bring peace and unity into my home.` },
+  { ref: "Psalm 138:8",    text: "The LORD will perfect that which concerneth me: thy mercy, O LORD, endureth for ever: forsake not the works of thine own hands.",
+    reflect: `God finishes what He starts. That includes the work He's doing in you.`, decl: `The Lord will perfect that which concerns me.` },
+  { ref: "Psalm 145:18",   text: "The LORD is nigh unto all them that call upon him, to all that call upon him in truth.",
+    reflect: `You don't need perfect words. God is near the moment you call.`, decl: `The Lord is near to me when I call on Him.` },
+  { ref: "Psalm 147:3",    text: "He healeth the broken in heart, and bindeth up their wounds.",
+    reflect: `Healing often comes quietly. Notice one place where you feel a little lighter.`, decl: `God heals my broken heart and binds up my wounds.` },
+  { ref: "Psalm 16:11",    text: "Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.",
+    reflect: `Ask God to show you one step on the path today. Just one.`, decl: `God shows me the path of life. In Him is fullness of joy.` }
+];
+
+/* Prayer Circle: a mesma oração para todas as mulheres do programa no mesmo dia (ciclo de 14). */
+window.CIRCLE = [
+  { t: "For every woman who is waiting", p: `Lord, tonight we lift up every woman who is waiting for a door to open. Give her patience that doesn't turn bitter, and hope that doesn't turn desperate. Hold her heart while she waits. Amen.` },
+  { t: "For the men who are far from home", p: `Lord, we pray for the husbands and boyfriends who are far from home tonight, in body or in heart. Speak to them in the quiet. Lead them toward what is right. Amen.` },
+  { t: "For the children in the middle", p: `Lord, we pray for every child caught between two parents who are hurting. Guard their hearts. Let them feel loved by both, and safe in You. Amen.` },
+  { t: "For words that wounded", p: `Lord, heal the words that were said in anger, on both sides. Take the sting out of the memory, and teach us to speak with kindness from now on. Amen.` },
+  { t: "For protection over every marriage", p: `Lord, cover every marriage and every relationship in this circle with Your protection. Keep envy, gossip and interference far from our homes. Amen.` },
+  { t: "For patience", p: `Lord, give us patience today. Not the kind that gives up, but the kind that keeps praying, keeps living, and keeps trusting You. Amen.` },
+  { t: "For forgiveness", p: `Lord, where we need to forgive, give us the strength. Where we need to be forgiven, give us humility. Let mercy and truth meet in our homes. Amen.` },
+  { t: "For the first conversation", p: `Lord, for every woman who will talk with him soon, guard her mouth and calm her heart. Let her listen well and speak in love. Amen.` },
+  { t: "For homes that feel empty", p: `Lord, fill the empty chairs and the quiet rooms with Your presence tonight. No home is empty when You are in it. Amen.` },
+  { t: "For the families around us", p: `Lord, we pray for his family and for ours. Heal old hurts between in-laws, parents and siblings. Let them be a blessing, not a barrier. Amen.` },
+  { t: "For wisdom to wait well", p: `Lord, teach us when to speak and when to stay quiet, when to reach out and when to rest. Give us wisdom for every message we send. Amen.` },
+  { t: "For peaceful sleep", p: `Lord, for every woman lying awake tonight, give rest. Quiet the racing thoughts. Let her lie down in peace and sleep, for You make her dwell in safety. Amen.` },
+  { t: "For hearts softened by You", p: `Lord, where pride has hardened a heart, soften it gently. We never ask You to force anyone. We ask You to knock, and to give courage to open. Amen.` },
+  { t: "For gratitude", p: `Lord, thank You for every small sign this week, every answered prayer, every moment of peace. Teach us to notice Your hand in the little things. Amen.` }
+];
+
+/* Presentes da jornada: liberam por dia de programa (dia 1 = dia do 1º acesso). */
+window.GIFTS = [
+  { day: 3, icon: "🕊️", title: "A Prayer for His Mind",
+    teaser: `For a man whose thoughts are loud and confused.`,
+    ref: "Philippians 4:7",
+    verses: [[7, "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."]],
+    word: `When a man is confused, his mind gets loud. Old arguments, other people's opinions, worry about money, pride. Sometimes he pulls away not because he stopped caring, but because he can't hear himself think.
+
+Tonight, pray for his mind. Not for a feeling, and not for a phone call. For peace.`,
+    prayer: `Lord, I lift up {HIS_S} mind to You. Quiet the noise in his thoughts. Where there is confusion, bring clarity. Where there is worry, bring rest. Let Your peace, which passeth all understanding, keep his heart and his mind. Help him think clearly about what is true and what is right. And keep my mind in Your peace too. In Jesus' name, amen.`,
+    prompt: `What do you hope his mind can be at peace about?` },
+  { day: 7, icon: "🏡", title: "Psalm 23 for Your Home",
+    teaser: `A room-by-room blessing for the home you share, or hope to share.`,
+    ref: "Psalm 23:1–6",
+    verses: [
+      [1, "The LORD is my shepherd; I shall not want."],
+      [2, "He maketh me to lie down in green pastures: he leadeth me beside the still waters."],
+      [3, "He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake."],
+      [4, "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me."],
+      [5, "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over."],
+      [6, "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever."]
+    ],
+    word: `One week. You kept coming back, and that matters. Today's gift is something my mother did whenever our house felt heavy.
+
+Walk through your home, room by room. In each room, read one verse of Psalm 23 out loud. At the front door, read the last one: "Surely goodness and mercy shall follow me." Then pray the blessing below.`,
+    prayer: `Lord, You are the shepherd of this home. Restore what feels tired here. Let still waters run through every room. Prepare a table where we can sit together in peace. Let goodness and mercy follow {HIS} and me, and let this house be a place where You dwell. In Jesus' name, amen.`,
+    prompt: `Which room in your home needs the most peace, and why?` },
+  { day: 14, icon: "💍", title: "The Covenant of Ruth",
+    teaser: `Three promises about the kind of love you want to give.`,
+    ref: "Ruth 1:16",
+    verses: [[16, "And Ruth said, Intreat me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God:"]],
+    word: `Ruth spoke these words to Naomi, her mother-in-law. For centuries they've been read at weddings, because they describe faithful, chosen love.
+
+Today, write three promises. Not promises he has to keep. Promises about how you want to love: how you'll speak, how you'll forgive, and how you'll take care of yourself, too.`,
+    prayer: `Lord, I bring You my promises. Make me faithful in love, but never foolish. Teach me to give the kind of love that builds a home, and to receive love that honors You. Whatever happens with {HIS}, let my love look more like Yours. In Jesus' name, amen.`,
+    prompt: `My three promises:` },
+  { day: 21, icon: "🪢", title: "The Threefold Cord",
+    teaser: `Putting God at the center of the two of you.`,
+    ref: "Ecclesiastes 4:9–12",
+    verses: [
+      [9, "Two are better than one; because they have a good reward for their labour."],
+      [10, "For if they fall, the one will lift up his fellow: but woe to him that is alone when he falleth; for he hath not another to help him up."],
+      [11, "Again, if two lie together, then they have heat: but how can one be warm alone?"],
+      [12, "And if one prevail against him, two shall withstand him; and a threefold cord is not quickly broken."]
+    ],
+    word: `Three weeks. Here is something worth knowing before any reunion: two people alone can break. A cord of three strands is much harder to break.
+
+The third strand is God. Not as a rule book, but as the One you both lean on. Today we pray that if you walk together again, you don't walk alone.`,
+    prayer: `Lord, be the third strand between {HIS} and me. When one of us falls, help the other lift. When we disagree, be the one we both listen to. If it is Your will for us to be together, let our love be a threefold cord, not quickly broken. In Jesus' name, amen.`,
+    prompt: `What would it look like to keep God in the middle of your relationship?` },
+  { day: 30, icon: "❤️", title: "A Seal Upon Your Heart",
+    teaser: `A blessing over the love God is restoring.`,
+    ref: "Song of Solomon 8:6–7",
+    verses: [
+      [6, "Set me as a seal upon thine heart, as a seal upon thine arm: for love is strong as death; jealousy is cruel as the grave: the coals thereof are coals of fire, which hath a most vehement flame."],
+      [7, "Many waters cannot quench love, neither can the floods drown it: if a man would give all the substance of his house for love, it would utterly be contemned."]
+    ],
+    word: `Thirty days. Look how far you've come. Whatever this month brought, you didn't stop praying.
+
+"Many waters cannot quench love." Today, speak a blessing over the two of you. Write it in your own words below, and read it out loud before you sleep.`,
+    prayer: `Lord, set Your seal upon my heart and upon {HIS_S}. Let no flood of hurt, pride or distance drown what You are building. Guard our love with Your fire, and keep it pure. Thank You for every one of these thirty days. In Jesus' name, amen.`,
+    prompt: `Write a short blessing over the two of you:` }
+];
+
+window.CERT = {
+  title: "Certificate of the Seven Nights",
+  body: `has prayed the 7 Psalms for Love, from Night Zero to The Door, and opened all seven locks in faith.`,
+  verse: `"Mercy and truth are met together; righteousness and peace have kissed each other."`,
+  ref: "Psalm 85:10"
+};
